@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Briefcase, GraduationCap, Award, MapPin, Calendar } from 'lucide-react';
+import { Briefcase, GraduationCap, Award, Calendar } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
 
 export default function Experience() {
@@ -23,7 +23,20 @@ export default function Experience() {
     visible: { opacity: 1, x: 0 },
   };
 
-  const TimelineItem = ({ item, index, type }: { item: any; index: number; type: 'experience' | 'education' }) => (
+  const TimelineItem = ({ item, type }: { 
+    item: {
+      id: number;
+      title?: string;
+      company?: string;
+      degree?: string;
+      school?: string;
+      period: string;
+      description: string;
+      achievements?: string[];
+      gpa?: string;
+    }; 
+    type: 'experience' | 'education' 
+  }) => (
     <motion.div
       variants={itemVariants}
       className="relative pl-8 pb-12 last:pb-0"
@@ -133,12 +146,10 @@ export default function Experience() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-            >
-              {experience.map((item, index) => (
+            >              {experience.map((item) => (
                 <TimelineItem
                   key={item.id}
                   item={item}
-                  index={index}
                   type="experience"
                 />
               ))}
@@ -161,12 +172,10 @@ export default function Experience() {
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-            >
-              {education.map((item, index) => (
+            >              {education.map((item) => (
                 <TimelineItem
                   key={item.id}
                   item={item}
-                  index={index}
                   type="education"
                 />
               ))}

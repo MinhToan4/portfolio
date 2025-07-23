@@ -6,12 +6,6 @@ import Image from 'next/image';
 import { portfolioData } from '@/data/portfolio';
 import { scrollToSection } from '@/lib/utils';
 
-const socialIcons = {
-  github: Github,
-  linkedin: Linkedin,
-  email: Mail,
-};
-
 export default function Hero() {
   const { personal } = portfolioData;
 

@@ -4,7 +4,7 @@ export const portfolioData = {
     title: "Full PTIT Developer",
     subtitle: "Nhiệt huyết với IT",
     description: "Tôi là một lập trình viên PTIT với đam mê tạo ra những sản phẩm công nghệ có ý nghĩa. Với tính cách cẩn thận, kỹ tính và cầu toàn tôi luôn muốn tạo ra một sản phẩm tốt nhất có thể.",    email: "toanminh0404@gmail.com",
-    phone: "+84 334 470 295",
+    phone: "+84 332 312 065",
     location: "Ha Noi City, Vietnam",
     avatar: "/avatar.jpg",
     socialLinks: {

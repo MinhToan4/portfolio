@@ -35,7 +35,13 @@ export default function Skills() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const SkillBar = ({ skill, index }: { skill: any; index: number }) => (
+  const SkillBar = ({ skill }: { 
+    skill: {
+      name: string;
+      level: number;
+      icon: string;
+    }
+  }) => (
     <motion.div
       variants={itemVariants}
       className="group"
@@ -53,7 +59,7 @@ export default function Skills() {
           initial={{ width: 0 }}
           whileInView={{ width: `${skill.level}%` }}
           viewport={{ once: true }}
-          transition={{ duration: 1, delay: index * 0.1 }}
+          transition={{ duration: 1, delay: 0.2 }}
           className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full relative overflow-hidden"
         >
           <motion.div
@@ -126,9 +132,8 @@ export default function Skills() {
                   whileInView="visible"
                   viewport={{ once: true }}
                   className="space-y-4"
-                >
-                  {skillList.map((skill: any, index: number) => (
-                    <SkillBar key={skill.name} skill={skill} index={index} />
+                >                  {skillList.map((skill: { name: string; level: number; icon: string }) => (
+                    <SkillBar key={skill.name} skill={skill} />
                   ))}
                 </motion.div>
               </motion.div>

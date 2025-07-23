@@ -23,7 +23,18 @@ export default function Projects() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const ProjectCard = ({ project, index }: { project: any; index: number }) => (
+  const ProjectCard = ({ project }: { 
+    project: {
+      id: number;
+      title: string;
+      description: string;
+      image: string;
+      technologies: string[];
+      liveUrl: string;
+      githubUrl: string;
+      featured: boolean;
+    }
+  }) => (
     <motion.div
       variants={itemVariants}
       whileHover={{ y: -5 }}
@@ -152,9 +163,8 @@ export default function Projects() {
           whileInView="visible"
           viewport={{ once: true }}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12"
-        >
-          {projects.map((project, index) => (
-            <ProjectCard key={project.id} project={project} index={index} />
+        >          {projects.map((project) => (
+            <ProjectCard key={project.id} project={project} />
           ))}
         </motion.div>
 
