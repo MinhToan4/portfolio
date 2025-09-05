@@ -35,7 +35,7 @@ export default function Skills() {
     visible: { opacity: 1, y: 0 },
   };
 
-  const SkillBar = ({ skill }: { 
+  const SkillBar = ({ skill }: {
     skill: {
       name: string;
       level: number;
@@ -89,7 +89,7 @@ export default function Skills() {
             variants={itemVariants}
             className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
           >
-            Kỹ năng & Công nghệ
+            Kỹ năng
           </motion.h2>
           <motion.div
             variants={itemVariants}
@@ -99,7 +99,7 @@ export default function Skills() {
             variants={itemVariants}
             className="text-lg text-gray-600 max-w-2xl mx-auto"
           >
-            Đây là những công nghệ và tools mà tôi sử dụng hàng ngày trong công việc
+            Các công nghệ và công cụ tôi thành thạo
           </motion.p>
         </motion.div>
 
@@ -107,7 +107,7 @@ export default function Skills() {
           {Object.entries(skills).map(([category, skillList]) => {
             const IconComponent = categoryIcons[category as keyof typeof categoryIcons];
             const categoryName = categoryNames[category as keyof typeof categoryNames];
-            
+
             return (
               <motion.div
                 key={category}
@@ -133,8 +133,8 @@ export default function Skills() {
                   viewport={{ once: true }}
                   className="space-y-4"
                 >                  {skillList.map((skill: { name: string; level: number; icon: string }) => (
-                    <SkillBar key={skill.name} skill={skill} />
-                  ))}
+                  <SkillBar key={skill.name} skill={skill} />
+                ))}
                 </motion.div>
               </motion.div>
             );
@@ -152,7 +152,7 @@ export default function Skills() {
           <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
             Công nghệ thường sử dụng
           </h3>
-          
+
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
             {[
               'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'JavaScript',
@@ -164,8 +164,8 @@ export default function Skills() {
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{ 
-                  scale: 1.1, 
+                whileHover={{
+                  scale: 1.1,
                   y: -5,
                   transition: { duration: 0.2 }
                 }}

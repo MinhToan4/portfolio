@@ -16,7 +16,6 @@ export default function Footer() {
   const footerLinks = [
     { name: 'Trang chủ', href: 'hero' },
     { name: 'Giới thiệu', href: 'about' },
-    { name: 'Kỹ năng', href: 'skills' },
     { name: 'Dự án', href: 'projects' },
     { name: 'Kinh nghiệm', href: 'experience' },
     { name: 'Liên hệ', href: 'contact' },
@@ -52,7 +51,7 @@ export default function Footer() {
               <p className="text-gray-300 mt-2">{personal.title}</p>
             </div>
             <p className="text-gray-400 mb-6 max-w-md">
-              Passionate about creating innovative solutions and bringing ideas to life through code. 
+              Passionate about creating innovative solutions and bringing ideas to life through code.
               Always learning, always growing.
             </p>
             <div className="flex space-x-4">
@@ -141,7 +140,7 @@ export default function Footer() {
             <Heart className="w-4 h-4 text-red-500 mx-1" fill="currentColor" />
             and lots of coffee.
           </p>
-          
+
           <motion.button
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.9 }}

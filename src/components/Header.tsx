@@ -9,7 +9,6 @@ import { scrollToSection } from '@/lib/utils';
 const navigation = [
   { name: 'Trang chủ', href: 'hero' },
   { name: 'Giới thiệu', href: 'about' },
-  { name: 'Kỹ năng', href: 'skills' },
   { name: 'Dự án', href: 'projects' },
   { name: 'Kinh nghiệm', href: 'experience' },
   { name: 'Liên hệ', href: 'contact' },
@@ -36,11 +35,10 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-white/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">

@@ -3,7 +3,7 @@ export const portfolioData = {
     name: "Nguyễn Minh Toàn",
     title: "Full PTIT Developer",
     subtitle: "Nhiệt huyết với IT",
-    description: "Tôi là một lập trình viên PTIT với đam mê tạo ra những sản phẩm công nghệ có ý nghĩa. Với tính cách cẩn thận, kỹ tính và cầu toàn tôi luôn muốn tạo ra một sản phẩm tốt nhất có thể.",    email: "toanminh0404@gmail.com",
+    description: "Tôi là một lập trình viên PTIT với đam mê tạo ra những sản phẩm công nghệ có ý nghĩa. Với tính cách cẩn thận, kỹ tính và cầu toàn tôi luôn muốn tạo ra một sản phẩm tốt nhất có thể.", email: "toanminh0404@gmail.com",
     phone: "+84 332 312 065",
     location: "Ha Noi City, Vietnam",
     avatar: "/avatar.jpg",
@@ -14,7 +14,7 @@ export const portfolioData = {
       X: "https://x.com/SboToan"
     }
   },
-  
+
   skills: {
     frontend: [
       { name: "React", level: 0, icon: "react" },
@@ -40,40 +40,40 @@ export const portfolioData = {
       { name: "Postman", level: 0, icon: "postman" }
     ]
   },
-  
+
   projects: [
     {
       id: 1,
-      title: "E-Commerce Platform (Không có thật)",
-      description: "Một nền tảng thương mại điện tử hoàn chỉnh với React, Node.js và MongoDB. Bao gồm thanh toán online, quản lý đơn hàng và dashboard admin.",
+      title: "Flappy Bird với Điều Khiển Bằng Cử Chỉ Tay",
+      description: "Phiên bản đặc biệt của game Flappy Bird được điều khiển bằng cử chỉ tay thông qua công nghệ MediaPipe Hand Tracking của Google. Game hỗ trợ điều khiển bằng cả hai tay và có nhiều tính năng thú vị!",
       image: "/images/project1.jpg",
-      technologies: ["React", "Node.js", "MongoDB", "Stripe", "Tailwind CSS"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project1",
+      technologies: ["Python", "MediaPipe", "OpenCV", "Pygame", "Hand Tracking"],
+      liveUrl: "https://github.com/MinhToan4/flappy-bird",
+      githubUrl: "https://github.com/MinhToan4/flappy-bird",
       featured: true
     },
     {
       id: 2,
-      title: "Task Management App (Không có thật)",
-      description: "Ứng dụng quản lý công việc với real-time collaboration, drag & drop và notification system.",
+      title: "2D Platformer Game",
+      description: "Game 2D platformer phát triển bằng C++ sử dụng thư viện SFML. Dự án thể hiện kỹ năng phát triển game, lập trình hướng đối tượng và tích hợp đa phương tiện với các tính năng như di chuyển nhân vật, nhảy, bắn và chiến đấu với kẻ thù.",
       image: "/images/project2.jpg",
-      technologies: ["Next.js", "TypeScript", "Prisma", "Socket.io", "PostgreSQL"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project2",
+      technologies: ["C++", "SFML", "Game Development", "OOP", "TinyXML"],
+      liveUrl: "https://www.youtube.com/watch?v=NuZzsPUH6F8",
+      githubUrl: "https://github.com/MinhToan4/Game-1",
       featured: true
     },
     {
       id: 3,
-      title: "Weather App (Không có thật)",
-      description: "Ứng dụng thời tiết với giao diện đẹp, hiển thị dự báo 7 ngày và lưu trữ địa điểm yêu thích.",
+      title: "Portfolio Website",
+      description: "Trang web portfolio cá nhân được xây dựng với Next.js, TypeScript và Tailwind CSS. Hiển thị các dự án, kỹ năng và kinh nghiệm của tôi với giao diện người dùng đẹp mắt và hiệu ứng chuyển động mượt mà.",
       image: "/images/project3.jpg",
-      technologies: ["React Native", "APIs", "Redux", "Async Storage"],
-      liveUrl: "https://example.com",
-      githubUrl: "https://github.com/yourusername/project3",
+      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React"],
+      liveUrl: "https://minhtoanportfolio.vercel.app/",
+      githubUrl: "https://github.com/MinhToan4/portfolio",
       featured: false
     }
   ],
-  
+
   experience: [
     {
       id: 1,
@@ -100,7 +100,7 @@ export const portfolioData = {
       ]
     }
   ],
-  
+
   education: [
     {
       id: 1,
@@ -120,13 +120,13 @@ export const portfolioData = {
       description: "Học bổng đầu vào, các học bổng khuyến khích học tập và là sinh viên lớp tài năng Công nghệ thông tin"
     }
   ],
-  
+
   certifications: [
     {
-      name: "Chưa có",
-      issuer: "...",
-      date: "...",
-      url: "https://example.com"
+      name: "Fundamentals of Deep Learning",
+      issuer: "NVIDIA Deep Learning Institute",
+      date: "2025",
+      url: "https://learn.nvidia.com/certificates?id=t0iPFHLYR86VAcVIGgtdiw"
     }
   ]
 };

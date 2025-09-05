@@ -23,7 +23,7 @@ export default function Experience() {
     visible: { opacity: 1, x: 0 },
   };
 
-  const TimelineItem = ({ item, type }: { 
+  const TimelineItem = ({ item, type }: {
     item: {
       id: number;
       title?: string;
@@ -34,8 +34,8 @@ export default function Experience() {
       description: string;
       achievements?: string[];
       gpa?: string;
-    }; 
-    type: 'experience' | 'education' 
+    };
+    type: 'experience' | 'education'
   }) => (
     <motion.div
       variants={itemVariants}
@@ -43,7 +43,7 @@ export default function Experience() {
     >
       {/* Timeline line */}
       <div className="absolute left-4 top-0 w-px h-full bg-gradient-to-b from-blue-500 to-purple-600 opacity-30"></div>
-      
+
       {/* Timeline dot */}
       <div className="absolute left-0 top-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
         {type === 'experience' ? (
@@ -147,12 +147,12 @@ export default function Experience() {
               whileInView="visible"
               viewport={{ once: true }}
             >              {experience.map((item) => (
-                <TimelineItem
-                  key={item.id}
-                  item={item}
-                  type="experience"
-                />
-              ))}
+              <TimelineItem
+                key={item.id}
+                item={item}
+                type="experience"
+              />
+            ))}
             </motion.div>
           </motion.div>
 
@@ -173,12 +173,12 @@ export default function Experience() {
               whileInView="visible"
               viewport={{ once: true }}
             >              {education.map((item) => (
-                <TimelineItem
-                  key={item.id}
-                  item={item}
-                  type="education"
-                />
-              ))}
+              <TimelineItem
+                key={item.id}
+                item={item}
+                type="education"
+              />
+            ))}
             </motion.div>
 
             {/* Certifications */}
@@ -229,47 +229,7 @@ export default function Experience() {
           </motion.div>
         </div>
 
-        {/* Skills Summary */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8"
-        >
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Điểm mạnh chính
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl font-bold">0+</span>
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Năm kinh nghiệm</h4>
-              <p className="text-sm text-gray-600">
-                Cầu toàn
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl font-bold">0+</span>
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Dự án hoàn thành</h4>
-              <p className="text-sm text-gray-600">
-                Kỹ tính
-              </p>
-            </div>
-            <div className="text-center">
-              <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <span className="text-white text-2xl font-bold">0+</span>
-              </div>
-              <h4 className="font-semibold text-gray-900 mb-2">Công nghệ</h4>
-              <p className="text-sm text-gray-600">
-                C, C++, Python, Java
-              </p>
-            </div>
-          </div>
-        </motion.div>
+        {/* Skills Summary - Hidden */}
       </div>
     </section>
   );

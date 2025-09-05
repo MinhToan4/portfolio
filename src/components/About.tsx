@@ -34,9 +34,9 @@ export default function About() {
           viewport={{ once: true, amount: 0.3 }}
           className="text-center mb-16"
         >          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-          >
+          variants={itemVariants}
+          className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+        >
             Giới thiệu về tôi
           </motion.h2>
           <motion.div
@@ -56,20 +56,20 @@ export default function About() {
           >
             <div className="relative w-full max-w-md mx-auto">              {/* Main image container */}
               <div className="relative w-80 h-80 mx-auto rounded-2xl bg-gradient-to-br from-blue-400 to-purple-600 p-1">                <div className="w-full h-full rounded-2xl overflow-hidden bg-white">
-                  <Image
-                    src="/avatar.jpg"
-                    alt={personal.name}
-                    width={320}
-                    height={320}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
+                <Image
+                  src="/avatar.jpg"
+                  alt={personal.name}
+                  width={320}
+                  height={320}
+                  className="w-full h-full object-cover"
+                />
               </div>
-              
+              </div>
+
               {/* Decorative elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-blue-500/20 rounded-full blur-xl"></div>
               <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-purple-500/20 rounded-full blur-xl"></div>
-              
+
               {/* Floating icons */}
               <motion.div
                 animate={{ y: [0, -10, 0] }}
@@ -78,7 +78,7 @@ export default function About() {
               >
                 <Heart className="w-6 h-6 text-red-500" />
               </motion.div>
-              
+
               <motion.div
                 animate={{ y: [0, 10, 0] }}
                 transition={{ duration: 2, repeat: Infinity, delay: 1 }}
@@ -105,8 +105,8 @@ export default function About() {
                 {personal.description}
               </p>
               <p className="text-gray-600 leading-relaxed">
-                Với niềm đam mê công nghệ và sự sáng tạo, tôi luôn tìm kiếm cơ hội để 
-                học hỏi những công nghệ mới và ứng dụng chúng vào các dự án thực tế. 
+                Với niềm đam mê công nghệ và sự sáng tạo, tôi luôn tìm kiếm cơ hội để
+                học hỏi những công nghệ mới và ứng dụng chúng vào các dự án thực tế.
               </p>
             </div>
 
@@ -172,7 +172,7 @@ export default function About() {
                 <div className="text-sm text-gray-600">Năm kinh nghiệm</div>
               </div>
               <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-purple-600">0+</div>
+                <div className="text-2xl md:text-3xl font-bold text-purple-600">3+</div>
                 <div className="text-sm text-gray-600">Dự án hoàn thành</div>
               </div>
               <div className="text-center">
