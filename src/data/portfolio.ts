@@ -127,6 +127,12 @@ export const portfolioData = {
       issuer: "NVIDIA Deep Learning Institute",
       date: "2025",
       url: "https://learn.nvidia.com/certificates?id=t0iPFHLYR86VAcVIGgtdiw"
+    },
+    {
+      name: "Google for Education Certificate",
+      issuer: "Google",
+      date: "2025",
+      url: "https://edu.google.accredible.com/e3bd6189-51bc-4719-b918-fb8f22547d58#acc.x1CVKuON"
     }
   ]
 };
