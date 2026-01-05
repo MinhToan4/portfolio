@@ -165,21 +165,6 @@ export default function About() {
               </motion.div>
             </div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-6 pt-8 border-t">
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-blue-600">0+</div>
-                <div className="text-sm text-gray-600">Năm kinh nghiệm</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-purple-600">3+</div>
-                <div className="text-sm text-gray-600">Dự án hoàn thành</div>
-              </div>
-              <div className="text-center">
-                <div className="text-2xl md:text-3xl font-bold text-green-600">0+</div>
-                <div className="text-sm text-gray-600">Khách hàng hài lòng</div>
-              </div>
-            </div>
           </motion.div>
         </div>
       </div>

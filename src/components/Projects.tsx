@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ExternalLink, Github, Eye, ChevronDown, ChevronUp, X } from 'lucide-react';
+import { ExternalLink, Github, Eye, ChevronDown, ChevronUp } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
 import { useState } from 'react';
 

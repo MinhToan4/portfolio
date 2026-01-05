@@ -1,11 +1,12 @@
 export const portfolioData = {
   personal: {
     name: "Nguyễn Minh Toàn",
-    title: "Full PTIT Developer",
-    subtitle: "Nhiệt huyết với IT",
-    description: "Tôi là một lập trình viên PTIT với đam mê tạo ra những sản phẩm công nghệ có ý nghĩa. Với tính cách cẩn thận, kỹ tính và cầu toàn tôi luôn muốn tạo ra một sản phẩm tốt nhất có thể.", email: "toanminh0404@gmail.com",
-    phone: "+84 332 312 065",
-    location: "Ha Noi City, Vietnam",
+    title: "Full Stack Developer",
+    subtitle: "Sinh viên PTIT",
+    description: "Tôi là một nhà phát triển đam mê trong lĩnh vực CNTT, có khả năng học hỏi nhanh và thích nghi tốt. Tôi tập trung vào việc viết mã hiệu quả để hoàn thành công việc. Tôi đang tìm kiếm cơ hội để làm việc trên các dự án thực tế và nâng cao kỹ năng của mình.",
+    email: "toanminh0404@gmail.com",
+    phone: "+84 334 470 295",
+    location: "Ha Dong, Ha Noi, Vietnam",
     avatar: "/avatar.jpg",
     socialLinks: {
       github: "https://github.com/MinhToan4",
@@ -17,59 +18,69 @@ export const portfolioData = {
 
   skills: {
     frontend: [
-      { name: "React", level: 0, icon: "react" },
-      { name: "Next.js", level: 0, icon: "nextjs" },
-      { name: "TypeScript", level: 0, icon: "typescript" },
-      { name: "JavaScript", level: 0, icon: "javascript" },
-      { name: "HTML/CSS", level: 0, icon: "html" },
-      { name: "Tailwind CSS", level: 0, icon: "tailwind" }
+      { name: "React", level: 80, icon: "react" },
+      { name: "Next.js", level: 85, icon: "nextjs" },
+      { name: "TypeScript", level: 75, icon: "typescript" },
+      { name: "JavaScript", level: 80, icon: "javascript" },
+      { name: "HTML/CSS", level: 85, icon: "html" },
+      { name: "Tailwind CSS", level: 80, icon: "tailwind" }
     ],
     backend: [
-      { name: "Node.js", level: 0, icon: "nodejs" },
-      { name: "Python", level: 0, icon: "python" },
-      { name: "Express.js", level: 0, icon: "express" },
-      { name: "MongoDB", level: 0, icon: "mongodb" },
-      { name: "PostgreSQL", level: 0, icon: "postgresql" },
-      { name: "Firebase", level: 0, icon: "firebase" }
+      { name: "Node.js", level: 70, icon: "nodejs" },
+      { name: "Python", level: 85, icon: "python" },
+      { name: "Java", level: 80, icon: "java" },
+      { name: "C++", level: 75, icon: "cpp" },
+      { name: "C", level: 70, icon: "c" },
+      { name: "Express.js", level: 65, icon: "express" },
+      { name: "MongoDB", level: 60, icon: "mongodb" },
+      { name: "PostgreSQL", level: 80, icon: "postgresql" },
+      { name: "SQL Server", level: 70, icon: "sqlserver" },
+      { name: "Firebase", level: 60, icon: "firebase" }
     ],
     tools: [
-      { name: "Git", level: 0, icon: "git" },
-      { name: "Docker", level: 0, icon: "docker" },
-      { name: "VS Code", level: 0, icon: "vscode" },
-      { name: "Figma", level: 0, icon: "figma" },
-      { name: "Postman", level: 0, icon: "postman" }
+      { name: "Git", level: 85, icon: "git" },
+      { name: "Maven", level: 75, icon: "maven" },
+      { name: "Vercel", level: 70, icon: "vercel" },
+      { name: "Docker", level: 60, icon: "docker" },
+      { name: "VS Code", level: 90, icon: "vscode" },
+      { name: "Figma", level: 65, icon: "figma" },
+      { name: "Postman", level: 75, icon: "postman" }
+    ],
+    knowledge: [
+      { name: "DSA", level: 75, icon: "algorithm" },
+      { name: "OOP", level: 85, icon: "oop" }
     ]
   },
 
   projects: [
     {
       id: 1,
-      title: "Flappy Bird với Điều Khiển Bằng Cử Chỉ Tay",
-      description: "Phiên bản đặc biệt của game Flappy Bird được điều khiển bằng cử chỉ tay thông qua công nghệ MediaPipe Hand Tracking của Google. Game hỗ trợ điều khiển bằng cả hai tay và có nhiều tính năng thú vị!",
+      title: "Eye Clinic Management System",
+      description: "Hệ thống quản lý phòng khám mắt toàn diện được phát triển bằng Java. Bao gồm sơ đồ hoạt động UML cho luồng xác thực, Đăng ký/Đăng nhập với Xác thực JWT, Lớp dữ liệu và Quản lý người dùng kết nối với PostgreSQL qua JDBC, cùng với máy chủ HTTP tùy chỉnh và hệ thống định tuyến.",
       image: "/images/project1.jpg",
-      technologies: ["Python", "MediaPipe", "OpenCV", "Pygame", "Hand Tracking"],
-      liveUrl: "https://github.com/MinhToan4/flappy-bird",
-      githubUrl: "https://github.com/MinhToan4/flappy-bird",
+      technologies: ["Java 21", "PostgreSQL", "Supabase", "Maven", "JWT", "Render"],
+      liveUrl: "https://github.com/Sagitoaz/BTL_OOP",
+      githubUrl: "https://github.com/Sagitoaz/BTL_OOP",
       featured: true
     },
     {
       id: 2,
-      title: "2D Platformer Game",
-      description: "Game 2D platformer phát triển bằng C++ sử dụng thư viện SFML. Dự án thể hiện kỹ năng phát triển game, lập trình hướng đối tượng và tích hợp đa phương tiện với các tính năng như di chuyển nhân vật, nhảy, bắn và chiến đấu với kẻ thù.",
-      image: "/images/project2.jpg",
-      technologies: ["C++", "SFML", "Game Development", "OOP", "TinyXML"],
-      liveUrl: "https://www.youtube.com/watch?v=NuZzsPUH6F8",
-      githubUrl: "https://github.com/MinhToan4/Game-1",
+      title: "GestureAI Game Hub",
+      description: "Trò chơi sáng tạo được điều khiển bằng cử chỉ tay sử dụng MediaPipe và OpenCV. Tích hợp theo dõi tay cho đầu vào cử chỉ, quản lý trạng thái trò chơi, phát hiện va chạm, và duy trì hiệu suất mượt mà 60 FPS với xử lý thời gian thực.",
+      image: "/images/project3.jpg",
+      technologies: ["Python", "MediaPipe", "OpenCV", "Pygame", "Hand Tracking"],
+      liveUrl: "https://github.com/MinhToan4/BTL_PYTHON",
+      githubUrl: "https://github.com/MinhToan4/BTL_PYTHON",
       featured: true
     },
     {
       id: 3,
-      title: "Portfolio Website",
-      description: "Trang web portfolio cá nhân được xây dựng với Next.js, TypeScript và Tailwind CSS. Hiển thị các dự án, kỹ năng và kinh nghiệm của tôi với giao diện người dùng đẹp mắt và hiệu ứng chuyển động mượt mà.",
-      image: "/images/project3.jpg",
-      technologies: ["Next.js", "TypeScript", "Tailwind CSS", "Framer Motion", "React"],
-      liveUrl: "https://minhtoanportfolio.vercel.app/",
-      githubUrl: "https://github.com/MinhToan4/portfolio",
+      title: "2D Platformer Game",
+      description: "Trò chơi platformer 2D được phát triển bằng C++ sử dụng SFML. Bao gồm chuyển động người chơi với trọng lực và nhảy, phát hiện va chạm, AI kẻ thù với mô hình tuần tra và tấn công, cùng với hệ thống lưu/tải cấp độ trò chơi bằng TinyXML.",
+      image: "/images/project2.jpg",
+      technologies: ["C++17", "SFML", "TinyXML", "Game Development"],
+      liveUrl: "https://github.com/MinhToan4/Game-1",
+      githubUrl: "https://github.com/MinhToan4/Game-1",
       featured: false
     }
   ],
@@ -82,19 +93,19 @@ export const portfolioData = {
       period: "2023 - Hiện tại",
       description: "Phát triển kỹ năng và tiếp thu kiến thức.",
       achievements: [
-        "GPA ổn định",
+        "Duy trì GPA tốt",
         "...",
         "..."
       ]
     },
     {
       id: 2,
-      title: "Full PTIT Developer",
+      title: "Nhà phát triển Full Stack",
       company: "PTIT",
-      period: "2023 - 2100",
-      description: "Mất ngủ cùng anh em PTIT",
+      period: "2023 - Hiện tại",
+      description: "Thức khuya cùng anh em PTIT",
       achievements: [
-        "Học 3 ngày làm chủ kiến thức",
+        "Học 3 ngày để làm chủ kiến thức",
         "...",
         "..."
       ]
@@ -107,24 +118,24 @@ export const portfolioData = {
       degree: "Tốt nghiệp Trung học phổ thông",
       school: "Trường THPT Yên Mỹ",
       period: "2020 - 2023",
-      gpa: "3 năm học sinh giỏi",
-      description: "Thuộc TOP học sinh có tổng điểm thi THPT năm 2023 - 2024 của trường THPT Yên Mỹ và được giấy khen của hội khuyến học: Đạt thành tích tiêu biểu trong Kỳ tuyển sinh Đại học năm 2023"
+      gpa: "Học sinh giỏi",
+      description: "Xếp hạng trong top học sinh có điểm thi tốt nghiệp THPT cao nhất năm 2023-2024 của trường THPT Yên Mỹ và nhận giấy khen từ Hội Khuyến học: Đạt thành tích xuất sắc trong kỳ tuyển sinh Đại học năm 2023"
     },
 
     {
       id: 2,
       degree: "Sinh viên PTIT",
       school: "Học viện Công nghệ Bưu chính Viễn thông",
-      period: "2023 - Hiện nay",
-      gpa: "3.6+",
-      description: "Học bổng đầu vào, các học bổng khuyến khích học tập và là sinh viên lớp tài năng Công nghệ thông tin"
+      period: "2023 - Hiện tại",
+      gpa: "3.82/4.0",
+      description: "Nhận học bổng đầu vào, các học bổng khuyến khích học tập và là sinh viên lớp tài năng Công nghệ thông tin. GPA học kỳ gần nhất: 3.93/4.0"
     }
   ],
 
   certifications: [
     {
       name: "Fundamentals of Deep Learning",
-      issuer: "NVIDIA Deep Learning Institute",
+      issuer: "NVIDIA",
       date: "2025",
       url: "https://learn.nvidia.com/certificates?id=t0iPFHLYR86VAcVIGgtdiw"
     },
@@ -133,6 +144,24 @@ export const portfolioData = {
       issuer: "Google",
       date: "2025",
       url: "https://edu.google.accredible.com/e3bd6189-51bc-4719-b918-fb8f22547d58#acc.x1CVKuON"
+    },
+    {
+      name: "Advanced Algorithms: PTIT.SAMSUNG 2025",
+      issuer: "PTIT & Samsung",
+      date: "2025",
+      url: ""
+    },
+    {
+      name: "AWS Cloud Quest: Generative AI Practitioner",
+      issuer: "AWS",
+      date: "2025",
+      url: "https://www.credly.com/badges/3e3a0359-c5ae-43c4-b526-70e560714f99/linked_in_profile"
+    },
+    {
+      name: "AWS Cloud Quest: Cloud Practitioner",
+      issuer: "AWS",
+      date: "2025",
+      url: "https://www.credly.com/badges/335ab364-4fa5-436c-8b07-3b47010bf6cc/linked_in_profile"
     }
   ]
 };
