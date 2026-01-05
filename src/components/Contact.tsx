@@ -1,332 +1,245 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Send, Mail, Phone, MapPin, Github, Linkedin, MessageCircle } from 'lucide-react';
-import { useForm } from 'react-hook-form';
+import { Send, Mail, MapPin, Phone, CheckCircle } from 'lucide-react';
+import { useState } from 'react';
 import { portfolioData } from '@/data/portfolio';
 
-interface FormData {
-  name: string;
-  email: string;
-  subject: string;
-  message: string;
-}
-
 export default function Contact() {
-  const { personal } = portfolioData;
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [submitStatus, setSubmitStatus] = useState<'success' | 'error' | null>(null);
+    const { personal } = portfolioData;
+    const [formState, setFormState] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: '',
+    });
+    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitted, setIsSubmitted] = useState(false);
 
-  const {
-    register,
-    handleSubmit,
-    reset,
-    formState: { errors },
-  } = useForm<FormData>();
+    const handleSubmit = async (e: React.FormEvent) => {
+        e.preventDefault();
+        setIsSubmitting(true);
 
-  const onSubmit = async (data: FormData) => {
-    setIsSubmitting(true);
-    setSubmitStatus(null);
+        await new Promise(resolve => setTimeout(resolve, 1500));
 
-    try {
-      // In a real app, you would send the email using EmailJS or a backend service
-      // For now, we'll simulate sending
-      await new Promise(resolve => setTimeout(resolve, 2000));
-      
-      console.log('Form data:', data);
-      setSubmitStatus('success');
-      reset();    } catch {
-      setSubmitStatus('error');
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
+        setIsSubmitting(false);
+        setIsSubmitted(true);
+        setFormState({ name: '', email: '', subject: '', message: '' });
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.2,
-        delayChildren: 0.1,
-      },
-    },
-  };
+        setTimeout(() => setIsSubmitted(false), 5000);
+    };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: { opacity: 1, y: 0 },
-  };
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        setFormState(prev => ({
+            ...prev,
+            [e.target.name]: e.target.value,
+        }));
+    };
 
-  const contactInfo = [
-    {
-      icon: Mail,
-      label: 'Email',
-      value: personal.email,
-      href: `mailto:${personal.email}`,
-      color: 'text-blue-600',
-    },
-    {
-      icon: Phone,
-      label: 'Điện thoại',
-      value: personal.phone,
-      href: `tel:${personal.phone}`,
-      color: 'text-green-600',
-    },
-    {
-      icon: MapPin,
-      label: 'Địa chỉ',
-      value: personal.location,
-      href: '#',
-      color: 'text-purple-600',
-    },
-  ];
+    const containerVariants = {
+        hidden: { opacity: 0 },
+        visible: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+            },
+        },
+    };
 
-  const socialLinks = [
-    {
-      icon: Github,
-      label: 'GitHub',
-      href: personal.socialLinks.github,
-      color: 'hover:bg-gray-600',
-    },
-    {
-      icon: Linkedin,
-      label: 'LinkedIn',
-      href: personal.socialLinks.linkedin,
-      color: 'hover:bg-blue-600',
-    },
-    {
-      icon: Mail,
-      label: 'Email',
-      href: `mailto:${personal.email}`,
-      color: 'hover:bg-red-600',
-    },
-  ];
+    const itemVariants = {
+        hidden: { opacity: 0, y: 30 },
+        visible: {
+            opacity: 1,
+            y: 0,
+            transition: {
+                duration: 0.6,
+                ease: "easeOut" as const
+            }
+        },
+    };
 
-  return (
-    <section id="contact" className="py-20 bg-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16"
-        >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-          >
-            Liên hệ với tôi
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"
-          ></motion.div>
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            Có dự án thú vị hoặc cơ hội hợp tác? Hãy liên hệ với tôi!
-          </motion.p>
-        </motion.div>
+    return (
+        <section id="contact" className="py-32 relative overflow-hidden bg-white">
+            <div className="absolute bottom-20 right-10 w-[400px] h-[400px] organic-shape bg-blue-50" />
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-            className="space-y-8"
-          >
-            <div>
-              <h3 className="text-2xl font-bold text-gray-900 mb-6">
-                Thông tin liên hệ
-              </h3>
-              <p className="text-gray-600 mb-8">
-                Tôi luôn sẵn sàng thảo luận về những ý tưởng mới, cơ hội hợp tác 
-                hoặc đơn giản là trò chuyện về công nghệ. Đừng ngần ngại liên hệ!
-              </p>
-            </div>
-
-            {/* Contact Methods */}
-            <div className="space-y-4">
-              {contactInfo.map((item, index) => (
-                <motion.a
-                  key={item.label}
-                  href={item.href}
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  whileHover={{ scale: 1.02 }}
-                  className="flex items-center space-x-4 p-4 bg-gray-50 rounded-xl hover:shadow-lg transition-all group"
-                >
-                  <div className={`p-3 rounded-lg bg-white ${item.color} group-hover:scale-110 transition-transform`}>
-                    <item.icon className="w-6 h-6" />
-                  </div>
-                  <div>
-                    <p className="text-sm text-gray-500">{item.label}</p>
-                    <p className="font-semibold text-gray-900">{item.value}</p>
-                  </div>
-                </motion.a>
-              ))}
-            </div>
-
-            {/* Social Links */}
-            <div>
-              <h4 className="text-lg font-semibold text-gray-900 mb-4">
-                Kết nối với tôi
-              </h4>
-              <div className="flex space-x-4">
-                {socialLinks.map((social, index) => (
-                  <motion.a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.8 }}
-                    whileInView={{ opacity: 1, scale: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.3, delay: index * 0.1 }}
-                    whileHover={{ scale: 1.1, y: -2 }}
-                    className={`p-3 bg-gray-100 rounded-xl text-gray-600 ${social.color} hover:text-white transition-all`}
-                  >
-                    <social.icon className="w-6 h-6" />
-                  </motion.a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-gray-50 rounded-2xl p-8"
-          >
-            <h3 className="text-2xl font-bold text-gray-900 mb-6 flex items-center">
-              <MessageCircle className="w-6 h-6 mr-3 text-blue-600" />
-              Gửi tin nhắn
-            </h3>
-
-            <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Họ tên *
-                  </label>
-                  <input
-                    {...register('name', { required: 'Vui lòng nhập họ tên' })}
-                    type="text"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
-                    placeholder="Nhập họ tên của bạn"
-                  />
-                  {errors.name && (
-                    <p className="mt-1 text-sm text-red-600">{errors.name.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
-                    Email *
-                  </label>
-                  <input
-                    {...register('email', {
-                      required: 'Vui lòng nhập email',
-                      pattern: {
-                        value: /^\S+@\S+$/i,
-                        message: 'Email không hợp lệ',
-                      },
-                    })}
-                    type="email"
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
-                    placeholder="your@email.com"
-                  />
-                  {errors.email && (
-                    <p className="mt-1 text-sm text-red-600">{errors.email.message}</p>
-                  )}
-                </div>
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Chủ đề *
-                </label>
-                <input
-                  {...register('subject', { required: 'Vui lòng nhập chủ đề' })}
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors"
-                  placeholder="Chủ đề tin nhắn"
-                />
-                {errors.subject && (
-                  <p className="mt-1 text-sm text-red-600">{errors.subject.message}</p>
-                )}
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Tin nhắn *
-                </label>
-                <textarea
-                  {...register('message', { required: 'Vui lòng nhập tin nhắn' })}
-                  rows={5}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg bg-white text-gray-900 focus:ring-2 focus:ring-blue-600 focus:border-transparent transition-colors resize-none"
-                  placeholder="Nội dung tin nhắn..."
-                />
-                {errors.message && (
-                  <p className="mt-1 text-sm text-red-600">{errors.message.message}</p>
-                )}
-              </div>
-
-              <motion.button
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                type="submit"
-                disabled={isSubmitting}
-                className="w-full flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-lg font-semibold shadow-lg hover:shadow-xl transition-all disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {isSubmitting ? (
-                  <>
-                    <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                    <span>Đang gửi...</span>
-                  </>
-                ) : (
-                  <>
-                    <Send className="w-5 h-5" />
-                    <span>Gửi tin nhắn</span>
-                  </>
-                )}
-              </motion.button>
-
-              {/* Status Messages */}
-              {submitStatus === 'success' && (
+            <div className="max-w-5xl mx-auto px-6 sm:px-8 lg:px-12 relative">
                 <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-green-100/30 border border-green-400 text-green-700 rounded-lg"
+                    variants={containerVariants}
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, margin: "-100px" }}
                 >
-                  Tin nhắn đã được gửi thành công! Tôi sẽ phản hồi sớm nhất có thể.
-                </motion.div>
-              )}
+                    <motion.div variants={itemVariants} className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Liên hệ</h2>
+                        <p className="text-xl font-medium text-gray-700 max-w-xl mx-auto">
+                            Bạn có dự án trong đầu? Hãy cùng tạo ra điều tuyệt vời.
+                        </p>
+                    </motion.div>
 
-              {submitStatus === 'error' && (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="p-4 bg-red-100/30 border border-red-400 text-red-700 rounded-lg"
-                >
-                  Có lỗi xảy ra khi gửi tin nhắn. Vui lòng thử lại hoặc liên hệ trực tiếp qua email.
+                    <div className="grid lg:grid-cols-[1fr,400px] gap-12">
+                        <motion.div variants={itemVariants}>
+                            <div className="glass-card rounded-3xl p-8">
+                                {isSubmitted ? (
+                                    <motion.div
+                                        initial={{ opacity: 0, scale: 0.9 }}
+                                        animate={{ opacity: 1, scale: 1 }}
+                                        className="text-center py-12"
+                                    >
+                                        <div className="w-16 h-16 mx-auto mb-6 rounded-full bg-[#34C759]/10 flex items-center justify-center">
+                                            <CheckCircle className="text-[#34C759]" size={32} />
+                                        </div>
+                                        <h3 className="text-xl font-semibold text-[#1D1D1F] mb-2">Message Sent!</h3>
+                                        <p className="text-[#86868B]">Thank you for reaching out. I&apos;ll get back to you soon.</p>
+                                    </motion.div>
+                                ) : (
+                                    <form onSubmit={handleSubmit} className="space-y-6">
+                                        <div className="grid sm:grid-cols-2 gap-6">
+                                            <div>
+                                                <label htmlFor="name" className="block text-sm font-medium text-[#1D1D1F] mb-2">
+                                                    Name
+                                                </label>
+                                                <input
+                                                    type="text"
+                                                    id="name"
+                                                    name="name"
+                                                    value={formState.name}
+                                                    onChange={handleChange}
+                                                    required
+                                                    className="w-full px-4 py-3 rounded-xl bg-[#F5F5F7] border-0 text-[#1D1D1F] placeholder-[#86868B] focus:ring-2 focus:ring-[#007AFF] focus:bg-white transition-all"
+                                                    placeholder="Your name"
+                                                />
+                                            </div>
+                                            <div>
+                                                <label htmlFor="email" className="block text-sm font-medium text-[#1D1D1F] mb-2">
+                                                    Email
+                                                </label>
+                                                <input
+                                                    type="email"
+                                                    id="email"
+                                                    name="email"
+                                                    value={formState.email}
+                                                    onChange={handleChange}
+                                                    required
+                                                    className="w-full px-4 py-3 rounded-xl bg-[#F5F5F7] border-0 text-[#1D1D1F] placeholder-[#86868B] focus:ring-2 focus:ring-[#007AFF] focus:bg-white transition-all"
+                                                    placeholder="your@email.com"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="subject" className="block text-sm font-medium text-[#1D1D1F] mb-2">
+                                                Subject
+                                            </label>
+                                            <input
+                                                type="text"
+                                                id="subject"
+                                                name="subject"
+                                                value={formState.subject}
+                                                onChange={handleChange}
+                                                required
+                                                className="w-full px-4 py-3 rounded-xl bg-[#F5F5F7] border-0 text-[#1D1D1F] placeholder-[#86868B] focus:ring-2 focus:ring-[#007AFF] focus:bg-white transition-all"
+                                                placeholder="What's this about?"
+                                            />
+                                        </div>
+
+                                        <div>
+                                            <label htmlFor="message" className="block text-sm font-medium text-[#1D1D1F] mb-2">
+                                                Message
+                                            </label>
+                                            <textarea
+                                                id="message"
+                                                name="message"
+                                                value={formState.message}
+                                                onChange={handleChange}
+                                                required
+                                                rows={5}
+                                                className="w-full px-4 py-3 rounded-xl bg-[#F5F5F7] border-0 text-[#1D1D1F] placeholder-[#86868B] focus:ring-2 focus:ring-[#007AFF] focus:bg-white transition-all resize-none"
+                                                placeholder="Tell me about your project..."
+                                            />
+                                        </div>
+
+                                        <motion.button
+                                            whileHover={{ scale: 1.02 }}
+                                            whileTap={{ scale: 0.98 }}
+                                            type="submit"
+                                            disabled={isSubmitting}
+                                            className="glass-button glass-button-primary w-full flex items-center justify-center gap-3 py-4"
+                                        >
+                                            {isSubmitting ? (
+                                                <motion.div
+                                                    animate={{ rotate: 360 }}
+                                                    transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
+                                                    className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                                                />
+                                            ) : (
+                                                <>
+                                                    <span>Send Message</span>
+                                                    <Send size={18} />
+                                                </>
+                                            )}
+                                        </motion.button>
+                                    </form>
+                                )}
+                            </div>
+                        </motion.div>
+
+                        <motion.div variants={itemVariants} className="space-y-6">
+                            <div className="glass-card rounded-3xl p-6">
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 rounded-2xl bg-[#007AFF]/10 shrink-0">
+                                        <Mail className="text-[#007AFF]" size={22} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-[#1D1D1F] mb-1">Email</h4>
+                                        <a
+                                            href={`mailto:${personal.email}`}
+                                            className="text-[#86868B] hover:text-[#007AFF] transition-colors text-sm"
+                                        >
+                                            {personal.email}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="glass-card rounded-3xl p-6">
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 rounded-2xl bg-[#34C759]/10 shrink-0">
+                                        <Phone className="text-[#34C759]" size={22} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-[#1D1D1F] mb-1">Phone</h4>
+                                        <a
+                                            href={`tel:${personal.phone}`}
+                                            className="text-[#86868B] hover:text-[#34C759] transition-colors text-sm"
+                                        >
+                                            {personal.phone}
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="glass-card rounded-3xl p-6">
+                                <div className="flex items-start gap-4">
+                                    <div className="p-3 rounded-2xl bg-[#FF9500]/10 shrink-0">
+                                        <MapPin className="text-[#FF9500]" size={22} />
+                                    </div>
+                                    <div>
+                                        <h4 className="font-semibold text-[#1D1D1F] mb-1">Location</h4>
+                                        <p className="text-[#86868B] text-sm">{personal.location}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div className="glass-card rounded-3xl p-6 text-center">
+                                <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-[#34C759]/10 mb-3">
+                                    <span className="w-2 h-2 bg-[#34C759] rounded-full animate-pulse" />
+                                    <span className="text-sm font-medium text-[#34C759]">Available for work</span>
+                                </div>
+                            </div>
+                        </motion.div>
+                    </div>
                 </motion.div>
-              )}
-            </form>
-          </motion.div>
-        </div>
-      </div>
-    </section>
-  );
+            </div>
+        </section>
+    );
 }

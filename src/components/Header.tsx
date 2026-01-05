@@ -1,122 +1,144 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
-import Image from 'next/image';
+import { useState, useEffect } from 'react';
 import { scrollToSection } from '@/lib/utils';
 
-const navigation = [
-  { name: 'Trang chủ', href: 'hero' },
-  { name: 'Giới thiệu', href: 'about' },
-  { name: 'Dự án', href: 'projects' },
-  { name: 'Kinh nghiệm', href: 'experience' },
-  { name: 'Liên hệ', href: 'contact' },
+const navItems = [
+    { name: 'Home', href: 'hero' },
+    { name: 'About', href: 'about' },
+    { name: 'Projects', href: 'projects' },
+    { name: 'Contact', href: 'contact' },
 ];
 
 export default function Header() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
+    const [activeSection, setActiveSection] = useState('hero');
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+    useEffect(() => {
+        const handleScroll = () => {
+            const scrollY = window.scrollY;
+            setScrolled(scrollY > 50);
+
+            const sections = navItems.map(item => item.href);
+            for (const section of sections.reverse()) {
+                const element = document.getElementById(section);
+                if (element) {
+                    const rect = element.getBoundingClientRect();
+                    if (rect.top <= 150) {
+                        setActiveSection(section);
+                        break;
+                    }
+                }
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll, { passive: true });
+        handleScroll();
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const handleNavClick = (href: string) => {
+        scrollToSection(href);
+        setIsOpen(false);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
-  const handleNavClick = (href: string) => {
-    scrollToSection(href);
-    setIsMenuOpen(false);
-  };
-
-  return (
-    <motion.header
-      initial={{ y: -100 }}
-      animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
-          ? 'bg-white/90 backdrop-blur-md shadow-lg'
-          : 'bg-transparent'
-        }`}
-    >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
-          {/* Logo */}
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
-          >
-            &lt;/NMT&gt; Portfolio
-          </motion.div>
-
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex space-x-8">
-            {navigation.map((item) => (
-              <motion.button
-                key={item.name}
-                whileHover={{ y: -2 }}
-                onClick={() => handleNavClick(item.href)}
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-              >
-                {item.name}
-              </motion.button>
-            ))}
-          </nav>          {/* Logo on Right & Mobile Menu Button */}
-          <div className="flex items-center space-x-4">
-            {/* Brand Logo */}
-            <motion.div
-              whileHover={{ scale: 1.1, rotate: 5 }}
-              whileTap={{ scale: 0.95 }}
-              className="flex items-center justify-center w-12 h-12 bg-white rounded-full cursor-pointer shadow-lg overflow-hidden border-2 border-gray-100"
-              title="Brand Logo"            >
-              <Image
-                src="/logo-ptit.png"
-                alt="PTIT Logo"
-                width={60}
-                height={60}
-                className="object-contain"
-              />
-            </motion.div>
-
-            {/* Mobile menu button */}
-            <motion.button
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="md:hidden p-2 rounded-lg bg-gray-100 text-gray-700 hover:bg-gray-200 transition-colors"
-              aria-label="Toggle mobile menu"
+    return (
+        <motion.header
+            initial={{ y: -100 }}
+            animate={{ y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut" as const }}
+            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'w-[95%] max-w-4xl' : 'w-[90%] max-w-3xl'
+                }`}
+        >
+            <nav
+                className={`liquid-glass rounded-[22px] px-6 py-3 transition-all duration-500 ${scrolled
+                    ? 'bg-white/90 shadow-lg backdrop-blur-xl'
+                    : 'bg-white/70 backdrop-blur-lg'
+                    }`}
             >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </motion.button>
-          </div>
-        </div>
-      </div>
+                <div className="flex items-center justify-between">
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => handleNavClick('hero')}
+                        className="text-lg font-semibold text-[#1D1D1F]"
+                    >
+                        <span className="gradient-text">MT</span>
+                    </motion.button>
 
-      {/* Mobile Navigation */}
-      <AnimatePresence>
-        {isMenuOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: 'auto' }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white border-t border-gray-200"
-          >
-            <div className="px-4 py-2 space-y-2">
-              {navigation.map((item) => (
-                <motion.button
-                  key={item.name}
-                  whileHover={{ x: 10 }}
-                  onClick={() => handleNavClick(item.href)}
-                  className="block w-full text-left py-2 px-4 text-gray-700 hover:text-blue-600 hover:bg-gray-50 rounded-lg font-medium transition-colors"
+                    <ul className="hidden md:flex items-center gap-1">
+                        {navItems.map((item) => (
+                            <li key={item.name}>
+                                <motion.button
+                                    whileHover={{ scale: 1.05 }}
+                                    whileTap={{ scale: 0.95 }}
+                                    onClick={() => handleNavClick(item.href)}
+                                    className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${activeSection === item.href
+                                        ? 'text-[#007AFF]'
+                                        : 'text-[#1D1D1F] hover:text-[#007AFF]'
+                                        }`}
+                                >
+                                    {activeSection === item.href && (
+                                        <motion.div
+                                            layoutId="activeNav"
+                                            className="absolute inset-0 bg-[#007AFF]/10 rounded-xl"
+                                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
+                                        />
+                                    )}
+                                    <span className="relative z-10">{item.name}</span>
+                                </motion.button>
+                            </li>
+                        ))}
+                    </ul>
+
+                    <motion.button
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={() => setIsOpen(!isOpen)}
+                        className="md:hidden p-2 text-[#1D1D1F] hover:text-[#007AFF] transition-colors"
+                        aria-label="Toggle menu"
+                    >
+                        {isOpen ? <X size={22} /> : <Menu size={22} />}
+                    </motion.button>
+                </div>
+
+                <motion.div
+                    initial={false}
+                    animate={{
+                        height: isOpen ? 'auto' : 0,
+                        opacity: isOpen ? 1 : 0
+                    }}
+                    transition={{ duration: 0.3, ease: "easeOut" as const }}
+                    className="md:hidden overflow-hidden"
                 >
-                  {item.name}
-                </motion.button>
-              ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.header>
-  );
+                    <ul className="py-4 space-y-1">
+                        {navItems.map((item, index) => (
+                            <motion.li
+                                key={item.name}
+                                initial={{ opacity: 0, x: -20 }}
+                                animate={{
+                                    opacity: isOpen ? 1 : 0,
+                                    x: isOpen ? 0 : -20
+                                }}
+                                transition={{ delay: index * 0.05, duration: 0.3 }}
+                            >
+                                <button
+                                    onClick={() => handleNavClick(item.href)}
+                                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeSection === item.href
+                                        ? 'bg-[#007AFF]/10 text-[#007AFF]'
+                                        : 'text-[#1D1D1F] hover:bg-[#F5F5F7] hover:text-[#007AFF]'
+                                        }`}
+                                >
+                                    {item.name}
+                                </button>
+                            </motion.li>
+                        ))}
+                    </ul>
+                </motion.div>
+            </nav>
+        </motion.header>
+    );
 }

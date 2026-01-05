@@ -42,10 +42,10 @@ export default function Experience() {
       className="relative pl-8 pb-12 last:pb-0"
     >
       {/* Timeline line */}
-      <div className="absolute left-4 top-0 w-px h-full bg-gradient-to-b from-blue-500 to-purple-600 opacity-30"></div>
+      <div className="absolute left-4 top-0 w-px h-full bg-blue-500 opacity-30"></div>
 
       {/* Timeline dot */}
-      <div className="absolute left-0 top-0 w-8 h-8 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center shadow-lg">
+      <div className="absolute left-0 top-0 w-8 h-8 bg-blue-600 rounded-full flex items-center justify-center shadow-lg">
         {type === 'experience' ? (
           <Briefcase className="w-4 h-4 text-white" />
         ) : (
@@ -54,23 +54,23 @@ export default function Experience() {
       </div>
 
       {/* Content */}
-      <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow ml-4">
+      <div className="bg-white rounded-xl p-6 shadow-lg hover:shadow-xl transition-shadow ml-4 border border-gray-100">
         <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between mb-4">
           <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-1">
+            <h3 className="text-2xl font-bold text-gray-900 mb-1">
               {type === 'experience' ? item.title : item.degree}
             </h3>
-            <p className="text-blue-600 font-semibold">
+            <p className="text-blue-600 font-bold text-lg">
               {type === 'experience' ? item.company : item.school}
             </p>
           </div>
-          <div className="flex items-center space-x-2 text-sm text-gray-500 mt-2 sm:mt-0">
-            <Calendar className="w-4 h-4" />
+          <div className="flex items-center space-x-2 text-base font-medium text-gray-600 mt-2 sm:mt-0">
+            <Calendar className="w-5 h-5" />
             <span>{item.period}</span>
           </div>
         </div>
 
-        <p className="text-gray-600 mb-4">
+        <p className="text-gray-700 text-lg mb-4">
           {item.description}
         </p>
 
@@ -102,7 +102,7 @@ export default function Experience() {
   );
 
   return (
-    <section id="experience" className="py-20 bg-gray-50">
+    <section id="experience" className="py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           variants={containerVariants}
@@ -113,17 +113,17 @@ export default function Experience() {
         >
           <motion.h2
             variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
+            className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4"
           >
             Kinh nghiệm & Học vấn
           </motion.h2>
           <motion.div
             variants={itemVariants}
-            className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"
+            className="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"
           ></motion.div>
           <motion.p
             variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
+            className="text-xl font-medium text-gray-700 max-w-2xl mx-auto"
           >
             Hành trình phát triển sự nghiệp và học tập của tôi
           </motion.p>
@@ -137,8 +137,8 @@ export default function Experience() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <Briefcase className="w-6 h-6 mr-3 text-blue-600" />
+            <h3 className="text-3xl font-extrabold text-gray-900 mb-8 flex items-center">
+              <Briefcase className="w-7 h-7 mr-3 text-blue-600" />
               Kinh nghiệm làm việc
             </h3>
             <motion.div
@@ -163,8 +163,8 @@ export default function Experience() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
           >
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
-              <GraduationCap className="w-6 h-6 mr-3 text-purple-600" />
+            <h3 className="text-3xl font-extrabold text-gray-900 mb-8 flex items-center">
+              <GraduationCap className="w-7 h-7 mr-3 text-blue-600" />
               Học vấn
             </h3>
             <motion.div
