@@ -3,7 +3,7 @@ export const portfolioData = {
     name: "Nguyễn Minh Toàn",
     title: "Full Stack Developer",
     subtitle: "Sinh viên PTIT hệ tài năng",
-    description: "Tôi là sinh viên CNTT tại PTIT, đam mê phát triển web và luôn muốn tìm hiểu những công nghệ mới. Tôi thích biến ý tưởng thành sản phẩm thực tế, từ thiết kế giao diện cho đến xây dựng hệ thống backend. Việc giải quyết các thử thách lập trình và học hỏi từ những dự án thực tế là điều thúc đẩy tôi phát triển mỗi ngày. Hiện tôi đang tìm kiếm cơ hội thực tập để nâng cao kỹ năng và làm việc trong môi trường chuyên nghiệp.",
+    description: "Là sinh viên CNTT tại PTIT, tôi kết hợp chuyên môn kỹ thuật và tư duy giải quyết vấn đề sáng tạo để xây dựng các ứng dụng có ý nghĩa. Hành trình phát triển phần mềm của tôi được thúc đẩy bởi sự tò mò và cam kết học hỏi liên tục. Tôi đang tìm kiếm cơ hội thực tập để áp dụng kiến thức vào các dự án thực tế và phát triển kỹ năng trong môi trường chuyên nghiệp.",
     email: "toanminh0404@gmail.com",
     phone: "+84 334 470 295",
     location: "Ha Dong, Ha Noi, Vietnam",
@@ -138,6 +138,12 @@ export const portfolioData = {
       issuer: "NVIDIA",
       date: "2025",
       url: "https://learn.nvidia.com/certificates?id=t0iPFHLYR86VAcVIGgtdiw"
+    },
+    {
+      name: "Google Analytics Certificate",
+      issuer: "Google",
+      date: "2025",
+      url: "https://skillshop.credential.net/dc00957f-08cc-4790-8fcf-c4d0fcd6f0ed#acc.X2xtCL8i"
     },
     {
       name: "Google for Education Certificate",
