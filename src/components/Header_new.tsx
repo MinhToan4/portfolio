@@ -35,11 +35,10 @@ export default function Header() {
     <motion.header
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled
           ? 'bg-white/90 backdrop-blur-md shadow-lg'
           : 'bg-transparent'
-      }`}
+        }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
@@ -48,7 +47,7 @@ export default function Header() {
             whileHover={{ scale: 1.05 }}
             className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent"
           >
-            &lt;/NMT&gt; Portfolio
+            Nguyễn Minh Toàn
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -74,7 +73,7 @@ export default function Header() {
               className="flex items-center justify-center w-10 h-10 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full text-white font-bold text-lg cursor-pointer shadow-lg"
               title="Brand Logo"
             >
-              P
+              MT
             </motion.div>
 
             {/* Mobile menu button */}

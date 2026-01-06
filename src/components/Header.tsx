@@ -66,7 +66,7 @@ export default function Header() {
                         onClick={() => handleNavClick('hero')}
                         className="text-lg font-semibold text-[#1D1D1F]"
                     >
-                        <span className="gradient-text">MT</span>
+                        <span className="gradient-text">Nguyễn Minh Toàn</span>
                     </motion.button>
 
                     <ul className="hidden md:flex items-center gap-1">
