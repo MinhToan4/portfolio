@@ -3,7 +3,7 @@ export const portfolioData = {
     name: "Nguyễn Minh Toàn",
     title: "Full Stack Developer",
     subtitle: "Sinh viên PTIT hệ tài năng",
-    description: "Tôi là một nhà phát triển đam mê trong lĩnh vực CNTT, có khả năng học hỏi nhanh và thích nghi tốt. Tôi tập trung vào việc viết mã hiệu quả để hoàn thành công việc. Tôi đang tìm kiếm cơ hội để làm việc trên các dự án thực tế và nâng cao kỹ năng của mình.",
+    description: "Mình là sinh viên năm 2 ngành CNTT tại PTIT, đam mê lập trình và luôn háo hức học những công nghệ mới. Mình thích giải quyết các bài toán thực tế bằng code, từ xây dựng giao diện web đến phát triển hệ thống backend. Hiện tại mình đang tìm kiếm cơ hội thực tập để được làm việc trong môi trường chuyên nghiệp và trau dồi thêm kinh nghiệm.",
     email: "toanminh0404@gmail.com",
     phone: "+84 334 470 295",
     location: "Ha Dong, Ha Noi, Vietnam",
