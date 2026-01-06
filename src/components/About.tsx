@@ -80,9 +80,9 @@ export default function About() {
                   {personal.description}
                 </p>
                 <p className="text-gray-700 text-lg leading-relaxed">
-                  Là một <span className="font-semibold text-gray-900">{personal.title}</span>, tôi kết hợp
-                  chuyên môn kỹ thuật và tư duy giải quyết vấn đề sáng tạo để xây dựng các ứng dụng có ý nghĩa.
-                  Hành trình phát triển phần mềm của tôi được thúc đẩy bởi sự tò mò và cam kết học hỏi liên tục.
+                  Với vai trò <span className="font-semibold text-gray-900">{personal.title}</span>, tôi đam mê
+                  phát triển các ứng dụng web từ frontend đến backend. Tôi tin rằng công nghệ có thể giải quyết
+                  nhiều vấn đề thực tế, và việc học hỏi liên tục giúp tôi ngày càng hoàn thiện kỹ năng của mình.
                 </p>
               </div>
 

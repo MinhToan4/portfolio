@@ -1,142 +1,152 @@
-# Portfolio cá nhân của Nguyễn Minh Toàn
+# Portfolio Website - Nguyễn Minh Toàn
 
-![Nguyễn Minh Toàn Portfolio](public/avatar.jpg)
+![Portfolio Preview](public/avatar.jpg)
 
 🔗 **Live Demo**: [https://minhtoanportfolio.vercel.app/](https://minhtoanportfolio.vercel.app/)
 
 ## 📝 Giới thiệu
 
-Đây là trang web portfolio cá nhân của tôi, được xây dựng bằng Next.js, TypeScript và Tailwind CSS. Trang web này giới thiệu về bản thân tôi, các dự án thực tế và kinh nghiệm làm việc của tôi. Portfolio được thiết kế với giao diện hiện đại, animations mượt mà và responsive trên mọi thiết bị.
+Portfolio website cá nhân được xây dựng với Next.js 15, TypeScript và Tailwind CSS. Trang web giới thiệu về bản thân, các dự án và kỹ năng của tôi với giao diện hiện đại, animations mượt mà và responsive hoàn toàn.
 
 ## 🚀 Công nghệ sử dụng
 
-- **Framework**: [Next.js 15](https://nextjs.org/)
-- **Ngôn ngữ**: [TypeScript](https://www.typescriptlang.org/)
-- **Styling**: [Tailwind CSS](https://tailwindcss.com/)
-- **Animation**: [Framer Motion](https://www.framer.com/motion/)
-- **Form Handling**: [React Hook Form](https://react-hook-form.com/)
-- **Icons**: [Lucide React](https://lucide.dev/)
-- **Email**: [EmailJS](https://www.emailjs.com/)
+- **Framework**: [Next.js 15.1.7](https://nextjs.org/) - React framework với App Router
+- **Language**: [TypeScript 5](https://www.typescriptlang.org/) - Type safety
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/) - Utility-first CSS
+- **Animations**: [Framer Motion](https://www.framer.com/motion/) - Smooth animations
+- **Forms**: [React Hook Form](https://react-hook-form.com/) - Form validation
+- **Icons**: [Lucide React](https://lucide.dev/) - Beautiful icons
+- **Email Service**: [EmailJS](https://www.emailjs.com/) - Contact form integration
+- **Deployment**: [Vercel](https://vercel.com/) - Hosting platform
 
-## 🌟 Tính năng
+## ✨ Tính năng chính
 
-- **Giao diện thân thiện với người dùng**: Thiết kế hiện đại và responsive.
-- **Hiệu ứng chuyển động mượt mà**: Sử dụng Framer Motion để tạo các hiệu ứng chuyển động mượt mà.
-- **Dự án thực tế**: Hiển thị các dự án thật với mô tả chi tiết và liên kết đến GitHub/demo.
-- **Xem thêm/Ẩn bớt**: Chức năng hiển thị/ẩn mô tả dự án đầy đủ.
-- **Tối ưu hóa SEO**: Đã cấu hình metadata và OpenGraph để tối ưu SEO.
-- **Form liên hệ**: Tích hợp EmailJS để gửi email trực tiếp từ form liên hệ.
-
-## 🔄 Quy trình làm việc
-
-1. Cập nhật thông tin cá nhân và dự án trong file `src/data/portfolio.ts`
-2. Tùy chỉnh các components trong thư mục `src/components/`
-3. Thêm dự án thực tế với các mô tả chi tiết và liên kết GitHub/demo
-4. Sử dụng tính năng xem thêm/ẩn bớt cho các mô tả dài
-5. Chạy kiểm thử với `start-dev.bat`
-6. Build và deploy lên Vercel
-
-## 📱 Responsive
-
-Trang web được thiết kế để hoạt động tốt trên tất cả các kích thước màn hình:
-- Desktop
-- Tablet
-- Mobile
+-  **Responsive Design**: Hoạt động mượt mà trên mọi thiết bị (Desktop, Tablet, Mobile)
+-  **Smooth Animations**: Hiệu ứng chuyển động đẹp mắt với Framer Motion
+-  **Dynamic Content**: Dữ liệu được quản lý tập trung trong `portfolio.ts`
+-  **Contact Form**: Tích hợp EmailJS để gửi email trực tiếp
+-  **SEO Optimized**: Metadata và OpenGraph tags được cấu hình đầy đủ
+-  **TypeScript**: Type-safe code với TypeScript
+-  **Modern UI/UX**: Giao diện hiện đại, thân thiện người dùng
+-  **Performance**: Tối ưu hóa tốc độ tải trang và rendering
 
 ## 🛠️ Cài đặt và Chạy
 
-### Yêu cầu
+### Yêu cầu hệ thống
 
-- Node.js (v22.19.0 hoặc phiên bản tương thích)
+- Node.js 20.x hoặc cao hơn
 - npm hoặc yarn
 
-### Bước 1: Clone dự án
+### Bước 1: Clone repository
 
 ```bash
 git clone https://github.com/MinhToan4/portfolio.git
 cd portfolio
 ```
 
-### Bước 2: Cài đặt các dependencies
+### Bước 2: Cài đặt dependencies
 
 ```bash
 npm install
-# hoặc
-yarn install
 ```
 
-### Bước 3: Chạy dự án ở môi trường development
-
-#### Cách 1: Sử dụng file batch (Windows)
+### Bước 3: Chạy development server
 
 ```bash
-# Chạy file batch để tự động thiết lập PATH và khởi động dự án
-start-dev.bat
-```
-
-#### Cách 2: Sử dụng npm hoặc yarn
-
-```bash
-# Đảm bảo Node.js đã được thêm vào PATH
 npm run dev
-# hoặc
-yarn dev
 ```
 
-Dự án sẽ chạy tại địa chỉ [http://localhost:3000](http://localhost:3000).
+Mở [http://localhost:3000](http://localhost:3000) để xem kết quả.
 
-### Bước 4: Build cho production
+### Bước 4: Build production
 
 ```bash
 npm run build
-# hoặc
-yarn build
+npm start
 ```
 
-## 📁 Cấu trúc thư mục
+## 📁 Cấu trúc dự án
 
 ```
 portfolio/
-├── public/             # Static assets
-│   ├── avatar.jpg      # Avatar image
-│   ├── cv.md           # CV content
-│   ├── logo.png        # Logo
-│   └── ...             # Other static files
+├── public/                 # Static assets
+│   ├── images/            # Project images
+│   └── cv.md              # CV content
 ├── src/
-│   ├── app/            # Next.js App Router
-│   │   ├── globals.css # Global CSS
-│   │   ├── globals_new.css # Alternative CSS
-│   │   ├── layout.tsx  # Root layout
-│   │   └── page.tsx    # Home page
-│   ├── components/     # React components
-│   │   ├── About.tsx   # About section
-│   │   ├── Contact.tsx # Contact section
-│   │   ├── Experience.tsx # Experience section
-│   │   ├── Footer.tsx  # Footer component
-│   │   ├── Header.tsx  # Navigation header
-│   │   ├── Header_new.tsx # Alternative header
-│   │   ├── Hero.tsx    # Hero section
-│   │   ├── Loading.tsx # Loading component
-│   │   └── Projects.tsx # Projects section
-│   │   └── Skills.tsx  # Skills section
-│   ├── data/           # Data files
-│   │   └── portfolio.ts # Portfolio data
-│   └── lib/            # Utilities
-│       └── utils.ts    # Utility functions
-├── start-dev.bat       # Batch file to run the project on Windows
-├── eslint.config.mjs   # ESLint configuration
-├── next.config.ts      # Next.js config
-├── package.json        # Dependencies
-├── postcss.config.mjs  # PostCSS configuration
-├── tailwind.config.ts  # Tailwind CSS config
-└── tsconfig.json       # TypeScript config
+│   ├── app/               # Next.js App Router
+│   │   ├── globals.css    # Global styles
+│   │   ├── layout.tsx     # Root layout
+│   │   └── page.tsx       # Homepage
+│   ├── components/        # React components
+│   │   ├── About.tsx      # About section
+│   │   ├── Contact.tsx    # Contact form
+│   │   ├── Experience.tsx # Work experience
+│   │   ├── Footer.tsx     # Footer
+│   │   ├── Header.tsx     # Navigation
+│   │   ├── Hero.tsx       # Hero section
+│   │   ├── Projects.tsx   # Projects showcase
+│   │   └── Skills.tsx     # Skills display
+│   ├── data/
+│   │   └── portfolio.ts   # Portfolio data (update this!)
+│   └── lib/
+│       └── utils.ts       # Utility functions
+├── eslint.config.mjs      # ESLint config
+├── next.config.ts         # Next.js config
+├── tailwind.config.ts     # Tailwind config
+└── tsconfig.json          # TypeScript config
 ```
 
-## 🏆 Chứng chỉ
+## 🎨 Tùy chỉnh
+## 🎨 Tùy chỉnh
 
-- **Fundamentals of Deep Learning** - NVIDIA Deep Learning Institute (2025)
+### Cập nhật thông tin cá nhân
+
+Chỉnh sửa file `src/data/portfolio.ts` để cập nhật:
+- Thông tin cá nhân (tên, email, số điện thoại, địa chỉ)
+- Kỹ năng và mức độ thành thạo
+- Dự án và mô tả
+- Kinh nghiệm làm việc
+- Social media links
+
+### Thay đổi giao diện
+
+- **Colors**: Chỉnh sửa `tailwind.config.ts` để thay đổi màu sắc chủ đạo
+- **Fonts**: Cập nhật trong `src/app/layout.tsx`
+- **Styles**: Chỉnh sửa `src/app/globals.css` cho global styles
+
+## 🚀 Deployment
+
+### Deploy lên Vercel (Khuyến nghị)
+
+1. Push code lên GitHub
+2. Truy cập [Vercel](https://vercel.com/)
+3. Import repository
+4. Configure environment variables (nếu cần)
+5. Deploy!
+
+Vercel sẽ tự động deploy lại khi có commit mới.
+
+## 📊 Performance
+
+- ⚡ **Fast Loading**: Static generation với Next.js
+- 🎯 **SEO Friendly**: Optimized meta tags
+- 📱 **Mobile First**: Responsive design
+- ♿ **Accessible**: Semantic HTML và ARIA labels
+
+## 🔧 Scripts
+
+```bash
+npm run dev       # Chạy development server với Turbopack
+npm run build     # Build production
+npm run start     # Chạy production server
+npm run lint      # Kiểm tra code với ESLint
+```
 
 ## 📝 License
 
-© 2025 Nguyễn Minh Toàn. All rights reserved.
+© 2026 Nguyễn Minh Toàn. All rights reserved.
+
+---
+
+⭐ Nếu bạn thấy dự án này hữu ích, hãy cho nó một star trên GitHub!
 
