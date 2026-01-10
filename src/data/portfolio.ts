@@ -88,26 +88,29 @@ export const portfolioData = {
   experience: [
     {
       id: 1,
-      title: "Sinh viên PTIT",
-      company: "PTIT",
+      title: "Sinh viên Công nghệ Thông tin",
+      company: "Học viện Công nghệ Bưu chính Viễn thông",
       period: "2023 - Hiện tại",
-      description: "Phát triển kỹ năng và tiếp thu kiến thức.",
+      description: "Sinh viên lớp tài năng, tích cực học tập và nghiên cứu các công nghệ mới.",
       achievements: [
-        "Duy trì GPA tốt",
-        "...",
-        "..."
+        "Học bổng đầu vào năm 2023",
+        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ I (2023-2024)",
+        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ II (2023-2024)",
+        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ I (2024-2025)",
+        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ II (2024-2025)"
       ]
     },
     {
       id: 2,
-      title: "Nhà phát triển Full Stack",
-      company: "PTIT",
+      title: "Thành tích Học tập",
+      company: "Học viện Công nghệ Bưu chính Viễn thông",
       period: "2023 - Hiện tại",
-      description: "Thức khuya cùng anh em PTIT",
+      description: "Duy trì thành tích học tập xuất sắc với GPA cao.",
       achievements: [
-        "Học 3 ngày để làm chủ kiến thức",
-        "...",
-        "..."
+        "Duy trì GPA: 3.82/4.0 (Tích lũy)",
+        "GPA học kỳ gần nhất: 3.93/4.0",
+        "Sinh viên lớp tài năng Công nghệ Thông tin",
+        "Hoàn thành nhiều dự án thực tế với Java, Python, C++"
       ]
     }
   ],
@@ -128,11 +131,17 @@ export const portfolioData = {
       school: "Học viện Công nghệ Bưu chính Viễn thông",
       period: "2023 - Hiện tại",
       gpa: "3.82/4.0",
-      description: "Nhận học bổng đầu vào, các học bổng khuyến khích học tập và là sinh viên lớp tài năng Công nghệ thông tin. GPA học kỳ gần nhất: 3.93/4.0"
+      description: "Sinh viên Công nghệ thông tin."
     }
   ],
 
   certifications: [
+    {
+      name: "Generative AI for Educators with Gemini",
+      issuer: "Google",
+      date: "2026",
+      url: "https://edu.exceedlms.com/student/award/9KbfQpUFfun2e2S5WsEL439n"
+    },
     {
       name: "Fundamentals of Deep Learning",
       issuer: "NVIDIA",
