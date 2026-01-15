@@ -9,6 +9,9 @@ const navItems = [
     { name: 'Home', href: 'hero' },
     { name: 'About', href: 'about' },
     { name: 'Projects', href: 'projects' },
+    { name: 'Experience', href: 'experience' },
+    { name: 'Academic', href: 'academic-results' },
+    { name: 'Activities', href: 'activities' },
     { name: 'Contact', href: 'contact' },
 ];
 
@@ -50,8 +53,7 @@ export default function Header() {
             initial={{ y: -100 }}
             animate={{ y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" as const }}
-            className={`fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 ${scrolled ? 'w-[95%] max-w-4xl' : 'w-[90%] max-w-3xl'
-                }`}
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[95%] max-w-4xl"
         >
             <nav
                 className={`liquid-glass rounded-[22px] px-6 py-3 transition-all duration-500 ${scrolled

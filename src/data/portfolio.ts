@@ -178,6 +178,69 @@ export const portfolioData = {
       date: "2025",
       url: "https://www.credly.com/badges/335ab364-4fa5-436c-8b07-3b47010bf6cc/linked_in_profile"
     }
+  ],
+
+  academicResults: {
+    generalSubjects: [
+      { name: "Đại số", numericGrade: 9.7, letterGrade: "A+" },
+      { name: "Giải tích 1", numericGrade: 9.4, letterGrade: "A+" },
+      { name: "Giải tích 2", numericGrade: 8.9, letterGrade: "A" },
+      { name: "Vật lý ứng dụng", numericGrade: 9.9, letterGrade: "A+" },
+      { name: "Xác suất thống kê", numericGrade: 9.7, letterGrade: "A+" }
+    ],
+    programmingSubjects: [
+      { name: "Toán rời rạc 1", numericGrade: 9.2, letterGrade: "A+" },
+      { name: "Toán rời rạc 2", numericGrade: 9.6, letterGrade: "A+" },
+      { name: "Ngôn ngữ lập trình C++", numericGrade: 8.0, letterGrade: "B+" },
+      { name: "Cấu trúc dữ liệu và giải thuật", numericGrade: 9.8, letterGrade: "A+" },
+      { name: "Lập trình hướng đối tượng", numericGrade: 9.6, letterGrade: "A+" },
+      { name: "Lập trình với Python", numericGrade: 9.9, letterGrade: "A+" }
+    ]
+  },
+
+  activities: [
+    {
+      id: 1,
+      title: "Cuộc thi ICPC PTIT 2025",
+      type: "competition",
+      description: "Tham gia cuộc thi lập trình ICPC do PTIT tổ chức"
+    },
+    {
+      id: 2,
+      title: "VPBANK CLOUD QUEST 2025",
+      type: "competition",
+      description: "Tham gia cuộc thi Cloud Quest do VPBank tổ chức"
+    },
+    {
+      id: 3,
+      title: "Lab Ươm Mầm Tài Năng CNTT - PTIT NITS",
+      type: "organization",
+      description: "Thành viên của Lab Ươm Mầm Tài Năng CNTT"
+    },
+    {
+      id: 4,
+      title: "CHIẾN DỊCH TÌNH NGUYỆN \"ĐÔNG ẤM 2026 - ĐÔNG VỀ PÀ CÒ\"",
+      type: "volunteer",
+      description: "Tham gia chiến dịch tình nguyện mùa đông"
+    },
+    {
+      id: 5,
+      title: "Office Tour - WorldQuant Hanoi",
+      type: "event",
+      description: "Tham gia office tour tại WorldQuant Hanoi - công ty quản lý quỹ định lượng hàng đầu thế giới"
+    },
+    {
+      id: 6,
+      title: "Office Tour - Panasonic R&D Center Vietnam",
+      type: "event",
+      description: "Tham gia office tour tại Panasonic R&D Center Vietnam - trung tâm nghiên cứu và phát triển của tập đoàn Panasonic"
+    },
+    {
+      id: 7,
+      title: "Office Tour - NAB Vietnam",
+      type: "event",
+      description: "Tham gia office tour tại NAB Vietnam - National Australia Bank"
+    }
   ]
 };
 
