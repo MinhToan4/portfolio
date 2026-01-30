@@ -219,9 +219,9 @@ export const portfolioData = {
     },
     {
       id: 4,
-      title: "CHIẾN DỊCH TÌNH NGUYỆN \"ĐÔNG ẤM 2026 - ĐÔNG VỀ PÀ CÒ\"",
+      title: "Hiến máu tình nguyện",
       type: "volunteer",
-      description: "Tham gia chiến dịch tình nguyện mùa đông"
+      description: "Cơ sở tiếp nhận: Bệnh viện TWQĐ 108"
     },
     {
       id: 5,
