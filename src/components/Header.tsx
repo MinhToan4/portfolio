@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { scrollToSection } from '@/lib/utils';
+import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
     { name: 'Home', href: 'hero' },
@@ -50,27 +51,27 @@ export default function Header() {
 
     return (
         <motion.header
-            initial={{ y: -100 }}
-            animate={{ y: 0 }}
-            transition={{ duration: 0.6, ease: "easeOut" as const }}
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-50 transition-all duration-500 w-[95%] max-w-4xl"
+            initial={{ y: -100, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
+                ? 'bg-white/90 dark:bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-gray-200 dark:border-white/5'
+                : 'bg-transparent'
+                }`}
         >
-            <nav
-                className={`liquid-glass rounded-[22px] px-6 py-3 transition-all duration-500 ${scrolled
-                    ? 'bg-white/90 shadow-lg backdrop-blur-xl'
-                    : 'bg-white/70 backdrop-blur-lg'
-                    }`}
-            >
+            <nav className="max-w-7xl mx-auto px-6 py-4">
                 <div className="flex items-center justify-between">
+                    {/* Logo */}
                     <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
+                        whileHover={{ scale: 1.02 }}
+                        whileTap={{ scale: 0.98 }}
                         onClick={() => handleNavClick('hero')}
-                        className="text-lg font-semibold text-[#1D1D1F]"
+                        className="text-gray-900 dark:text-white font-bold text-xl md:text-2xl tracking-tight"
                     >
-                        <span className="gradient-text">Nguyễn Minh Toàn</span>
+                        NMT<span className="text-[#00E5A0]">.</span>
                     </motion.button>
 
+                    {/* Desktop Nav */}
                     <ul className="hidden md:flex items-center gap-1">
                         {navItems.map((item) => (
                             <li key={item.name}>
@@ -78,45 +79,55 @@ export default function Header() {
                                     whileHover={{ scale: 1.05 }}
                                     whileTap={{ scale: 0.95 }}
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`relative px-4 py-2 text-sm font-medium rounded-xl transition-all duration-300 ${activeSection === item.href
-                                        ? 'text-[#007AFF]'
-                                        : 'text-[#1D1D1F] hover:text-[#007AFF]'
+                                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${activeSection === item.href
+                                        ? 'text-[#00E5A0]'
+                                        : 'text-gray-600 dark:text-[#D0D0D0] hover:text-gray-900 dark:hover:text-white'
                                         }`}
                                 >
+                                    {item.name}
                                     {activeSection === item.href && (
                                         <motion.div
-                                            layoutId="activeNav"
-                                            className="absolute inset-0 bg-[#007AFF]/10 rounded-xl"
+                                            layoutId="activeNavAlche"
+                                            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#00E5A0] rounded-full"
                                             transition={{ type: "spring", stiffness: 400, damping: 30 }}
                                         />
                                     )}
-                                    <span className="relative z-10">{item.name}</span>
                                 </motion.button>
                             </li>
                         ))}
                     </ul>
 
-                    <motion.button
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        onClick={() => setIsOpen(!isOpen)}
-                        className="md:hidden p-2 text-[#1D1D1F] hover:text-[#007AFF] transition-colors"
-                        aria-label="Toggle menu"
-                    >
-                        {isOpen ? <X size={22} /> : <Menu size={22} />}
-                    </motion.button>
+                    {/* Theme Toggle Button */}
+                    <div className="hidden md:block">
+                        <ThemeToggle />
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <div className="md:hidden flex items-center gap-3">
+                        <ThemeToggle />
+                        <motion.button
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            onClick={() => setIsOpen(!isOpen)}
+                            className="p-2 text-gray-900 dark:text-white"
+                            aria-label="Toggle menu"
+                        >
+                            {isOpen ? <X size={24} /> : <Menu size={24} />}
+                        </motion.button>
+                    </div>
                 </div>
 
+                {/* Mobile Menu */}
                 <motion.div
                     initial={false}
                     animate={{
                         height: isOpen ? 'auto' : 0,
                         opacity: isOpen ? 1 : 0
                     }}
-                    transition={{ duration: 0.3, ease: "easeOut" as const }}
+                    transition={{ duration: 0.3, ease: "easeOut" }}
                     className="md:hidden overflow-hidden"
                 >
-                    <ul className="py-4 space-y-1">
+                    <ul className="py-6 space-y-2">
                         {navItems.map((item, index) => (
                             <motion.li
                                 key={item.name}
@@ -129,9 +140,9 @@ export default function Header() {
                             >
                                 <button
                                     onClick={() => handleNavClick(item.href)}
-                                    className={`block w-full text-left px-4 py-3 rounded-xl text-sm font-medium transition-all ${activeSection === item.href
-                                        ? 'bg-[#007AFF]/10 text-[#007AFF]'
-                                        : 'text-[#1D1D1F] hover:bg-[#F5F5F7] hover:text-[#007AFF]'
+                                    className={`block w-full text-left px-4 py-3 text-base font-medium transition-all ${activeSection === item.href
+                                        ? 'text-[#00E5A0]'
+                                        : 'text-gray-600 dark:text-[#D0D0D0] hover:text-gray-900 dark:hover:text-white'
                                         }`}
                                 >
                                     {item.name}

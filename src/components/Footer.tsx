@@ -19,11 +19,8 @@ export default function Footer() {
     ];
 
     return (
-        <footer className="relative py-12 overflow-hidden">
-            {/* Background */}
-            <div className="absolute inset-0 bg-gradient-to-b from-[#E8E8ED] to-[#D1D1D6]" />
-
-            <div className="max-w-6xl mx-auto px-6 relative z-10">
+        <footer className="relative py-16 overflow-hidden bg-white dark:bg-[#0A0A0A] border-t border-gray-200 dark:border-white/5 transition-colors duration-500">
+            <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative z-10">
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8">
                     {/* Brand */}
                     <motion.div
@@ -32,10 +29,10 @@ export default function Footer() {
                         viewport={{ once: true }}
                         className="text-center md:text-left"
                     >
-                        <h3 className="text-xl font-semibold text-[#1D1D1F] mb-1">
-                            {personal.name}
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-1">
+                            {personal.name.split(' ').pop()}<span className="text-[#00B37D] dark:text-[#00E5A0]">.</span>
                         </h3>
-                        <p className="text-caption">{personal.title}</p>
+                        <p className="text-gray-600 dark:text-[#C0C0C0] text-sm">{personal.title}</p>
                     </motion.div>
 
                     {/* Social Links */}
@@ -54,7 +51,7 @@ export default function Footer() {
                                 rel="noopener noreferrer"
                                 whileHover={{ scale: 1.1, y: -2 }}
                                 whileTap={{ scale: 0.95 }}
-                                className="p-3 liquid-glass rounded-xl text-[#86868B] hover:text-[#007AFF] transition-colors"
+                                className="p-3 bg-white dark:bg-[#111111] rounded-lg border border-gray-200 dark:border-white/5 text-gray-500 dark:text-[#A1A1A1] hover:text-[#00B37D] dark:hover:text-[#00E5A0] hover:border-[#00B37D]/30 dark:hover:border-[#00E5A0]/30 transition-all shadow-sm"
                                 aria-label={social.label}
                             >
                                 <social.icon size={18} />
@@ -71,23 +68,22 @@ export default function Footer() {
                         whileHover={{ scale: 1.1 }}
                         whileTap={{ scale: 0.95 }}
                         onClick={scrollToTop}
-                        className="p-3 liquid-glass rounded-xl text-[#86868B] hover:text-[#007AFF] transition-colors"
+                        className="p-3 bg-white dark:bg-[#111111] rounded-lg border border-gray-200 dark:border-white/5 text-gray-500 dark:text-[#A1A1A1] hover:text-[#00B37D] dark:hover:text-[#00E5A0] hover:border-[#00B37D]/30 dark:hover:border-[#00E5A0]/30 transition-all shadow-sm"
                         aria-label="Scroll to top"
                     >
                         <ArrowUp size={18} />
                     </motion.button>
                 </div>
 
-                {/* Copyright */}
                 <motion.div
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
                     viewport={{ once: true }}
                     transition={{ delay: 0.3 }}
-                    className="mt-8 pt-8 border-t border-[#C7C7CC]/50 text-center"
+                    className="mt-12 pt-8 border-t border-gray-200 dark:border-white/5 text-center"
                 >
-                    <p className="text-caption">
-                        © {currentYear} {personal.name}. Designed with ❤️ using Liquid Glass.
+                    <p className="text-gray-500 dark:text-[#C0C0C0] text-sm">
+                        © {currentYear} {personal.name}. All rights reserved.
                     </p>
                 </motion.div>
             </div>

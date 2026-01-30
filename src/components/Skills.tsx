@@ -1,19 +1,28 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Code, Database, Settings } from 'lucide-react';
+import { Code, Database, Settings, Brain, Zap } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
 
 const categoryIcons = {
   frontend: Code,
   backend: Database,
   tools: Settings,
+  knowledge: Brain,
+};
+
+const categoryColors = {
+  frontend: '#00E5A0',
+  backend: '#0066FF',
+  tools: '#F59E0B',
+  knowledge: '#A855F7',
 };
 
 const categoryNames = {
   frontend: 'Frontend',
   backend: 'Backend',
   tools: 'Tools & Others',
+  knowledge: 'Knowledge',
 };
 
 export default function Skills() {
@@ -24,106 +33,98 @@ export default function Skills() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.2,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, y: 10 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.3 } },
   };
 
-  const SkillBar = ({ skill }: {
-    skill: {
-      name: string;
-      level: number;
-      icon: string;
-    }
+  const SkillItem = ({ skill, color }: {
+    skill: { name: string; level: number; icon: string };
+    color: string;
   }) => (
     <motion.div
       variants={itemVariants}
-      className="group"
+      className="group flex items-center justify-between p-4 bg-[#0A0A0A] rounded-lg border border-white/5 hover:border-white/10 transition-all"
     >
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-sm font-medium text-gray-700">
-          {skill.name}
-        </span>
-        <span className="text-sm text-gray-500">
-          {skill.level}%
-        </span>
+      <div className="flex items-center gap-3">
+        <div
+          className="w-2 h-2 rounded-full"
+          style={{ backgroundColor: color }}
+        />
+        <span className="text-sm font-medium text-white">{skill.name}</span>
       </div>
-      <div className="w-full bg-gray-200 rounded-full h-2">
-        <motion.div
-          initial={{ width: 0 }}
-          whileInView={{ width: `${skill.level}%` }}
-          viewport={{ once: true }}
-          transition={{ duration: 1, delay: 0.2 }}
-          className="bg-gradient-to-r from-blue-500 to-purple-600 h-2 rounded-full relative overflow-hidden"
-        >
+      <div className="flex items-center gap-3">
+        <div className="w-24 h-1 bg-white/10 rounded-full overflow-hidden">
           <motion.div
-            animate={{ x: ["0%", "100%"] }}
-            transition={{ duration: 2, repeat: Infinity, ease: "linear" }}
-            className="absolute inset-0 bg-white/20 w-full h-full"
-            style={{
-              background: "linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)"
-            }}
+            initial={{ width: 0 }}
+            whileInView={{ width: `${skill.level}%` }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="h-full rounded-full"
+            style={{ backgroundColor: color }}
           />
-        </motion.div>
+        </div>
+        <span className="text-xs text-[#888888] w-8 text-right">{skill.level}%</span>
       </div>
     </motion.div>
   );
 
   return (
-    <section id="skills" className="py-20 bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="skills" className="py-32 bg-[#0A0A0A] relative">
+      {/* Grid pattern */}
+      <div className="absolute inset-0 alche-grid-pattern opacity-30" />
+
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
+        {/* Section Header */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.3 }}
-          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="mb-20"
         >
-          <motion.h2
-            variants={itemVariants}
-            className="text-3xl md:text-4xl font-bold text-gray-900 mb-4"
-          >
-            Kỹ năng
-          </motion.h2>
-          <motion.div
-            variants={itemVariants}
-            className="w-20 h-1 bg-gradient-to-r from-blue-600 to-purple-600 mx-auto rounded-full mb-4"
-          ></motion.div>
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-gray-600 max-w-2xl mx-auto"
-          >
-            Các công nghệ và công cụ tôi thành thạo
-          </motion.p>
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-[#00E5A0] text-sm font-medium">04</span>
+            <div className="w-12 h-px bg-[#00E5A0]" />
+            <span className="text-[#888888] text-sm uppercase tracking-wider">Skills</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight">
+            Kỹ năng & Công nghệ
+          </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+        {/* Skills Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-20">
           {Object.entries(skills).map(([category, skillList]) => {
             const IconComponent = categoryIcons[category as keyof typeof categoryIcons];
             const categoryName = categoryNames[category as keyof typeof categoryNames];
+            const categoryColor = categoryColors[category as keyof typeof categoryColors];
 
             return (
               <motion.div
                 key={category}
-                initial={{ opacity: 0, y: 50 }}
+                initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-shadow"
+                transition={{ duration: 0.5 }}
+                className="bg-[#111111] rounded-2xl p-6 border border-white/5"
               >
-                <div className="flex items-center mb-6">
-                  <div className="p-3 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg mr-4">
-                    <IconComponent className="w-6 h-6 text-white" />
+                <div className="flex items-center gap-3 mb-6">
+                  <div
+                    className="p-2.5 rounded-lg"
+                    style={{
+                      backgroundColor: `${categoryColor}15`,
+                      border: `1px solid ${categoryColor}30`
+                    }}
+                  >
+                    <IconComponent className="w-5 h-5" style={{ color: categoryColor }} />
                   </div>
-                  <h3 className="text-xl font-bold text-gray-900">
-                    {categoryName}
-                  </h3>
+                  <h3 className="text-lg font-semibold text-white">{categoryName}</h3>
                 </div>
 
                 <motion.div
@@ -131,54 +132,62 @@ export default function Skills() {
                   initial="hidden"
                   whileInView="visible"
                   viewport={{ once: true }}
-                  className="space-y-4"
-                >                  {skillList.map((skill: { name: string; level: number; icon: string }) => (
-                  <SkillBar key={skill.name} skill={skill} />
-                ))}
+                  className="space-y-2"
+                >
+                  {skillList.map((skill: { name: string; level: number; icon: string }) => (
+                    <SkillItem key={skill.name} skill={skill} color={categoryColor} />
+                  ))}
                 </motion.div>
               </motion.div>
             );
           })}
         </div>
 
-        {/* Technology Icons Grid */}
+        {/* Technology Tags */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16"
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h3 className="text-2xl font-bold text-gray-900 text-center mb-8">
-            Công nghệ thường sử dụng
-          </h3>
+          <div className="flex items-center gap-3 mb-8">
+            <Zap className="w-5 h-5 text-[#00E5A0]" />
+            <h3 className="text-xl font-semibold text-white">Công nghệ thường sử dụng</h3>
+          </div>
 
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-6">
+          <div className="flex flex-wrap gap-3">
             {[
-              'React', 'Next.js', 'TypeScript', 'Node.js', 'Python', 'JavaScript',
-              'HTML/CSS', 'Tailwind', 'MongoDB', 'PostgreSQL', 'Git', 'Docker'
+              { name: 'React', color: '#61DAFB' },
+              { name: 'Next.js', color: '#FFFFFF' },
+              { name: 'TypeScript', color: '#3178C6' },
+              { name: 'Node.js', color: '#339933' },
+              { name: 'Python', color: '#3776AB' },
+              { name: 'JavaScript', color: '#F7DF1E' },
+              { name: 'HTML/CSS', color: '#E34F26' },
+              { name: 'Tailwind', color: '#06B6D4' },
+              { name: 'MongoDB', color: '#47A248' },
+              { name: 'PostgreSQL', color: '#4169E1' },
+              { name: 'Git', color: '#F05032' },
+              { name: 'Docker', color: '#2496ED' },
             ].map((tech, index) => (
               <motion.div
-                key={tech}
-                initial={{ opacity: 0, scale: 0.8 }}
+                key={tech.name}
+                initial={{ opacity: 0, scale: 0.9 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                whileHover={{
-                  scale: 1.1,
-                  y: -5,
-                  transition: { duration: 0.2 }
-                }}
-                className="flex flex-col items-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-all cursor-pointer group"
+                transition={{ duration: 0.3, delay: index * 0.03 }}
+                whileHover={{ scale: 1.05, y: -2 }}
+                className="px-4 py-2 bg-[#111111] rounded-full border border-white/10 hover:border-white/20 transition-all cursor-pointer group"
               >
-                <div className="w-12 h-12 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center mb-3 group-hover:from-purple-600 group-hover:to-blue-500 transition-all">
-                  <span className="text-white font-bold text-sm">
-                    {tech.charAt(0)}
+                <div className="flex items-center gap-2">
+                  <div
+                    className="w-2 h-2 rounded-full transition-all group-hover:scale-125"
+                    style={{ backgroundColor: tech.color }}
+                  />
+                  <span className="text-sm text-[#A1A1A1] group-hover:text-white transition-colors">
+                    {tech.name}
                   </span>
                 </div>
-                <span className="text-sm font-medium text-gray-700 text-center">
-                  {tech}
-                </span>
               </motion.div>
             ))}
           </div>

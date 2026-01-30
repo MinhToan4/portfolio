@@ -4,41 +4,6 @@ import { motion } from 'framer-motion';
 import { ExternalLink, Github, ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
 
-// SVG Icons for programming languages
-const JavaIcon = () => (
-  <svg viewBox="0 0 128 128" className="w-20 h-20">
-    <path fill="#0074BD" d="M47.617 98.12s-4.767 2.774 3.397 3.71c9.892 1.13 14.947.968 25.845-1.092 0 0 2.871 1.795 6.873 3.351-24.439 10.47-55.308-.607-36.115-5.969zm-2.988-13.665s-5.348 3.959 2.823 4.805c10.567 1.091 18.91 1.18 33.354-1.6 0 0 1.993 2.025 5.132 3.131-29.542 8.64-62.446.68-41.309-6.336z" />
-    <path fill="#EA2D2E" d="M69.802 61.271c6.025 6.935-1.58 13.17-1.58 13.17s15.289-7.891 8.269-17.777c-6.559-9.215-11.587-13.792 15.635-29.58 0 .001-42.731 10.67-22.324 34.187z" />
-    <path fill="#0074BD" d="M102.123 108.229s3.529 2.91-3.888 5.159c-14.102 4.272-58.706 5.56-71.094.171-4.451-1.938 3.899-4.625 6.526-5.192 2.739-.593 4.303-.485 4.303-.485-4.953-3.487-32.013 6.85-13.743 9.815 49.821 8.076 90.817-3.637 77.896-9.468zM49.912 70.294s-22.686 5.389-8.033 7.348c6.188.828 18.518.638 30.011-.326 9.39-.789 18.813-2.474 18.813-2.474s-3.308 1.419-5.704 3.053c-23.042 6.061-67.544 3.238-54.731-2.958 10.832-5.239 19.644-4.643 19.644-4.643zm40.697 22.747c23.421-12.167 12.591-23.86 5.032-22.285-1.848.385-2.677.72-2.677.72s.688-1.079 2-1.543c14.953-5.255 26.451 15.503-4.823 23.725 0-.002.359-.327.468-.617z" />
-    <path fill="#EA2D2E" d="M76.491 1.587S89.459 14.563 64.188 34.51c-20.266 16.006-4.621 25.13-.007 35.559-11.831-10.673-20.509-20.07-14.688-28.815C58.041 28.42 81.722 22.195 76.491 1.587z" />
-    <path fill="#0074BD" d="M52.214 126.021c22.476 1.437 57-.8 57.817-11.436 0 0-1.571 4.032-18.577 7.231-19.186 3.612-42.854 3.191-56.887.874 0 .001 2.875 2.381 17.647 3.331z" />
-  </svg>
-);
-
-const PythonIcon = () => (
-  <svg viewBox="0 0 128 128" className="w-20 h-20">
-    <linearGradient id="python-original-a" gradientUnits="userSpaceOnUse" x1="70.252" y1="1237.476" x2="170.659" y2="1151.089" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
-      <stop offset="0" stopColor="#5A9FD4" />
-      <stop offset="1" stopColor="#306998" />
-    </linearGradient>
-    <linearGradient id="python-original-b" gradientUnits="userSpaceOnUse" x1="209.474" y1="1098.811" x2="173.62" y2="1149.537" gradientTransform="matrix(.563 0 0 -.568 -29.215 707.817)">
-      <stop offset="0" stopColor="#FFD43B" />
-      <stop offset="1" stopColor="#FFE873" />
-    </linearGradient>
-    <path fill="url(#python-original-a)" d="M63.391 1.988c-4.222.02-8.252.379-11.8 1.007-10.45 1.846-12.346 5.71-12.346 12.837v9.411h24.693v3.137H29.977c-7.176 0-13.46 4.313-15.426 12.521-2.268 9.405-2.368 15.275 0 25.096 1.755 7.311 5.947 12.519 13.124 12.519h8.491V67.234c0-8.151 7.051-15.34 15.426-15.34h24.665c6.866 0 12.346-5.654 12.346-12.548V15.833c0-6.693-5.646-11.72-12.346-12.837-4.244-.706-8.645-1.027-12.866-1.008zM50.037 9.557c2.55 0 4.634 2.117 4.634 4.721 0 2.593-2.083 4.69-4.634 4.69-2.56 0-4.633-2.097-4.633-4.69-.001-2.604 2.073-4.721 4.633-4.721z" />
-    <path fill="url(#python-original-b)" d="M91.682 28.38v10.966c0 8.5-7.208 15.655-15.426 15.655H51.591c-6.756 0-12.346 5.783-12.346 12.549v23.515c0 6.691 5.818 10.628 12.346 12.547 7.816 2.297 15.312 2.713 24.665 0 6.216-1.801 12.346-5.423 12.346-12.547v-9.412H63.938v-3.138h37.012c7.176 0 9.852-5.005 12.348-12.519 2.578-7.735 2.467-15.174 0-25.096-1.774-7.145-5.161-12.521-12.348-12.521h-9.268zM77.809 87.927c2.561 0 4.634 2.097 4.634 4.692 0 2.602-2.074 4.719-4.634 4.719-2.55 0-4.633-2.117-4.633-4.719 0-2.595 2.083-4.692 4.633-4.692z" />
-  </svg>
-);
-
-const CppIcon = () => (
-  <svg viewBox="0 0 128 128" className="w-20 h-20">
-    <path fill="#00599C" d="M115.4 30.7L67.1 2.9c-.8-.5-1.9-.7-3.1-.7-1.2 0-2.3.3-3.1.7l-48 27.9c-1.7 1-2.9 3.5-2.9 5.4v55.7c0 1.1.2 2.4 1 3.5l106.8-62c-.6-1.2-1.5-2.1-2.4-2.7z" />
-    <path fill="#004482" d="M10.7 95.3c.5.8 1.2 1.5 1.9 1.9l48.2 27.9c.8.5 1.9.7 3.1.7 1.2 0 2.3-.3 3.1-.7l48-27.9c1.7-1 2.9-3.5 2.9-5.4V36.1c0-.9-.1-1.9-.6-2.8l-106.6 62z" />
-    <path fill="#fff" d="M85.3 76.1C81.1 83.5 73.1 88.5 64 88.5c-13.5 0-24.5-11-24.5-24.5s11-24.5 24.5-24.5c9.1 0 17.1 5 21.3 12.5l13-7.5c-6.8-11.9-19.6-20-34.3-20-21.8 0-39.5 17.7-39.5 39.5s17.7 39.5 39.5 39.5c14.6 0 27.4-8 34.2-19.8l-12.9-7.6z" />
-    <path fill="#fff" d="M82 64h5v-5h5v5h5v5h-5v5h-5v-5h-5v-5zm23 0h5v-5h5v5h5v5h-5v5h-5v-5h-5v-5z" />
-  </svg>
-);
-
 export default function Projects() {
   const { projects } = portfolioData;
 
@@ -47,194 +12,240 @@ export default function Projects() {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
+        staggerChildren: 0.1,
       },
     },
   };
 
   const cardVariants = {
-    hidden: { opacity: 0, y: 40 },
+    hidden: { opacity: 0, y: 30 },
     visible: {
       opacity: 1,
       y: 0,
       transition: {
-        duration: 0.6,
-        ease: "easeOut" as const
+        duration: 0.5,
+        ease: [0.4, 0, 0.2, 1] as const
       }
     },
   };
 
-  // Tech color mapping
-  const getTechColor = (tech: string): string => {
-    const techColors: Record<string, string> = {
-      'Java': '#ED8B00',
-      'Java 21': '#ED8B00',
-      'Python': '#3776AB',
-      'C++': '#00599C',
-      'C++17': '#00599C',
-      'JavaScript': '#F7DF1E',
-      'TypeScript': '#3178C6',
-      'React': '#61DAFB',
-      'Next.js': '#000000',
-      'Node.js': '#339933',
-      'PostgreSQL': '#336791',
-      'MongoDB': '#47A248',
-      'SFML': '#8CC445',
-      'MediaPipe': '#0097A7',
-      'OpenCV': '#5C3EE8',
-      'Pygame': '#00AA00',
+  // Tech color mapping - adjusted for light mode visibility
+  const getTechColor = (tech: string, isLightMode: boolean = false): string => {
+    const techColors: Record<string, { dark: string; light: string }> = {
+      'Java': { dark: '#ED8B00', light: '#C76B00' },
+      'Java 21': { dark: '#ED8B00', light: '#C76B00' },
+      'Python': { dark: '#3776AB', light: '#2B5D8A' },
+      'C++': { dark: '#00599C', light: '#004A82' },
+      'C++17': { dark: '#00599C', light: '#004A82' },
+      'JavaScript': { dark: '#F7DF1E', light: '#B8A400' },
+      'TypeScript': { dark: '#3178C6', light: '#2563A8' },
+      'React': { dark: '#61DAFB', light: '#0891B2' },
+      'Next.js': { dark: '#FFFFFF', light: '#000000' },
+      'Node.js': { dark: '#339933', light: '#2A7D2A' },
+      'PostgreSQL': { dark: '#336791', light: '#2A5578' },
+      'MongoDB': { dark: '#47A248', light: '#3A8A3A' },
     };
-    return techColors[tech] || '#0066FF';
-  };
-
-  // Get the appropriate icon component
-  const getTechIconComponent = (techs: string[]) => {
-    const mainTech = techs[0];
-    if (mainTech.includes('Java')) return <JavaIcon />;
-    if (mainTech.includes('Python')) return <PythonIcon />;
-    if (mainTech.includes('C++')) return <CppIcon />;
-    return <JavaIcon />; // Default fallback
-  };
-
-  // Get background color for project card
-  const getProjectBgColor = (techs: string[]): string => {
-    const mainTech = techs[0];
-    if (mainTech.includes('Java')) return 'bg-orange-50';
-    if (mainTech.includes('Python')) return 'bg-blue-50';
-    if (mainTech.includes('C++')) return 'bg-sky-50';
-    return 'bg-gray-50';
+    const colors = techColors[tech] || { dark: '#00E5A0', light: '#00B37D' };
+    return isLightMode ? colors.light : colors.dark;
   };
 
   return (
-    <section id="projects" className="py-32 relative bg-white">
+    <section id="projects" className="py-32 relative bg-white dark:bg-[#0A0A0A] transition-colors duration-500 overflow-hidden">
+      {/* Grid pattern */}
+      <div className="absolute inset-0 alche-grid-pattern opacity-[0.03] dark:opacity-30" />
+
+      {/* Gradient accents */}
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-[#00E5A0]/5 rounded-full blur-[150px]" />
+      <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#0066FF]/5 rounded-full blur-[150px]" />
+
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 relative">
+        {/* Section Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-20"
+          transition={{ duration: 0.5 }}
+          className="mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-extrabold text-gray-900 mb-4">Dự án nổi bật</h2>
-          <div className="w-20 h-1 bg-blue-600 mx-auto rounded-full mb-4"></div>
-          <p className="text-xl font-medium text-gray-700 max-w-2xl mx-auto">
+          <div className="flex items-center gap-4 mb-6">
+            <span className="text-[#00E5A0] text-sm font-medium">02</span>
+            <div className="w-12 h-px bg-[#00E5A0]" />
+            <span className="text-gray-500 dark:text-[#C0C0C0] text-sm uppercase tracking-wider">Works</span>
+          </div>
+          <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white tracking-tight mb-4">
+            Dự án nổi bật
+          </h2>
+          <p className="text-gray-600 dark:text-[#D0D0D0] max-w-2xl">
             Các dự án thể hiện kỹ năng và đam mê xây dựng phần mềm của tôi.
           </p>
         </motion.div>
 
+        {/* Projects Grid */}
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
         >
-          {projects.map((project) => (
-            <motion.article
-              key={project.id}
-              variants={cardVariants}
-              className="group relative"
-            >
-              <div className="bg-white rounded-2xl overflow-hidden h-full flex flex-col shadow-md hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                {/* Project Icon Area */}
-                <div className={`relative h-48 overflow-hidden ${getProjectBgColor(project.technologies)} flex items-center justify-center`}>
-                  <motion.div
-                    whileHover={{ scale: 1.1, rotate: 5 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="transition-transform duration-500"
-                  >
-                    {getTechIconComponent(project.technologies)}
-                  </motion.div>
+          {projects.map((project) => {
+            // Get main tech logo URL
+            const getMainTechLogo = (tech: string): string => {
+              const logos: Record<string, string> = {
+                'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+                'Java 21': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
+                'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
+                'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+                'C++17': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
+                'PostgreSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
+                'MediaPipe': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
+                'SFML': 'https://www.sfml-dev.org/images/sfml-icon.png',
+              };
+              return logos[tech] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg';
+            };
 
-                  {/* Tech stack badges */}
-                  <div className="absolute top-4 left-4 flex flex-wrap gap-1">
-                    {project.technologies.slice(0, 2).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2 py-1 text-xs font-bold text-white rounded-md shadow-sm"
-                        style={{ backgroundColor: getTechColor(tech) }}
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                  </div>
+            const mainTech = project.technologies[0];
+            const secondTech = project.technologies[1];
 
-                  {/* Hover Links */}
-                  <div className="absolute bottom-4 right-4 flex gap-2 opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                    {project.githubUrl && (
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2.5 bg-white shadow-lg rounded-xl text-gray-900 hover:bg-gray-50 transition-colors"
-                      >
-                        <Github size={18} />
-                      </motion.a>
-                    )}
-                    {project.liveUrl && (
-                      <motion.a
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.95 }}
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="p-2.5 bg-white shadow-lg rounded-xl text-gray-900 hover:bg-gray-50 transition-colors"
-                      >
-                        <ExternalLink size={18} />
-                      </motion.a>
-                    )}
-                  </div>
-                </div>
+            return (
+              <motion.article
+                key={project.id}
+                variants={cardVariants}
+                className="group relative"
+              >
+                <div className="h-full bg-white dark:bg-[#111111] rounded-2xl border border-gray-200 dark:border-white/5 overflow-hidden hover:border-gray-300 dark:hover:border-white/10 transition-all duration-300 shadow-sm dark:shadow-none group-hover:shadow-xl group-hover:-translate-y-1">
+                  {/* Project Tech Logo Display */}
+                  <div className="relative h-48 overflow-hidden bg-gradient-to-br from-gray-50 via-gray-100 to-gray-200 dark:from-[#1A1A1A] dark:via-[#151515] dark:to-[#0A0A0A]">
+                    {/* Decorative circles */}
+                    <div className="absolute -top-10 -right-10 w-40 h-40 bg-gradient-to-br from-[#00E5A0]/20 to-transparent rounded-full blur-2xl" />
+                    <div className="absolute -bottom-10 -left-10 w-40 h-40 bg-gradient-to-tr from-[#0066FF]/20 to-transparent rounded-full blur-2xl" />
 
-                {/* Project Info */}
-                <div className="p-6 flex-1 flex flex-col">
-                  {project.featured && (
-                    <div className="mb-3">
-                      <span className="px-3 py-1 text-xs font-bold text-blue-600 bg-blue-50 rounded-full">
-                        Nổi bật
-                      </span>
+                    {/* Main Tech Logo */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <div className="flex items-center gap-4">
+                        <motion.div
+                          whileHover={{ scale: 1.1, rotate: 5 }}
+                          className="w-20 h-20 p-4 bg-white dark:bg-[#1A1A1A] rounded-2xl shadow-lg border border-gray-200 dark:border-white/10"
+                        >
+                          <img
+                            src={getMainTechLogo(mainTech)}
+                            alt={mainTech}
+                            className="w-full h-full object-contain"
+                          />
+                        </motion.div>
+                        {secondTech && (
+                          <motion.div
+                            whileHover={{ scale: 1.1, rotate: -5 }}
+                            className="w-16 h-16 p-3 bg-white dark:bg-[#1A1A1A] rounded-xl shadow-lg border border-gray-200 dark:border-white/10 -ml-6 mt-8"
+                          >
+                            <img
+                              src={getMainTechLogo(secondTech)}
+                              alt={secondTech}
+                              className="w-full h-full object-contain"
+                            />
+                          </motion.div>
+                        )}
+                      </div>
                     </div>
-                  )}
 
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">
-                    {project.title}
-                  </h3>
-                  <p className="text-sm text-gray-600 mb-4 leading-relaxed flex-1">
-                    {project.description}
-                  </p>
-
-                  <div className="flex flex-wrap gap-2 mb-4">
-                    {project.technologies.slice(2, 5).map((tech) => (
-                      <span
-                        key={tech}
-                        className="px-2.5 py-1 text-xs font-medium text-gray-600 bg-gray-100 rounded-full"
-                      >
-                        {tech}
-                      </span>
-                    ))}
-                    {project.technologies.length > 5 && (
-                      <span className="px-2.5 py-1 text-xs font-medium text-gray-400 bg-gray-100 rounded-full">
-                        +{project.technologies.length - 5}
+                    {project.featured && (
+                      <span className="absolute top-4 right-4 px-3 py-1 text-xs font-medium text-white bg-[#00E5A0] rounded-full shadow-lg">
+                        Featured
                       </span>
                     )}
                   </div>
 
-                  <motion.a
-                    whileHover={{ x: 4 }}
-                    href={project.githubUrl || project.liveUrl || '#'}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 text-sm font-bold text-blue-600 hover:text-blue-800 transition-colors"
-                  >
-                    Xem chi tiết
-                    <ArrowUpRight size={16} />
-                  </motion.a>
+                  {/* Project Header */}
+                  <div className="p-6 pb-4">
+                    {/* Technology Tags */}
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {project.technologies.slice(0, 2).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-3 py-1 text-xs font-medium rounded-full border dark:border"
+                          style={{
+                            borderColor: `${getTechColor(tech)}40`,
+                            color: getTechColor(tech)
+                          }}
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                    </div>
+
+                    {/* Title */}
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#00B37D] dark:group-hover:text-[#00E5A0] transition-colors">
+                      {project.title}
+                    </h3>
+
+                    {/* Description */}
+                    <p className="text-gray-600 dark:text-[#D0D0D0] text-sm leading-relaxed mb-4">
+                      {project.description}
+                    </p>
+
+                    {/* Additional Tech Tags */}
+                    <div className="flex flex-wrap gap-2 mb-6">
+                      {project.technologies.slice(2, 5).map((tech) => (
+                        <span
+                          key={tech}
+                          className="px-2.5 py-1 text-xs text-gray-500 dark:text-[#B0B0B0] bg-gray-100 dark:bg-[#1A1A1A] rounded-full"
+                        >
+                          {tech}
+                        </span>
+                      ))}
+                      {project.technologies.length > 5 && (
+                        <span className="px-2.5 py-1 text-xs text-gray-500 dark:text-[#C0C0C0] bg-gray-100 dark:bg-[#1A1A1A] rounded-full">
+                          +{project.technologies.length - 5}
+                        </span>
+                      )}
+                    </div>
+                  </div>
+
+                  {/* Project Footer */}
+                  <div className="px-6 py-4 border-t border-gray-200 dark:border-white/5 flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      {project.githubUrl && (
+                        <motion.a
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          href={project.githubUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-[#1A1A1A] text-gray-600 dark:text-[#D0D0D0] hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-[#252525] transition-all"
+                        >
+                          <Github size={16} />
+                        </motion.a>
+                      )}
+                      {project.liveUrl && (
+                        <motion.a
+                          whileHover={{ scale: 1.1 }}
+                          whileTap={{ scale: 0.95 }}
+                          href={project.liveUrl}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="p-2 rounded-lg bg-gray-100 dark:bg-[#1A1A1A] text-gray-600 dark:text-[#D0D0D0] hover:text-gray-900 dark:hover:text-white hover:bg-gray-200 dark:hover:bg-[#252525] transition-all"
+                        >
+                          <ExternalLink size={16} />
+                        </motion.a>
+                      )}
+                    </div>
+
+                    <motion.a
+                      whileHover={{ x: 4 }}
+                      href={project.githubUrl || project.liveUrl || '#'}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 text-sm font-medium text-[#00B37D] dark:text-[#00E5A0] hover:text-gray-900 dark:hover:text-white transition-colors"
+                    >
+                      View Project
+                      <ArrowUpRight size={14} />
+                    </motion.a>
+                  </div>
+
                 </div>
-              </div>
-            </motion.article>
-          ))}
+              </motion.article>
+            );
+          })}
         </motion.div>
       </div>
     </section>

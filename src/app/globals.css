@@ -1,62 +1,83 @@
+/* Google Fonts - Must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Noto+Sans+JP:wght@300;400;500;600;700&display=swap');
+
 @import "tailwindcss";
 
-/* SF Pro Font - Apple Typography */
-@font-face {
-    font-family: 'SF Pro Display';
-    src: url('https://fonts.cdnfonts.com/css/sf-pro-display') format('woff2');
-    font-weight: 100 900;
-    font-style: normal;
-}
+/* Tailwind v4 Dark Mode Configuration */
+@custom-variant dark (&:where(.dark, .dark *));
 
-/* CSS Variables for Modern Minimal Design System */
+/* Alche Studio Style - Dark Minimal */
+
+/* CSS Variables - Alche Dark Minimal */
 :root {
-    /* Colors - Clean Minimal Palette */
-    --glass-bg: rgba(255, 255, 255, 0.95);
-    --glass-bg-hover: rgba(255, 255, 255, 1);
-    --glass-border: rgba(0, 0, 0, 0.06);
-    --glass-border-subtle: rgba(0, 0, 0, 0.04);
-    --glass-shadow: rgba(0, 0, 0, 0.04);
-    --glass-shadow-hover: rgba(0, 0, 0, 0.08);
+    /* Dark Background Colors */
+    --alche-bg-primary: #0A0A0A;
+    --alche-bg-secondary: #111111;
+    --alche-bg-tertiary: #1A1A1A;
+    --alche-bg-card: #141414;
+    --alche-bg-hover: #1F1F1F;
 
-    /* Primary Colors - Clean & Modern */
-    --apple-blue: #0066FF;
-    --apple-blue-light: #3385FF;
-    --apple-purple: #0066FF;
-    --apple-gray: #6B7280;
-    --apple-gray-light: #F9FAFB;
-    --apple-text: #111827;
-    --apple-text-secondary: #6B7280;
+    /* Text Colors */
+    --alche-text-primary: #FFFFFF;
+    --alche-text-secondary: #A1A1A1;
+    --alche-text-tertiary: #666666;
+    --alche-text-muted: #4A4A4A;
 
     /* Accent Colors */
-    --accent-primary: #0066FF;
-    --accent-secondary: #10B981;
-    --accent-warm: #F59E0B;
+    --alche-accent: #00E5A0;
+    --alche-accent-hover: #00FF B3;
+    --alche-accent-dim: rgba(0, 229, 160, 0.1);
+    --alche-blue: #0066FF;
+    --alche-purple: #8B5CF6;
+    --alche-pink: #EC4899;
 
-    /* Background - Clean Solid */
-    --bg-primary: #FFFFFF;
-    --bg-secondary: #F9FAFB;
-    --bg-tertiary: #F3F4F6;
+    /* Border */
+    --alche-border: rgba(255, 255, 255, 0.08);
+    --alche-border-hover: rgba(255, 255, 255, 0.15);
+    --alche-border-accent: rgba(0, 229, 160, 0.3);
 
-    /* Blur */
-    --blur-glass: blur(20px);
-    --blur-heavy: blur(40px);
+    /* Shadows */
+    --alche-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.5);
+    --alche-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.4);
+    --alche-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.5);
+    --alche-shadow-glow: 0 0 40px rgba(0, 229, 160, 0.15);
 
-    /* Shadows - Subtle & Modern */
-    --shadow-glass: 0 1px 3px rgba(0, 0, 0, 0.05), 0 1px 2px rgba(0, 0, 0, 0.03);
-    --shadow-glass-hover: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
-    --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.04);
-    --shadow-card-hover: 0 8px 25px rgba(0, 0, 0, 0.08);
-    --shadow-elevated: 0 20px 40px rgba(0, 0, 0, 0.1);
-
-    /* Border Radius - Modern */
-    --radius-sm: 8px;
-    --radius-md: 12px;
-    --radius-lg: 16px;
-    --radius-xl: 24px;
+    /* Radius */
+    --alche-radius-sm: 6px;
+    --alche-radius-md: 10px;
+    --alche-radius-lg: 14px;
+    --alche-radius-xl: 20px;
+    --alche-radius-2xl: 28px;
 
     /* Transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    --transition-bounce: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    --alche-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --alche-transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Light Mode CSS Variables */
+:root:not(.dark) {
+    --alche-bg-primary: #FFFFFF;
+    --alche-bg-secondary: #F9FAFB;
+    --alche-bg-tertiary: #F3F4F6;
+    --alche-bg-card: #FFFFFF;
+    --alche-bg-hover: #F3F4F6;
+
+    --alche-text-primary: #111827;
+    --alche-text-secondary: #6B7280;
+    --alche-text-tertiary: #9CA3AF;
+    --alche-text-muted: #D1D5DB;
+
+    --alche-accent: #00B37D;
+    --alche-accent-dim: rgba(0, 179, 125, 0.1);
+
+    --alche-border: rgba(0, 0, 0, 0.08);
+    --alche-border-hover: rgba(0, 0, 0, 0.15);
+    --alche-border-accent: rgba(0, 179, 125, 0.3);
+
+    --alche-shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.05);
+    --alche-shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --alche-shadow-lg: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --alche-shadow-glow: 0 0 40px rgba(0, 179, 125, 0.1);
 }
 
 /* Base Styles */
@@ -65,38 +86,604 @@
     scroll-behavior: smooth;
 }
 
+html {
+    background: var(--alche-bg-primary);
+    transition: background-color 0.5s ease;
+}
+
+html.dark {
+    background: #0A0A0A;
+}
+
 body {
-    font-family: 'Times New Roman', Times, Georgia, serif;
-    background: var(--bg-primary);
-    color: var(--apple-text);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    background: var(--alche-bg-primary);
+    color: var(--alche-text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     overflow-x: hidden;
+    line-height: 1.6;
+    transition: background-color 0.5s ease, color 0.5s ease;
 }
 
-/* Liquid Glass Effect Classes - Clean Modern */
+/* Smooth Scroll & Global Animations */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Global Hover Transitions */
+a,
+button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Smooth Image Transitions */
+img {
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+/* Card Hover Effects */
+.hover-lift {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.hover-lift:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+/* Slide Up Animation */
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(40px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.animate-slide-up {
+    animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+/* Scale In Animation */
+@keyframes scaleIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.animate-scale-in {
+    animation: scaleIn 0.5s ease forwards;
+}
+
+/* Glow Effect */
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 229, 160, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 229, 160, 0.4);
+    }
+}
+
+.animate-glow {
+    animation: glow 2s ease-in-out infinite;
+}
+
+/* Float Animation */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.animate-float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* Pulse Animation */
+@keyframes pulse-soft {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+.animate-pulse-soft {
+    animation: pulse-soft 2s ease-in-out infinite;
+}
+
+/* Alche Card Style */
+.alche-card {
+    background: var(--alche-bg-card);
+    border: 1px solid var(--alche-border);
+    border-radius: var(--alche-radius-lg);
+    transition: var(--alche-transition);
+}
+
+.alche-card:hover {
+    border-color: var(--alche-border-hover);
+    background: var(--alche-bg-hover);
+}
+
+/* Alche Button */
+.alche-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: transparent;
+    border: 1px solid var(--alche-border);
+    border-radius: var(--alche-radius-md);
+    color: var(--alche-text-primary);
+    font-weight: 500;
+    font-size: 14px;
+    letter-spacing: -0.01em;
+    transition: var(--alche-transition);
+    cursor: pointer;
+}
+
+.alche-btn:hover {
+    border-color: var(--alche-text-primary);
+    background: var(--alche-text-primary);
+    color: var(--alche-bg-primary);
+}
+
+.alche-btn-primary {
+    background: var(--alche-text-primary);
+    border-color: var(--alche-text-primary);
+    color: var(--alche-bg-primary);
+}
+
+.alche-btn-primary:hover {
+    background: var(--alche-accent);
+    border-color: var(--alche-accent);
+    color: var(--alche-bg-primary);
+}
+
+.alche-btn-accent {
+    background: var(--alche-accent);
+    border-color: var(--alche-accent);
+    color: var(--alche-bg-primary);
+    font-weight: 600;
+}
+
+.alche-btn-accent:hover {
+    background: #00FFB3;
+    border-color: #00FFB3;
+}
+
+/* Tag/Badge Style */
+.alche-tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 4px 12px;
+    background: var(--alche-bg-tertiary);
+    border: 1px solid var(--alche-border);
+    border-radius: 100px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--alche-text-secondary);
+    transition: var(--alche-transition);
+}
+
+.alche-tag:hover {
+    border-color: var(--alche-accent);
+    color: var(--alche-accent);
+}
+
+/* Date Style like Alche */
+.alche-date {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--alche-text-tertiary);
+    letter-spacing: 0.02em;
+}
+
+/* Section Title Style */
+.alche-section-title {
+    font-size: clamp(36px, 6vw, 64px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    color: var(--alche-text-primary);
+}
+
+.alche-section-subtitle {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--alche-text-secondary);
+    line-height: 1.6;
+    max-width: 500px;
+}
+
+/* Accent Text */
+.alche-accent-text {
+    color: var(--alche-accent);
+}
+
+/* Grid Pattern Background */
+.alche-grid-pattern {
+    background-image:
+        linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 60px 60px;
+}
+
+/* Light mode grid pattern */
+:root:not(.dark) .alche-grid-pattern {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 0, 0, 0.03) 1px, transparent 1px);
+}
+
+/* Noise Texture */
+.alche-noise {
+    position: relative;
+}
+
+.alche-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    opacity: 0.03;
+    pointer-events: none;
+}
+
+/* Glow Effect */
+.alche-glow {
+    position: relative;
+}
+
+.alche-glow::after {
+    content: '';
+    position: absolute;
+    inset: -1px;
+    background: linear-gradient(135deg, var(--alche-accent), var(--alche-blue), var(--alche-purple));
+    border-radius: inherit;
+    opacity: 0;
+    filter: blur(20px);
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.alche-glow:hover::after {
+    opacity: 0.3;
+}
+
+/* Divider */
+.alche-divider {
+    height: 1px;
+    background: var(--alche-border);
+    width: 100%;
+}
+
+/* Link Style */
+.alche-link {
+    color: var(--alche-text-secondary);
+    text-decoration: none;
+    transition: var(--alche-transition);
+    position: relative;
+}
+
+.alche-link:hover {
+    color: var(--alche-text-primary);
+}
+
+.alche-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: var(--alche-text-primary);
+    transition: width 0.3s ease;
+}
+
+.alche-link:hover::after {
+    width: 100%;
+}
+
+/* Custom Scrollbar - Dark */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--alche-bg-secondary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--alche-text-muted);
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--alche-text-tertiary);
+}
+
+/* Typography Classes */
+.text-display {
+    font-size: clamp(48px, 10vw, 120px);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.95;
+}
+
+.text-headline {
+    font-size: clamp(32px, 6vw, 56px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+}
+
+.text-title {
+    font-size: clamp(20px, 3vw, 28px);
+    font-weight: 600;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+}
+
+.text-body {
+    font-size: 15px;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+    line-height: 1.6;
+    color: var(--alche-text-secondary);
+}
+
+.text-caption {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0;
+    line-height: 1.4;
+    color: var(--alche-text-tertiary);
+}
+
+/* Focus Styles */
+:focus-visible {
+    outline: 2px solid var(--alche-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+}
+
+/* Selection */
+::selection {
+    background: rgba(0, 229, 160, 0.3);
+    color: var(--alche-text-primary);
+}
+
+/* Horizontal Scroll */
+.horizontal-scroll {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    padding: 8px 0;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.horizontal-scroll::-webkit-scrollbar {
+    display: none;
+}
+
+/* Line Clamp */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Fade animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Gradient border animation */
+@keyframes gradientBorder {
+
+    0%,
+    100% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+}
+
+/* Pulse glow */
+@keyframes pulseGlow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 20px rgba(0, 229, 160, 0.2);
+    }
+
+    50% {
+        box-shadow: 0 0 40px rgba(0, 229, 160, 0.4);
+    }
+}
+
+/* Legacy support classes - map to alche styles */
 .liquid-glass {
-    background: var(--glass-bg);
-    backdrop-filter: var(--blur-glass);
-    -webkit-backdrop-filter: var(--blur-glass);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-glass);
-    transition: var(--transition-smooth);
+    background: var(--alche-bg-card);
+    border: 1px solid var(--alche-border);
+    border-radius: var(--alche-radius-lg);
+    transition: var(--alche-transition);
 }
 
 .liquid-glass:hover {
-    background: var(--glass-bg-hover);
-    box-shadow: var(--shadow-glass-hover);
-    transform: translateY(-1px);
+    border-color: var(--alche-border-hover);
+    background: var(--alche-bg-hover);
 }
 
-.liquid-glass-subtle {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--glass-border-subtle);
-    border-radius: var(--radius-md);
+.glass-card {
+    background: var(--alche-bg-card);
+    border: 1px solid var(--alche-border);
+    border-radius: var(--alche-radius-lg);
+    transition: var(--alche-transition);
+}
+
+.glass-card:hover {
+    border-color: var(--alche-border-hover);
+}
+
+.glass-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: transparent;
+    border: 1px solid var(--alche-border);
+    border-radius: var(--alche-radius-md);
+    color: var(--alche-text-primary);
+    font-weight: 500;
+    font-size: 15px;
+    transition: var(--alche-transition);
+    cursor: pointer;
+}
+
+.glass-button:hover {
+    border-color: var(--alche-text-primary);
+    background: var(--alche-text-primary);
+    color: var(--alche-bg-primary);
+}
+
+.glass-button-primary {
+    background: var(--alche-text-primary);
+    border-color: var(--alche-text-primary);
+    color: var(--alche-bg-primary);
+}
+
+.glass-button-primary:hover {
+    background: var(--alche-accent);
+    border-color: var(--alche-accent);
+}
+
+.glass-pill {
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 14px;
+    background: var(--alche-bg-tertiary);
+    border: 1px solid var(--alche-border);
+    border-radius: 100px;
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--alche-text-secondary);
+    transition: var(--alche-transition);
+}
+
+.glass-pill:hover {
+    border-color: var(--alche-accent);
+    color: var(--alche-accent);
+}
+
+.gradient-text {
+    color: var(--alche-accent);
+}
+
+.organic-shape {
+    display: none;
+}
+
+.avatar-apple {
+    border-radius: var(--alche-radius-lg);
+    overflow: hidden;
+}
+
+.glow {
+    position: relative;
+}
+
+.glow::after {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: var(--alche-accent);
+    border-radius: inherit;
+    filter: blur(20px);
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s ease;
+}
+
+.glow:hover::after {
+    opacity: 0.3;
 }
 
 /* Glass Card - Clean Modern Style */
