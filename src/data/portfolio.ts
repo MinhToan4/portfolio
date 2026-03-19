@@ -212,6 +212,18 @@ export const portfolioData = {
       description: "Tham gia cuộc thi Cloud Quest do VPBank tổ chức"
     },
     {
+      id: 8,
+      title: "Top 3 National Finalist (Computing Track) - Huawei ICT Competition",
+      type: "achievement",
+      description: "Huawei ICT Competition | 2025 - 2026"
+    },
+    {
+      id: 9,
+      title: "Runner-Up - SUI Campus Hackathon",
+      type: "achievement",
+      description: "SUI Campus Hackathon | 02/2026"
+    },
+    {
       id: 3,
       title: "Lab Ươm Mầm Tài Năng CNTT - PTIT NITS",
       type: "organization",

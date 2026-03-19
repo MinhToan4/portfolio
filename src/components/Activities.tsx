@@ -31,6 +31,8 @@ export default function Activities() {
 
     const getTypeConfig = (type: string) => {
         switch (type) {
+            case 'achievement':
+                return { icon: Award, color: '#00E5A0', label: 'Achievement' };
             case 'competition':
                 return { icon: Trophy, color: '#F59E0B', label: 'Competition' };
             case 'organization':
@@ -106,6 +108,7 @@ export default function Activities() {
 
     // Group activities by type
     const competitions = activities.filter(a => a.type === 'competition');
+    const achievements = activities.filter(a => a.type === 'achievement');
     const organizations = activities.filter(a => a.type === 'organization');
     const volunteers = activities.filter(a => a.type === 'volunteer');
     const events = activities.filter(a => a.type === 'event');
@@ -181,6 +184,12 @@ export default function Activities() {
                     whileInView="visible"
                     viewport={{ once: true, margin: "-50px" }}
                 >
+                    <CategorySection
+                        title="Thành Tích"
+                        items={achievements}
+                        icon={Award}
+                        color="#00E5A0"
+                    />
                     <CategorySection
                         title="Cuộc Thi"
                         items={competitions}
