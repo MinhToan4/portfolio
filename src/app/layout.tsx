@@ -1,24 +1,8 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  style: ["normal", "italic"],
-  variable: "--font-cormorant",
-  display: "swap",
-});
-
-const inter = Inter({
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
-  variable: "--font-inter",
-  display: "swap",
-});
-
 export const metadata: Metadata = {
-  title: "Nguyễn Minh Toàn — Portfolio",
+  title: "NMT - Portfolio",
   description: "Software developer & student at PTIT. Building thoughtful, elegant digital experiences.",
   keywords: ["portfolio", "developer", "full stack", "react", "nextjs", "typescript"],
   authors: [{ name: "Nguyễn Minh Toàn" }],
@@ -45,7 +29,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
       <body className="antialiased">
         {children}
       </body>
