@@ -82,12 +82,13 @@ export default function Activities() {
                                     alignItems: 'baseline',
                                     justifyContent: 'space-between',
                                     borderBottom: '1px solid var(--journal-charcoal)',
-                                    paddingBottom: '10px',
-                                    marginBottom: '0',
+                                    paddingBottom: 'clamp(8px, 2vw, 10px)',
+                                    marginBottom: 'clamp(16px, 3vw, 24px)',
+                                    gap: '12px',
                                 }}
                             >
                                 <p className="type-subhead">{group.label}</p>
-                                <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>
+                                <span className="type-caption" style={{ color: 'var(--text-ghost)', whiteSpace: 'nowrap' }}>
                                     {items.length} {items.length === 1 ? 'entry' : 'entries'}
                                 </span>
                             </div>
@@ -106,9 +107,9 @@ export default function Activities() {
                                         viewport={{ once: true }}
                                         style={{
                                             display: 'grid',
-                                            gridTemplateColumns: '24px 1fr',
-                                            gap: '20px',
-                                            paddingBlock: 'clamp(20px, 3vw, 32px)',
+                                            gridTemplateColumns: 'clamp(20px, 10vw, 24px) 1fr',
+                                            gap: 'clamp(12px, 3vw, 20px)',
+                                            paddingBlock: 'clamp(16px, 2.5vw, 32px)',
                                             borderBottom: '1px solid var(--rule)',
                                         }}
                                     >
@@ -132,7 +133,7 @@ export default function Activities() {
                                                     display: 'flex',
                                                     alignItems: 'flex-start',
                                                     justifyContent: 'space-between',
-                                                    gap: '16px',
+                                                    gap: '12px',
                                                     marginBottom: '10px',
                                                     flexWrap: 'wrap',
                                                 }}
@@ -140,11 +141,13 @@ export default function Activities() {
                                                 <h4
                                                     style={{
                                                         fontFamily: 'var(--font-serif)',
-                                                        fontSize: 'clamp(16px, 2.2vw, 22px)',
+                                                        fontSize: 'clamp(15px, 2.2vw, 22px)',
                                                         fontWeight: 700,
                                                         color: 'var(--text)',
                                                         letterSpacing: '-0.005em',
                                                         lineHeight: 1.25,
+                                                        flex: 1,
+                                                        minWidth: '200px',
                                                     }}
                                                 >
                                                     {activity.title}
@@ -164,7 +167,7 @@ export default function Activities() {
                                                             style={{
                                                                 display: 'flex',
                                                                 gap: '12px',
-                                                                fontSize: '14px',
+                                                                fontSize: 'clamp(13px, 2vw, 14px)',
                                                                 color: 'var(--text-subtle)',
                                                                 lineHeight: 1.5,
                                                             }}

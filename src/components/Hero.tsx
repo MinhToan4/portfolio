@@ -32,6 +32,7 @@ export default function Hero() {
         flexDirection: 'column',
         justifyContent: 'flex-end',
         position: 'relative',
+        isolation: 'isolate',
         overflow: 'hidden',
       }}
     >
@@ -47,6 +48,7 @@ export default function Hero() {
             height: '1px',
             background: 'var(--rule)',
             opacity: 0.5,
+            zIndex: 0,
             pointerEvents: 'none',
           }}
         />
@@ -64,6 +66,7 @@ export default function Hero() {
             width: '1px',
             background: 'var(--rule)',
             opacity: 0.4,
+            zIndex: 0,
             pointerEvents: 'none',
           }}
         />
@@ -77,6 +80,8 @@ export default function Hero() {
       <div
         className="journal-container"
         style={{
+          position: 'relative',
+          zIndex: 1,
           transform: mounted ? undefined : 'none',
         }}
       >
@@ -148,6 +153,7 @@ export default function Hero() {
         animate={{ opacity: 1 }}
         transition={{ duration: 0.9, delay: 0.5 }}
         className="journal-container"
+        style={{ position: 'relative', zIndex: 1 }}
       >
         <div
           style={{

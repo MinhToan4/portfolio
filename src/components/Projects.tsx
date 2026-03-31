@@ -49,7 +49,7 @@ export default function Projects() {
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
             <h2 className="type-display">Projects</h2>
-            <p className="type-body" style={{ maxWidth: '360px' }}>
+            <p className="type-body" style={{ maxWidth: '100%', minWidth: '280px' }}>
               A curated selection of projects demonstrating craft and technical depth.
             </p>
           </div>
@@ -73,8 +73,8 @@ export default function Projects() {
               <div
                 style={{
                   display: 'grid',
-                  gridTemplateColumns: 'clamp(48px, 6vw, 80px) 1fr auto',
-                  gap: 'clamp(20px, 4vw, 48px)',
+                  gridTemplateColumns: 'clamp(40px, 12vw, 80px) 1fr auto',
+                  gap: 'clamp(16px, 3vw, 48px)',
                   alignItems: 'start',
                 }}
                 className="project-row"
@@ -152,19 +152,20 @@ export default function Projects() {
                     flexDirection: 'column',
                     alignItems: 'flex-end',
                     gap: '20px',
-                    minWidth: '80px',
+                    minWidth: '48px',
                   }}
                 >
                   <div
                     style={{
-                      width: '56px',
-                      height: '56px',
+                      width: 'clamp(40px, 8vw, 56px)',
+                      height: 'clamp(40px, 8vw, 56px)',
                       border: '1px solid var(--rule)',
                       display: 'flex',
                       alignItems: 'center',
                       justifyContent: 'center',
                       padding: '12px',
                       background: 'var(--bg-offset)',
+                      flexShrink: 0,
                     }}
                   >
                     <img

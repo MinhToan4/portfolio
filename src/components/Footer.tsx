@@ -14,7 +14,7 @@ export default function Footer() {
       style={{
         background: 'var(--journal-charcoal)',
         color: 'var(--journal-cream)',
-        padding: 'clamp(48px, 7vw, 80px) 0 clamp(32px, 4vw, 40px)',
+        padding: 'clamp(28px, 4.5vw, 48px) 0 clamp(18px, 2.5vw, 24px)',
       }}
     >
       <div className="journal-container">
@@ -29,18 +29,18 @@ export default function Footer() {
             display: 'flex',
             alignItems: 'flex-end',
             justifyContent: 'space-between',
-            paddingBottom: 'clamp(24px, 4vw, 40px)',
+            paddingBottom: 'clamp(16px, 2.5vw, 24px)',
             borderBottom: '1px solid rgba(245,240,232,0.12)',
-            marginBottom: 'clamp(24px, 4vw, 40px)',
+            marginBottom: 'clamp(16px, 2.5vw, 24px)',
             flexWrap: 'wrap',
-            gap: '20px',
+            gap: '14px',
           }}
         >
           <div>
             <p
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(48px, 9vw, 100px)',
+                fontSize: 'clamp(40px, 7vw, 72px)',
                 fontWeight: 300,
                 letterSpacing: '-0.02em',
                 lineHeight: 0.9,
@@ -56,7 +56,7 @@ export default function Footer() {
                 letterSpacing: '0.18em',
                 textTransform: 'uppercase',
                 color: 'rgba(245,240,232,0.4)',
-                marginTop: '12px',
+                marginTop: '8px',
               }}
             >
               {personal.title}
@@ -71,8 +71,8 @@ export default function Footer() {
               border: '1px solid rgba(245,240,232,0.16)',
               color: 'rgba(245,240,232,0.6)',
               cursor: 'pointer',
-              width: '48px',
-              height: '48px',
+              width: '42px',
+              height: '42px',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
@@ -103,10 +103,10 @@ export default function Footer() {
           style={{
             display: 'flex',
             flexWrap: 'wrap',
-            gap: '24px 48px',
-            paddingBottom: 'clamp(24px, 4vw, 40px)',
+            gap: '12px 28px',
+            paddingBottom: 'clamp(16px, 2.5vw, 24px)',
             borderBottom: '1px solid rgba(245,240,232,0.08)',
-            marginBottom: 'clamp(24px, 3vw, 32px)',
+            marginBottom: 'clamp(16px, 2vw, 20px)',
           }}
         >
           {[
@@ -152,7 +152,7 @@ export default function Footer() {
             alignItems: 'center',
             justifyContent: 'space-between',
             flexWrap: 'wrap',
-            gap: '12px',
+            gap: '8px',
           }}
         >
           <p
