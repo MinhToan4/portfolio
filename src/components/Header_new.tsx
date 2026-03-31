@@ -6,12 +6,12 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { scrollToSection } from '@/lib/utils';
 
 const navigation = [
-  { name: 'Trang chủ', href: 'hero' },
-  { name: 'Giới thiệu', href: 'about' },
-  { name: 'Kỹ năng', href: 'skills' },
-  { name: 'Dự án', href: 'projects' },
-  { name: 'Kinh nghiệm', href: 'experience' },
-  { name: 'Liên hệ', href: 'contact' },
+  { name: 'Home', href: 'hero' },
+  { name: 'About', href: 'about' },
+  { name: 'Skills', href: 'skills' },
+  { name: 'Projects', href: 'projects' },
+  { name: 'Experience', href: 'experience' },
+  { name: 'Contact', href: 'contact' },
 ];
 
 export default function Header() {

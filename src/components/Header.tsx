@@ -1,157 +1,311 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, useMotionValueEvent, useScroll } from 'framer-motion';
+import { MouseEvent, useEffect, useRef, useState } from 'react';
 import { Menu, X } from 'lucide-react';
-import { useState, useEffect } from 'react';
 import { scrollToSection } from '@/lib/utils';
-import { ThemeToggle } from './ThemeToggle';
 
 const navItems = [
-    { name: 'Home', href: 'hero' },
-    { name: 'About', href: 'about' },
-    { name: 'Projects', href: 'projects' },
-    { name: 'Experience', href: 'experience' },
-    { name: 'Academic', href: 'academic-results' },
-    { name: 'Activities', href: 'activities' },
-    { name: 'Contact', href: 'contact' },
+  { name: 'Journal', href: 'hero' },
+  { name: 'About', href: 'about' },
+  { name: 'Work', href: 'projects' },
+  { name: 'Experience', href: 'experience' },
+  { name: 'Academic', href: 'academic-results' },
+  { name: 'Activities', href: 'activities' },
+  { name: 'Contact', href: 'contact' },
 ];
 
+const NAV_GAP = 32;
+const NAV_SIDE_BUFFER = 28;
+const COMPACT_TOGGLE_WIDTH = 40;
+const DEFAULT_SIDE_SLOT_WIDTH = 96;
+
 export default function Header() {
-    const [isOpen, setIsOpen] = useState(false);
-    const [scrolled, setScrolled] = useState(false);
-    const [activeSection, setActiveSection] = useState('hero');
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState('hero');
+  const [showCompactNav, setShowCompactNav] = useState(false);
+  const [navModeResolved, setNavModeResolved] = useState(false);
+  const [sideSlotWidth, setSideSlotWidth] = useState(DEFAULT_SIDE_SLOT_WIDTH);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollY = window.scrollY;
-            setScrolled(scrollY > 50);
+  const headerRowRef = useRef<HTMLDivElement>(null);
+  const wordmarkRef = useRef<HTMLAnchorElement>(null);
+  const navMeasureRef = useRef<HTMLDivElement>(null);
 
-            const sections = navItems.map(item => item.href);
-            for (const section of sections.reverse()) {
-                const element = document.getElementById(section);
-                if (element) {
-                    const rect = element.getBoundingClientRect();
-                    if (rect.top <= 150) {
-                        setActiveSection(section);
-                        break;
-                    }
-                }
-            }
-        };
+  const { scrollY } = useScroll();
 
-        window.addEventListener('scroll', handleScroll, { passive: true });
-        handleScroll();
-        return () => window.removeEventListener('scroll', handleScroll);
-    }, []);
+  useMotionValueEvent(scrollY, 'change', (y) => {
+    setScrolled(y > 60);
 
-    const handleNavClick = (href: string) => {
-        scrollToSection(href);
-        setIsOpen(false);
+    const sections = navItems.map((item) => item.href);
+
+    for (const id of [...sections].reverse()) {
+      const element = document.getElementById(id);
+
+      if (element && element.getBoundingClientRect().top <= 160) {
+        setActiveSection(id);
+        break;
+      }
+    }
+  });
+
+  useEffect(() => {
+    const updateNavMode = () => {
+      const headerRow = headerRowRef.current;
+      const wordmark = wordmarkRef.current;
+      const navMeasure = navMeasureRef.current;
+
+      if (!headerRow || !wordmark || !navMeasure) return;
+
+      const nextSideSlotWidth = Math.ceil(
+        Math.max(wordmark.getBoundingClientRect().width, COMPACT_TOGGLE_WIDTH) + NAV_SIDE_BUFFER,
+      );
+      const availableNavWidth = Math.max(0, headerRow.clientWidth - nextSideSlotWidth * 2);
+      const navWidth = Math.ceil(navMeasure.getBoundingClientRect().width);
+
+      setSideSlotWidth(nextSideSlotWidth);
+      setShowCompactNav(navWidth > availableNavWidth);
+      setNavModeResolved(true);
     };
 
-    return (
-        <motion.header
-            initial={{ y: -100, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-                ? 'bg-white/90 dark:bg-[#0A0A0A]/90 backdrop-blur-xl border-b border-gray-200 dark:border-white/5'
-                : 'bg-transparent'
-                }`}
+    updateNavMode();
+
+    const resizeObserver =
+      typeof ResizeObserver !== 'undefined' ? new ResizeObserver(updateNavMode) : null;
+
+    if (resizeObserver) {
+      if (headerRowRef.current) resizeObserver.observe(headerRowRef.current);
+      if (wordmarkRef.current) resizeObserver.observe(wordmarkRef.current);
+      if (navMeasureRef.current) resizeObserver.observe(navMeasureRef.current);
+    }
+
+    window.addEventListener('resize', updateNavMode);
+    document.fonts?.ready.then(updateNavMode).catch(() => undefined);
+
+    return () => {
+      resizeObserver?.disconnect();
+      window.removeEventListener('resize', updateNavMode);
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!showCompactNav) {
+      setIsOpen(false);
+    }
+  }, [showCompactNav]);
+
+  const getHeaderOffset = () => {
+    const headerHeight = headerRowRef.current?.getBoundingClientRect().height ?? 0;
+    return Math.ceil(headerHeight);
+  };
+
+  const handleNav = (href: string, event?: MouseEvent<HTMLAnchorElement>) => {
+    event?.preventDefault();
+    setIsOpen(false);
+
+    window.requestAnimationFrame(() => {
+      scrollToSection(href, getHeaderOffset());
+    });
+  };
+
+  const showInlineNav = navModeResolved && !showCompactNav;
+  const showMenuToggle = navModeResolved && showCompactNav;
+  const menuOpen = showMenuToggle && isOpen;
+  const useCompactLayout = showMenuToggle;
+
+  return (
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
+        scrolled
+          ? 'border-b bg-[var(--bg)]/95 backdrop-blur-sm'
+          : 'bg-transparent border-b border-transparent'
+      }`}
+      style={{ borderColor: scrolled ? 'var(--rule)' : 'transparent' }}
+    >
+      <div className="journal-container">
+        <div
+          ref={headerRowRef}
+          style={{
+            position: 'relative',
+            display: useCompactLayout ? 'flex' : 'grid',
+            gridTemplateColumns: useCompactLayout ? undefined : `${sideSlotWidth}px minmax(0, 1fr) ${sideSlotWidth}px`,
+            justifyContent: useCompactLayout ? 'space-between' : undefined,
+            alignItems: 'center',
+            columnGap: useCompactLayout ? undefined : '24px',
+            gap: useCompactLayout ? '24px' : undefined,
+            paddingBlock: '18px',
+          }}
         >
-            <nav className="max-w-7xl mx-auto px-6 py-4">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <motion.button
-                        whileHover={{ scale: 1.02 }}
-                        whileTap={{ scale: 0.98 }}
-                        onClick={() => handleNavClick('hero')}
-                        className="text-gray-900 dark:text-white font-bold text-xl md:text-2xl tracking-tight"
-                    >
-                        NMT<span className="text-[#00E5A0]">.</span>
-                    </motion.button>
+          <div style={{ width: useCompactLayout ? 'auto' : '100%', minWidth: 0, flexShrink: 0 }}>
+            <a
+              ref={wordmarkRef}
+              href="#hero"
+              onClick={(event) => handleNav('hero', event)}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                fontFamily: 'var(--font-serif)',
+                fontSize: '20px',
+                fontWeight: 300,
+                letterSpacing: '0.22em',
+                textTransform: 'uppercase',
+                color: 'var(--text)',
+                textDecoration: 'none',
+                touchAction: 'manipulation',
+                WebkitTapHighlightColor: 'transparent',
+              }}
+            >
+              NMT
+            </a>
+          </div>
 
-                    {/* Desktop Nav */}
-                    <ul className="hidden md:flex items-center gap-1">
-                        {navItems.map((item) => (
-                            <li key={item.name}>
-                                <motion.button
-                                    whileHover={{ scale: 1.05 }}
-                                    whileTap={{ scale: 0.95 }}
-                                    onClick={() => handleNavClick(item.href)}
-                                    className={`relative px-4 py-2 text-sm font-medium transition-all duration-300 ${activeSection === item.href
-                                        ? 'text-[#00E5A0]'
-                                        : 'text-gray-600 dark:text-[#D0D0D0] hover:text-gray-900 dark:hover:text-white'
-                                        }`}
-                                >
-                                    {item.name}
-                                    {activeSection === item.href && (
-                                        <motion.div
-                                            layoutId="activeNavAlche"
-                                            className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 bg-[#00E5A0] rounded-full"
-                                            transition={{ type: "spring", stiffness: 400, damping: 30 }}
-                                        />
-                                    )}
-                                </motion.button>
-                            </li>
-                        ))}
-                    </ul>
+          <nav
+            aria-label="Primary"
+            style={{
+              display: showInlineNav ? 'flex' : 'none',
+              alignItems: 'center',
+              justifySelf: 'center',
+              gap: `${NAV_GAP}px`,
+              whiteSpace: 'nowrap',
+              minWidth: 0,
+            }}
+          >
+            {navItems.map((item) => (
+              <a
+                key={item.name}
+                href={`#${item.href}`}
+                onClick={(event) => handleNav(item.href, event)}
+                className="type-caption"
+                aria-current={activeSection === item.href ? 'page' : undefined}
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0 0 2px',
+                  color: activeSection === item.href ? 'var(--text)' : 'var(--text-muted)',
+                  letterSpacing: '0.15em',
+                  textDecoration: 'none',
+                  transition: 'color 0.25s ease, border-color 0.25s ease',
+                  borderBottom: activeSection === item.href ? '1px solid var(--text)' : '1px solid transparent',
+                  touchAction: 'manipulation',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
 
-                    {/* Theme Toggle Button */}
-                    <div className="hidden md:block">
-                        <ThemeToggle />
-                    </div>
+          <div
+            style={{
+              width: useCompactLayout ? 'auto' : '100%',
+              display: 'flex',
+              justifyContent: 'flex-end',
+              minWidth: 0,
+              flexShrink: 0,
+              marginLeft: useCompactLayout ? 'auto' : undefined,
+            }}
+          >
+            {showMenuToggle && (
+              <button
+                onClick={() => setIsOpen((current) => !current)}
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  width: '40px',
+                  height: '40px',
+                  padding: 0,
+                  background: 'none',
+                  border: 'none',
+                  color: 'var(--text)',
+                  cursor: 'pointer',
+                  touchAction: 'manipulation',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+                aria-label="Toggle menu"
+                aria-expanded={menuOpen}
+                aria-controls="header-mobile-nav"
+              >
+                {menuOpen ? <X size={24} strokeWidth={1.5} /> : <Menu size={24} strokeWidth={1.5} />}
+              </button>
+            )}
+          </div>
 
-                    {/* Mobile Menu Button */}
-                    <div className="md:hidden flex items-center gap-3">
-                        <ThemeToggle />
-                        <motion.button
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                            onClick={() => setIsOpen(!isOpen)}
-                            className="p-2 text-gray-900 dark:text-white"
-                            aria-label="Toggle menu"
-                        >
-                            {isOpen ? <X size={24} /> : <Menu size={24} />}
-                        </motion.button>
-                    </div>
-                </div>
+          <div
+            ref={navMeasureRef}
+            aria-hidden="true"
+            className="type-caption"
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              display: 'flex',
+              alignItems: 'center',
+              gap: `${NAV_GAP}px`,
+              visibility: 'hidden',
+              pointerEvents: 'none',
+              whiteSpace: 'nowrap',
+              letterSpacing: '0.15em',
+            }}
+          >
+            {navItems.map((item) => (
+              <span key={item.name} style={{ padding: '0 0 2px' }}>
+                {item.name}
+              </span>
+            ))}
+          </div>
+        </div>
+      </div>
 
-                {/* Mobile Menu */}
-                <motion.div
-                    initial={false}
-                    animate={{
-                        height: isOpen ? 'auto' : 0,
-                        opacity: isOpen ? 1 : 0
-                    }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="md:hidden overflow-hidden"
-                >
-                    <ul className="py-6 space-y-2">
-                        {navItems.map((item, index) => (
-                            <motion.li
-                                key={item.name}
-                                initial={{ opacity: 0, x: -20 }}
-                                animate={{
-                                    opacity: isOpen ? 1 : 0,
-                                    x: isOpen ? 0 : -20
-                                }}
-                                transition={{ delay: index * 0.05, duration: 0.3 }}
-                            >
-                                <button
-                                    onClick={() => handleNavClick(item.href)}
-                                    className={`block w-full text-left px-4 py-3 text-base font-medium transition-all ${activeSection === item.href
-                                        ? 'text-[#00E5A0]'
-                                        : 'text-gray-600 dark:text-[#D0D0D0] hover:text-gray-900 dark:hover:text-white'
-                                        }`}
-                                >
-                                    {item.name}
-                                </button>
-                            </motion.li>
-                        ))}
-                    </ul>
-                </motion.div>
-            </nav>
-        </motion.header>
-    );
+      <motion.div
+        id="header-mobile-nav"
+        initial={false}
+        animate={{ height: menuOpen ? 'auto' : 0, opacity: menuOpen ? 1 : 0 }}
+        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] as [number, number, number, number] }}
+        style={{
+          overflow: 'hidden',
+          background: 'var(--bg)',
+          borderTop: menuOpen ? '1px solid var(--rule)' : 'none',
+          pointerEvents: menuOpen ? 'auto' : 'none',
+        }}
+      >
+        <div className="journal-container" style={{ paddingBlock: menuOpen ? '32px' : 0 }}>
+          {navItems.map((item, index) => (
+            <motion.div
+              key={item.name}
+              initial={{ opacity: 0, x: -10 }}
+              animate={{ opacity: menuOpen ? 1 : 0, x: menuOpen ? 0 : -10 }}
+              transition={{ delay: index * 0.06 }}
+              style={{ borderBottom: '1px solid var(--rule)', paddingBlock: '16px' }}
+            >
+              <a
+                href={`#${item.href}`}
+                onClick={(event) => handleNav(item.href, event)}
+                aria-current={activeSection === item.href ? 'page' : undefined}
+                style={{
+                  display: 'block',
+                  width: '100%',
+                  background: 'none',
+                  border: 'none',
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: '28px',
+                  fontWeight: 300,
+                  color: activeSection === item.href ? 'var(--text)' : 'var(--text-muted)',
+                  letterSpacing: '-0.01em',
+                  textDecoration: 'none',
+                  touchAction: 'manipulation',
+                  WebkitTapHighlightColor: 'transparent',
+                }}
+              >
+                {item.name}
+              </a>
+            </motion.div>
+          ))}
+        </div>
+      </motion.div>
+    </motion.header>
+  );
 }

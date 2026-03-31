@@ -20,10 +20,10 @@ export default function Loading() {
           transition={{ delay: 0.2 }}
         >
           <h2 className="text-xl font-semibold text-gray-900 mb-2">
-            Đang tải...
+            Loading...
           </h2>
           <p className="text-gray-600">
-            Portfolio đang được chuẩn bị
+            Preparing the portfolio
           </p>
         </motion.div>
 

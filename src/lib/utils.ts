@@ -5,12 +5,26 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function scrollToSection(sectionId: string) {
+export function scrollToSection(sectionId: string, offset = 0) {
   const element = document.getElementById(sectionId);
-  if (element) {
-    element.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
+
+  if (!element) return false;
+
+  const top = element.getBoundingClientRect().top + window.scrollY - offset;
+
+  window.scrollTo({
+    top: Math.max(0, top),
+    behavior: 'smooth',
+  });
+
+  if (window.history?.replaceState) {
+    const nextUrl =
+      sectionId === 'hero'
+        ? `${window.location.pathname}${window.location.search}`
+        : `#${sectionId}`;
+
+    window.history.replaceState(null, '', nextUrl);
   }
+
+  return true;
 }

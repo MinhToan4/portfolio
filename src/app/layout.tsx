@@ -1,16 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
-import { ThemeProvider } from "@/components/ThemeProvider";
+
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"],
+  style: ["normal", "italic"],
+  variable: "--font-cormorant",
+  display: "swap",
+});
 
 const inter = Inter({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600"],
   variable: "--font-inter",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Nguyễn Minh Toàn Portfolio",
-  description: "Portfolio website của một sinh viên PTIT nhiệt huyết.",
+  title: "Nguyễn Minh Toàn — Portfolio",
+  description: "Software developer & student at PTIT. Building thoughtful, elegant digital experiences.",
   keywords: ["portfolio", "developer", "full stack", "react", "nextjs", "typescript"],
   authors: [{ name: "Nguyễn Minh Toàn" }],
   creator: "Nguyễn Minh Toàn",
@@ -21,26 +30,12 @@ export const metadata: Metadata = {
   },
   openGraph: {
     type: "website",
-    locale: "vi_VN",
+    locale: "en_US",
     url: "https://minhtoansbo.com",
     title: "Nguyễn Minh Toàn",
-    description: "Portfolio website của một sinh viên PTIT nhiệt huyết.",
+    description: "Software developer & student at PTIT.",
     siteName: "Nguyễn Minh Toàn Portfolio",
-    images: [
-      {
-        url: '/avatar.jpg',
-        width: 1200,
-        height: 630,
-        alt: 'Nguyễn Minh Toàn Portfolio',
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Nguyễn Minh Toàn",
-    description: "Portfolio website của một sinh viên PTIT nhiệt huyết.",
-    creator: "@minhtoansbo",
-    images: ['/avatar.jpg'],
+    images: [{ url: '/avatar1.png', width: 1200, height: 630, alt: 'Nguyễn Minh Toàn' }],
   },
 };
 
@@ -50,16 +45,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi" className="scroll-smooth" suppressHydrationWarning>
-      <body className={`${inter.variable} font-sans antialiased`}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="light"
-          enableSystem
-          disableTransitionOnChange={false}
-        >
-          {children}
-        </ThemeProvider>
+    <html lang="en" className={`${cormorant.variable} ${inter.variable} scroll-smooth`} suppressHydrationWarning>
+      <body className="antialiased">
+        {children}
       </body>
     </html>
   );

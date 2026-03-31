@@ -1,199 +1,271 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { MapPin, Mail, Phone, Github, Linkedin, Facebook, ArrowUpRight } from 'lucide-react';
 import { portfolioData } from '@/data/portfolio';
+import Image from 'next/image';
+
+const fadeUp = {
+  hidden: { opacity: 0, y: 24 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
+  }),
+};
 
 export default function About() {
   const { personal } = portfolioData;
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.5,
-        ease: "easeOut" as const
-      }
-    },
-  };
-
-  const contactInfo = [
-    { icon: Mail, label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-    { icon: Phone, label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
-    { icon: MapPin, label: 'Location', value: personal.location, href: null },
-  ];
-
-  const socialLinks = [
-    { icon: Github, label: 'GitHub', href: personal.socialLinks.github },
-    { icon: Linkedin, label: 'LinkedIn', href: personal.socialLinks.linkedin },
-    { icon: Facebook, label: 'Facebook', href: personal.socialLinks.facebook },
-  ];
-
   const stats = [
-    { value: '3.82', label: 'GPA/4.0' },
-    { value: '5+', label: 'Certificates' },
-    { value: '3+', label: 'Projects' },
+    { value: '3.82', label: 'GPA / 4.0' },
+    { value: '7', label: 'Certifications' },
+    { value: '3', label: 'Projects' },
+  ];
+
+  const contacts = [
+    { label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
+    { label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
+    { label: 'Location', value: personal.location, href: null },
+  ];
+
+  const socials = [
+    { label: 'GitHub', href: personal.socialLinks.github },
+    { label: 'LinkedIn', href: personal.socialLinks.linkedin },
+    { label: 'Facebook', href: personal.socialLinks.facebook },
   ];
 
   return (
-    <section id="about" className="py-32 relative overflow-hidden bg-white dark:bg-[#0A0A0A] transition-colors duration-500">
-      {/* Grid pattern */}
-      <div className="absolute inset-0 alche-grid-pattern opacity-[0.03] dark:opacity-30" />
+    <section
+      id="about"
+      style={{
+        background: 'var(--bg-offset)',
+        padding: 'var(--section-pad) 0',
+      }}
+    >
+      <div className="journal-container">
 
-      {/* Gradient accent */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] bg-[#00E5A0]/5 rounded-full blur-[150px]" />
-
-      <div className="max-w-6xl mx-auto px-6 sm:px-8 lg:px-12 relative">
+        {/* Section header */}
         <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, margin: "-100px" }}
+          className="section-header"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          {/* Section Header */}
-          <motion.div variants={itemVariants} className="mb-20">
-            <div className="flex items-center gap-4 mb-6">
-              <span className="text-[#00E5A0] text-sm font-medium">01</span>
-              <div className="w-12 h-px bg-[#00E5A0]" />
-              <span className="text-gray-500 dark:text-[#B0B0B0] text-sm uppercase tracking-wider">About</span>
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white tracking-tight">
-              Về tôi
-            </h2>
-          </motion.div>
+          <div className="section-eyebrow">
+            <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>01</span>
+            <span className="type-subhead">About</span>
+          </div>
+          <h2 className="type-display">About<em> Me</em></h2>
+        </motion.div>
 
-          {/* Main Content - Full Width */}
-          <motion.div variants={itemVariants} className="space-y-8 mb-16">
-            <div>
-              <h3 className="text-2xl md:text-3xl font-bold text-[#0044AA] dark:text-white mb-2">
+        {/* Two-column layout */}
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: 'clamp(40px, 6vw, 100px)',
+            alignItems: 'start',
+          }}
+        >
+          {/* LEFT — portrait + name */}
+          <motion.div
+            custom={0}
+            variants={fadeUp}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+          >
+            {/* Portrait */}
+            <div
+              style={{
+                position: 'relative',
+                marginBottom: '32px',
+                maxWidth: '340px',
+              }}
+            >
+              {/* Offset frame */}
+              <div
+                style={{
+                  position: 'absolute',
+                  top: '12px',
+                  left: '12px',
+                  right: '-12px',
+                  bottom: '-12px',
+                  border: '1px solid var(--rule)',
+                  zIndex: 0,
+                }}
+              />
+              <div
+                style={{
+                  position: 'relative',
+                  zIndex: 1,
+                  overflow: 'hidden',
+                  border: '1px solid var(--rule-heavy)',
+                  aspectRatio: '4/5',
+                }}
+              >
+                <Image
+                  src="/avatar1.png"
+                  alt={personal.name}
+                  fill
+                  style={{ objectFit: 'cover', filter: 'grayscale(20%) contrast(1.05)' }}
+                />
+              </div>
+            </div>
+
+            {/* Name block */}
+            <div style={{ borderTop: '1px solid var(--rule)', paddingTop: '20px' }}>
+              <p className="type-subhead" style={{ marginBottom: '8px' }}>The Engineer</p>
+              <h3
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: 'clamp(24px, 3.5vw, 36px)',
+                  fontWeight: 400,
+                  letterSpacing: '-0.01em',
+                  color: 'var(--text)',
+                  marginBottom: '4px',
+                }}
+              >
                 {personal.name}
               </h3>
-              <p className="text-[#00E5A0] font-medium text-lg mb-1">{personal.title}</p>
-              <p className="text-gray-900 dark:text-[#D0D0D0] font-semibold">{personal.subtitle}</p>
+              <p className="type-subhead">{personal.title}</p>
             </div>
+          </motion.div>
 
-            <div className="space-y-4 max-w-3xl">
-              <p className="text-gray-600 dark:text-[#D0D0D0] text-base leading-relaxed">
-                {personal.description}
+          {/* RIGHT — bio + stats + contact */}
+          <div>
+            {/* Bio */}
+            <motion.div
+              custom={1}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ marginBottom: '48px' }}
+            >
+              <p
+                style={{
+                  fontFamily: 'var(--font-serif)',
+                  fontSize: 'clamp(20px, 2.5vw, 28px)',
+                  fontWeight: 400,
+                  fontStyle: 'italic',
+                  lineHeight: 1.45,
+                  color: 'var(--text)',
+                  marginBottom: '24px',
+                  letterSpacing: '0.01em',
+                }}
+              >
+                &ldquo;{personal.subtitle}&rdquo;
               </p>
-              <p className="text-gray-600 dark:text-[#D0D0D0] text-base leading-relaxed">
-                Với vai trò <span className="text-[#0044AA] dark:text-white font-medium">{personal.title}</span>, tôi đam mê
-                phát triển các ứng dụng web từ frontend đến backend. Tôi tin rằng công nghệ có thể giải quyết
-                nhiều vấn đề thực tế, và việc học hỏi liên tục giúp tôi ngày càng hoàn thiện kỹ năng của mình.
+              <p className="type-body" style={{ marginBottom: '16px', fontFamily: '"Times New Roman", Times, serif' }}>{personal.description}</p>
+              <p className="type-body" style={{ fontFamily: '"Times New Roman", Times, serif' }}>
+                As a <span style={{ color: 'var(--text)', fontWeight: 500 }}>{personal.title}</span>,
+                I am passionate about building web applications across the full stack, from frontend
+                to backend. I believe technology can solve meaningful real-world problems.
               </p>
-            </div>
+            </motion.div>
 
-            {/* Stats */}
-            <div className="grid grid-cols-3 gap-4 pt-4 max-w-lg">
-              {stats.map((stat, index) => (
-                <motion.div
-                  key={index}
-                  className="text-center p-4 rounded-xl bg-gray-50 dark:bg-[#141414] border border-gray-200 dark:border-white/5 hover:border-[#00E5A0]/30 transition-all duration-300"
-                  whileHover={{ scale: 1.05, y: -5 }}
+            {/* Stats — editorial metric row */}
+            <motion.div
+              custom={2}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{
+                display: 'grid',
+                gridTemplateColumns: 'repeat(3, 1fr)',
+                gap: '0',
+                borderTop: '1px solid var(--rule)',
+                borderLeft: '1px solid var(--rule)',
+                marginBottom: '48px',
+              }}
+            >
+              {stats.map((s) => (
+                <div
+                  key={s.label}
+                  style={{
+                    padding: '24px 20px',
+                    borderRight: '1px solid var(--rule)',
+                    borderBottom: '1px solid var(--rule)',
+                    textAlign: 'center',
+                  }}
                 >
-                  <p className="text-2xl md:text-3xl font-bold text-[#00E5A0]">{stat.value}</p>
-                  <p className="text-xs text-gray-500 dark:text-[#B0B0B0] mt-1">{stat.label}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            {/* CTA Buttons */}
-            <div className="flex flex-wrap gap-4 pt-4">
-              <motion.a
-                whileHover={{ scale: 1.02, boxShadow: "0 10px 30px rgba(0, 229, 160, 0.2)" }}
-                whileTap={{ scale: 0.98 }}
-                href={personal.socialLinks.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-gray-900 dark:bg-white text-white dark:text-black font-medium rounded-full hover:bg-[#00E5A0] dark:hover:bg-[#00E5A0] hover:text-black transition-all duration-300"
-              >
-                <Github size={18} />
-                View GitHub
-                <ArrowUpRight size={16} />
-              </motion.a>
-              <motion.a
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                href={`mailto:${personal.email}`}
-                className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-gray-300 dark:border-white/20 text-gray-900 dark:text-white font-medium rounded-full hover:border-[#0044AA] dark:hover:border-white hover:text-[#0044AA] dark:hover:text-white transition-all duration-300"
-              >
-                <Mail size={18} />
-                Contact Me
-              </motion.a>
-            </div>
-          </motion.div>
-
-          {/* Contact Information - Below */}
-          <motion.div variants={itemVariants} className="max-w-2xl">
-            <div className="bg-white dark:bg-[#111111] rounded-2xl p-8 border border-gray-200 dark:border-white/5 hover:border-[#00E5A0]/20 transition-all duration-300 shadow-sm">
-              <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-8">Contact Information</h3>
-
-              <div className="space-y-6">
-                {contactInfo.map((item, index) => (
-                  <motion.div
-                    key={index}
-                    className="flex items-start gap-4"
-                    whileHover={{ x: 5 }}
-                    transition={{ duration: 0.2 }}
+                  <p
+                    style={{
+                      fontFamily: 'var(--font-serif)',
+                      fontSize: 'clamp(28px, 4vw, 42px)',
+                      fontWeight: 300,
+                      letterSpacing: '-0.02em',
+                      color: 'var(--text)',
+                      lineHeight: 1,
+                      marginBottom: '8px',
+                    }}
                   >
-                    <div className="p-3 rounded-xl bg-gray-100 dark:bg-[#1A1A1A] border border-gray-200 dark:border-white/5">
-                      <item.icon size={18} className="text-[#00E5A0]" />
-                    </div>
-                    <div className="flex-1">
-                      <p className="text-xs text-gray-500 dark:text-[#B0B0B0] uppercase tracking-wider mb-1">{item.label}</p>
-                      {item.href ? (
-                        <a
-                          href={item.href}
-                          className="text-gray-600 dark:text-[#D0D0D0] hover:text-[#00E5A0] transition-colors text-sm"
-                        >
-                          {item.value}
-                        </a>
-                      ) : (
-                        <p className="text-gray-600 dark:text-[#D0D0D0] text-sm">{item.value}</p>
-                      )}
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-
-              {/* Divider */}
-              <div className="w-full h-px bg-gray-200 dark:bg-white/5 my-8" />
-
-              {/* Social Links */}
-              <div>
-                <p className="text-xs text-gray-500 dark:text-[#B0B0B0] uppercase tracking-wider mb-4">Social</p>
-                <div className="flex gap-3">
-                  {socialLinks.map((social, index) => (
-                    <motion.a
-                      key={index}
-                      whileHover={{ scale: 1.1, y: -2 }}
-                      whileTap={{ scale: 0.95 }}
-                      href={social.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="p-3 rounded-xl bg-gray-100 dark:bg-[#1A1A1A] border border-gray-200 dark:border-white/5 text-gray-600 dark:text-[#D0D0D0] hover:text-[#00E5A0] hover:border-[#00E5A0]/30 transition-all"
-                      aria-label={social.label}
-                    >
-                      <social.icon size={18} />
-                    </motion.a>
-                  ))}
+                    {s.value}
+                  </p>
+                  <p className="type-caption">{s.label}</p>
                 </div>
-              </div>
-            </div>
-          </motion.div>
-        </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Contact info */}
+            <motion.div
+              custom={3}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ marginBottom: '40px' }}
+            >
+              <p className="type-subhead" style={{ marginBottom: '16px' }}>Contact</p>
+              {contacts.map((c, i) => (
+                <div
+                  key={i}
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    padding: '14px 0',
+                    borderBottom: '1px solid var(--rule)',
+                  }}
+                >
+                  <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>{c.label}</span>
+                  {c.href ? (
+                    <a href={c.href} className="journal-link" style={{ fontSize: '13px', color: 'var(--text-subtle)' }}>
+                      {c.value}
+                    </a>
+                  ) : (
+                    <span style={{ fontSize: '13px', color: 'var(--text-subtle)' }}>{c.value}</span>
+                  )}
+                </div>
+              ))}
+            </motion.div>
+
+            {/* Social links row */}
+            <motion.div
+              custom={4}
+              variants={fadeUp}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              style={{ display: 'flex', gap: '24px' }}
+            >
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="journal-link type-subhead"
+                >
+                  {s.label}
+                </a>
+              ))}
+            </motion.div>
+          </div>
+        </div>
       </div>
     </section>
   );

@@ -1,13 +1,13 @@
 export const portfolioData = {
   personal: {
     name: "Nguyễn Minh Toàn",
-    title: "Back-End Developer",
-    subtitle: "Sinh viên PTIT hệ tài năng",
-    description: "Là sinh viên CNTT tại PTIT, tôi kết hợp chuyên môn kỹ thuật và tư duy giải quyết vấn đề sáng tạo để xây dựng các ứng dụng có ý nghĩa. Hành trình phát triển phần mềm của tôi được thúc đẩy bởi sự tò mò và cam kết học hỏi liên tục. Tôi đang tìm kiếm cơ hội thực tập để áp dụng kiến thức vào các dự án thực tế và phát triển kỹ năng trong môi trường chuyên nghiệp.",
+    title: "Backend Developer",
+    subtitle: "PTIT Honors Program Student",
+    description: "I am an Information Technology student at PTIT, combining technical expertise with creative problem-solving to build meaningful applications. My software development journey is driven by curiosity and a strong commitment to continuous learning. I am currently seeking internship opportunities to apply my knowledge to real-world projects and further develop my skills in a professional environment.",
     email: "toanminh0404@gmail.com",
     phone: "+84 334 470 295",
-    location: "Ha Dong, Ha Noi, Vietnam",
-    avatar: "/avatar.jpg",
+    location: "Ha Dong, Hanoi, Vietnam",
+    avatar: "/avatar1.png",
     socialLinks: {
       github: "https://github.com/MinhToan4",
       linkedin: "https://www.linkedin.com/in/to%C3%A0n-nguy%E1%BB%85n-minh-b9436b219/",
@@ -56,7 +56,7 @@ export const portfolioData = {
     {
       id: 1,
       title: "Eye Clinic Management System",
-      description: "Hệ thống quản lý phòng khám mắt toàn diện được phát triển bằng Java. Bao gồm sơ đồ hoạt động UML cho luồng xác thực, Đăng ký/Đăng nhập với Xác thực JWT, Lớp dữ liệu và Quản lý người dùng kết nối với PostgreSQL qua JDBC, cùng với máy chủ HTTP tùy chỉnh và hệ thống định tuyến.",
+      description: "A comprehensive eye clinic management system developed in Java. It includes UML activity diagrams for the authentication flow, JWT-based registration and login, data access and user management layers connected to PostgreSQL through JDBC, together with a custom HTTP server and routing system.",
       image: "/images/project1.jpg",
       technologies: ["Java 21", "PostgreSQL", "Supabase", "Maven", "JWT", "Render"],
       liveUrl: "https://github.com/Sagitoaz/BTL_OOP",
@@ -66,7 +66,7 @@ export const portfolioData = {
     {
       id: 2,
       title: "GestureAI Game Hub",
-      description: "Trò chơi sáng tạo được điều khiển bằng cử chỉ tay sử dụng MediaPipe và OpenCV. Tích hợp theo dõi tay cho đầu vào cử chỉ, quản lý trạng thái trò chơi, phát hiện va chạm, và duy trì hiệu suất mượt mà 60 FPS với xử lý thời gian thực.",
+      description: "An interactive gesture-controlled game built with MediaPipe and OpenCV. It integrates hand tracking for gesture input, game state management, collision detection, and smooth real-time performance at 60 FPS.",
       image: "/images/project3.jpg",
       technologies: ["Python", "MediaPipe", "OpenCV", "Pygame", "Hand Tracking"],
       liveUrl: "https://github.com/MinhToan4/BTL_PYTHON",
@@ -76,7 +76,7 @@ export const portfolioData = {
     {
       id: 3,
       title: "2D Platformer Game",
-      description: "Trò chơi platformer 2D được phát triển bằng C++ sử dụng SFML. Bao gồm chuyển động người chơi với trọng lực và nhảy, phát hiện va chạm, AI kẻ thù với mô hình tuần tra và tấn công, cùng với hệ thống lưu/tải cấp độ trò chơi bằng TinyXML.",
+      description: "A 2D platformer developed in C++ with SFML. It features player movement with gravity and jumping, collision detection, enemy AI with patrol and attack behaviors, and a TinyXML-based level save and load system.",
       image: "/images/project2.jpg",
       technologies: ["C++17", "SFML", "TinyXML", "Game Development"],
       liveUrl: "https://github.com/MinhToan4/Game-1",
@@ -88,29 +88,29 @@ export const portfolioData = {
   experience: [
     {
       id: 1,
-      title: "Sinh viên Công nghệ Thông tin",
-      company: "Học viện Công nghệ Bưu chính Viễn thông",
-      period: "2023 - Hiện tại",
-      description: "Sinh viên lớp tài năng, tích cực học tập và nghiên cứu các công nghệ mới.",
+      title: "Information Technology Student",
+      company: "Posts and Telecommunications Institute of Technology (PTIT)",
+      period: "2023 - Present",
+      description: "Honors Program student actively engaged in academic study and the exploration of emerging technologies.",
       achievements: [
-        "Học bổng đầu vào năm 2023",
-        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ I (2023-2024)",
-        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ II (2023-2024)",
-        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ I (2024-2025)",
-        "Học bổng Khuyến khích học tập loại Xuất sắc - Học kỳ II (2024-2025)"
+        "Entrance Scholarship (2023)",
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester I (2023-2024)",
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester II (2023-2024)",
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester I (2024-2025)",
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester II (2024-2025)"
       ]
     },
     {
       id: 2,
-      title: "Thành tích Học tập",
-      company: "Học viện Công nghệ Bưu chính Viễn thông",
-      period: "2023 - Hiện tại",
-      description: "Duy trì thành tích học tập xuất sắc với GPA cao.",
+      title: "Academic Excellence",
+      company: "Posts and Telecommunications Institute of Technology (PTIT)",
+      period: "2023 - Present",
+      description: "Maintained outstanding academic performance with a consistently high GPA.",
       achievements: [
-        "Duy trì GPA: 3.82/4.0 (Tích lũy)",
-        "GPA học kỳ gần nhất: 3.93/4.0",
-        "Sinh viên lớp tài năng Công nghệ Thông tin",
-        "Hoàn thành nhiều dự án thực tế với Java, Python, C++"
+        "Cumulative GPA: 3.82/4.0",
+        "Most recent semester GPA: 3.93/4.0",
+        "Information Technology Honors Program student",
+        "Completed multiple applied projects in Java, Python, and C++"
       ]
     }
   ],
@@ -118,20 +118,19 @@ export const portfolioData = {
   education: [
     {
       id: 1,
-      degree: "Tốt nghiệp Trung học phổ thông",
-      school: "Trường THPT Yên Mỹ",
+      degree: "High School Diploma",
+      school: "Yen My High School",
       period: "2020 - 2023",
-      gpa: "Học sinh giỏi",
-      description: "Xếp hạng trong top học sinh có điểm thi tốt nghiệp THPT cao nhất năm 2023-2024 của trường THPT Yên Mỹ và nhận giấy khen từ Hội Khuyến học: Đạt thành tích xuất sắc trong kỳ tuyển sinh Đại học năm 2023"
+      gpa: "Excellent Student",
+      description: "Ranked among the students with the highest national high school graduation examination scores at Yen My High School in the 2023 academic cycle and received a certificate of merit from the Study Promotion Association for outstanding performance in the 2023 university entrance examination."
     },
-
     {
       id: 2,
-      degree: "Sinh viên PTIT",
-      school: "Học viện Công nghệ Bưu chính Viễn thông",
-      period: "2023 - Hiện tại",
+      degree: "Bachelor's Student in Information Technology",
+      school: "Posts and Telecommunications Institute of Technology (PTIT)",
+      period: "2023 - Present",
       gpa: "3.82/4.0",
-      description: "Sinh viên Công nghệ thông tin."
+      description: "Undergraduate student in Information Technology."
     }
   ],
 
@@ -182,34 +181,34 @@ export const portfolioData = {
 
   academicResults: {
     generalSubjects: [
-      { name: "Đại số", numericGrade: 9.7, letterGrade: "A+" },
-      { name: "Giải tích 1", numericGrade: 9.4, letterGrade: "A+" },
-      { name: "Giải tích 2", numericGrade: 8.9, letterGrade: "A" },
-      { name: "Vật lý ứng dụng", numericGrade: 9.9, letterGrade: "A+" },
-      { name: "Xác suất thống kê", numericGrade: 9.7, letterGrade: "A+" }
+      { name: "Algebra", numericGrade: 9.7, letterGrade: "A+" },
+      { name: "Calculus I", numericGrade: 9.4, letterGrade: "A+" },
+      { name: "Calculus II", numericGrade: 8.9, letterGrade: "A" },
+      { name: "Applied Physics", numericGrade: 9.9, letterGrade: "A+" },
+      { name: "Probability and Statistics", numericGrade: 9.7, letterGrade: "A+" }
     ],
     programmingSubjects: [
-      { name: "Toán rời rạc 1", numericGrade: 9.2, letterGrade: "A+" },
-      { name: "Toán rời rạc 2", numericGrade: 9.6, letterGrade: "A+" },
-      { name: "Ngôn ngữ lập trình C++", numericGrade: 8.0, letterGrade: "B+" },
-      { name: "Cấu trúc dữ liệu và giải thuật", numericGrade: 9.8, letterGrade: "A+" },
-      { name: "Lập trình hướng đối tượng", numericGrade: 9.6, letterGrade: "A+" },
-      { name: "Lập trình với Python", numericGrade: 9.9, letterGrade: "A+" }
+      { name: "Discrete Mathematics I", numericGrade: 9.2, letterGrade: "A+" },
+      { name: "Discrete Mathematics II", numericGrade: 9.6, letterGrade: "A+" },
+      { name: "C++ Programming", numericGrade: 8.0, letterGrade: "B+" },
+      { name: "Data Structures and Algorithms", numericGrade: 9.8, letterGrade: "A+" },
+      { name: "Object-Oriented Programming", numericGrade: 9.6, letterGrade: "A+" },
+      { name: "Python Programming", numericGrade: 9.9, letterGrade: "A+" }
     ]
   },
 
   activities: [
     {
       id: 1,
-      title: "Cuộc thi ICPC PTIT 2025",
+      title: "ICPC PTIT 2025 Programming Contest",
       type: "competition",
-      description: "Tham gia cuộc thi lập trình ICPC do PTIT tổ chức"
+      description: "Participated in the ICPC programming contest organized by PTIT."
     },
     {
       id: 2,
-      title: "VPBANK CLOUD QUEST 2025",
+      title: "VPBank Cloud Quest 2025",
       type: "competition",
-      description: "Tham gia cuộc thi Cloud Quest do VPBank tổ chức"
+      description: "Participated in the Cloud Quest competition organized by VPBank."
     },
     {
       id: 8,
@@ -225,33 +224,33 @@ export const portfolioData = {
     },
     {
       id: 3,
-      title: "Lab Ươm Mầm Tài Năng CNTT - PTIT NITS",
+      title: "PTIT NITS IT Talent Incubation Lab",
       type: "organization",
-      description: "Thành viên của Lab Ươm Mầm Tài Năng CNTT"
+      description: "Member of the PTIT NITS IT Talent Incubation Lab."
     },
     {
       id: 4,
-      title: "Hiến máu tình nguyện",
+      title: "Volunteer Blood Donation",
       type: "volunteer",
-      description: "Cơ sở tiếp nhận: Bệnh viện TWQĐ 108"
+      description: "Receiving institution: Central Military Hospital 108."
     },
     {
       id: 5,
       title: "Office Tour - WorldQuant Hanoi",
       type: "event",
-      description: "Tham gia office tour tại WorldQuant Hanoi - công ty quản lý quỹ định lượng hàng đầu thế giới"
+      description: "Participated in an office tour at WorldQuant Hanoi, a leading global quantitative asset management firm."
     },
     {
       id: 6,
       title: "Office Tour - Panasonic R&D Center Vietnam",
       type: "event",
-      description: "Tham gia office tour tại Panasonic R&D Center Vietnam - trung tâm nghiên cứu và phát triển của tập đoàn Panasonic"
+      description: "Participated in an office tour at Panasonic R&D Center Vietnam, Panasonic's research and development center in Vietnam."
     },
     {
       id: 7,
       title: "Office Tour - NAB Vietnam",
       type: "event",
-      description: "Tham gia office tour tại NAB Vietnam - National Australia Bank"
+      description: "Participated in an office tour at NAB Vietnam, the local technology hub of National Australia Bank."
     }
   ]
 };
