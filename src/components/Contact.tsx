@@ -53,7 +53,7 @@ export default function Contact() {
             <span className="type-subhead">Get In Touch</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <h2 className="type-display">Contact</h2>
+            <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Contact</h2>
             <p
               style={{
                 fontFamily: 'var(--font-serif)',

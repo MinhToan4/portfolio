@@ -48,10 +48,7 @@ export default function Projects() {
             <span className="type-subhead">Selected Work</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <h2 className="type-display">Projects</h2>
-            <p className="type-body" style={{ maxWidth: '100%', minWidth: '280px' }}>
-              A curated selection of projects demonstrating craft and technical depth.
-            </p>
+            <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Projects</h2>
           </div>
         </motion.div>
 

@@ -46,10 +46,11 @@ export default function AcademicResults() {
       <p
         style={{
           fontFamily: 'var(--font-serif)',
-          fontSize: 'clamp(14px, 2vw, 18px)',
-          fontWeight: 600,
+          fontSize: 'clamp(18px, 2.2vw, 24px)',
+          fontWeight: 400,
           color: 'var(--text)',
-          letterSpacing: '-0.005em',
+          letterSpacing: '0.01em',
+          lineHeight: 1.2,
         }}
       >
         {subject.name}
@@ -58,8 +59,8 @@ export default function AcademicResults() {
         <span
           style={{
             fontFamily: 'var(--font-serif)',
-            fontSize: 'clamp(20px, 2.5vw, 28px)',
-            fontWeight: 300,
+            fontSize: 'clamp(22px, 2.5vw, 28px)',
+            fontWeight: 400,
             color: 'var(--text)',
             letterSpacing: '-0.02em',
           }}
@@ -101,7 +102,7 @@ export default function AcademicResults() {
             <span className="type-subhead">Education</span>
           </div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <h2 className="type-display">Academic</h2>
+            <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Academic</h2>
             {/* Big GPA stat */}
             <div style={{ textAlign: 'right' }}>
               <p
@@ -109,7 +110,7 @@ export default function AcademicResults() {
                   fontFamily: 'var(--font-serif)',
                   fontStyle: 'italic',
                   fontSize: 'clamp(56px, 8vw, 100px)',
-                  fontWeight: 300,
+                  fontWeight: 400,
                   color: 'var(--text)',
                   letterSpacing: '-0.03em',
                   lineHeight: 0.9,

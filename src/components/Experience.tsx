@@ -34,7 +34,7 @@ export default function Experience() {
             <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>03</span>
             <span className="type-subhead">Background</span>
           </div>
-          <h2 className="type-display">Experience</h2>
+          <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Experience</h2>
         </motion.div>
 
         {/* Two-column: Work + Education */}

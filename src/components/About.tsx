@@ -56,7 +56,7 @@ export default function About() {
             <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>01</span>
             <span className="type-subhead">About</span>
           </div>
-          <h2 className="type-display">About<em> Me</em></h2>
+          <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>About<em> Me</em></h2>
         </motion.div>
 
         {/* Two-column layout */}

@@ -32,8 +32,7 @@
   --rule-heavy: var(--journal-parchment);
 
   /* Typography Scale */
-  --font-serif: 'Times New Roman', Times, serif;
-  --font-sans: 'Times New Roman', Times, serif;
+  /* --font-serif and --font-sans are provided by next/font in layout.tsx */
 
   /* Spacing */
   --section-pad: clamp(80px, 10vw, 160px);

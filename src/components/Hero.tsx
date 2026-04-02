@@ -260,33 +260,7 @@ export default function Hero() {
           </motion.div>
         </div>
 
-        {/* Scroll indicator */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.5 }}
-          style={{ display: 'flex', alignItems: 'center', gap: '16px', paddingBottom: '32px' }}
-        >
-          <motion.div
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 2.5, repeat: Infinity, ease: 'easeInOut' }}
-          >
-            <button
-              onClick={() => scrollToSection('about')}
-              style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-              }}
-            >
-              <span className="type-caption">Scroll</span>
-              <div style={{ width: '40px', height: '1px', background: 'var(--rule-heavy)' }} />
-            </button>
-          </motion.div>
-        </motion.div>
+
       </motion.div>
 
       {/* Inline responsive fix */}

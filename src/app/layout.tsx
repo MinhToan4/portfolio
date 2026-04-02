@@ -1,5 +1,23 @@
 import type { Metadata } from "next";
+import { Inter, Instrument_Serif, Dancing_Script } from "next/font/google";
 import "./globals.css";
+
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-sans",
+});
+
+const instrumentSerif = Instrument_Serif({
+  weight: ["400"],
+  style: ["normal", "italic"],
+  subsets: ["latin"],
+  variable: "--font-serif",
+});
+
+const dancingScript = Dancing_Script({
+  subsets: ["latin"],
+  variable: "--font-script",
+});
 
 export const metadata: Metadata = {
   title: "NMT - Portfolio",
@@ -29,7 +47,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth" suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} ${dancingScript.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="antialiased">
         {children}
       </body>

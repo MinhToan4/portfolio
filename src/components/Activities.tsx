@@ -58,7 +58,7 @@ export default function Activities() {
                         <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>05</span>
                         <span className="type-subhead">Extracurriculars</span>
                     </div>
-                    <h2 className="type-display">Activities</h2>
+                    <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Activities</h2>
                 </motion.div>
 
                 {/* Activity groups */}
@@ -117,7 +117,7 @@ export default function Activities() {
                                         <div style={{ paddingTop: '4px' }}>
                                             <span
                                                 style={{
-                                                    fontFamily: 'var(--font-serif)',
+                                                    fontFamily: 'var(--font-sans)',
                                                     fontSize: '14px',
                                                     color: 'var(--text-ghost)',
                                                 }}
@@ -141,10 +141,10 @@ export default function Activities() {
                                                 <h4
                                                     style={{
                                                         fontFamily: 'var(--font-serif)',
-                                                        fontSize: 'clamp(15px, 2.2vw, 22px)',
-                                                        fontWeight: 700,
+                                                        fontSize: 'clamp(18px, 2.5vw, 26px)',
+                                                        fontWeight: 600,
                                                         color: 'var(--text)',
-                                                        letterSpacing: '-0.005em',
+                                                        letterSpacing: '0.01em',
                                                         lineHeight: 1.25,
                                                         flex: 1,
                                                         minWidth: '200px',
