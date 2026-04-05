@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+
 import { portfolioData } from '@/data/portfolio';
 
 export default function Activities() {
@@ -14,7 +14,7 @@ export default function Activities() {
         { key: 'volunteer', label: 'Volunteering' },
     ];
 
-    const renderLeftAligned = (activity: any, index: number, groupLabel: string) => (
+    const renderLeftAligned = (activity: { id: string | number, title: string, period?: string, description?: string, institution?: string, organization?: string, highlights?: string[] }, index: number, groupLabel: string) => (
         <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300">
             <div className="col-span-12 md:col-span-8">
                 <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block uppercase">
@@ -48,7 +48,7 @@ export default function Activities() {
         </article>
     );
 
-    const renderCenterAligned = (activity: any, index: number, groupLabel: string) => (
+    const renderCenterAligned = (activity: { id: string | number, title: string, period?: string, description?: string, institution?: string, organization?: string, highlights?: string[] }, index: number, groupLabel: string) => (
         <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300 md:w-5/6 mx-auto">
             <div className="col-span-12 md:col-start-3 md:col-span-8 text-center">
                 <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block uppercase">
@@ -76,7 +76,7 @@ export default function Activities() {
         </article>
     );
 
-    const renderRightAligned = (activity: any, index: number, groupLabel: string) => (
+    const renderRightAligned = (activity: { id: string | number, title: string, period?: string, description?: string, institution?: string, organization?: string, highlights?: string[] }, index: number, groupLabel: string) => (
         <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300">
             <div className="hidden md:flex col-span-4 items-center">
                 <div className="font-label text-[10px] tracking-[0.3em] uppercase text-outline">

@@ -31,7 +31,7 @@ export default function Contact() {
                 <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Dialogue</span>
                 <h2 className="font-headline text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-16 max-w-5xl uppercase">
                     Good communication is not <span className="text-outline-brutal">invisible</span> <br/>
-                    <span className="text-3xl md:text-5xl font-bold italic normal-case tracking-normal text-on-surface-variant">Let's arrange a proper structural exchange.</span>
+                    <span className="text-3xl md:text-5xl font-bold italic normal-case tracking-normal text-on-surface-variant">Let&apos;s arrange a proper structural exchange.</span>
                 </h2>
             </div>
         </div>
