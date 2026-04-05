@@ -5,8 +5,7 @@ import { portfolioData } from '@/data/portfolio';
 import Image from 'next/image';
 
 export default function About() {
-  const { personal, education } = portfolioData;
-  const recentEdu = education[education.length - 1];
+  const { personal } = portfolioData;
 
   return (
     <section id="about" className="px-8 max-w-screen-2xl mx-auto my-32">
@@ -21,7 +20,7 @@ export default function About() {
             transition={{ duration: 0.8 }}
           >
             <h1 className="font-headline text-[clamp(2.5rem,6vw,5rem)] leading-[1.1] ink-tension font-black italic text-on-surface uppercase brutalist-border p-8 brutalist-shadow-sm">
-              "Technology should be rigorous in structure, <br/> yet <span className="text-outline-brutal text-transparent">invisible</span> in experience."
+              &quot;Technology should be rigorous in structure, <br/> yet <span className="text-outline-brutal text-transparent">invisible</span> in experience.&quot;
             </h1>
           </motion.div>
           <motion.div 
@@ -47,7 +46,7 @@ export default function About() {
           </div>
           <div className="md:col-span-8">
             <h2 className="font-headline text-4xl md:text-5xl mb-2 font-black uppercase tracking-tighter">{personal.name}</h2>
-            <h3 className="font-headline text-2xl mb-8 italic text-on-surface-variant">The Engineer's Mindset</h3>
+            <h3 className="font-headline text-2xl mb-8 italic text-on-surface-variant">The Engineer&apos;s Mindset</h3>
             <div className="flex flex-col gap-8 md:flex-row">
                 <div className="w-full md:w-1/3 aspect-[3/4] relative brutalist-shadow brutalist-border">
                     <Image src={personal.avatar} alt={personal.name} fill className="object-cover" />

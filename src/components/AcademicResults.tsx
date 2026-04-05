@@ -1,6 +1,6 @@
 'use client';
 
-import { motion } from 'framer-motion';
+
 import { portfolioData } from '@/data/portfolio';
 
 export default function AcademicResults() {
