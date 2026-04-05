@@ -195,7 +195,7 @@ export default function Hero() {
               <div>
                 <p
                   style={{
-                    fontFamily: 'var(--font-serif)',
+                    fontFamily: '"Times New Roman", Times, serif',
                     fontSize: 'clamp(16px, 2vw, 22px)',
                     fontWeight: 400,
                     color: 'var(--text)',

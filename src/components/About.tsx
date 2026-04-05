@@ -119,7 +119,7 @@ export default function About() {
               <p className="type-subhead" style={{ marginBottom: '8px' }}>The Engineer</p>
               <h3
                 style={{
-                  fontFamily: 'var(--font-serif)',
+                  fontFamily: '"Times New Roman", Times, serif',
                   fontSize: 'clamp(24px, 3.5vw, 36px)',
                   fontWeight: 400,
                   letterSpacing: '-0.01em',
