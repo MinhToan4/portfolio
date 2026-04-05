@@ -1,22 +1,16 @@
 import type { Metadata } from "next";
-import { Inter, Instrument_Serif, Dancing_Script } from "next/font/google";
+import { Inter, Noto_Serif } from "next/font/google";
 import "./globals.css";
 
 const inter = Inter({
   subsets: ["latin"],
-  variable: "--font-sans",
+  variable: "--font-inter",
 });
 
-const instrumentSerif = Instrument_Serif({
-  weight: ["400"],
+const notoSerif = Noto_Serif({
+  subsets: ["latin"],
   style: ["normal", "italic"],
-  subsets: ["latin"],
-  variable: "--font-serif",
-});
-
-const dancingScript = Dancing_Script({
-  subsets: ["latin"],
-  variable: "--font-script",
+  variable: "--font-noto-serif",
 });
 
 export const metadata: Metadata = {
@@ -47,8 +41,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${instrumentSerif.variable} ${dancingScript.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="antialiased">
+    <html lang="en" className={`${inter.variable} ${notoSerif.variable} scroll-smooth`} suppressHydrationWarning>
+      <body className="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary antialiased">
         {children}
       </body>
     </html>

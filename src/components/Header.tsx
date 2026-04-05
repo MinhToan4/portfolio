@@ -44,12 +44,12 @@ export default function Header() {
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
         scrolled
-          ? 'border-b bg-[var(--bg)]/95 backdrop-blur-sm'
+          ? 'border-b bg-background/95 backdrop-blur-sm'
           : 'bg-transparent border-b border-transparent'
       }`}
-      style={{ borderColor: scrolled ? 'var(--rule)' : 'transparent' }}
+      style={{ borderColor: scrolled ? 'var(--color-outline-variant)' : 'transparent' }}
     >
-      <div className="journal-container">
+      <div className="px-8 max-w-screen-2xl mx-auto w-full">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '18px', position: 'relative' }}>
 
           {/* Logo / Masthead wordmark */}
@@ -62,7 +62,7 @@ export default function Header() {
                 fontWeight: 300,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
-                color: 'var(--text)',
+                color: 'var(--color-on-surface)',
                 background: 'none',
                 border: 'none',
                 cursor: 'pointer',
@@ -73,21 +73,20 @@ export default function Header() {
           </div>
 
           {/* Desktop Nav */}
-          <nav style={{ display: 'flex', alignItems: 'center', gap: '32px', position: 'absolute', left: '50%', transform: 'translateX(-50%)' }} className="hidden md:flex">
+          <nav className="hidden xl:flex items-center gap-6 2xl:gap-8 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNav(item.href)}
-                className="type-caption"
+                className="type-caption font-label text-xs uppercase tracking-[0.15em] font-medium"
                 style={{
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
-                  color: activeSection === item.href ? 'var(--text)' : 'var(--text-muted)',
-                  letterSpacing: '0.15em',
+                  color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
                   transition: 'color 0.25s ease',
                   paddingBottom: '2px',
-                  borderBottom: activeSection === item.href ? '1px solid var(--text)' : '1px solid transparent',
+                  borderBottom: activeSection === item.href ? '1px solid var(--color-on-surface)' : '1px solid transparent',
                 }}
               >
                 {item.name}
@@ -98,17 +97,10 @@ export default function Header() {
           {/* Mobile toggle */}
           <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <button
-              className="md:hidden"
+              className="xl:hidden py-2 px-4 border border-outline-variant rounded-full font-label text-[10px] tracking-[0.2em] uppercase hover:bg-surface-container active:scale-95 transition-all"
               onClick={() => setIsOpen(!isOpen)}
               style={{
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-                fontFamily: 'var(--font-sans)',
-                fontSize: '10px',
-                letterSpacing: '0.2em',
-                textTransform: 'uppercase',
-                color: 'var(--text-muted)',
+                color: 'var(--color-on-surface)',
               }}
               aria-label="Toggle menu"
             >
@@ -123,19 +115,23 @@ export default function Header() {
         initial={false}
         animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        style={{ overflow: 'hidden', background: 'var(--bg)', borderTop: isOpen ? '1px solid var(--rule)' : 'none' }}
+        style={{ overflow: 'hidden', background: 'var(--color-background)', borderTop: isOpen ? '1px solid var(--color-outline-variant)' : 'none' }}
       >
-        <div className="journal-container" style={{ paddingBlock: '32px' }}>
+        <div className="px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '32px' }}>
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -10 }}
               transition={{ delay: i * 0.06 }}
-              style={{ borderBottom: '1px solid var(--rule)', paddingBlock: '16px' }}
+              style={{ borderBottom: '1px solid var(--color-outline-variant)', paddingBlock: '16px' }}
             >
               <button
-                onClick={() => handleNav(item.href)}
+                onClick={() => {
+                  setIsOpen(false);
+                  setTimeout(() => scrollToSection(item.href), 100);
+                }}
+                className="w-full text-left"
                 style={{
                   background: 'none',
                   border: 'none',
@@ -143,7 +139,7 @@ export default function Header() {
                   fontFamily: 'var(--font-serif)',
                   fontSize: '28px',
                   fontWeight: 300,
-                  color: activeSection === item.href ? 'var(--text)' : 'var(--text-muted)',
+                  color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
                   letterSpacing: '-0.01em',
                 }}
               >

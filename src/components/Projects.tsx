@@ -3,202 +3,132 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  }),
-};
-
 export default function Projects() {
-  const { projects } = portfolioData;
+  const { projects, personal } = portfolioData;
 
-  const getMainTechLogo = (tech: string): string => {
-    const logos: Record<string, string> = {
-      'Java': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-      'Java 21': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg',
-      'Python': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg',
-      'C++': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-      'C++17': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg',
-      'PostgreSQL': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg',
-      'MediaPipe': 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/tensorflow/tensorflow-original.svg',
-    };
-    return logos[tech] || 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/devicon/devicon-original.svg';
-  };
+  const renderLeftAligned = (project: any, index: number) => (
+    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-8 transition-transform duration-300">
+      <div className="col-span-12 md:col-span-7">
+        <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block">
+          0{index + 1} / {project.technologies[0]}
+        </span>
+        <h2 className="font-headline text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight group-hover:-translate-y-2 transition-transform duration-300 origin-left leading-[0.9] uppercase group-hover:text-on-surface">
+          <span className="text-on-surface">{project.title.split(' ').slice(0, Math.ceil(project.title.split(' ').length / 2)).join(' ')}</span> <br/> 
+          <span className="italic font-normal text-outline-brutal text-transparent group-hover:text-on-surface">{project.title.split(' ').slice(Math.ceil(project.title.split(' ').length / 2)).join(' ')}</span>
+        </h2>
+        <div className="mt-8 max-w-xs">
+          <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+        <div className="mt-8 flex gap-4">
+          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">GitHub</a>}
+          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">Live</a>}
+        </div>
+      </div>
+      <div className="hidden md:flex col-span-5 items-center justify-end">
+        <div className="w-px h-32 bg-outline-variant/30"></div>
+        <div className="ml-12 font-label text-[10px] tracking-[0.3em] uppercase text-outline [writing-mode:vertical-lr]">
+          {project.technologies.slice(0, 3).join(' • ')}
+        </div>
+      </div>
+    </article>
+  );
+
+  const renderCenterAligned = (project: any, index: number) => (
+    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-8 transition-transform duration-300">
+      <div className="col-span-12 md:col-start-3 md:col-span-8 text-center">
+        <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block">
+          0{index + 1} / {project.technologies[0]}
+        </span>
+        <h2 className="font-headline text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight group-hover:-translate-y-2 transition-transform duration-300 leading-[0.9] uppercase group-hover:text-on-surface">
+          <span className="text-on-surface">{project.title.split(' ').slice(0, Math.ceil(project.title.split(' ').length / 2)).join(' ')}</span> <br/> 
+          <span className="italic font-normal text-outline-brutal text-transparent group-hover:text-on-surface">{project.title.split(' ').slice(Math.ceil(project.title.split(' ').length / 2)).join(' ')}</span>
+        </h2>
+        <div className="mt-8 max-w-sm mx-auto">
+          <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+        <div className="mt-8 flex gap-4 justify-center">
+          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">GitHub</a>}
+          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">Live</a>}
+        </div>
+      </div>
+    </article>
+  );
+
+  const renderRightAligned = (project: any, index: number) => (
+    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-8 transition-transform duration-300">
+      <div className="hidden md:flex col-span-4 items-center">
+        <div className="font-label text-[10px] tracking-[0.3em] uppercase text-outline">
+          {project.technologies.slice(0, 3).join(' / ')}
+        </div>
+        <div className="ml-8 w-24 h-px bg-primary"></div>
+      </div>
+      <div className="col-span-12 md:col-span-8 text-right flex flex-col items-end">
+        <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block">
+          0{index + 1} / {project.technologies[0]}
+        </span>
+        <h2 className="font-headline text-[clamp(2.5rem,6vw,5.5rem)] font-black tracking-tight group-hover:-translate-y-2 transition-transform duration-300 origin-right leading-[0.9] uppercase group-hover:text-on-surface">
+          <span className="text-on-surface">{project.title.split(' ').slice(0, Math.ceil(project.title.split(' ').length / 2)).join(' ')}</span> <br/> 
+          <span className="italic font-normal text-outline-brutal text-transparent group-hover:text-on-surface">{project.title.split(' ').slice(Math.ceil(project.title.split(' ').length / 2)).join(' ')}</span>
+        </h2>
+        <div className="mt-8 max-w-xs ml-auto">
+          <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+            {project.description}
+          </p>
+        </div>
+        <div className="mt-8 flex gap-4 justify-end">
+          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">GitHub</a>}
+          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">Live</a>}
+        </div>
+      </div>
+    </article>
+  );
 
   return (
-    <section
-      id="projects"
-      style={{ background: 'var(--bg)', padding: 'var(--section-pad) 0' }}
-    >
-      <div className="journal-container">
-
-        {/* Section header */}
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
+    <section id="projects" className="px-8 max-w-screen-2xl mx-auto my-32">
+      <header className="mb-32 grid grid-cols-12 gap-y-12">
+        <motion.div 
+          className="col-span-12 md:col-span-8"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <div className="section-eyebrow">
-            <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>02</span>
-            <span className="type-subhead">Selected Work</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Projects</h2>
-          </div>
+          <h1 className="font-headline font-black text-[clamp(3.2rem,11vw,9rem)] tracking-tighter text-on-surface leading-[0.85] mb-12">
+            SELECTED <br/> <span className="text-outline-brutal">CHRONOLOGY</span>
+          </h1>
         </motion.div>
+        <motion.div 
+          className="col-span-12 md:col-start-9 md:col-span-4 self-end md:translate-y-8"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <p className="font-body text-xs uppercase tracking-[0.2em] text-outline leading-relaxed border-l-2 border-primary pl-6">
+            A curated selection of technical developments and structural systems built. Focused on performance, architecture, and innovation.
+          </p>
+        </motion.div>
+      </header>
 
-        {/* Projects — editorial list */}
-        <div>
-          {projects.map((project, i) => (
-            <motion.article
-              key={project.id}
-              custom={i}
-              variants={fadeUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, margin: '-60px' }}
-              style={{
-                borderBottom: '1px solid var(--rule)',
-                paddingBlock: 'clamp(32px, 5vw, 56px)',
-              }}
-            >
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'clamp(40px, 12vw, 80px) 1fr auto',
-                  gap: 'clamp(16px, 3vw, 48px)',
-                  alignItems: 'start',
-                }}
-                className="project-row"
-              >
-                {/* Index */}
-                <div style={{ paddingTop: '4px' }}>
-                  <span
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontStyle: 'italic',
-                      fontSize: 'clamp(28px, 4vw, 48px)',
-                      fontWeight: 300,
-                      color: 'var(--text-ghost)',
-                      lineHeight: 1,
-                      letterSpacing: '-0.02em',
-                    }}
-                  >
-                    {String(i + 1).padStart(2, '0')}
-                  </span>
-                </div>
+      <div className="space-y-48">
+        {projects.map((project, index) => {
+          if (index % 3 === 0) return renderLeftAligned(project, index);
+          if (index % 3 === 1) return renderCenterAligned(project, index);
+          return renderRightAligned(project, index);
+        })}
+      </div>
 
-                {/* Content */}
-                <div>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '12px', flexWrap: 'wrap' }}>
-                    {project.technologies.slice(0, 3).map((tech) => (
-                      <span key={tech} className="journal-tag">{tech}</span>
-                    ))}
-                    {project.featured && (
-                      <span
-                        style={{
-                          fontFamily: 'var(--font-serif)',
-                          fontSize: '11px',
-                          fontStyle: 'italic',
-                          color: 'var(--text-muted)',
-                          letterSpacing: '0.05em',
-                        }}
-                      >
-                        — featured
-                      </span>
-                    )}
-                  </div>
-
-                  <h3
-                    style={{
-                      fontFamily: 'var(--font-serif)',
-                      fontSize: 'clamp(22px, 3.5vw, 40px)',
-                      fontWeight: 400,
-                      letterSpacing: '-0.01em',
-                      color: 'var(--text)',
-                      marginBottom: '12px',
-                      lineHeight: 1.15,
-                    }}
-                  >
-                    {project.title}
-                  </h3>
-
-                  <p className="type-body" style={{ maxWidth: '560px' }}>{project.description}</p>
-
-                  {/* Additional tech */}
-                  {project.technologies.length > 3 && (
-                    <div style={{ display: 'flex', gap: '6px', flexWrap: 'wrap', marginTop: '16px' }}>
-                      {project.technologies.slice(3).map((t) => (
-                        <span key={t} className="type-caption" style={{ color: 'var(--text-ghost)' }}>
-                          {t}
-                        </span>
-                      ))}
-                    </div>
-                  )}
-                </div>
-
-                {/* Tech logo + links */}
-                <div
-                  style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    alignItems: 'flex-end',
-                    gap: '20px',
-                    minWidth: '48px',
-                  }}
-                >
-                  <div
-                    style={{
-                      width: 'clamp(40px, 8vw, 56px)',
-                      height: 'clamp(40px, 8vw, 56px)',
-                      border: '1px solid var(--rule)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      padding: '12px',
-                      background: 'var(--bg-offset)',
-                      flexShrink: 0,
-                    }}
-                  >
-                    <img
-                      src={getMainTechLogo(project.technologies[0])}
-                      alt={project.technologies[0]}
-                      style={{ width: '100%', height: '100%', objectFit: 'contain', filter: 'grayscale(60%)' }}
-                    />
-                  </div>
-
-                  <div style={{ display: 'flex', flexDirection: 'column', gap: '8px', alignItems: 'flex-end' }}>
-                    {project.githubUrl && (
-                      <a
-                        href={project.githubUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="journal-link type-caption"
-                      >
-                        GitHub ↗
-                      </a>
-                    )}
-                    {project.liveUrl && (
-                      <a
-                        href={project.liveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="journal-link type-caption"
-                      >
-                        Live ↗
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-            </motion.article>
-          ))}
+      <div className="mt-64 text-center">
+        <div className="inline-block relative">
+          <a href={personal.socialLinks.github} target="_blank" rel="noopener noreferrer" className="inline-block px-12 py-6 bg-on-surface text-background font-label text-sm font-bold tracking-widest uppercase brutalist-shadow active:translate-y-1 hover:bg-primary transition-colors">
+            View Full Work Archive
+          </a>
         </div>
+        <p className="mt-8 font-body text-[10px] tracking-[0.4em] uppercase text-outline">Index of complete repositories</p>
       </div>
     </section>
   );

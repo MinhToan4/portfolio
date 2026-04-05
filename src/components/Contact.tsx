@@ -4,15 +4,6 @@ import { motion } from 'framer-motion';
 import { useState } from 'react';
 import { portfolioData } from '@/data/portfolio';
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.6, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-  }),
-};
-
 export default function Contact() {
   const { personal } = portfolioData;
   const [formState, setFormState] = useState({ name: '', email: '', subject: '', message: '' });
@@ -34,291 +25,109 @@ export default function Contact() {
   };
 
   return (
-    <section
-      id="contact"
-      style={{ background: 'var(--bg)', padding: 'var(--section-pad) 0' }}
-    >
-      <div className="journal-container">
-
-        {/* Section header */}
-        <motion.div
-          className="section-header"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          <div className="section-eyebrow">
-            <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>07</span>
-            <span className="type-subhead">Get In Touch</span>
-          </div>
-          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '16px' }}>
-            <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Contact</h2>
-            <p
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontStyle: 'italic',
-                fontSize: 'clamp(16px, 2vw, 22px)',
-                fontWeight: 300,
-                color: 'var(--text-subtle)',
-                maxWidth: '320px',
-                lineHeight: 1.45,
-              }}
-            >
-              Do you have a project in mind? Let&apos;s build something exceptional together.
-            </p>
-          </div>
-        </motion.div>
-
-        {/* Content */}
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: 'clamp(48px, 6vw, 80px)',
-            alignItems: 'start',
-          }}
-        >
-          {/* Contact info side */}
-          <motion.div
-            custom={0}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            <div style={{ marginBottom: '48px' }}>
-              <p className="type-subhead" style={{ marginBottom: '24px' }}>Reach Out</p>
-
-              {[
-                { label: 'Email', value: personal.email, href: `mailto:${personal.email}` },
-                { label: 'Phone', value: personal.phone, href: `tel:${personal.phone}` },
-                { label: 'Location', value: personal.location, href: null },
-              ].map((item, i) => (
-                <div
-                  key={i}
-                  style={{
-                    display: 'flex',
-                    justifyContent: 'space-between',
-                    alignItems: 'center',
-                    paddingBlock: '16px',
-                    borderBottom: '1px solid var(--rule)',
-                    gap: '16px',
-                  }}
-                >
-                  <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>{item.label}</span>
-                  {item.href ? (
-                    <a href={item.href} className="journal-link" style={{ fontSize: '13px', color: 'var(--text-subtle)' }}>
-                      {item.value}
-                    </a>
-                  ) : (
-                    <span style={{ fontSize: '13px', color: 'var(--text-subtle)' }}>{item.value}</span>
-                  )}
-                </div>
-              ))}
+    <section id="contact" className="px-8 max-w-screen-2xl mx-auto my-32">
+        <div className="mb-32 flex justify-end">
+            <div className="max-w-4xl text-right">
+                <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Dialogue</span>
+                <h2 className="font-headline text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-16 max-w-5xl uppercase">
+                    Good communication is not <span className="text-outline-brutal">invisible</span> <br/>
+                    <span className="text-3xl md:text-5xl font-bold italic normal-case tracking-normal text-on-surface-variant">Let's arrange a proper structural exchange.</span>
+                </h2>
             </div>
-
-            {/* Availability */}
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                paddingBlock: '20px',
-                borderTop: '1px solid var(--rule)',
-                borderBottom: '1px solid var(--rule)',
-                marginBottom: '32px',
-              }}
-            >
-              <div
-                style={{
-                  width: '8px',
-                  height: '8px',
-                  background: 'var(--journal-charcoal)',
-                  borderRadius: '50%',
-                  animation: 'pulse 2s infinite',
-                }}
-              />
-              <span
-                style={{
-                  fontFamily: 'var(--font-serif)',
-                  fontStyle: 'italic',
-                  fontSize: '16px',
-                  color: 'var(--text)',
-                }}
-              >
-                Available for work
-              </span>
-            </div>
-
-            {/* Social links */}
-            <div>
-              <p className="type-subhead" style={{ marginBottom: '16px' }}>Social</p>
-              <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-                {[
-                  { label: 'GitHub', href: personal.socialLinks.github },
-                  { label: 'LinkedIn', href: personal.socialLinks.linkedin },
-                ].map((s) => (
-                  <a
-                    key={s.label}
-                    href={s.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      display: 'flex',
-                      justifyContent: 'space-between',
-                      alignItems: 'center',
-                      paddingBlock: '14px',
-                      borderBottom: '1px solid var(--rule)',
-                      textDecoration: 'none',
-                      color: 'var(--text-subtle)',
-                      fontSize: '13px',
-                      transition: 'color 0.25s ease',
-                    }}
-                    onMouseEnter={e => (e.currentTarget.style.color = 'var(--text)')}
-                    onMouseLeave={e => (e.currentTarget.style.color = 'var(--text-subtle)')}
-                  >
-                    <span>{s.label}</span>
-                    <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>↗</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Form */}
-          <motion.div
-            custom={1}
-            variants={fadeUp}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, y: 16 }}
-                animate={{ opacity: 1, y: 0 }}
-                style={{
-                  padding: 'clamp(40px, 6vw, 64px)',
-                  border: '1px solid var(--rule)',
-                  textAlign: 'center',
-                }}
-              >
-                <p
-                  style={{
-                    fontFamily: 'var(--font-serif)',
-                    fontSize: 'clamp(32px, 5vw, 56px)',
-                    fontWeight: 300,
-                    fontStyle: 'italic',
-                    color: 'var(--text)',
-                    marginBottom: '16px',
-                    letterSpacing: '-0.01em',
-                  }}
-                >
-                  Thank you.
-                </p>
-                <p className="type-body">I&apos;ll get back to you soon.</p>
-              </motion.div>
-            ) : (
-              <form onSubmit={handleSubmit}>
-                <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-                  {/* Name */}
-                  <div style={{ paddingBlock: '8px', borderBottom: '1px solid var(--rule-heavy)' }}>
-                    <label htmlFor="contact-name" className="type-caption" style={{ display: 'block', marginBottom: '8px' }}>
-                      Name
-                    </label>
-                    <input
-                      type="text"
-                      id="contact-name"
-                      name="name"
-                      value={formState.name}
-                      onChange={handleChange}
-                      required
-                      placeholder="Your full name"
-                      className="journal-input"
-                    />
-                  </div>
-
-                  {/* Email */}
-                  <div style={{ paddingBlock: '8px', borderBottom: '1px solid var(--rule-heavy)' }}>
-                    <label htmlFor="contact-email" className="type-caption" style={{ display: 'block', marginBottom: '8px' }}>
-                      Email
-                    </label>
-                    <input
-                      type="email"
-                      id="contact-email"
-                      name="email"
-                      value={formState.email}
-                      onChange={handleChange}
-                      required
-                      placeholder="your@email.com"
-                      className="journal-input"
-                    />
-                  </div>
-
-                  {/* Subject */}
-                  <div style={{ paddingBlock: '8px', borderBottom: '1px solid var(--rule-heavy)' }}>
-                    <label htmlFor="contact-subject" className="type-caption" style={{ display: 'block', marginBottom: '8px' }}>
-                      Subject
-                    </label>
-                    <input
-                      type="text"
-                      id="contact-subject"
-                      name="subject"
-                      value={formState.subject}
-                      onChange={handleChange}
-                      required
-                      placeholder="What's this about?"
-                      className="journal-input"
-                    />
-                  </div>
-
-                  {/* Message */}
-                  <div style={{ paddingBlock: '8px', borderBottom: '1px solid var(--rule-heavy)', marginBottom: '32px' }}>
-                    <label htmlFor="contact-message" className="type-caption" style={{ display: 'block', marginBottom: '8px' }}>
-                      Message
-                    </label>
-                    <textarea
-                      id="contact-message"
-                      name="message"
-                      value={formState.message}
-                      onChange={handleChange}
-                      required
-                      rows={5}
-                      placeholder="Tell me about your project..."
-                      className="journal-input"
-                      style={{ resize: 'none' }}
-                    />
-                  </div>
-
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className="journal-btn journal-btn-fill"
-                    style={{ alignSelf: 'flex-start', opacity: isSubmitting ? 0.6 : 1 }}
-                  >
-                    {isSubmitting ? (
-                      <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }}>Sending…</span>
-                    ) : (
-                      <>
-                        Send Message
-                        <span style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic', fontSize: '16px' }}>→</span>
-                      </>
-                    )}
-                  </button>
-                </div>
-              </form>
-            )}
-          </motion.div>
         </div>
-      </div>
 
-      <style>{`
-        @keyframes pulse {
-          0%, 100% { opacity: 1; }
-          50% { opacity: 0.4; }
-        }
-      `}</style>
+        <div className="brutalist-border brutalist-shadow p-8 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32 bg-background mb-32">
+            <div>
+                <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-8 font-bold text-primary">Inquiry & Communication</h4>
+                <p className="font-body text-sm text-on-surface-variant mb-12">
+                   Available for open discussions on software architecture, systemic design, and innovative collaborations. All inquiries are parsed with equal consideration. 
+                </p>
+                <div className="space-y-6 border-t border-outline-variant pt-6">
+                   <div className="flex justify-between items-baseline border-b border-surface-container py-2">
+                        <span className="font-body text-sm font-bold">Email Protocol</span>
+                        <a href={`mailto:${personal.email}`} className="font-label text-[10px] tracking-widest text-outline hover:text-primary transition-colors">{personal.email}</a>
+                   </div>
+                   <div className="flex justify-between items-baseline border-b border-surface-container py-2">
+                        <span className="font-body text-sm font-bold">Direct Line</span>
+                        <a href={`tel:${personal.phone}`} className="font-label text-[10px] tracking-widest text-outline hover:text-primary transition-colors">{personal.phone}</a>
+                   </div>
+                   <div className="flex justify-between items-baseline border-b border-surface-container py-2">
+                        <span className="font-body text-sm font-bold">Base Coordinate</span>
+                        <span className="font-label text-[10px] tracking-widest text-outline">{personal.location}</span>
+                   </div>
+                </div>
+                <div className="mt-12 flex space-x-8">
+                     {Object.entries(personal.socialLinks).map(([name, url]) => (
+                         <a key={name} href={url as string} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] tracking-widest uppercase font-semibold text-outline hover:text-primary transition-colors hover:underline underline-offset-4 duration-300">
+                             {name}
+                         </a>
+                     ))}
+                </div>
+            </div>
+
+            <div>
+                <h4 className="font-label text-[10px] tracking-[0.2em] uppercase mb-8 font-bold text-primary">Input Form</h4>
+                {isSubmitted ? (
+                    <motion.div 
+                        initial={{ opacity: 0 }} animate={{ opacity: 1 }}
+                        className="py-12 border border-outline-variant flex flex-col items-center justify-center h-full min-h-[300px]"
+                    >
+                        <h3 className="font-headline text-3xl mb-4 text-on-surface italic">Transmission Received.</h3>
+                        <p className="font-body text-sm text-on-surface-variant">We will parse your data shortly.</p>
+                    </motion.div>
+                ) : (
+                    <form onSubmit={handleSubmit} className="space-y-8">
+                        <div>
+                            <input 
+                                type="text" 
+                                name="name" 
+                                required 
+                                value={formState.name} 
+                                onChange={handleChange} 
+                                className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
+                                placeholder="IDENTIFIER (NAME)"
+                            />
+                        </div>
+                        <div>
+                            <input 
+                                type="email" 
+                                name="email" 
+                                required 
+                                value={formState.email} 
+                                onChange={handleChange} 
+                                className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
+                                placeholder="RETURN COORDINATE (EMAIL)"
+                            />
+                        </div>
+                        <div>
+                            <input 
+                                type="text" 
+                                name="subject" 
+                                required 
+                                value={formState.subject} 
+                                onChange={handleChange} 
+                                className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
+                                placeholder="SUBJECT CLAUSE"
+                            />
+                        </div>
+                        <div>
+                            <textarea 
+                                name="message" 
+                                required 
+                                value={formState.message} 
+                                onChange={handleChange} 
+                                rows={4}
+                                className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline resize-none"
+                                placeholder="PAYLOAD (MESSAGE)"
+                            />
+                        </div>
+                        <button type="submit" disabled={isSubmitting} className="group px-8 py-4 bg-primary text-on-primary font-label text-xs font-black tracking-widest uppercase brutalist-shadow brutalist-border transition-all duration-300 active:translate-y-1 hover:bg-on-surface disabled:opacity-50 mt-8 block w-full text-center">
+                            {isSubmitting ? 'Transmitting...' : 'Dispatch'}
+                        </button>
+                    </form>
+                )}
+            </div>
+        </div>
     </section>
   );
 }

@@ -5,7 +5,7 @@ export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-export function scrollToSection(sectionId: string, offset = 0) {
+export function scrollToSection(sectionId: string, offset = 120) {
   const element = document.getElementById(sectionId);
 
   if (!element) return false;

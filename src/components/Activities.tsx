@@ -3,33 +3,8 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 
-const fadeUp = {
-    hidden: { opacity: 0, y: 20 },
-    visible: (i: number) => ({
-        opacity: 1,
-        y: 0,
-        transition: { duration: 0.55, delay: i * 0.08, ease: [0.16, 1, 0.3, 1] as [number, number, number, number] },
-    }),
-};
-
-const typeConfig: Record<string, { label: string; symbol: string }> = {
-    achievement: { label: 'Achievement', symbol: '✦' },
-    competition: { label: 'Competition', symbol: '◈' },
-    organization: { label: 'Academic', symbol: '◉' },
-    volunteer: { label: 'Volunteer', symbol: '◎' },
-    event: { label: 'Event', symbol: '◇' },
-};
-
-type Activity = {
-    id: number;
-    title: string;
-    type: string;
-    description: string;
-    highlights?: string[];
-};
-
 export default function Activities() {
-    const activities = portfolioData.activities as Activity[];
+    const activities = portfolioData.activities;
 
     const groups = [
         { key: 'achievement', label: 'Achievements' },
@@ -39,150 +14,132 @@ export default function Activities() {
         { key: 'volunteer', label: 'Volunteering' },
     ];
 
+    const renderLeftAligned = (activity: any, index: number, groupLabel: string) => (
+        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300">
+            <div className="col-span-12 md:col-span-8">
+                <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block uppercase">
+                    0{index + 1} / {groupLabel}
+                </span>
+                <h2 className="font-headline text-[clamp(1.5rem,3vw,3rem)] font-black tracking-tight group-hover:-translate-y-2 transition-transform duration-300 origin-left leading-[0.9] uppercase group-hover:text-on-surface">
+                    <span className="text-on-surface">{activity.title.split(' ').slice(0, Math.ceil(activity.title.split(' ').length / 2)).join(' ')}</span> <br/> 
+                    <span className="italic font-normal text-outline-brutal text-transparent group-hover:text-on-surface">{activity.title.split(' ').slice(Math.ceil(activity.title.split(' ').length / 2)).join(' ')}</span>
+                </h2>
+                <div className="mt-8 max-w-lg">
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+                        {activity.description}
+                    </p>
+                    {activity.highlights && activity.highlights.length > 0 && (
+                        <ul className="space-y-2 mt-4">
+                            {activity.highlights.map((h: string, idx: number) => (
+                                <li key={idx} className="font-body text-sm text-on-surface-variant flex items-start gap-2">
+                                    <span className="text-primary mt-1 text-[10px]">■</span> {h}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            </div>
+            <div className="hidden md:flex col-span-4 items-center justify-end">
+                <div className="w-px h-32 bg-outline-variant/30"></div>
+                <div className="ml-12 font-label text-[10px] tracking-[0.3em] uppercase text-outline [writing-mode:vertical-lr]">
+                    IMPACT
+                </div>
+            </div>
+        </article>
+    );
+
+    const renderCenterAligned = (activity: any, index: number, groupLabel: string) => (
+        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300 md:w-5/6 mx-auto">
+            <div className="col-span-12 md:col-start-3 md:col-span-8 text-center">
+                <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block uppercase">
+                    0{index + 1} / {groupLabel}
+                </span>
+                <h2 className="font-headline text-[clamp(1.5rem,3vw,3rem)] font-black tracking-tight group-hover:-translate-y-2 transition-transform duration-300 leading-[0.9] uppercase group-hover:text-on-surface">
+                    <span className="text-on-surface">{activity.title.split(' ').slice(0, Math.ceil(activity.title.split(' ').length / 2)).join(' ')}</span> <br/> 
+                    <span className="italic font-normal text-outline-brutal text-transparent group-hover:text-on-surface">{activity.title.split(' ').slice(Math.ceil(activity.title.split(' ').length / 2)).join(' ')}</span>
+                </h2>
+                <div className="mt-8 max-w-lg mx-auto text-left md:text-center">
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+                        {activity.description}
+                    </p>
+                    {activity.highlights && activity.highlights.length > 0 && (
+                        <ul className="space-y-2 mt-4 inline-block text-left">
+                            {activity.highlights.map((h: string, idx: number) => (
+                                <li key={idx} className="font-body text-sm text-on-surface-variant flex items-start gap-2">
+                                    <span className="text-primary mt-1 text-[10px]">■</span> {h}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            </div>
+        </article>
+    );
+
+    const renderRightAligned = (activity: any, index: number, groupLabel: string) => (
+        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300">
+            <div className="hidden md:flex col-span-4 items-center">
+                <div className="font-label text-[10px] tracking-[0.3em] uppercase text-outline">
+                    {groupLabel}
+                </div>
+                <div className="ml-8 w-24 h-px bg-primary"></div>
+            </div>
+            <div className="col-span-12 md:col-span-8 text-left md:text-right flex flex-col items-start md:items-end">
+                <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block uppercase md:self-end">
+                    0{index + 1} / {groupLabel}
+                </span>
+                <h2 className="font-headline text-[clamp(1.5rem,3vw,3rem)] font-black tracking-tight group-hover:-translate-y-2 transition-transform duration-300 origin-right leading-[0.9] uppercase group-hover:text-on-surface w-full">
+                    <span className="text-on-surface">{activity.title.split(' ').slice(0, Math.ceil(activity.title.split(' ').length / 2)).join(' ')}</span> <br/> 
+                    <span className="italic font-normal text-outline-brutal text-transparent group-hover:text-on-surface">{activity.title.split(' ').slice(Math.ceil(activity.title.split(' ').length / 2)).join(' ')}</span>
+                </h2>
+                <div className="mt-8 max-w-lg md:ml-auto md:text-right">
+                    <p className="font-body text-sm text-on-surface-variant leading-relaxed">
+                        {activity.description}
+                    </p>
+                    {activity.highlights && activity.highlights.length > 0 && (
+                        <ul className="space-y-2 mt-4 inline-block text-left md:text-right">
+                            {activity.highlights.map((h: string, idx: number) => (
+                                <li key={idx} className="font-body text-sm text-on-surface-variant flex items-start md:justify-end gap-2">
+                                    <span className="text-primary mt-1 text-[10px]">■</span> {h}
+                                </li>
+                            ))}
+                        </ul>
+                    )}
+                </div>
+            </div>
+        </article>
+    );
+
     return (
-        <section
-            id="activities"
-            style={{ background: 'var(--bg)', padding: 'var(--section-pad) 0' }}
-        >
-            <div className="journal-container">
+        <section id="activities" className="px-8 max-w-screen-2xl mx-auto my-32">
+            <div className="mb-32">
+                <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Extracurriculars</span>
+                <h2 className="font-headline text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-16 max-w-5xl uppercase">
+                    Beyond <span className="text-outline-brutal">Syntax</span> <br/>
+                    <span className="text-3xl md:text-5xl font-bold italic normal-case tracking-normal text-on-surface-variant">A catalog of leadership, events, and community impact.</span>
+                </h2>
+            </div>
 
-                {/* Section header */}
-                <motion.div
-                    className="section-header"
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.6 }}
-                >
-                    <div className="section-eyebrow">
-                        <span className="type-caption" style={{ color: 'var(--text-ghost)' }}>05</span>
-                        <span className="type-subhead">Extracurriculars</span>
-                    </div>
-                    <h2 className="type-display" style={{ fontFamily: 'var(--font-script)', fontWeight: 400, paddingBottom: '10px' }}>Activities</h2>
-                </motion.div>
-
-                {/* Activity groups */}
+            <div className="space-y-32">
                 {groups.map((group) => {
                     const items = activities.filter(a => a.type === group.key);
                     if (items.length === 0) return null;
 
                     return (
-                        <motion.div
-                            key={group.key}
-                            initial={{ opacity: 0 }}
-                            whileInView={{ opacity: 1 }}
-                            viewport={{ once: true }}
-                            transition={{ duration: 0.5 }}
-                            style={{ marginBottom: 'clamp(48px, 7vw, 80px)' }}
-                        >
-                            {/* Group header */}
-                            <div
-                                style={{
-                                    display: 'flex',
-                                    alignItems: 'baseline',
-                                    justifyContent: 'space-between',
-                                    borderBottom: '1px solid var(--journal-charcoal)',
-                                    paddingBottom: 'clamp(8px, 2vw, 10px)',
-                                    marginBottom: 'clamp(16px, 3vw, 24px)',
-                                    gap: '12px',
-                                }}
-                            >
-                                <p className="type-subhead">{group.label}</p>
-                                <span className="type-caption" style={{ color: 'var(--text-ghost)', whiteSpace: 'nowrap' }}>
-                                    {items.length} {items.length === 1 ? 'entry' : 'entries'}
-                                </span>
+                        <div key={group.key} className="w-full">
+                            <div className="flex items-baseline justify-between border-b-[3px] border-on-surface pb-4 mb-16">
+                                <h3 className="font-headline text-3xl md:text-5xl tracking-tighter uppercase font-black text-on-surface">{group.label}</h3>
+                                <span className="font-label text-sm tracking-widest uppercase text-outline">[{items.length}]</span>
                             </div>
 
-                            {/* Items */}
-                            {items.map((activity, i) => {
-                                const cfg = typeConfig[activity.type] ?? { label: 'Activity', symbol: '◦' };
-
-                                return (
-                                    <motion.div
-                                        key={activity.id}
-                                        custom={i}
-                                        variants={fadeUp}
-                                        initial="hidden"
-                                        whileInView="visible"
-                                        viewport={{ once: true }}
-                                        style={{
-                                            display: 'grid',
-                                            gridTemplateColumns: 'clamp(20px, 10vw, 24px) 1fr',
-                                            gap: 'clamp(12px, 3vw, 20px)',
-                                            paddingBlock: 'clamp(16px, 2.5vw, 32px)',
-                                            borderBottom: '1px solid var(--rule)',
-                                        }}
-                                    >
-                                        {/* Symbol */}
-                                        <div style={{ paddingTop: '4px' }}>
-                                            <span
-                                                style={{
-                                                    fontFamily: 'var(--font-sans)',
-                                                    fontSize: '14px',
-                                                    color: 'var(--text-ghost)',
-                                                }}
-                                            >
-                                                {cfg.symbol}
-                                            </span>
-                                        </div>
-
-                                        {/* Content */}
-                                        <div>
-                                            <div
-                                                style={{
-                                                    display: 'flex',
-                                                    alignItems: 'flex-start',
-                                                    justifyContent: 'space-between',
-                                                    gap: '12px',
-                                                    marginBottom: '10px',
-                                                    flexWrap: 'wrap',
-                                                }}
-                                            >
-                                                <h4
-                                                    style={{
-                                                        fontFamily: 'var(--font-serif)',
-                                                        fontSize: 'clamp(18px, 2.5vw, 26px)',
-                                                        fontWeight: 600,
-                                                        color: 'var(--text)',
-                                                        letterSpacing: '0.01em',
-                                                        lineHeight: 1.25,
-                                                        flex: 1,
-                                                        minWidth: '200px',
-                                                    }}
-                                                >
-                                                    {activity.title}
-                                                </h4>
-                                                <span className="journal-tag" style={{ flexShrink: 0 }}>{cfg.label}</span>
-                                            </div>
-
-                                            <p className="type-body" style={{ marginBottom: activity.highlights?.length ? '16px' : 0 }}>
-                                                {activity.description}
-                                            </p>
-
-                                            {activity.highlights && activity.highlights.length > 0 && (
-                                                <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '6px' }}>
-                                                    {activity.highlights.map((h, idx) => (
-                                                        <li
-                                                            key={idx}
-                                                            style={{
-                                                                display: 'flex',
-                                                                gap: '12px',
-                                                                fontSize: 'clamp(13px, 2vw, 14px)',
-                                                                color: 'var(--text-subtle)',
-                                                                lineHeight: 1.5,
-                                                            }}
-                                                        >
-                                                            <span style={{ color: 'var(--text-ghost)', flexShrink: 0 }}>—</span>
-                                                            <span>{h}</span>
-                                                        </li>
-                                                    ))}
-                                                </ul>
-                                            )}
-                                        </div>
-                                    </motion.div>
-                                );
-                            })}
-                        </motion.div>
+                            <div className="flex flex-col gap-8">
+                                {items.map((activity, i) => {
+                                    if (i % 3 === 0) return renderLeftAligned(activity, i, group.label);
+                                    if (i % 3 === 1) return renderCenterAligned(activity, i, group.label);
+                                    return renderRightAligned(activity, i, group.label);
+                                })}
+                            </div>
+                        </div>
                     );
                 })}
             </div>
