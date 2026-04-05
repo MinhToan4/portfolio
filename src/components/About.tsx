@@ -8,7 +8,7 @@ export default function About() {
   const { personal } = portfolioData;
 
   return (
-    <section id="about" className="px-8 max-w-screen-2xl mx-auto my-32">
+    <section id="about" className="px-5 md:px-8 max-w-screen-2xl mx-auto my-32">
       {/* Hero Philosophy Statement */}
       <div className="mb-48">
         <div className="grid grid-cols-12 gap-8">

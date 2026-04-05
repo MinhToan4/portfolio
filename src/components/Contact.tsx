@@ -25,7 +25,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="px-8 max-w-screen-2xl mx-auto my-32">
+    <section id="contact" className="px-5 md:px-8 max-w-screen-2xl mx-auto my-32">
         <div className="mb-32 flex justify-end">
             <div className="max-w-4xl text-right">
                 <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Dialogue</span>

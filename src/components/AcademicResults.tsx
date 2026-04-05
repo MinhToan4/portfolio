@@ -10,7 +10,7 @@ export default function AcademicResults() {
   const avgGrade = (allSubjects.reduce((acc, s) => acc + s.numericGrade, 0) / allSubjects.length).toFixed(1);
 
   return (
-    <section id="academic-results" className="px-8 max-w-screen-2xl mx-auto my-32">
+    <section id="academic-results" className="px-5 md:px-8 max-w-screen-2xl mx-auto my-32">
         <div className="mb-32 grid grid-cols-12 gap-8">
             <div className="col-span-12 md:col-span-8">
                 <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Metrics</span>
@@ -25,7 +25,7 @@ export default function AcademicResults() {
             </div>
         </div>
 
-        <div className="bg-background brutalist-border brutalist-shadow mb-32 p-8 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32">
+        <div className="bg-background brutalist-border brutalist-shadow mb-32 p-6 md:p-16 grid grid-cols-1 md:grid-cols-2 gap-16 lg:gap-32">
             <div>
                  <h4 className="font-headline text-3xl md:text-4xl tracking-tighter uppercase font-black text-on-surface mb-8">General <span className="text-outline-brutal text-transparent">Subjects</span></h4>
                  <div className="space-y-0 border-t-[3px] border-on-surface pt-6">

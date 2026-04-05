@@ -9,7 +9,7 @@ export default function Hero() {
   return (
     <section 
       id="hero" 
-      className="pt-40 pb-32 px-8 max-w-screen-2xl mx-auto min-h-[90vh] flex flex-col justify-center"
+      className="pt-40 pb-32 px-5 md:px-8 max-w-screen-2xl mx-auto min-h-[90vh] flex flex-col justify-center"
     >
       <header className="mb-32 grid grid-cols-12 gap-8">
         <motion.div 
@@ -18,7 +18,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="font-headline text-[clamp(2rem,11vw,9rem)] leading-[0.8] tracking-tighter text-on-surface font-black uppercase w-full break-words relative z-20 mb-8">
+          <h1 className="font-headline text-[clamp(2rem,14vw,9rem)] leading-[0.8] tracking-tighter text-on-surface font-black uppercase w-full break-words relative z-20 mb-8">
             SOFTWARE <br/> 
             <span className="text-outline-brutal">ENGINEER</span>
           </h1>

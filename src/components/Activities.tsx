@@ -15,7 +15,7 @@ export default function Activities() {
     ];
 
     const renderLeftAligned = (activity: { id: string | number, title: string, period?: string, description?: string, institution?: string, organization?: string, highlights?: string[] }, index: number, groupLabel: string) => (
-        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300">
+        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-6 md:p-10 transition-transform duration-300">
             <div className="col-span-12 md:col-span-8">
                 <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block uppercase">
                     0{index + 1} / {groupLabel}
@@ -77,7 +77,7 @@ export default function Activities() {
     );
 
     const renderRightAligned = (activity: { id: string | number, title: string, period?: string, description?: string, institution?: string, organization?: string, highlights?: string[] }, index: number, groupLabel: string) => (
-        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-8 transition-transform duration-300">
+        <article key={activity.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-8 p-6 md:p-10 transition-transform duration-300">
             <div className="hidden md:flex col-span-4 items-center">
                 <div className="font-label text-[10px] tracking-[0.3em] uppercase text-outline">
                     {groupLabel}
@@ -111,7 +111,7 @@ export default function Activities() {
     );
 
     return (
-        <section id="activities" className="px-8 max-w-screen-2xl mx-auto my-32">
+        <section id="activities" className="px-5 md:px-8 max-w-screen-2xl mx-auto my-32">
             <div className="mb-32">
                 <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Extracurriculars</span>
                 <h2 className="font-headline text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-16 max-w-5xl uppercase">

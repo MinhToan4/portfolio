@@ -49,7 +49,7 @@ export default function Header() {
       }`}
       style={{ borderColor: scrolled ? 'var(--color-outline-variant)' : 'transparent' }}
     >
-      <div className="px-8 max-w-screen-2xl mx-auto w-full">
+      <div className="px-5 md:px-8 max-w-screen-2xl mx-auto w-full">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '18px', position: 'relative' }}>
 
           {/* Logo / Masthead wordmark */}
@@ -117,7 +117,7 @@ export default function Header() {
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         style={{ overflow: 'hidden', background: 'var(--color-background)', borderTop: isOpen ? '1px solid var(--color-outline-variant)' : 'none' }}
       >
-        <div className="px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '32px' }}>
+        <div className="px-5 md:px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '32px' }}>
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}

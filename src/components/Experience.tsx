@@ -7,7 +7,7 @@ export default function Experience() {
   const { experience, education, certifications } = portfolioData;
 
   return (
-    <section id="experience" className="px-8 max-w-screen-2xl mx-auto my-32">
+    <section id="experience" className="px-5 md:px-8 max-w-screen-2xl mx-auto my-32">
       <div className="mb-32">
         <span className="font-label text-[10px] tracking-[0.3em] uppercase mb-12 block text-tertiary">Background</span>
         <h2 className="font-headline text-[clamp(2.5rem,8vw,7rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-16 max-w-5xl uppercase">

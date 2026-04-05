@@ -7,7 +7,7 @@ export default function Projects() {
   const { projects, personal } = portfolioData;
 
   const renderLeftAligned = (project: { id: string | number, title: string, description: string, technologies: string[], githubUrl?: string, liveUrl?: string }, index: number) => (
-    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-8 transition-transform duration-300">
+    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-6 md:p-10 transition-transform duration-300">
       <div className="col-span-12 md:col-span-7">
         <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block">
           0{index + 1} / {project.technologies[0]}
@@ -36,7 +36,7 @@ export default function Projects() {
   );
 
   const renderCenterAligned = (project: { id: string | number, title: string, description: string, technologies: string[], githubUrl?: string, liveUrl?: string }, index: number) => (
-    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-8 transition-transform duration-300">
+    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-6 md:p-10 transition-transform duration-300">
       <div className="col-span-12 md:col-start-3 md:col-span-8 text-center">
         <span className="font-label text-[10px] tracking-[0.3em] text-tertiary mb-4 block">
           0{index + 1} / {project.technologies[0]}
@@ -59,7 +59,7 @@ export default function Projects() {
   );
 
   const renderRightAligned = (project: { id: string | number, title: string, description: string, technologies: string[], githubUrl?: string, liveUrl?: string }, index: number) => (
-    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-8 transition-transform duration-300">
+    <article key={project.id} className="group relative grid grid-cols-12 bg-background brutalist-border brutalist-shadow mb-16 p-6 md:p-10 transition-transform duration-300">
       <div className="hidden md:flex col-span-4 items-center">
         <div className="font-label text-[10px] tracking-[0.3em] uppercase text-outline">
           {project.technologies.slice(0, 3).join(' / ')}
@@ -88,7 +88,7 @@ export default function Projects() {
   );
 
   return (
-    <section id="projects" className="px-8 max-w-screen-2xl mx-auto my-32">
+    <section id="projects" className="px-5 md:px-8 max-w-screen-2xl mx-auto my-32">
       <header className="mb-32 grid grid-cols-12 gap-y-12">
         <motion.div 
           className="col-span-12 md:col-span-8"
