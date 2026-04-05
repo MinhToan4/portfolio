@@ -97,9 +97,9 @@ export default function Projects() {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          <h1 className="font-headline font-black text-[clamp(3.2rem,11vw,9rem)] tracking-tighter text-on-surface leading-[0.85] mb-12">
+          <h2 className="font-headline text-[clamp(2rem,11vw,9rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-8 md:mb-16 uppercase">
             SELECTED <br/> <span className="text-outline-brutal">CHRONOLOGY</span>
-          </h1>
+          </h2>
         </motion.div>
         <motion.div 
           className="col-span-12 md:col-start-9 md:col-span-4 self-end md:translate-y-8"

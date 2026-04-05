@@ -18,7 +18,7 @@ export default function Hero() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
         >
-          <h1 className="font-headline font-black text-[clamp(3rem,12vw,10rem)] tracking-tighter leading-[0.85] mb-8 uppercase">
+          <h1 className="font-headline text-[clamp(2rem,11vw,9rem)] leading-[0.8] tracking-tighter text-on-surface font-black uppercase w-full break-words relative z-20 mb-8">
             SOFTWARE <br/> 
             <span className="text-outline-brutal">ENGINEER</span>
           </h1>
