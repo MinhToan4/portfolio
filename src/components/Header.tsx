@@ -42,23 +42,22 @@ export default function Header() {
       initial={{ opacity: 0, y: -20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-        scrolled
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
           ? 'border-b bg-background/95 backdrop-blur-sm'
           : 'bg-transparent border-b border-transparent'
-      }`}
+        }`}
       style={{ borderColor: scrolled ? 'var(--color-outline-variant)' : 'transparent' }}
     >
-      <div className="px-5 md:px-8 max-w-screen-2xl mx-auto w-full">
+      <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full">
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '18px', position: 'relative' }}>
 
           {/* Logo / Masthead wordmark */}
-          <div style={{ flex: 1 }}>
+          <div style={{ flex: 1, minWidth: 0 }}>
             <button
               onClick={() => handleNav('hero')}
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: '20px',
+                fontSize: 'clamp(16px, 4vw, 20px)',
                 fontWeight: 300,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
@@ -73,12 +72,12 @@ export default function Header() {
           </div>
 
           {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-6 2xl:gap-8 absolute left-1/2 -translate-x-1/2 whitespace-nowrap">
+          <nav className="hidden xl:flex items-center gap-4 2xl:gap-6 absolute left-1/2 -translate-x-1/2 whitespace-nowrap overflow-hidden">
             {navItems.map((item) => (
               <button
                 key={item.name}
                 onClick={() => handleNav(item.href)}
-                className="type-caption font-label text-xs uppercase tracking-[0.15em] font-medium"
+                className="type-caption font-label text-xs uppercase tracking-[0.1em] font-medium whitespace-nowrap overflow-hidden text-ellipsis"
                 style={{
                   background: 'none',
                   border: 'none',
@@ -97,7 +96,7 @@ export default function Header() {
           {/* Mobile toggle */}
           <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <button
-              className="xl:hidden py-2 px-4 border border-outline-variant rounded-full font-label text-[10px] tracking-[0.2em] uppercase hover:bg-surface-container active:scale-95 transition-all"
+              className="xl:hidden py-2 px-3 border border-outline-variant rounded-full font-label text-[9px] sm:text-[10px] tracking-[0.15em] uppercase hover:bg-surface-container active:scale-95 transition-all whitespace-nowrap"
               onClick={() => setIsOpen(!isOpen)}
               style={{
                 color: 'var(--color-on-surface)',
@@ -117,7 +116,7 @@ export default function Header() {
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         style={{ overflow: 'hidden', background: 'var(--color-background)', borderTop: isOpen ? '1px solid var(--color-outline-variant)' : 'none' }}
       >
-        <div className="px-5 md:px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '32px' }}>
+        <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '32px' }}>
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}
@@ -131,13 +130,13 @@ export default function Header() {
                   setIsOpen(false);
                   setTimeout(() => scrollToSection(item.href), 100);
                 }}
-                className="w-full text-left"
+                className="w-full text-left break-words"
                 style={{
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
                   fontFamily: 'var(--font-serif)',
-                  fontSize: '28px',
+                  fontSize: 'clamp(20px, 6vw, 28px)',
                   fontWeight: 300,
                   color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
                   letterSpacing: '-0.01em',
