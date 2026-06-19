@@ -56,18 +56,18 @@ export default function About() {
                   Based strictly on the principles of logic, clean architecture, and algorithmic efficiency. I believe complexity should be tackled at the root, delivering performance that feels effortless.
                 </p>
                 <div className="space-y-3 md:space-y-4">
-                  <div className="flex justify-between items-baseline border-b border-outline-variant py-2 gap-4">
+                  <div className="flex justify-between items-baseline border-b border-outline-variant py-3 md:py-3.5 gap-4">
                     <span className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest flex-shrink-0">Email</span>
-                    <a href={`mailto:${personal.email}`} className="font-label text-[9px] sm:text-xs tracking-widest text-outline hover:text-primary transition-colors break-all">{personal.email}</a>
+                    <a href={`mailto:${personal.email}`} className="font-label text-[11px] sm:text-sm tracking-widest text-outline hover:text-primary transition-colors break-all">{personal.email}</a>
                   </div>
-                  <div className="flex justify-between items-baseline border-b border-outline-variant py-2 gap-4">
+                  <div className="flex justify-between items-baseline border-b border-outline-variant py-3 md:py-3.5 gap-4">
                     <span className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest flex-shrink-0">Location</span>
-                    <span className="font-label text-[9px] sm:text-xs tracking-widest text-outline">{personal.location}</span>
+                    <span className="font-label text-[11px] sm:text-sm tracking-widest text-outline">{personal.location}</span>
                   </div>
                 </div>
                 <div className="mt-6 md:mt-8 flex gap-4 md:gap-6 flex-wrap">
                   {Object.entries(personal.socialLinks).map(([name, url]) => (
-                    <a key={name} href={url as string} target="_blank" rel="noopener noreferrer" className="font-label text-[8px] sm:text-[10px] tracking-[0.15em] md:tracking-[0.2em] font-black uppercase text-on-surface brutalist-border px-3 sm:px-4 py-2 brutalist-shadow-sm hover:translate-y-[2px] transition-transform whitespace-nowrap">
+                    <a key={name} href={url as string} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] sm:text-xs tracking-[0.15em] md:tracking-[0.2em] font-black uppercase text-on-surface brutalist-border px-5 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-transform whitespace-nowrap min-h-[48px] flex items-center justify-center">
                       {name}
                     </a>
                   ))}

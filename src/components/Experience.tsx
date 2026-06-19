@@ -89,7 +89,12 @@ export default function Experience() {
                     <p className="font-label text-[8px] sm:text-[10px] tracking-widest uppercase text-outline mt-1">{cert.issuer} • {cert.date}</p>
                   </div>
                   {cert.url && (
-                    <a href={cert.url} target="_blank" rel="noopener noreferrer" className="font-headline font-black uppercase text-on-surface hover:text-outline-brutal hover:text-transparent transition-all text-xs md:text-sm flex-shrink-0">
+                    <a
+                      href={cert.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="font-label font-bold uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all text-[10px] sm:text-xs flex-shrink-0 min-h-[48px] flex items-center justify-center bg-background hover:bg-primary hover:text-on-primary"
+                    >
                       View ↗
                     </a>
                   )}

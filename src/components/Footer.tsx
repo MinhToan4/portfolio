@@ -32,7 +32,7 @@ export default function Footer() {
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-8 h-8 md:w-8 md:h-8 flex items-center justify-center border border-background/20 text-background/50 hover:text-background hover:bg-background/10 transition-colors font-sans text-xs md:text-xs flex-shrink-0"
+            className="w-12 h-12 flex items-center justify-center border border-background/20 text-background/50 hover:text-background hover:bg-background/10 transition-colors font-sans text-sm flex-shrink-0"
             aria-label="Back to top"
           >
             ↑
@@ -43,12 +43,12 @@ export default function Footer() {
         <div className="w-full h-[1px] bg-background/20 my-4 md:my-4"></div>
 
         {/* Navigation Links */}
-        <nav className="flex flex-col sm:flex-row sm:flex-wrap gap-x-4 md:gap-x-6 gap-y-3 md:gap-y-1">
+        <nav className="flex flex-col sm:flex-row sm:flex-wrap gap-x-4 md:gap-x-6 gap-y-2">
           {footerLinks.map((link) => (
             <button
               key={link.name}
               onClick={() => scrollToSection(link.href)}
-              className="font-label text-[10px] sm:text-[10px] md:text-[10px] tracking-[0.1em] md:tracking-[0.15em] font-semibold uppercase text-background/60 hover:text-background transition-colors text-left w-full sm:w-auto py-1 md:py-0 whitespace-nowrap"
+              className="font-label text-[10px] sm:text-[10px] md:text-[10px] tracking-[0.1em] md:tracking-[0.15em] font-semibold uppercase text-background/60 hover:text-background transition-colors text-left w-full sm:w-auto py-3.5 sm:py-2 whitespace-nowrap"
             >
               {link.name}
             </button>

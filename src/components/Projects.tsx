@@ -21,9 +21,27 @@ export default function Projects() {
             {project.description}
           </p>
         </div>
-        <div className="mt-6 md:mt-8 flex gap-3 md:gap-4 flex-wrap">
-          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">GitHub</a>}
-          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">Live</a>}
+        <div className="mt-6 md:mt-8 flex gap-4 flex-wrap">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] sm:text-xs tracking-widest uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all whitespace-nowrap min-h-[48px] flex items-center justify-center font-bold bg-background hover:bg-primary hover:text-on-primary"
+            >
+              GitHub ↗
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] sm:text-xs tracking-widest uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all whitespace-nowrap min-h-[48px] flex items-center justify-center font-bold bg-background hover:bg-secondary hover:text-on-secondary"
+            >
+              Live Demo ↗
+            </a>
+          )}
         </div>
       </div>
       <div className="hidden md:flex col-span-5 items-center justify-end">
@@ -50,9 +68,27 @@ export default function Projects() {
             {project.description}
           </p>
         </div>
-        <div className="mt-6 md:mt-8 flex gap-3 md:gap-4 justify-center flex-wrap">
-          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">GitHub</a>}
-          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">Live</a>}
+        <div className="mt-6 md:mt-8 flex gap-4 justify-center flex-wrap">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] sm:text-xs tracking-widest uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all whitespace-nowrap min-h-[48px] flex items-center justify-center font-bold bg-background hover:bg-primary hover:text-on-primary"
+            >
+              GitHub ↗
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] sm:text-xs tracking-widest uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all whitespace-nowrap min-h-[48px] flex items-center justify-center font-bold bg-background hover:bg-secondary hover:text-on-secondary"
+            >
+              Live Demo ↗
+            </a>
+          )}
         </div>
       </div>
     </article>
@@ -79,9 +115,27 @@ export default function Projects() {
             {project.description}
           </p>
         </div>
-        <div className="mt-6 md:mt-8 flex gap-3 md:gap-4 md:justify-end flex-wrap">
-          {project.githubUrl && <a href={project.githubUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">GitHub</a>}
-          {project.liveUrl && <a href={project.liveUrl} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase text-primary hover:underline underline-offset-4 font-bold">Live</a>}
+        <div className="mt-6 md:mt-8 flex gap-4 md:justify-end flex-wrap">
+          {project.githubUrl && (
+            <a
+              href={project.githubUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] sm:text-xs tracking-widest uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all whitespace-nowrap min-h-[48px] flex items-center justify-center font-bold bg-background hover:bg-primary hover:text-on-primary"
+            >
+              GitHub ↗
+            </a>
+          )}
+          {project.liveUrl && (
+            <a
+              href={project.liveUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="font-label text-[10px] sm:text-xs tracking-widest uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all whitespace-nowrap min-h-[48px] flex items-center justify-center font-bold bg-background hover:bg-secondary hover:text-on-secondary"
+            >
+              Live Demo ↗
+            </a>
+          )}
         </div>
       </div>
     </article>

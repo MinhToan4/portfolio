@@ -49,7 +49,7 @@ export default function Header() {
       style={{ borderColor: scrolled ? 'var(--color-outline-variant)' : 'transparent' }}
     >
       <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '18px', position: 'relative' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '1.125rem', position: 'relative' }}>
 
           {/* Logo / Masthead wordmark */}
           <div style={{ flex: 1, minWidth: 0 }}>
@@ -57,7 +57,7 @@ export default function Header() {
               onClick={() => handleNav('hero')}
               style={{
                 fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(16px, 4vw, 20px)',
+                fontSize: 'clamp(1rem, 4vw, 1.25rem)',
                 fontWeight: 300,
                 letterSpacing: '0.22em',
                 textTransform: 'uppercase',
@@ -84,7 +84,7 @@ export default function Header() {
                   cursor: 'pointer',
                   color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
                   transition: 'color 0.25s ease',
-                  paddingBottom: '2px',
+                  paddingBottom: '0.125rem',
                   borderBottom: activeSection === item.href ? '1px solid var(--color-on-surface)' : '1px solid transparent',
                 }}
               >
@@ -96,7 +96,7 @@ export default function Header() {
           {/* Mobile toggle */}
           <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
             <button
-              className="xl:hidden py-2 px-3 border border-outline-variant rounded-full font-label text-[9px] sm:text-[10px] tracking-[0.15em] uppercase hover:bg-surface-container active:scale-95 transition-all whitespace-nowrap"
+              className="xl:hidden min-h-[48px] px-5 border border-outline-variant rounded-full font-label text-[10px] sm:text-xs tracking-[0.15em] uppercase hover:bg-surface-container active:scale-95 transition-all whitespace-nowrap flex items-center justify-center"
               onClick={() => setIsOpen(!isOpen)}
               style={{
                 color: 'var(--color-on-surface)',
@@ -116,30 +116,31 @@ export default function Header() {
         transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
         style={{ overflow: 'hidden', background: 'var(--color-background)', borderTop: isOpen ? '1px solid var(--color-outline-variant)' : 'none' }}
       >
-        <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '32px' }}>
+        <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '2rem' }}>
           {navItems.map((item, i) => (
             <motion.div
               key={item.name}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -10 }}
               transition={{ delay: i * 0.06 }}
-              style={{ borderBottom: '1px solid var(--color-outline-variant)', paddingBlock: '16px' }}
+              style={{ borderBottom: '1px solid var(--color-outline-variant)' }}
             >
               <button
                 onClick={() => {
                   setIsOpen(false);
                   setTimeout(() => scrollToSection(item.href), 100);
                 }}
-                className="w-full text-left break-words"
+                className="w-full text-left break-words block"
                 style={{
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
                   fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(20px, 6vw, 28px)',
+                  fontSize: 'clamp(1.25rem, 6vw, 1.75rem)',
                   fontWeight: 300,
                   color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
                   letterSpacing: '-0.01em',
+                  paddingBlock: '1rem',
                 }}
               >
                 {item.name}

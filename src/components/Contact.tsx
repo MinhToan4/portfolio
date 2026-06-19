@@ -43,22 +43,22 @@ export default function Contact() {
                         Available for open discussions on software architecture, systemic design, and innovative collaborations. All inquiries are parsed with equal consideration.
                     </p>
                     <div className="space-y-4 md:space-y-6 border-t border-outline-variant pt-4 md:pt-6">
-                        <div className="flex justify-between items-baseline border-b border-surface-container py-2 gap-3">
+                        <div className="flex justify-between items-baseline border-b border-surface-container py-3 md:py-3.5 gap-3">
                             <span className="font-body text-xs sm:text-sm font-bold flex-shrink-0">Email Protocol</span>
-                            <a href={`mailto:${personal.email}`} className="font-label text-[8px] sm:text-[10px] tracking-widest text-outline hover:text-primary transition-colors break-all">{personal.email}</a>
+                            <a href={`mailto:${personal.email}`} className="font-label text-[10px] sm:text-xs tracking-widest text-outline hover:text-primary transition-colors break-all">{personal.email}</a>
                         </div>
-                        <div className="flex justify-between items-baseline border-b border-surface-container py-2 gap-3">
+                        <div className="flex justify-between items-baseline border-b border-surface-container py-3 md:py-3.5 gap-3">
                             <span className="font-body text-xs sm:text-sm font-bold flex-shrink-0">Direct Line</span>
-                            <a href={`tel:${personal.phone}`} className="font-label text-[8px] sm:text-[10px] tracking-widest text-outline hover:text-primary transition-colors flex-shrink-0">{personal.phone}</a>
+                            <a href={`tel:${personal.phone}`} className="font-label text-[10px] sm:text-xs tracking-widest text-outline hover:text-primary transition-colors flex-shrink-0">{personal.phone}</a>
                         </div>
-                        <div className="flex justify-between items-baseline border-b border-surface-container py-2 gap-3">
+                        <div className="flex justify-between items-baseline border-b border-surface-container py-3 md:py-3.5 gap-3">
                             <span className="font-body text-xs sm:text-sm font-bold flex-shrink-0">Base Coordinate</span>
-                            <span className="font-label text-[8px] sm:text-[10px] tracking-widest text-outline">{personal.location}</span>
+                            <span className="font-label text-[10px] sm:text-xs tracking-widest text-outline">{personal.location}</span>
                         </div>
                     </div>
                     <div className="mt-8 md:mt-12 flex flex-col sm:flex-row sm:space-x-8 gap-4 sm:gap-8">
                         {Object.entries(personal.socialLinks).map(([name, url]) => (
-                            <a key={name} href={url as string} target="_blank" rel="noopener noreferrer" className="font-label text-[9px] sm:text-[10px] tracking-widest uppercase font-semibold text-outline hover:text-primary transition-colors hover:underline underline-offset-4 duration-300 whitespace-nowrap">
+                            <a key={name} href={url as string} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] sm:text-xs tracking-widest uppercase font-semibold text-outline hover:text-primary transition-colors hover:underline underline-offset-4 duration-300 whitespace-nowrap inline-block py-3 sm:py-2">
                                 {name}
                             </a>
                         ))}
@@ -84,7 +84,7 @@ export default function Contact() {
                                     required
                                     value={formState.name}
                                     onChange={handleChange}
-                                    className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
+                                    className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-3 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
                                     placeholder="IDENTIFIER (NAME)"
                                 />
                             </div>
@@ -95,7 +95,7 @@ export default function Contact() {
                                     required
                                     value={formState.email}
                                     onChange={handleChange}
-                                    className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
+                                    className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-3 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
                                     placeholder="RETURN COORDINATE (EMAIL)"
                                 />
                             </div>
@@ -106,7 +106,7 @@ export default function Contact() {
                                     required
                                     value={formState.subject}
                                     onChange={handleChange}
-                                    className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
+                                    className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-3 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline"
                                     placeholder="SUBJECT CLAUSE"
                                 />
                             </div>
@@ -117,11 +117,11 @@ export default function Contact() {
                                     value={formState.message}
                                     onChange={handleChange}
                                     rows={4}
-                                    className="w-full bg-transparent border-0 border-b border-outline-variant p-2 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline resize-none"
+                                    className="w-full bg-transparent border-0 border-b border-outline-variant py-4 px-3 font-body text-xs sm:text-sm focus:ring-0 focus:border-primary transition-colors placeholder:text-outline resize-none"
                                     placeholder="PAYLOAD (MESSAGE)"
                                 />
                             </div>
-                            <button type="submit" disabled={isSubmitting} className="group px-6 sm:px-8 py-3 sm:py-4 bg-primary text-on-primary font-label text-xs font-black tracking-widest uppercase brutalist-shadow brutalist-border transition-all duration-300 active:translate-y-1 hover:bg-on-surface disabled:opacity-50 mt-6 md:mt-8 block w-full text-center whitespace-nowrap">
+                            <button type="submit" disabled={isSubmitting} className="group min-h-[48px] px-6 sm:px-8 py-3.5 bg-primary text-on-primary font-label text-xs font-black tracking-widest uppercase brutalist-shadow brutalist-border transition-all duration-300 active:translate-y-1 hover:bg-on-surface disabled:opacity-50 mt-6 md:mt-8 flex items-center justify-center w-full text-center whitespace-nowrap">
                                 {isSubmitting ? 'Transmitting...' : 'Dispatch'}
                             </button>
                         </form>
