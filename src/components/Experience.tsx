@@ -2,105 +2,183 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
+import { Calendar, GraduationCap, Award, ExternalLink } from 'lucide-react';
 
 export default function Experience() {
   const { experience, education, certifications } = portfolioData;
 
+  const cubicTransition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
+
   return (
-    <section id="experience" className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto my-16 sm:my-24 md:my-32">
-      <div className="mb-20 md:mb-32">
-        <span className="font-label text-[9px] sm:text-[10px] tracking-[0.2em] md:tracking-[0.3em] uppercase mb-8 md:mb-12 block text-tertiary">Background</span>
-        <h2 className="font-headline text-[clamp(1.75rem,6vw,7rem)] leading-[0.85] font-black tracking-tighter text-on-surface mb-8 md:mb-16 max-w-5xl uppercase break-words">
-          Architectural <span className="text-outline-brutal">Evolution</span> <br />
-          <span className="text-base sm:text-2xl md:text-3xl lg:text-5xl font-bold italic normal-case tracking-normal text-on-surface-variant">A chronological mapping of academic rigor and structured practice.</span>
-        </h2>
-      </div>
-
-      <div className="bg-background brutalist-border brutalist-shadow mb-20 md:mb-32 p-4 sm:p-8 md:p-16 grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-16">
-
-        {/* Left Column - Work & Academics */}
-        <div>
-          <h4 className="font-headline text-2xl sm:text-3xl md:text-4xl tracking-tighter uppercase font-black text-on-surface mb-6 md:mb-8">Academic <span className="text-outline-brutal text-transparent">Excellence</span></h4>
-          <div className="space-y-8 md:space-y-12">
-            {experience.map((item, index) => (
-              <motion.div
-                key={item.id}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                className="border-t-[3px] border-on-surface pt-4 md:pt-6"
-              >
-                <div className="flex justify-between items-baseline mb-3 md:mb-4 gap-3">
-                  <h3 className="font-headline text-lg sm:text-xl md:text-2xl uppercase tracking-tighter">{item.title}</h3>
-                  <span className="font-label text-[9px] sm:text-[10px] tracking-widest text-outline flex-shrink-0">{item.period}</span>
-                </div>
-                <p className="font-label text-[8px] sm:text-xs tracking-widest uppercase text-on-surface-variant mb-3 md:mb-4">{item.company}</p>
-                <p className="font-body text-xs sm:text-sm leading-relaxed mb-3 md:mb-4">{item.description}</p>
-                {item.achievements && item.achievements.length > 0 && (
-                  <ul className="space-y-2">
-                    {item.achievements.map((a: string, idx: number) => (
-                      <li key={idx} className="font-body text-xs sm:text-sm text-on-surface-variant flex items-start gap-2">
-                        <span className="text-primary mt-1 text-[8px] flex-shrink-0">■</span> <span>{a}</span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-              </motion.div>
-            ))}
+    <section 
+      id="experience" 
+      className="border-b-2 border-outline select-none bg-background transition-colors duration-200"
+    >
+      {/* Section Header */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 border-b-2 border-outline">
+        <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex flex-col justify-between">
+          <div className="space-y-4">
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-black bg-primary/10 px-3.5 py-2 border border-primary/25 w-fit inline-block">
+              04 // CHRONOLOGY
+            </span>
+            <h2 className="font-heading text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.85] font-black tracking-tighter text-on-surface uppercase">
+              ARCHITECTURAL <br />
+              <span className="text-primary">EVOLUTION</span>
+            </h2>
           </div>
         </div>
+        <div className="lg:col-span-4 p-8 sm:p-12 lg:p-16 bg-surface-container flex flex-col justify-end">
+          <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-muted-foreground border-l-4 border-primary pl-4">
+            A chronological mapping of academic rigor, cumulative achievements, and validated certifications.
+          </p>
+        </div>
+      </div>
 
-        {/* Right Column - Education & Certs */}
-        <div className="space-y-12 md:space-y-16">
-          <div>
-            <h4 className="font-headline text-2xl sm:text-3xl md:text-4xl tracking-tighter uppercase font-black text-on-surface mb-6 md:mb-8">Institutions</h4>
-            <div className="space-y-8 md:space-y-12">
-              {education.map((item, index) => (
+      {/* Timeline Grid layout */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 divide-y-2 lg:divide-y-0 lg:divide-x-2 divide-outline">
+        
+        {/* Left Column: Academics & Institutions */}
+        <div className="lg:col-span-7 divide-y-2 divide-outline">
+          
+          {/* Experience Sub-Section */}
+          <div className="p-8 sm:p-16 lg:p-20 space-y-12">
+            <div className="flex items-center gap-3">
+              <GraduationCap className="w-6 h-6 text-primary" strokeWidth={2} />
+              <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
+                ACADEMIC EXCELLENCE
+              </h3>
+            </div>
+
+            <div className="space-y-10">
+              {experience.map((item, index) => (
                 <motion.div
                   key={item.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: true }}
-                  transition={{ duration: 0.5, delay: index * 0.1 }}
-                  className="border-t-[3px] border-on-surface pt-4 md:pt-6"
+                  transition={{ ...cubicTransition, delay: index * 0.05 }}
+                  className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow"
                 >
-                  <div className="flex justify-between items-baseline mb-3 md:mb-4 gap-3">
-                    <h3 className="font-headline text-base sm:text-lg md:text-xl uppercase tracking-tighter">{item.degree}</h3>
-                    <span className="font-label text-[9px] sm:text-[10px] tracking-widest text-outline flex-shrink-0">{item.period}</span>
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
+                    <div>
+                      <h4 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight">
+                        {item.title}
+                      </h4>
+                      <p className="font-mono text-sm text-primary font-black uppercase tracking-wider mt-1">
+                        {item.company}
+                      </p>
+                    </div>
+                    <span className="font-mono text-xs sm:text-sm font-bold uppercase bg-background border border-outline px-3 py-1.5 w-fit flex-shrink-0 flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{item.period}</span>
+                    </span>
                   </div>
-                  <p className="font-label text-[8px] sm:text-[10px] tracking-widest uppercase text-on-surface-variant mb-3 md:mb-4">{item.school}</p>
-                  <p className="font-body text-xs sm:text-sm leading-relaxed">{item.description}</p>
-                  {item.gpa && (
-                    <p className="font-headline text-base md:text-lg mt-3 md:mt-4 italic">GPA: <span className="font-bold">{item.gpa}</span></p>
+                  <p className="font-body text-base text-on-surface-variant leading-relaxed mb-4 font-medium">
+                    {item.description}
+                  </p>
+                  {item.achievements && item.achievements.length > 0 && (
+                    <ul className="space-y-2.5 border-t border-outline border-dashed pt-4">
+                      {item.achievements.map((a: string, idx: number) => (
+                        <li key={idx} className="font-body text-sm sm:text-base text-on-surface flex items-start gap-2.5 font-semibold leading-relaxed">
+                          <span className="text-primary mt-1 text-[8px] flex-shrink-0">■</span>
+                          <span>{a}</span>
+                        </li>
+                      ))}
+                    </ul>
                   )}
                 </motion.div>
               ))}
             </div>
           </div>
 
-          <div>
-            <h4 className="font-headline text-2xl sm:text-3xl md:text-4xl tracking-tighter uppercase font-black text-on-surface mb-6 md:mb-8">Technical <span className="text-outline-brutal text-transparent">Endorsements</span></h4>
-            <div className="grid grid-cols-1 gap-3 md:gap-4 border-t-[3px] border-on-surface pt-4 md:pt-6">
-              {certifications.map((cert, index) => (
-                <div key={index} className="flex justify-between items-start md:items-center py-3 md:py-4 border-b-2 border-on-surface gap-3">
-                  <div className="min-w-0 flex-1">
-                    <p className="font-body text-xs sm:text-sm font-medium break-words">{cert.name}</p>
-                    <p className="font-label text-[8px] sm:text-[10px] tracking-widest uppercase text-outline mt-1">{cert.issuer} • {cert.date}</p>
+          {/* Education Sub-Section */}
+          <div className="p-8 sm:p-16 lg:p-20 space-y-12">
+            <div className="flex items-center gap-3">
+              <GraduationCap className="w-6 h-6 text-primary" strokeWidth={2} />
+              <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
+                INSTITUTIONS
+              </h3>
+            </div>
+
+            <div className="space-y-10">
+              {education.map((item, index) => (
+                <motion.div
+                  key={item.id}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ ...cubicTransition, delay: index * 0.05 }}
+                  className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow"
+                >
+                  <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
+                    <div>
+                      <h4 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight">
+                        {item.degree}
+                      </h4>
+                      <p className="font-mono text-sm text-primary font-black uppercase tracking-wider mt-1">
+                        {item.school}
+                      </p>
+                    </div>
+                    <span className="font-mono text-xs sm:text-sm font-bold uppercase bg-background border border-outline px-3 py-1.5 w-fit flex-shrink-0 flex items-center gap-2">
+                      <Calendar className="w-4 h-4" />
+                      <span>{item.period}</span>
+                    </span>
                   </div>
-                  {cert.url && (
-                    <a
-                      href={cert.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="font-label font-bold uppercase text-on-surface brutalist-border px-4 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-all text-[10px] sm:text-xs flex-shrink-0 min-h-[48px] flex items-center justify-center bg-background hover:bg-primary hover:text-on-primary"
-                    >
-                      View ↗
-                    </a>
+                  <p className="font-body text-base text-on-surface-variant leading-relaxed font-medium">
+                    {item.description}
+                  </p>
+                  {item.gpa && (
+                    <div className="mt-4 font-mono text-sm font-black uppercase text-primary border border-primary/20 bg-primary/5 px-3 py-1.5 w-fit">
+                      GPA: {item.gpa}
+                    </div>
                   )}
-                </div>
+                </motion.div>
               ))}
             </div>
+          </div>
+
+        </div>
+
+        {/* Right Column: Certifications */}
+        <div className="lg:col-span-5 p-8 sm:p-16 lg:p-20 space-y-12">
+          <div className="flex items-center gap-3">
+            <Award className="w-6 h-6 text-primary" strokeWidth={2} />
+            <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
+              ENDORSEMENTS
+            </h3>
+          </div>
+
+          <div className="border-t-2 border-outline divide-y-2 divide-outline">
+            {certifications.map((cert, index) => (
+              <motion.div 
+                key={index} 
+                initial={{ opacity: 0 }}
+                whileInView={{ opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.05 }}
+                className="flex justify-between items-center py-5 group hover:bg-surface-container px-2 sm:px-4 -mx-2 sm:-mx-4 transition-colors"
+              >
+                <div className="min-w-0 pr-4">
+                  <p className="font-heading text-base sm:text-lg font-black uppercase tracking-tight truncate">
+                    {cert.name}
+                  </p>
+                  <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground mt-1 font-bold">
+                    {cert.issuer} • {cert.date}
+                  </p>
+                </div>
+                {cert.url && (
+                  <a
+                    href={cert.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="brutalist-border p-2 bg-background hover:bg-primary hover:text-white transition-colors cursor-pointer"
+                    aria-label={`View certification for ${cert.name}`}
+                  >
+                    <ExternalLink className="w-5 h-5" />
+                  </a>
+                )}
+              </motion.div>
+            ))}
           </div>
         </div>
 

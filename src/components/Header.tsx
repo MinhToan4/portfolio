@@ -1,11 +1,13 @@
 'use client';
 
-import { motion, useScroll, useMotionValueEvent } from 'framer-motion';
-import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState, useEffect } from 'react';
+import { useTheme } from 'next-themes';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 import { scrollToSection } from '@/lib/utils';
 
 const navItems = [
-  { name: 'Journal', href: 'hero' },
+  { name: 'Intro', href: 'hero' },
   { name: 'About', href: 'about' },
   { name: 'Work', href: 'projects' },
   { name: 'Experience', href: 'experience' },
@@ -16,139 +18,140 @@ const navItems = [
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
   const [activeSection, setActiveSection] = useState('hero');
+  const { setTheme, resolvedTheme } = useTheme();
+  const [mounted, setMounted] = useState(false);
 
-  const { scrollY } = useScroll();
-  useMotionValueEvent(scrollY, "change", (y) => {
-    setScrolled(y > 60);
-    const sections = navItems.map(i => i.href);
-    for (const id of [...sections].reverse()) {
-      const el = document.getElementById(id);
-      if (el && el.getBoundingClientRect().top <= 160) {
-        setActiveSection(id);
-        break;
+  useEffect(() => {
+    setMounted(true);
+    
+    const handleScroll = () => {
+      const sections = navItems.map(i => i.href);
+      for (const id of [...sections].reverse()) {
+        const el = document.getElementById(id);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 200) {
+            setActiveSection(id);
+            break;
+          }
+        }
       }
-    }
-  });
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNav = (href: string) => {
-    scrollToSection(href);
+    scrollToSection(href, 100);
     setIsOpen(false);
   };
 
+  const toggleTheme = () => {
+    setTheme(resolvedTheme === 'dark' ? 'light' : 'dark');
+  };
+
   return (
-    <motion.header
-      initial={{ opacity: 0, y: -20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.25, 0.1, 0.25, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled
-          ? 'border-b bg-background/95 backdrop-blur-sm'
-          : 'bg-transparent border-b border-transparent'
-        }`}
-      style={{ borderColor: scrolled ? 'var(--color-outline-variant)' : 'transparent' }}
-    >
-      <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full">
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', paddingBlock: '1.125rem', position: 'relative' }}>
+    <div className="fixed top-0 left-0 right-0 z-50 px-4 py-3 select-none">
+      <motion.header 
+        initial={{ y: -20, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ type: 'spring', stiffness: 260, damping: 20 }}
+        className="max-w-7xl mx-auto w-full brutalist-border bg-background/90 backdrop-blur-md text-on-background flex items-center justify-between py-3 px-6 transition-all duration-200 brutalist-shadow"
+      >
+        
+        {/* Brand Logo */}
+        <button
+          onClick={() => handleNav('hero')}
+          className="flex items-center font-heading font-black text-xl sm:text-2xl tracking-tighter uppercase cursor-pointer hover:text-primary transition-colors"
+        >
+          NMT<span className="text-primary font-mono">.</span>
+        </button>
 
-          {/* Logo / Masthead wordmark */}
-          <div style={{ flex: 1, minWidth: 0 }}>
-            <button
-              onClick={() => handleNav('hero')}
-              style={{
-                fontFamily: 'var(--font-serif)',
-                fontSize: 'clamp(1rem, 4vw, 1.25rem)',
-                fontWeight: 300,
-                letterSpacing: '0.22em',
-                textTransform: 'uppercase',
-                color: 'var(--color-on-surface)',
-                background: 'none',
-                border: 'none',
-                cursor: 'pointer',
-              }}
-            >
-              NMT
-            </button>
-          </div>
-
-          {/* Desktop Nav */}
-          <nav className="hidden xl:flex items-center gap-4 2xl:gap-6 absolute left-1/2 -translate-x-1/2 whitespace-nowrap overflow-hidden">
-            {navItems.map((item) => (
+        {/* Desktop Navigation Links */}
+        <nav className="hidden xl:flex items-center gap-2">
+          {navItems.map((item) => {
+            const isActive = activeSection === item.href;
+            return (
               <button
                 key={item.name}
                 onClick={() => handleNav(item.href)}
-                className="type-caption font-label text-xs uppercase tracking-[0.1em] font-medium whitespace-nowrap overflow-hidden text-ellipsis"
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
-                  transition: 'color 0.25s ease',
-                  paddingBottom: '0.125rem',
-                  borderBottom: activeSection === item.href ? '1px solid var(--color-on-surface)' : '1px solid transparent',
-                }}
+                className="relative px-4 py-2 font-mono text-xs font-black uppercase tracking-wider cursor-pointer group"
               >
-                {item.name}
+                {isActive && (
+                  <motion.span
+                    layoutId="activeNavBackground"
+                    className="absolute inset-0 bg-primary z-0 brutalist-border-thin"
+                    transition={{ type: 'spring', stiffness: 380, damping: 30 }}
+                  />
+                )}
+                <span className={`relative z-10 transition-colors duration-205 
+                  ${isActive ? 'text-white' : 'text-on-background group-hover:text-primary'}`}>
+                  {item.name}
+                </span>
               </button>
-            ))}
-          </nav>
+            );
+          })}
+        </nav>
 
-          {/* Mobile toggle */}
-          <div style={{ flex: 1, display: 'flex', justifyContent: 'flex-end' }}>
-            <button
-              className="xl:hidden min-h-[48px] px-5 border border-outline-variant rounded-full font-label text-[10px] sm:text-xs tracking-[0.15em] uppercase hover:bg-surface-container active:scale-95 transition-all whitespace-nowrap flex items-center justify-center"
-              onClick={() => setIsOpen(!isOpen)}
-              style={{
-                color: 'var(--color-on-surface)',
-              }}
-              aria-label="Toggle menu"
-            >
-              {isOpen ? 'Close' : 'Menu'}
-            </button>
-          </div>
-        </div>
-      </div>
+        {/* Action Controls */}
+        <div className="flex items-center gap-3">
+          {/* Theme Switcher Button */}
+          <button
+            onClick={toggleTheme}
+            className="w-10 h-10 brutalist-border bg-background hover:bg-primary hover:text-white transition-colors cursor-pointer flex items-center justify-center brutalist-shadow"
+            aria-label="Toggle Theme"
+          >
+            {mounted ? (
+              resolvedTheme === 'dark' ? (
+                <Sun className="w-4 h-4" strokeWidth={2} />
+              ) : (
+                <Moon className="w-4 h-4" strokeWidth={2} />
+              )
+            ) : (
+              <div className="w-4 h-4 bg-outline/20 animate-pulse" />
+            )}
+          </button>
 
-      {/* Mobile Menu */}
-      <motion.div
-        initial={false}
-        animate={{ height: isOpen ? 'auto' : 0, opacity: isOpen ? 1 : 0 }}
-        transition={{ duration: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
-        style={{ overflow: 'hidden', background: 'var(--color-background)', borderTop: isOpen ? '1px solid var(--color-outline-variant)' : 'none' }}
-      >
-        <div className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto w-full" style={{ paddingBlock: '2rem' }}>
-          {navItems.map((item, i) => (
-            <motion.div
-              key={item.name}
-              initial={{ opacity: 0, x: -10 }}
-              animate={{ opacity: isOpen ? 1 : 0, x: isOpen ? 0 : -10 }}
-              transition={{ delay: i * 0.06 }}
-              style={{ borderBottom: '1px solid var(--color-outline-variant)' }}
-            >
-              <button
-                onClick={() => {
-                  setIsOpen(false);
-                  setTimeout(() => scrollToSection(item.href), 100);
-                }}
-                className="w-full text-left break-words block"
-                style={{
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  fontFamily: 'var(--font-serif)',
-                  fontSize: 'clamp(1.25rem, 6vw, 1.75rem)',
-                  fontWeight: 300,
-                  color: activeSection === item.href ? 'var(--color-on-surface)' : 'var(--color-on-surface-variant)',
-                  letterSpacing: '-0.01em',
-                  paddingBlock: '1rem',
-                }}
-              >
-                {item.name}
-              </button>
-            </motion.div>
-          ))}
+          {/* Mobile Drawer Button */}
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="xl:hidden w-10 h-10 brutalist-border bg-background hover:bg-primary hover:text-white transition-colors cursor-pointer flex items-center justify-center brutalist-shadow"
+            aria-label="Toggle Menu"
+          >
+            {isOpen ? <X className="w-5 h-5" strokeWidth={2} /> : <Menu className="w-5 h-5" strokeWidth={2} />}
+          </button>
         </div>
-      </motion.div>
-    </motion.header>
+      </motion.header>
+
+      {/* Mobile Drawer Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            transition={{ duration: 0.15 }}
+            className="xl:hidden max-w-7xl mx-auto mt-2 brutalist-border bg-background w-full z-45 flex flex-col items-stretch p-4 gap-2 brutalist-shadow"
+          >
+            {navItems.map((item, idx) => {
+              const isActive = activeSection === item.href;
+              return (
+                <button
+                  key={item.name}
+                  onClick={() => handleNav(item.href)}
+                  className={`w-full text-left px-5 py-3.5 brutalist-border font-heading font-black text-xl uppercase tracking-tight flex justify-between items-center transition-colors cursor-pointer brutalist-shadow
+                    ${isActive ? 'bg-primary text-white' : 'hover:bg-primary hover:text-white bg-surface-container'}`}
+                >
+                  <span>{item.name}</span>
+                  <span className={`font-mono text-xs ${isActive ? 'text-white/70' : 'text-muted-foreground'}`}>0{idx + 1}</span>
+                </button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
   );
 }

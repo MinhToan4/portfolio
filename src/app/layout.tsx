@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
-import { Inter, Noto_Serif } from "next/font/google";
+import { Inter, Space_Grotesk, Space_Mono } from "next/font/google";
+import { ThemeProvider } from "@/components/ThemeProvider";
 import "./globals.css";
 
 const inter = Inter({
@@ -7,10 +8,15 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
-const notoSerif = Noto_Serif({
+const spaceGrotesk = Space_Grotesk({
   subsets: ["latin"],
-  style: ["normal", "italic"],
-  variable: "--font-noto-serif",
+  variable: "--font-space-grotesk",
+});
+
+const spaceMono = Space_Mono({
+  subsets: ["latin"],
+  weight: ["400", "700"],
+  variable: "--font-space-mono",
 });
 
 export const metadata: Metadata = {
@@ -20,9 +26,9 @@ export const metadata: Metadata = {
   authors: [{ name: "Nguyễn Minh Toàn" }],
   creator: "Nguyễn Minh Toàn",
   icons: {
-    icon: '/avatar.jpg',
-    shortcut: '/avatar.jpg',
-    apple: '/avatar.jpg',
+    icon: '/avatar1.png',
+    shortcut: '/avatar1.png',
+    apple: '/avatar1.png',
   },
   openGraph: {
     type: "website",
@@ -41,9 +47,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} ${notoSerif.variable} scroll-smooth`} suppressHydrationWarning>
+    <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} scroll-smooth`} suppressHydrationWarning>
       <body className="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary antialiased">
-        {children}
+        <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

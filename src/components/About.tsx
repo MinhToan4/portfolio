@@ -3,115 +3,156 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 import Image from 'next/image';
+import { ArrowUpRight, Compass, Mail, MapPin } from 'lucide-react';
 
 export default function About() {
   const { personal } = portfolioData;
 
+  // Snappy spring config
+  const cubicTransition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
+
   return (
-    <section id="about" className="px-4 sm:px-6 md:px-8 max-w-screen-2xl mx-auto my-16 sm:my-24 md:my-32">
-      {/* Hero Philosophy Statement */}
-      <div className="mb-32 sm:mb-48">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-8">
-          <motion.div
-            className="col-span-1 md:col-span-10"
+    <section 
+      id="about" 
+      className="border-b-2 border-outline select-none bg-background transition-colors duration-200"
+    >
+      {/* Philosophical Block Banner */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 border-b-2 border-outline">
+        <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex items-center">
+          <motion.h2 
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
+            transition={cubicTransition}
+            className="font-heading text-[clamp(2rem,4.5vw,4rem)] leading-[1.1] font-black uppercase text-on-surface tracking-tighter"
           >
-            <h1 className="font-headline text-[clamp(1.75rem,5vw,5rem)] leading-[1.1] ink-tension font-black italic text-on-surface uppercase brutalist-border p-4 sm:p-6 md:p-8 brutalist-shadow-sm break-words">
-              &quot;Technology should be rigorous in structure, <br /> yet <span className="text-outline-brutal text-transparent">invisible</span> in experience.&quot;
-            </h1>
-          </motion.div>
-          <motion.div
-            className="col-span-1 md:col-span-5 md:col-start-7 mt-8 md:mt-12"
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <p className="font-body text-xs sm:text-sm text-on-surface-variant leading-relaxed text-justify">
-              {personal.description}
-            </p>
-          </motion.div>
+            &quot;Technology should be rigorous in structure, <br /> yet <span className="text-primary">invisible</span> in experience.&quot;
+          </motion.h2>
+        </div>
+        <div className="lg:col-span-4 p-8 sm:p-12 lg:p-16 bg-surface-container flex flex-col justify-between gap-8">
+          <div className="flex items-center gap-3">
+            <Compass className="w-6 h-6 text-primary" strokeWidth={2} />
+            <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-widest">[ METHOD ]</span>
+          </div>
+          <p className="font-body text-base sm:text-lg leading-relaxed text-on-surface-variant font-medium text-justify">
+            {personal.description}
+          </p>
         </div>
       </div>
 
-      {/* Structured Bio Section */}
-      <div className="mb-48 sm:mb-64">
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-y-16">
-          {/* Row 1 */}
-          <div className="md:col-span-4">
-            <span className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tighter uppercase font-black text-on-surface">Identity</span>
+      {/* Main Identity & Grid Section */}
+      <div className="grid grid-cols-1 lg:grid-cols-12">
+        {/* Left column: Title & Section Tag */}
+        <div className="lg:col-span-4 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex flex-col justify-between">
+          <div className="space-y-4">
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-black bg-primary/10 px-3.5 py-2 border border-primary/25 w-fit inline-block">
+              01 // IDENTITY
+            </span>
+            <h2 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter">
+              WHO IS <br />
+              <span className="text-primary">NMT?</span>
+            </h2>
           </div>
-          <div className="md:col-span-8">
-            <h2 className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl mb-2 font-black uppercase tracking-tighter">{personal.name}</h2>
-            <h3 className="font-headline text-lg sm:text-xl md:text-2xl mb-6 md:mb-8 italic text-on-surface-variant">The Engineer&apos;s Mindset</h3>
-            <div className="flex flex-col gap-6 md:gap-8 md:flex-row">
-              <div className="w-full md:w-1/3 aspect-[3/4] relative brutalist-shadow brutalist-border flex-shrink-0">
-                <Image src={personal.avatar} alt={personal.name} fill className="object-cover" />
-              </div>
-              <div className="w-full md:w-2/3">
-                <p className="font-body text-sm md:text-base text-on-surface-variant leading-relaxed mb-6 md:mb-8">
-                  Based strictly on the principles of logic, clean architecture, and algorithmic efficiency. I believe complexity should be tackled at the root, delivering performance that feels effortless.
-                </p>
-                <div className="space-y-3 md:space-y-4">
-                  <div className="flex justify-between items-baseline border-b border-outline-variant py-3 md:py-3.5 gap-4">
-                    <span className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest flex-shrink-0">Email</span>
-                    <a href={`mailto:${personal.email}`} className="font-label text-[11px] sm:text-sm tracking-widest text-outline hover:text-primary transition-colors break-all">{personal.email}</a>
+          <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-muted-foreground mt-8 lg:mt-0">
+            [ DECRYPTING CONTEXT VARIABLES ]
+          </p>
+        </div>
+
+        {/* Right column: Avatar, Bio, Details, Socials */}
+        <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 flex flex-col gap-12">
+          
+          <div className="flex flex-col md:flex-row gap-10 items-start">
+            {/* Architectural Profile Placeholder Picture */}
+            <div className="w-full md:w-48 aspect-[3/4] relative brutalist-border brutalist-shadow flex-shrink-0 bg-neutral-900 overflow-hidden">
+              <Image 
+                src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" 
+                alt="Brutalist concrete architecture" 
+                fill 
+                className="object-cover grayscale hover:grayscale-0 transition-all duration-300 contrast-125 hover:scale-105"
+                sizes="(max-w-768px) 100vw, 192px"
+              />
+            </div>
+            
+            <div className="space-y-6 w-full">
+              <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
+                Nguyễn Minh Toàn
+              </h3>
+              <p className="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed font-medium">
+                Based strictly on the principles of logic, clean architecture, and algorithmic efficiency. I believe complexity should be tackled at the root, delivering backend systems and API architectures that scale effortlessly.
+              </p>
+
+              {/* Data Table */}
+              <div className="border-t-2 border-outline divide-y-2 divide-outline">
+                <div className="flex justify-between items-center py-4">
+                  <div className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-primary" strokeWidth={2} />
+                    <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider">EMAIL PROTOCOL</span>
                   </div>
-                  <div className="flex justify-between items-baseline border-b border-outline-variant py-3 md:py-3.5 gap-4">
-                    <span className="font-body text-xs sm:text-sm font-bold uppercase tracking-widest flex-shrink-0">Location</span>
-                    <span className="font-label text-[11px] sm:text-sm tracking-widest text-outline">{personal.location}</span>
-                  </div>
+                  <a href={`mailto:${personal.email}`} className="font-mono text-sm sm:text-base text-primary font-bold hover:underline break-all ml-4">
+                    {personal.email}
+                  </a>
                 </div>
-                <div className="mt-6 md:mt-8 flex gap-4 md:gap-6 flex-wrap">
-                  {Object.entries(personal.socialLinks).map(([name, url]) => (
-                    <a key={name} href={url as string} target="_blank" rel="noopener noreferrer" className="font-label text-[10px] sm:text-xs tracking-[0.15em] md:tracking-[0.2em] font-black uppercase text-on-surface brutalist-border px-5 py-3 brutalist-shadow-sm hover:translate-y-[2px] transition-transform whitespace-nowrap min-h-[48px] flex items-center justify-center">
-                      {name}
-                    </a>
-                  ))}
+                <div className="flex justify-between items-center py-4">
+                  <div className="flex items-center gap-2">
+                    <MapPin className="w-4 h-4 text-primary" strokeWidth={2} />
+                    <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider">BASE COORD</span>
+                  </div>
+                  <span className="font-mono text-sm sm:text-base font-bold">
+                    {personal.location.toUpperCase()}
+                  </span>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Row 2 */}
-          <div className="md:col-span-4 border-t-[3px] border-on-surface pt-6 md:pt-8 mt-8 md:mt-16">
-            <span className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tighter uppercase font-black text-on-surface">Methodology</span>
-          </div>
-          <div className="md:col-span-8 border-t-[3px] border-on-surface pt-6 md:pt-8 mt-8 md:mt-16">
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-12">
-              <div>
-                <h3 className="font-headline text-base md:text-lg mb-3 md:mb-4 italic">Algorithmic Precision</h3>
-                <p className="font-body text-xs md:text-sm text-on-surface-variant leading-relaxed">We reject brute-force solutions. Efficiency is created through the calculated structuring of data and operations.</p>
-              </div>
-              <div>
-                <h3 className="font-headline text-base md:text-lg mb-3 md:mb-4 italic">Systemic Restraint</h3>
-                <p className="font-body text-xs md:text-sm text-on-surface-variant leading-relaxed">Architecture is used as a surgical tool, never as a bloated filler. Our backend is a digital pulse driving robust applications.</p>
-              </div>
-            </div>
+          {/* Social Links Buttons */}
+          <div className="flex flex-wrap gap-4 pt-6 border-t-2 border-outline border-dashed">
+            {Object.entries(personal.socialLinks).map(([name, url]) => (
+              <a 
+                key={name} 
+                href={url as string} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="brutalist-border px-5 py-3 font-mono text-xs sm:text-sm font-black uppercase bg-background hover:bg-primary hover:text-white transition-colors brutalist-shadow flex items-center gap-2"
+              >
+                <span>{name}</span>
+                <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
+              </a>
+            ))}
           </div>
 
-          {/* Row 3 */}
-          <div className="md:col-span-4 border-t-[3px] border-on-surface pt-6 md:pt-8 mt-8 md:mt-16">
-            <span className="font-headline text-2xl sm:text-3xl md:text-4xl lg:text-5xl tracking-tighter uppercase font-black text-on-surface">Key Stats</span>
+        </div>
+      </div>
+
+      {/* Methodology Section split row */}
+      <div className="grid grid-cols-1 lg:grid-cols-12 border-t-2 border-outline">
+        <div className="lg:col-span-4 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex flex-col justify-between">
+          <div className="space-y-4">
+            <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-black bg-primary/10 px-3.5 py-2 border border-primary/25 w-fit inline-block">
+              02 // METRIC RULES
+            </span>
+            <h2 className="font-heading text-5xl sm:text-6xl lg:text-7xl font-black uppercase tracking-tighter">
+              SYSTEMIC <br />
+              <span className="text-primary">PRINCIPLES</span>
+            </h2>
           </div>
-          <div className="md:col-span-8 border-t-[3px] border-on-surface pt-6 md:pt-8 mt-8 md:mt-16">
-            <div className="space-y-4 md:space-y-6">
-              <div className="flex justify-between items-baseline border-b border-surface-container py-2 gap-4">
-                <span className="font-body text-xs md:text-sm flex-shrink-0">Academic GPA</span>
-                <span className="font-label text-[9px] sm:text-[10px] tracking-widest text-outline flex-shrink-0">3.82 / 4.0</span>
-              </div>
-              <div className="flex justify-between items-baseline border-b border-surface-container py-2 gap-4">
-                <span className="font-body text-xs md:text-sm flex-shrink-0">Professional Certifications</span>
-                <span className="font-label text-[9px] sm:text-[10px] tracking-widest text-outline flex-shrink-0">7 BADGES</span>
-              </div>
-              <div className="flex justify-between items-baseline border-b border-surface-container py-2 gap-4">
-                <span className="font-body text-xs md:text-sm flex-shrink-0">Deployed Architectures</span>
-                <span className="font-label text-[9px] sm:text-[10px] tracking-widest text-outline flex-shrink-0">4+ PROJECTS</span>
-              </div>
-            </div>
+        </div>
+        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 divide-y-2 md:divide-y-0 md:divide-x-2 divide-outline">
+          <div className="p-8 sm:p-12 lg:p-16 flex flex-col gap-4">
+            <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight flex items-center gap-2">
+              <span className="text-primary font-mono text-sm">[01]</span> Algorithmic Precision
+            </h3>
+            <p className="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed font-medium">
+              We reject brute-force solutions. Efficiency is created through the calculated structuring of data and operations. Low latency is a primary architectural feature.
+            </p>
+          </div>
+          <div className="p-8 sm:p-12 lg:p-16 flex flex-col gap-4">
+            <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight flex items-center gap-2">
+              <span className="text-primary font-mono text-sm">[02]</span> Systemic Restraint
+            </h3>
+            <p className="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed font-medium">
+              Architecture is used as a surgical tool, never as a bloated filler. Clean OOP, structural encapsulation, and clean RESTful design are baseline engineering requirements.
+            </p>
           </div>
         </div>
       </div>

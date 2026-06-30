@@ -2,6 +2,7 @@
 
 import { portfolioData } from '@/data/portfolio';
 import { scrollToSection } from '@/lib/utils';
+import { ArrowUp } from 'lucide-react';
 
 export default function Footer() {
   const { personal } = portfolioData;
@@ -11,58 +12,61 @@ export default function Footer() {
     { name: 'About', href: 'about' },
     { name: 'Projects', href: 'projects' },
     { name: 'Experience', href: 'experience' },
+    { name: 'Academic', href: 'academic-results' },
     { name: 'Activities', href: 'activities' },
     { name: 'Contact', href: 'contact' }
   ];
 
   return (
-    <footer className="bg-on-surface text-background w-full pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-6 px-4 sm:px-6 md:px-8 mt-12 sm:mt-16 md:mt-16">
-      <div className="max-w-screen-2xl mx-auto">
-
-        {/* Top Row: Wordmark & Back to top */}
-        <div className="flex justify-between items-end gap-4">
+    <footer className="bg-neutral-950 text-neutral-200 w-full border-t-2 border-outline py-12 sm:py-16 select-none transition-colors duration-200">
+      <div className="max-w-screen-2xl mx-auto px-6 sm:px-8 md:px-12 space-y-12">
+        
+        {/* Top Section */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-end gap-8 border-b border-white/20 pb-8">
           <div>
-            <h2 className="font-headline text-3xl sm:text-4xl md:text-5xl font-normal tracking-[-0.02em] text-background leading-none">
-              NMT<span className="text-background/40">.</span>
+            <h2 className="font-heading text-4xl sm:text-5xl lg:text-6xl font-black tracking-tighter uppercase text-white">
+              NMT<span className="text-primary font-mono">.</span>
             </h2>
-            <p className="font-label text-[9px] sm:text-[10px] md:text-[10px] tracking-[0.2em] md:tracking-[0.3em] uppercase text-background/50 font-semibold mt-1 md:mt-2">
-              Backend Developer
+            <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mt-2">
+              {"[ "}{personal.title}{" // PTIT HONORS ]"}
             </p>
           </div>
 
           <button
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="w-12 h-12 flex items-center justify-center border border-background/20 text-background/50 hover:text-background hover:bg-background/10 transition-colors font-sans text-sm flex-shrink-0"
+            className="w-14 h-14 border border-white/30 hover:bg-primary hover:text-white hover:border-primary transition-colors duration-150 flex items-center justify-center brutalist-shadow bg-neutral-900 cursor-pointer"
             aria-label="Back to top"
           >
-            ↑
+            <ArrowUp className="w-6 h-6 text-white" strokeWidth={2.5} />
           </button>
         </div>
 
-        {/* Divider */}
-        <div className="w-full h-[1px] bg-background/20 my-4 md:my-4"></div>
+        {/* Middle Section: Navigation & Specs */}
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-4">
+          {/* Quick Links */}
+          <nav className="md:col-span-8 flex flex-wrap gap-x-6 gap-y-3">
+            {footerLinks.map((link) => (
+              <button
+                key={link.name}
+                onClick={() => scrollToSection(link.href, 100)}
+                className="font-mono text-xs font-bold uppercase tracking-wider text-neutral-450 hover:text-white cursor-pointer hover:underline underline-offset-4"
+              >
+                {link.name} {" // "}
+              </button>
+            ))}
+          </nav>
 
-        {/* Navigation Links */}
-        <nav className="flex flex-col sm:flex-row sm:flex-wrap gap-x-4 md:gap-x-6 gap-y-2">
-          {footerLinks.map((link) => (
-            <button
-              key={link.name}
-              onClick={() => scrollToSection(link.href)}
-              className="font-label text-[10px] sm:text-[10px] md:text-[10px] tracking-[0.1em] md:tracking-[0.15em] font-semibold uppercase text-background/60 hover:text-background transition-colors text-left w-full sm:w-auto py-3.5 sm:py-2 whitespace-nowrap"
-            >
-              {link.name}
-            </button>
-          ))}
-        </nav>
+          {/* Coordinate Details */}
+          <div className="md:col-span-4 md:text-right font-mono text-xs text-neutral-450 space-y-1">
+            <p>[ BASE: {personal.location.toUpperCase()} ]</p>
+            <p>[ YEAR: {year} ]</p>
+          </div>
+        </div>
 
-        {/* Bottom Metadata */}
-        <div className="mt-6 md:mt-8 flex flex-col sm:flex-row justify-between items-start sm:items-end gap-2 md:gap-2">
-          <p className="font-label text-[9px] sm:text-[9px] md:text-[9px] font-medium tracking-[0.02em] md:tracking-[0.05em] text-background/40 break-words">
-            © {year} {personal.name}. All rights reserved.
-          </p>
-          <p className="font-headline italic text-[9px] sm:text-xs md:text-[10px] text-background/40 flex-shrink-0">
-            {personal.location || 'Ha Dong, Hanoi, Vietnam'}
-          </p>
+        {/* Bottom Section: Copyright */}
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 pt-8 border-t border-white/10 text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+          <p>© {year} {personal.name}. All systems functional.</p>
+          <p>Handcrafted in Hanoi, Vietnam.</p>
         </div>
 
       </div>

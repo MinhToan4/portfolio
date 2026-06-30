@@ -3,94 +3,113 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  --color-secondary-fixed-dim: #bcc3ff;
-  --color-on-tertiary-fixed-variant: #900e00;
-  --color-on-secondary: #ffffff;
-  --color-surface-container-low: #f6f3f2;
-  --color-primary-fixed: #dfe0ff;
-  --color-on-secondary-container: #202e8b;
-  --color-on-surface: #1c1b1b;
-  --color-secondary-container: #8e9cfd;
-  --color-surface-container-lowest: #ffffff;
-  --color-on-tertiary-container: #ffbeb2;
-  --color-on-primary-fixed: #000d60;
-  --color-surface-variant: #e5e2e1;
-  --color-tertiary-container: #ae1501;
-  --color-on-error-container: #93000a;
-  --color-secondary-fixed: #dfe0ff;
-  --color-tertiary-fixed: #ffdad4;
-  --color-primary-fixed-dim: #bcc3ff;
-  --color-error-container: #ffdad6;
-  --color-surface-tint: #1f41ff;
-  --color-inverse-surface: #313030;
-  --color-surface: #fcf9f8;
-  --color-surface-dim: #dcd9d9;
-  --color-surface-container: #f0eded;
-  --color-on-tertiary: #ffffff;
-  --color-on-tertiary-fixed: #3f0300;
-  --color-error: #ba1a1a;
-  --color-background: #fcf9f8;
-  --color-inverse-primary: #bcc3ff;
-  --color-on-background: #1c1b1b;
-  --color-surface-container-highest: #e5e2e1;
-  --color-on-primary: #ffffff;
-  --color-tertiary-fixed-dim: #ffb4a6;
-  --color-primary-container: #0033ff;
-  --color-on-surface-variant: #444657;
-  --color-on-error: #ffffff;
-  --color-outline: #747689;
-  --color-on-primary-fixed-variant: #0029d3;
-  --color-on-secondary-fixed: #000d60;
-  --color-surface-container-high: #eae7e7;
-  --color-inverse-on-surface: #f3f0ef;
-  --color-primary: #0024c1;
-  --color-tertiary: #830c00;
-  --color-on-primary-container: #c5caff;
-  --color-on-secondary-fixed-variant: #2f3d98;
-  --color-secondary: #4856b2;
-  --color-outline-variant: #c4c5da;
-  --color-surface-bright: #fcf9f8;
+  --color-background: var(--bg);
+  --color-on-background: var(--text);
+  --color-surface: var(--bg-surface);
+  --color-on-surface: var(--text);
+  --color-surface-container: var(--bg-offset);
+  --color-surface-container-highest: var(--bg-surface);
+  
+  --color-primary: #FF3B30; /* Tomato red - highly aesthetic primary */
+  --color-on-primary: #FFFFFF;
+  --color-secondary: #000000;
+  --color-on-secondary: #FFFFFF;
+  
+  --color-accent: #FF3B30;
+  --color-outline: var(--border-color);
+  --color-outline-variant: var(--border-color);
 
-  --font-headline: var(--font-noto-serif);
+  --font-heading: var(--font-space-grotesk);
   --font-body: var(--font-inter);
-  --font-label: var(--font-inter);
+  --font-mono: var(--font-space-mono);
+
+  --radius-none: 0px;
+  --radius-sm: 0px;
+  --radius-md: 0px;
+  --radius-lg: 0px;
+  --radius-xl: 0px;
+  --radius-2xl: 0px;
+  --radius-3xl: 0px;
+}
+
+:root {
+  --bg: #FAF9F6; /* Soft cream */
+  --bg-surface: #FFFFFF;
+  --bg-offset: #F4F3EF; /* Slightly darker cream for cards */
+  --text: #1C1C1C; /* Dark charcoal instead of harsh solid black */
+  --text-muted: #666660;
+  --border-color: #1C1C1C;
+}
+
+.dark {
+  --bg: #0B0B0B; /* Deep organic dark base */
+  --bg-surface: #121212;
+  --bg-offset: #181818;
+  --text: #F5F5F5;
+  --text-muted: #8E8E8E;
+  --border-color: #FAF9F6;
 }
 
 @layer base {
   body {
-    cursor: default;
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: var(--font-inter), sans-serif;
   }
 }
 
-/* Brutalist Utilities */
+/* Custom Neo-Brutalist Utilities */
 .brutalist-border {
-  border: 3px solid var(--color-on-surface);
+  border: 2px solid var(--border-color);
+}
+
+.brutalist-border-thin {
+  border: 1px solid var(--border-color);
 }
 
 .brutalist-shadow {
-  box-shadow: 8px 8px 0px 0px var(--color-on-surface);
-  transition: all 0.2s ease;
+  box-shadow: 4px 4px 0px 0px var(--border-color);
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .brutalist-shadow:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0px 0px var(--border-color);
+}
+
+.brutalist-shadow-active:active {
   transform: translate(4px, 4px);
-  box-shadow: 4px 4px 0px 0px var(--color-on-surface);
+  box-shadow: 0px 0px 0px 0px var(--border-color);
 }
 
-.brutalist-shadow-sm {
-  box-shadow: 4px 4px 0px 0px var(--color-on-surface);
+.brutalist-shadow-large {
+  box-shadow: 6px 6px 0px 0px var(--border-color);
+  transition: transform 0.12s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.12s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.text-outline-brutal {
-  -webkit-text-stroke: 2px var(--color-on-surface);
-  color: transparent;
+.brutalist-shadow-large:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0px 0px var(--border-color);
 }
 
-.ink-tension {
-  letter-spacing: -0.02em;
+.brutalist-shadow-large-active:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0px 0px 0px 0px var(--border-color);
 }
 
-.glass-nav {
-  background-color: rgba(255, 255, 255, 0.7);
-  backdrop-filter: blur(12px);
+@keyframes marquee {
+  0% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(-50%, 0, 0); }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 30s linear infinite;
+}
+
+.marquee-container {
+  overflow: hidden;
+  white-space: nowrap;
+  display: flex;
 }
