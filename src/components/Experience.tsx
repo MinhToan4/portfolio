@@ -60,10 +60,14 @@ export default function Experience() {
                   transition={{ ...cubicTransition, delay: index * 0.05 }}
                 >
                   <TiltContainer>
-                    <div className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow cursor-default">
+                    <div className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow cursor-default relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 font-mono text-[8px] font-black text-muted-foreground bg-outline/10 border-l border-b border-outline px-1.5 py-0.5 select-none opacity-60 group-hover:opacity-100 group-hover:text-primary transition-colors">
+                        [NODE // 0{index + 1}]
+                      </div>
+
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                         <div>
-                          <h4 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight">
+                          <h4 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight group-hover:text-primary transition-colors">
                             {item.title}
                           </h4>
                           <p className="font-mono text-sm text-primary font-black uppercase tracking-wider mt-1">
@@ -82,7 +86,7 @@ export default function Experience() {
                         <ul className="space-y-2.5 border-t border-outline border-dashed pt-4">
                           {item.achievements.map((a: string, idx: number) => (
                             <li key={idx} className="font-body text-sm sm:text-base text-on-surface flex items-start gap-2.5 font-semibold leading-relaxed">
-                              <span className="text-primary mt-1 text-[8px] flex-shrink-0">■</span>
+                              <span className="text-primary font-mono text-xs font-black flex-shrink-0 select-none">&gt;_</span>
                               <span>{a}</span>
                             </li>
                           ))}
@@ -114,10 +118,14 @@ export default function Experience() {
                   transition={{ ...cubicTransition, delay: index * 0.05 }}
                 >
                   <TiltContainer>
-                    <div className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow cursor-default">
+                    <div className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow cursor-default relative overflow-hidden group">
+                      <div className="absolute top-0 right-0 font-mono text-[8px] font-black text-muted-foreground bg-outline/10 border-l border-b border-outline px-1.5 py-0.5 select-none opacity-60 group-hover:opacity-100 group-hover:text-primary transition-colors">
+                        [SYS_EXP // 0{index + 1}]
+                      </div>
+
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
                         <div>
-                          <h4 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight">
+                          <h4 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight group-hover:text-primary transition-colors">
                             {item.degree}
                           </h4>
                           <p className="font-mono text-sm text-primary font-black uppercase tracking-wider mt-1">
@@ -162,12 +170,17 @@ export default function Experience() {
                 <TiltContainer maxTilt={4}>
                   <div className="flex justify-between items-center py-5 group hover:bg-surface-container px-2 sm:px-4 -mx-2 sm:-mx-4 transition-colors cursor-default">
                     <div className="min-w-0 pr-4">
-                      <p className="font-heading text-base sm:text-lg font-black uppercase tracking-tight truncate">
+                      <p className="font-heading text-base sm:text-lg font-black uppercase tracking-tight truncate group-hover:text-primary transition-colors">
                         {cert.name}
                       </p>
-                      <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground mt-1 font-bold">
-                        {cert.issuer} • {cert.date}
-                      </p>
+                      <div className="flex items-center gap-2 mt-1">
+                        <span className="font-mono text-[9px] font-black uppercase text-emerald-500 bg-emerald-500/10 border border-emerald-500/25 px-1.5 py-0.5 select-none leading-none">
+                          VERIFIED_SECURE
+                        </span>
+                        <p className="font-mono text-xs uppercase tracking-wider text-muted-foreground font-bold">
+                          {cert.issuer} • {cert.date}
+                        </p>
+                      </div>
                     </div>
                     {cert.url && (
                       <a

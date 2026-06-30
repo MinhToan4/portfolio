@@ -62,15 +62,34 @@ export default function About() {
         <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 flex flex-col gap-12">
           
           <div className="flex flex-col md:flex-row gap-10 items-start">
-            {/* Architectural Profile Placeholder Picture */}
-            <div className="w-full md:w-48 aspect-[3/4] relative brutalist-border brutalist-shadow flex-shrink-0 bg-neutral-900 overflow-hidden">
+            {/* Architectural Profile Picture with Tech Grid Overlays */}
+            <div className="w-full md:w-48 aspect-[3/4] relative brutalist-border brutalist-shadow flex-shrink-0 bg-neutral-900 overflow-hidden group">
               <Image 
                 src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" 
                 alt="Brutalist concrete architecture" 
                 fill 
-                className="object-cover transition-all duration-300 hover:scale-105"
+                className="object-cover transition-all duration-500 group-hover:scale-110"
                 sizes="(max-w-768px) 100vw, 192px"
               />
+              
+              {/* Scanline overlay */}
+              <div className="absolute inset-0 bg-gradient-to-b from-transparent via-primary/10 to-transparent h-1/2 w-full animate-[pulse_2s_infinite] pointer-events-none" />
+              
+              {/* Corner tech indicators */}
+              <div className="absolute top-2 left-2 font-mono text-[7px] font-black text-white/70 bg-black/50 px-1 border border-white/20 select-none">
+                [SYS_ID: NMT.04]
+              </div>
+              <div className="absolute bottom-2 right-2 font-mono text-[7px] font-black text-white/70 bg-black/50 px-1 border border-white/20 select-none">
+                [SCAN_ACTIVE]
+              </div>
+              
+              {/* Crosshair SVG overlay */}
+              <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-40 group-hover:opacity-85 transition-opacity duration-300">
+                <svg className="w-12 h-12 text-primary" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <circle cx="50" cy="50" r="10" strokeDasharray="3 3" />
+                  <path d="M 50 15 L 50 35 M 50 65 L 50 85 M 15 50 L 35 50 M 65 50 L 85 50" />
+                </svg>
+              </div>
             </div>
             
             <div className="space-y-6 w-full">
@@ -113,10 +132,10 @@ export default function About() {
                 href={url as string} 
                 target="_blank" 
                 rel="noopener noreferrer" 
-                className="brutalist-border px-5 py-3 font-mono text-xs sm:text-sm font-black uppercase bg-background hover:bg-primary hover:text-white transition-colors brutalist-shadow flex items-center gap-2"
+                className="brutalist-border px-5 py-3 font-mono text-xs sm:text-sm font-black uppercase bg-background hover:bg-primary hover:text-white transition-all duration-150 brutalist-shadow flex items-center gap-2 group cursor-pointer"
               >
                 <span>{name}</span>
-                <ArrowUpRight className="w-4 h-4" strokeWidth={2} />
+                <ArrowUpRight className="w-4 h-4 group-hover:rotate-45 transition-transform duration-200" strokeWidth={2.5} />
               </a>
             ))}
           </div>
@@ -138,16 +157,16 @@ export default function About() {
           </div>
         </div>
         <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 divide-y-2 md:divide-y-0 md:divide-x-2 divide-outline">
-          <div className="p-8 sm:p-12 lg:p-16 flex flex-col gap-4">
-            <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight flex items-center gap-2">
+          <div className="p-8 sm:p-12 lg:p-16 flex flex-col gap-4 hover:bg-surface-container transition-colors duration-150 group">
+            <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight flex items-center gap-2 group-hover:text-primary transition-colors">
               <span className="text-primary font-mono text-sm">[01]</span> Algorithmic Precision
             </h3>
             <p className="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed font-medium">
               We reject brute-force solutions. Efficiency is created through the calculated structuring of data and operations. Low latency is a primary architectural feature.
             </p>
           </div>
-          <div className="p-8 sm:p-12 lg:p-16 flex flex-col gap-4">
-            <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight flex items-center gap-2">
+          <div className="p-8 sm:p-12 lg:p-16 flex flex-col gap-4 hover:bg-surface-container transition-colors duration-150 group">
+            <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight flex items-center gap-2 group-hover:text-primary transition-colors">
               <span className="text-primary font-mono text-sm">[02]</span> Systemic Restraint
             </h3>
             <p className="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed font-medium">

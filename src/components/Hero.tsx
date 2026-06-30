@@ -34,7 +34,14 @@ export default function Hero() {
     <section
       id="hero"
       className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-16 border-b-2 border-outline select-none bg-transparent transition-colors duration-200 overflow-hidden"
+      style={{
+        backgroundImage: 'linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)',
+        backgroundSize: '40px 40px'
+      }}
     >
+      {/* Dynamic Scanline overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-primary/[0.015] via-transparent to-transparent pointer-events-none" />
+
       {/* Main Grid Content */}
       <div className="relative z-10 max-w-screen-2xl mx-auto w-full px-6 sm:px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 my-auto py-12">
         
@@ -68,7 +75,8 @@ export default function Hero() {
           >
             {/* Bio Block with 3D Parallax Tilt */}
             <TiltContainer className="bg-surface-container">
-              <div className="brutalist-border p-6 sm:p-8 brutalist-shadow h-full cursor-default">
+              <div className="brutalist-border p-6 sm:p-8 brutalist-shadow h-full cursor-default relative overflow-hidden group">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-primary/[0.03] rotate-45 translate-x-12 -translate-y-12 border-l border-b border-outline/10" />
                 <div className="flex items-center gap-3 border-b-2 border-outline pb-3 mb-4">
                   <Terminal className="w-5 h-5 text-primary" strokeWidth={2} />
                   <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-widest">MINDSYSTEM.log</span>
@@ -82,22 +90,22 @@ export default function Hero() {
             {/* Quick Metrics Grid with individual 3D Parallax Tilt */}
             <div className="grid grid-cols-3 gap-4">
               <TiltContainer className="bg-background">
-                <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default">
-                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary">3.82</p>
+                <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default hover:bg-primary/[0.02] hover:border-primary transition-colors group">
+                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">3.82</p>
                   <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1">GPA</p>
                 </div>
               </TiltContainer>
 
               <TiltContainer className="bg-background">
-                <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default">
-                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary">7</p>
+                <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default hover:bg-primary/[0.02] hover:border-primary transition-colors group">
+                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">7</p>
                   <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1">BADGES</p>
                 </div>
               </TiltContainer>
 
               <TiltContainer className="bg-background">
-                <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default">
-                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary">4+</p>
+                <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default hover:bg-primary/[0.02] hover:border-primary transition-colors group">
+                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">4+</p>
                   <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1">SYSTEMS</p>
                 </div>
               </TiltContainer>
@@ -105,6 +113,40 @@ export default function Hero() {
           </motion.div>
         </div>
 
+      </div>
+
+      {/* Marquee Section */}
+      <div className="w-full border-y-2 border-outline bg-surface-container py-3.5 overflow-hidden select-none my-6 relative z-10">
+        <div className="marquee-container">
+          <div className="animate-marquee font-mono text-xs sm:text-sm font-black uppercase tracking-widest flex items-center gap-8 whitespace-nowrap">
+            <span>[ SYSTEM: OPERATIONAL ]</span>
+            <span className="text-primary">■</span>
+            <span>[ STACK: C++ / JAVA / PYTHON / TS / SQL ]</span>
+            <span className="text-primary">■</span>
+            <span>[ PTIT HONORS PROGRAM STUDENT ]</span>
+            <span className="text-primary">■</span>
+            <span>[ STATUS: LOOKING FOR INTERNSHIP ]</span>
+            <span className="text-primary">■</span>
+            <span>[ CUMULATIVE GPA: 3.82 / 4.00 ]</span>
+            <span className="text-primary">■</span>
+            <span>[ LOCATION: HANOI, VIETNAM ]</span>
+            <span className="text-primary">■</span>
+            
+            {/* Repeat for seamless loop */}
+            <span>[ SYSTEM: OPERATIONAL ]</span>
+            <span className="text-primary">■</span>
+            <span>[ STACK: C++ / JAVA / PYTHON / TS / SQL ]</span>
+            <span className="text-primary">■</span>
+            <span>[ PTIT HONORS PROGRAM STUDENT ]</span>
+            <span className="text-primary">■</span>
+            <span>[ STATUS: LOOKING FOR INTERNSHIP ]</span>
+            <span className="text-primary">■</span>
+            <span>[ CUMULATIVE GPA: 3.82 / 4.00 ]</span>
+            <span className="text-primary">■</span>
+            <span>[ LOCATION: HANOI, VIETNAM ]</span>
+            <span className="text-primary">■</span>
+          </div>
+        </div>
       </div>
 
       {/* Footer of Hero */}

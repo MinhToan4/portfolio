@@ -47,6 +47,18 @@ export default function Projects() {
         {projects.map((project, index) => {
           const imageUrl = projectImages[index % projectImages.length];
 
+          // System Status mapper
+          const getStatus = (id: number) => {
+            switch (id) {
+              case 1: return { label: 'PRODUCTION STABLE', color: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/35' };
+              case 2: return { label: 'SYSTEM ACTIVE', color: 'text-primary bg-primary/10 border-primary/35' };
+              case 3: return { label: 'ARCHIVED DEVLOG', color: 'text-muted-foreground bg-surface-container border-outline/35' };
+              default: return { label: 'OPERATIONAL', color: 'text-muted-foreground bg-surface-container border-outline/35' };
+            }
+          };
+          
+          const status = getStatus(project.id);
+
           return (
             <motion.article 
               key={project.id}
@@ -56,40 +68,55 @@ export default function Projects() {
               transition={cubicTransition}
             >
               <TiltContainer>
-                <div className="brutalist-border bg-background brutalist-shadow-large p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_var(--border-color)] duration-200 cursor-default">
+                <div className="brutalist-border bg-background brutalist-shadow-large p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_var(--border-color)] duration-200 cursor-default group">
                   {/* Project Image */}
                   <div className="lg:col-span-5 aspect-video lg:aspect-auto lg:h-full relative brutalist-border overflow-hidden bg-neutral-900">
                     <Image
                       src={imageUrl}
                       alt={project.title}
                       fill
-                      className="object-cover transition-all duration-300 hover:scale-105"
+                      className="object-cover transition-all duration-500 group-hover:scale-105"
                       sizes="(max-w-1024px) 100vw, 400px"
                     />
+                    {/* Index Badge */}
                     <div className="absolute top-3 left-3 bg-primary text-white font-mono text-xs font-black px-3 py-1.5 border border-outline">
                       0{index + 1}
+                    </div>
+                    {/* HASH stamp */}
+                    <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-xs font-mono text-[9px] font-bold text-white/90 px-2.5 py-1 border border-white/20 uppercase tracking-widest select-none">
+                      [ HASH: PRJ-0{project.id} ]
                     </div>
                   </div>
 
                   {/* Project Details */}
                   <div className="lg:col-span-7 flex flex-col justify-between gap-6">
                     <div className="space-y-4">
-                      <div className="flex flex-wrap gap-2.5">
-                        {project.technologies.slice(0, 3).map((tech) => (
-                          <span 
-                            key={tech}
-                            className="font-mono text-xs font-black uppercase tracking-wider bg-surface-container px-3 py-1.5 brutalist-border"
-                          >
-                            {tech}
-                          </span>
-                        ))}
+                      {/* Top bar details */}
+                      <div className="flex flex-wrap items-center justify-between gap-4">
+                        {/* Tech tags */}
+                        <div className="flex flex-wrap gap-2">
+                          {project.technologies.map((tech) => (
+                            <span 
+                              key={tech}
+                              className="font-mono text-[10px] sm:text-xs font-black uppercase tracking-wider bg-surface-container px-2.5 py-1 brutalist-border-thin hover:border-primary hover:text-primary transition-colors duration-150 select-none"
+                            >
+                              {tech}
+                            </span>
+                          ))}
+                        </div>
+                        
+                        {/* System status badge */}
+                        <span className={`font-mono text-[9px] font-black uppercase px-2.5 py-1 border flex items-center gap-1.5 ${status.color}`}>
+                          <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse" />
+                          {status.label}
+                        </span>
                       </div>
 
-                      <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight">
+                      <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight group-hover:text-primary transition-colors">
                         {project.title}
                       </h3>
 
-                      <p className="font-body text-base sm:text-lg leading-relaxed text-on-surface-variant max-w-prose font-medium">
+                      <p className="font-body text-base sm:text-lg leading-relaxed text-on-surface-variant max-w-prose font-medium text-justify">
                         {project.description}
                       </p>
                     </div>
@@ -101,7 +128,7 @@ export default function Projects() {
                           href={project.githubUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="brutalist-border px-5 py-3 font-mono text-sm font-black uppercase tracking-wider bg-background hover:bg-primary hover:text-white transition-colors flex items-center justify-center gap-2.5 brutalist-shadow"
+                          className="brutalist-border px-5 py-3 font-mono text-sm font-black uppercase tracking-wider bg-background hover:bg-primary hover:text-white transition-all duration-150 flex items-center justify-center gap-2.5 brutalist-shadow cursor-pointer"
                         >
                           <Github className="w-4 h-4" />
                           <span>SOURCE CODE</span>
@@ -113,7 +140,7 @@ export default function Projects() {
                           href={project.liveUrl}
                           target="_blank"
                           rel="noopener noreferrer"
-                          className="brutalist-border px-5 py-3 font-mono text-sm font-black uppercase tracking-wider bg-primary text-white hover:bg-background hover:text-primary transition-colors flex items-center justify-center gap-2.5 brutalist-shadow"
+                          className="brutalist-border px-5 py-3 font-mono text-sm font-black uppercase tracking-wider bg-primary text-white hover:bg-background hover:text-primary transition-all duration-150 flex items-center justify-center gap-2.5 brutalist-shadow cursor-pointer"
                         >
                           <ExternalLink className="w-4 h-4" />
                           <span>LIVE SYSTEM</span>
