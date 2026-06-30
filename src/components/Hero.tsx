@@ -1,10 +1,9 @@
 'use client';
 
-import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 import { Terminal, ArrowDown } from 'lucide-react';
-import CyberCanvas from './CyberCanvas';
+import TiltContainer from './TiltContainer';
 
 const cubicTransition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
 
@@ -28,52 +27,14 @@ function SplitText({ text, delayOffset = 0, className = "" }: { text: string; de
   );
 }
 
-// 3D Parallax Tilt Hover Container Component
-function TiltContainer({ children, className = "" }: { children: React.ReactNode; className?: string }) {
-  const [tilt, setTilt] = useState({ x: 0, y: 0 });
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    const rect = e.currentTarget.getBoundingClientRect();
-    const x = e.clientX - rect.left - rect.width / 2;
-    const y = e.clientY - rect.top - rect.height / 2;
-    // Maximum tilt: 8 degrees
-    setTilt({
-      x: -(y / (rect.height / 2)) * 8,
-      y: (x / (rect.width / 2)) * 8,
-    });
-  };
-
-  const handleMouseLeave = () => {
-    setTilt({ x: 0, y: 0 });
-  };
-
-  return (
-    <div
-      onMouseMove={handleMouseMove}
-      onMouseLeave={handleMouseLeave}
-      style={{
-        transform: `perspective(1000px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
-        transition: 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1)',
-      }}
-      className={`${className} transform-gpu`}
-    >
-      {children}
-    </div>
-  );
-}
-
 export default function Hero() {
   const { personal } = portfolioData;
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-16 border-b-2 border-outline select-none bg-background transition-colors duration-200 overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-16 border-b-2 border-outline select-none bg-transparent transition-colors duration-200 overflow-hidden"
     >
-      
-      {/* Interactive Cyber Constellation Canvas */}
-      <CyberCanvas />
-
       {/* Main Grid Content */}
       <div className="relative z-10 max-w-screen-2xl mx-auto w-full px-6 sm:px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 my-auto py-12">
         

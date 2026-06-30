@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 import { Filter, Star, Trophy, Users, Eye, HelpCircle } from 'lucide-react';
+import TiltContainer from './TiltContainer';
 
 export default function Activities() {
   const activities = portfolioData.activities;
@@ -38,10 +39,10 @@ export default function Activities() {
   return (
     <section 
       id="activities" 
-      className="border-b-2 border-outline select-none bg-background transition-colors duration-200"
+      className="border-b-2 border-outline select-none bg-transparent transition-colors duration-200"
     >
       {/* Section Header */}
-      <div className="grid grid-cols-1 lg:grid-cols-12 border-b-2 border-outline">
+      <div className="grid grid-cols-1 lg:grid-cols-12 border-b-2 border-outline bg-background">
         <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex flex-col justify-between">
           <div className="space-y-4">
             <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-black bg-primary/10 px-3.5 py-2 border border-primary/25 w-fit inline-block">
@@ -90,7 +91,7 @@ export default function Activities() {
       </div>
 
       {/* Grid of Cards */}
-      <div className="p-8 sm:p-16 lg:p-20 overflow-hidden">
+      <div className="p-8 sm:p-16 lg:p-20 overflow-hidden bg-background">
         <AnimatePresence mode="wait">
           <motion.div 
             key={selectedTab}
@@ -104,33 +105,34 @@ export default function Activities() {
               const CardIcon = getIcon(activity.type);
               
               return (
-                <article
-                  key={activity.id}
-                  className="brutalist-border bg-background brutalist-shadow p-6 flex flex-col justify-between gap-6 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--border-color)] duration-150"
-                >
-                  <div className="space-y-4">
-                    <div className="flex justify-between items-center border-b border-outline pb-2.5">
-                      <span className="font-mono text-xs font-black uppercase text-primary">
-                        {activity.type}
-                      </span>
-                      <CardIcon className="w-4 h-4 text-primary" strokeWidth={2} />
+                <TiltContainer key={activity.id} className="h-full">
+                  <article
+                    className="brutalist-border bg-background brutalist-shadow p-6 flex flex-col justify-between gap-6 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[6px_6px_0px_0px_var(--border-color)] duration-150 h-full cursor-default"
+                  >
+                    <div className="space-y-4">
+                      <div className="flex justify-between items-center border-b border-outline pb-2.5">
+                        <span className="font-mono text-xs font-black uppercase text-primary">
+                          {activity.type}
+                        </span>
+                        <CardIcon className="w-4 h-4 text-primary" strokeWidth={2} />
+                      </div>
+
+                      <h3 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight leading-tight">
+                        {activity.title}
+                      </h3>
+
+                      {activity.description && (
+                        <p className="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed font-semibold">
+                          {activity.description}
+                        </p>
+                      )}
                     </div>
 
-                    <h3 className="font-heading text-xl sm:text-2xl font-black uppercase tracking-tight leading-tight">
-                      {activity.title}
-                    </h3>
-
-                    {activity.description && (
-                      <p className="font-body text-sm sm:text-base text-on-surface-variant leading-relaxed font-semibold">
-                        {activity.description}
-                      </p>
-                    )}
-                  </div>
-
-                  <div className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground pt-3 border-t border-outline border-dashed">
-                    [ STABLE NODE: 0{idx + 1} ]
-                  </div>
-                </article>
+                    <div className="font-mono text-xs font-bold uppercase tracking-widest text-muted-foreground pt-3 border-t border-outline border-dashed">
+                      [ STABLE NODE: 0{idx + 1} ]
+                    </div>
+                  </article>
+                </TiltContainer>
               );
             })}
           </motion.div>

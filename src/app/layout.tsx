@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Space_Mono } from "next/font/google";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import CyberCanvas from "@/components/CyberCanvas";
 import "./globals.css";
 
 const inter = Inter({
@@ -48,8 +49,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${spaceGrotesk.variable} ${spaceMono.variable} scroll-smooth`} suppressHydrationWarning>
-      <body className="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary antialiased">
+      <body className="bg-background text-on-surface font-body selection:bg-primary selection:text-on-primary antialiased relative">
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem={false}>
+          <CyberCanvas />
           {children}
         </ThemeProvider>
       </body>

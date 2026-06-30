@@ -68,7 +68,7 @@ export default function About() {
                 src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=800&q=80" 
                 alt="Brutalist concrete architecture" 
                 fill 
-                className="object-cover grayscale hover:grayscale-0 transition-all duration-300 contrast-125 hover:scale-105"
+                className="object-cover transition-all duration-300 hover:scale-105"
                 sizes="(max-w-768px) 100vw, 192px"
               />
             </div>
