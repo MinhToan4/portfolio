@@ -1,9 +1,10 @@
 'use client';
 
-import { useState, useRef } from 'react';
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 import { Terminal, ArrowDown } from 'lucide-react';
+import CyberCanvas from './CyberCanvas';
 
 const cubicTransition = { duration: 0.6, ease: [0.16, 1, 0.3, 1] as const };
 
@@ -63,37 +64,15 @@ function TiltContainer({ children, className = "" }: { children: React.ReactNode
 
 export default function Hero() {
   const { personal } = portfolioData;
-  const containerRef = useRef<HTMLDivElement>(null);
-  const [mousePos, setMousePos] = useState({ x: 50, y: 50 });
-
-  const handleGlobalMouseMove = (e: React.MouseEvent) => {
-    if (!containerRef.current) return;
-    const rect = containerRef.current.getBoundingClientRect();
-    const x = ((e.clientX - rect.left) / rect.width) * 100;
-    const y = ((e.clientY - rect.top) / rect.height) * 100;
-    setMousePos({ x, y });
-  };
 
   return (
     <section
       id="hero"
-      ref={containerRef}
-      onMouseMove={handleGlobalMouseMove}
       className="relative min-h-screen flex flex-col justify-between pt-28 sm:pt-36 pb-16 border-b-2 border-outline select-none bg-background transition-colors duration-200 overflow-hidden"
     >
       
-      {/* Blueprint Grid Backdrop & Interactive Spotlight */}
-      <div 
-        className="absolute inset-0 z-0 pointer-events-none transition-opacity duration-300 opacity-70 dark:opacity-40"
-        style={{
-          backgroundImage: `
-            radial-gradient(circle 350px at ${mousePos.x}% ${mousePos.y}%, var(--primary-glow) 0%, transparent 80%),
-            linear-gradient(to right, var(--grid-line) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--grid-line) 1px, transparent 1px)
-          `,
-          backgroundSize: '100% 100%, 50px 50px, 50px 50px',
-        }}
-      />
+      {/* Interactive Cyber Constellation Canvas */}
+      <CyberCanvas />
 
       {/* Main Grid Content */}
       <div className="relative z-10 max-w-screen-2xl mx-auto w-full px-6 sm:px-8 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-0 my-auto py-12">
