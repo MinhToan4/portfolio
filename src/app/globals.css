@@ -39,6 +39,8 @@
   --text: #1C1C1C; /* Dark charcoal instead of harsh solid black */
   --text-muted: #666660;
   --border-color: #1C1C1C;
+  --primary-glow: rgba(255, 59, 48, 0.04);
+  --grid-line: rgba(28, 28, 28, 0.04);
 }
 
 .dark {
@@ -48,6 +50,8 @@
   --text: #F5F5F5;
   --text-muted: #8E8E8E;
   --border-color: #FAF9F6;
+  --primary-glow: rgba(255, 59, 48, 0.08);
+  --grid-line: rgba(250, 249, 246, 0.03);
 }
 
 @layer base {
