@@ -79,7 +79,7 @@ export default function CyberCanvas() {
     }
 
     const mouse = { x: -1000, y: -1000 };
-    let scrollY = 0;
+    let scrollY = window.scrollY;
 
     const handleMouseMove = (e: MouseEvent) => {
       mouse.x = e.clientX;
@@ -176,7 +176,7 @@ export default function CyberCanvas() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-screen h-screen pointer-events-none z-0 bg-transparent" 
+      className="fixed inset-0 w-screen h-screen pointer-events-none z-10 bg-transparent" 
     />
   );
 }
