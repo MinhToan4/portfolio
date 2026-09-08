@@ -45,7 +45,7 @@ export default function Projects() {
       {/* Projects Grid List */}
       <div className="p-8 sm:p-16 lg:p-20 space-y-16 sm:space-y-20">
         {projects.map((project, index) => {
-          const imageUrl = projectImages[index % projectImages.length];
+          const imageUrl = project.image || projectImages[index % projectImages.length];
 
           // System Status mapper
           const getStatus = (id: number) => {

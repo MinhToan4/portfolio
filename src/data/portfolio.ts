@@ -57,7 +57,7 @@ export const portfolioData = {
       id: 1,
       title: "Eye Clinic Management System",
       description: "A comprehensive eye clinic management system developed in Java. It includes UML activity diagrams for the authentication flow, JWT-based registration and login, data access and user management layers connected to PostgreSQL through JDBC, together with a custom HTTP server and routing system.",
-      image: "/images/project1.jpg",
+      image: "/images/project_eye_clinic.png",
       technologies: ["Java 21", "PostgreSQL", "Supabase", "Maven", "JWT", "Render"],
       liveUrl: "https://github.com/Sagitoaz/BTL_OOP",
       githubUrl: "https://github.com/Sagitoaz/BTL_OOP",
@@ -67,7 +67,7 @@ export const portfolioData = {
       id: 2,
       title: "GestureAI Game Hub",
       description: "An interactive gesture-controlled game built with MediaPipe and OpenCV. It integrates hand tracking for gesture input, game state management, collision detection, and smooth real-time performance at 60 FPS.",
-      image: "/images/project3.jpg",
+      image: "/images/project_gesture_ai.png",
       technologies: ["Python", "MediaPipe", "OpenCV", "Pygame", "Hand Tracking"],
       liveUrl: "https://github.com/MinhToan4/BTL_PYTHON",
       githubUrl: "https://github.com/MinhToan4/BTL_PYTHON",
@@ -77,7 +77,7 @@ export const portfolioData = {
       id: 3,
       title: "2D Platformer Game",
       description: "A 2D platformer developed in C++ with SFML. It features player movement with gravity and jumping, collision detection, enemy AI with patrol and attack behaviors, and a TinyXML-based level save and load system.",
-      image: "/images/project2.jpg",
+      image: "/images/project_platformer.png",
       technologies: ["C++17", "SFML", "TinyXML", "Game Development"],
       liveUrl: "https://github.com/MinhToan4/Game-1",
       githubUrl: "https://github.com/MinhToan4/Game-1",
@@ -199,6 +199,34 @@ export const portfolioData = {
 
   activities: [
     {
+      id: 10,
+      title: "First Prize (Global Final) - Huawei ICT Competition",
+      type: "achievement",
+      description: "Practice Competition – Computing Track | Global Final 2025 - 2026 (Shenzhen, China)",
+      image: "/profile-images/huawei_global_team.jpg"
+    },
+    {
+      id: 11,
+      title: "Grand Prize (APAC Champion) - Huawei ICT Competition",
+      type: "achievement",
+      description: "Huawei ICT Competition APAC Final 2025 - 2026",
+      image: "/profile-images/huawei_apac_stage_opt.jpg"
+    },
+    {
+      id: 8,
+      title: "Top 3 National Finalist (Computing Track) - Huawei ICT Competition",
+      type: "achievement",
+      description: "Huawei ICT Competition Vietnam | 2025 - 2026",
+      image: "/profile-images/huawei_vietnam_poster.jpg"
+    },
+    {
+      id: 9,
+      title: "Runner-Up - SUI Campus Hackathon",
+      type: "achievement",
+      description: "SUI Campus Hackathon | Build The Next Web3 | 02/2026",
+      image: "/profile-images/sui_hackathon_award.jpg"
+    },
+    {
       id: 1,
       title: "ICPC PTIT 2025 Programming Contest",
       type: "competition",
@@ -211,28 +239,49 @@ export const portfolioData = {
       description: "Participated in the Cloud Quest competition organized by VPBank."
     },
     {
-      id: 8,
-      title: "Top 3 National Finalist (Computing Track) - Huawei ICT Competition",
-      type: "achievement",
-      description: "Huawei ICT Competition | 2025 - 2026"
-    },
-    {
-      id: 9,
-      title: "Runner-Up - SUI Campus Hackathon",
-      type: "achievement",
-      description: "SUI Campus Hackathon | 02/2026"
-    },
-    {
       id: 3,
       title: "PTIT NITS IT Talent Incubation Lab",
       type: "organization",
       description: "Member of the PTIT NITS IT Talent Incubation Lab."
     },
     {
+      id: 12,
+      title: "Class President - Class D23CTCN01-B",
+      type: "organization",
+      description: "Class President for Information Technology (Honors Program) - Academic Years 2023-2024 & 2024-2025."
+    },
+    {
+      id: 13,
+      title: "UX/UI Lead - Institute-Level Project",
+      type: "organization",
+      description: "Led the UI/UX design team for an institute-level research project, mentored directly by Dr. Nguyen Ngoc Diep."
+    },
+    {
       id: 4,
       title: "Volunteer Blood Donation",
       type: "volunteer",
       description: "Receiving institution: Central Military Hospital 108."
+    },
+    {
+      id: 14,
+      title: "Winter Warmth Campaign 2026 - Season 14",
+      type: "volunteer",
+      description: "Active volunteer connecting love across highlands during the 14th Winter Warmth campaign organized by PTIT.",
+      image: "/profile-images/volunteer_winter_warmth_1.png"
+    },
+    {
+      id: 15,
+      title: "Winter Warmth Journey 2025 - Blooming",
+      type: "volunteer",
+      description: "Campaign contributor for the 2025 Winter Warmth Campaign, supporting remote mountainous students.",
+      image: "/profile-images/volunteer_winter_warmth_2.png"
+    },
+    {
+      id: 16,
+      title: "Winter to Pa Co Volunteer Campaign 2026",
+      type: "volunteer",
+      description: "Contributed funding and operational support for the 'Winter to Pa Co' community welfare program in Pa Co, Mai Chau, Hoa Binh.",
+      image: "/profile-images/volunteer_paco.png"
     },
     {
       id: 5,

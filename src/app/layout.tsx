@@ -21,6 +21,7 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://minhtoansbo.com"),
   title: "NMT - Portfolio",
   description: "Software developer & student at PTIT. Building thoughtful, elegant digital experiences.",
   keywords: ["portfolio", "developer", "full stack", "react", "nextjs", "typescript"],

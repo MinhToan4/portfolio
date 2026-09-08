@@ -1,12 +1,15 @@
 'use client';
 
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
+import { useState } from 'react';
+import Image from 'next/image';
 import { portfolioData } from '@/data/portfolio';
-import { Trophy, Award, Users, Building2, Heart, Calendar, ShieldCheck, ArrowRight, Cpu, Layers } from 'lucide-react';
+import { Trophy, Award, Users, Building2, Heart, Calendar, ShieldCheck, Cpu, Layers, ZoomIn, X } from 'lucide-react';
 import TiltContainer from './TiltContainer';
 
 export default function Activities() {
   const activities = portfolioData.activities;
+  const [selectedImage, setSelectedImage] = useState<{ src: string; title: string } | null>(null);
 
   // Filter activities into their respective groups
   const achievements = activities.filter(a => a.type === 'achievement');
@@ -92,6 +95,31 @@ export default function Activities() {
                       <p className="font-body text-xs sm:text-sm text-on-surface-variant font-semibold leading-relaxed">
                         {item.description}
                       </p>
+                    )}
+
+                    {/* Achievement Image / Certificate Proof */}
+                    {'image' in item && item.image && (
+                      <div 
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setSelectedImage({ src: item.image as string, title: item.title });
+                        }}
+                        className="relative w-full aspect-[16/10] brutalist-border overflow-hidden bg-neutral-900 cursor-pointer group/thumb mt-2"
+                      >
+                        <Image
+                          src={item.image as string}
+                          alt={item.title}
+                          fill
+                          className="object-cover transition-transform duration-500 group-hover/thumb:scale-105"
+                          sizes="(max-width: 768px) 100vw, 450px"
+                        />
+                        <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                          <span className="font-mono text-[10px] sm:text-xs font-black uppercase text-white bg-black/85 px-3 py-1.5 border border-white/30 flex items-center gap-1.5">
+                            <ZoomIn className="w-3.5 h-3.5 text-yellow-400" />
+                            VIEW PROOF / CERTIFICATE
+                          </span>
+                        </div>
+                      </div>
                     )}
                   </div>
 
@@ -282,7 +310,7 @@ export default function Activities() {
         </div>
 
         <div className="p-8 sm:p-16 lg:p-20">
-          <div className="max-w-4xl mx-auto w-full">
+          <div className="max-w-4xl mx-auto w-full space-y-6">
             {volunteers.map((vol) => (
               <motion.div
                 key={vol.id}
@@ -312,6 +340,30 @@ export default function Activities() {
                           {vol.description}
                         </p>
                       </div>
+
+                      {'image' in vol && vol.image && (
+                        <div 
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setSelectedImage({ src: vol.image as string, title: vol.title });
+                          }}
+                          className="relative w-full aspect-[16/9] brutalist-border overflow-hidden bg-neutral-900 cursor-pointer group/thumb mt-2"
+                        >
+                          <Image
+                            src={vol.image as string}
+                            alt={vol.title}
+                            fill
+                            className="object-cover transition-transform duration-500 group-hover/thumb:scale-105"
+                            sizes="(max-width: 768px) 100vw, 450px"
+                          />
+                          <div className="absolute inset-0 bg-black/40 opacity-0 group-hover/thumb:opacity-100 transition-opacity duration-200 flex items-center justify-center">
+                            <span className="font-mono text-[10px] font-black uppercase text-white bg-black/85 px-2.5 py-1 border border-white/30 flex items-center gap-1">
+                              <ZoomIn className="w-3 h-3 text-primary" />
+                              VIEW CERTIFICATE
+                            </span>
+                          </div>
+                        </div>
+                      )}
 
                       <div className="border-t border-outline border-dashed pt-3 flex items-center justify-between font-mono text-[9px] font-bold text-muted-foreground">
                         <span className="flex items-center gap-1.5 text-primary">
@@ -432,6 +484,54 @@ export default function Activities() {
           ))}
         </div>
       </div>
+
+      {/* Lightbox Modal for Certificate / Achievement Proof */}
+      <AnimatePresence>
+        {selectedImage && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setSelectedImage(null)}
+            className="fixed inset-0 z-50 bg-black/85 backdrop-blur-sm p-4 sm:p-8 flex flex-col items-center justify-center cursor-pointer"
+          >
+            <motion.div
+              initial={{ scale: 0.95, y: 10 }}
+              animate={{ scale: 1, y: 0 }}
+              exit={{ scale: 0.95, y: 10 }}
+              onClick={(e) => e.stopPropagation()}
+              className="relative max-w-4xl w-full max-h-[90vh] brutalist-border bg-background p-4 sm:p-6 flex flex-col gap-4 cursor-default brutalist-shadow-large"
+            >
+              <div className="flex items-center justify-between border-b-2 border-outline pb-3">
+                <span className="font-mono text-xs sm:text-sm font-black uppercase text-primary tracking-wider truncate pr-4">
+                  [ VERIFIED PROOF // {selectedImage.title} ]
+                </span>
+                <button
+                  onClick={() => setSelectedImage(null)}
+                  className="brutalist-border p-1.5 hover:bg-primary hover:text-white transition-colors cursor-pointer flex-shrink-0"
+                  aria-label="Close Preview"
+                >
+                  <X className="w-5 h-5" strokeWidth={2.5} />
+                </button>
+              </div>
+              <div className="relative w-full h-[65vh] bg-neutral-950/60 brutalist-border flex items-center justify-center overflow-hidden">
+                <Image
+                  src={selectedImage.src}
+                  alt={selectedImage.title}
+                  fill
+                  className="object-contain"
+                  sizes="(max-width: 1200px) 100vw, 1000px"
+                  priority
+                />
+              </div>
+              <div className="flex justify-between items-center font-mono text-[10px] text-muted-foreground border-t border-outline/30 pt-2">
+                <span>CLICK OUTSIDE OR CLOSE BUTTON TO RETURN</span>
+                <span className="text-primary font-bold">STATUS: VERIFIED PROOF</span>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
 
     </section>
   );
