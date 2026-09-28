@@ -91,7 +91,7 @@ export default function Hero() {
             <div className="grid grid-cols-3 gap-4">
               <TiltContainer className="bg-background">
                 <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default hover:bg-primary/[0.02] hover:border-primary transition-colors group">
-                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">3.82</p>
+                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">3.81</p>
                   <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1">GPA</p>
                 </div>
               </TiltContainer>
@@ -123,11 +123,11 @@ export default function Hero() {
             <span className="text-primary">■</span>
             <span>[ STACK: C++ / JAVA / PYTHON / TS / SQL ]</span>
             <span className="text-primary">■</span>
-            <span>[ PTIT HONORS PROGRAM STUDENT ]</span>
+            <span>[ TALENTED IT STUDENT - PTIT ]</span>
             <span className="text-primary">■</span>
             <span>[ STATUS: LOOKING FOR INTERNSHIP ]</span>
             <span className="text-primary">■</span>
-            <span>[ CUMULATIVE GPA: 3.82 / 4.00 ]</span>
+            <span>[ CUMULATIVE GPA: 3.81 / 4.00 ]</span>
             <span className="text-primary">■</span>
             <span>[ LOCATION: HANOI, VIETNAM ]</span>
             <span className="text-primary">■</span>
@@ -137,11 +137,11 @@ export default function Hero() {
             <span className="text-primary">■</span>
             <span>[ STACK: C++ / JAVA / PYTHON / TS / SQL ]</span>
             <span className="text-primary">■</span>
-            <span>[ PTIT HONORS PROGRAM STUDENT ]</span>
+            <span>[ TALENTED IT STUDENT - PTIT ]</span>
             <span className="text-primary">■</span>
             <span>[ STATUS: LOOKING FOR INTERNSHIP ]</span>
             <span className="text-primary">■</span>
-            <span>[ CUMULATIVE GPA: 3.82 / 4.00 ]</span>
+            <span>[ CUMULATIVE GPA: 3.81 / 4.00 ]</span>
             <span className="text-primary">■</span>
             <span>[ LOCATION: HANOI, VIETNAM ]</span>
             <span className="text-primary">■</span>

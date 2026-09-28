@@ -38,7 +38,7 @@ export default function AcademicResults() {
               <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-widest text-white/85">[ AGGREGATE CORE ]</span>
             </div>
             <span className="font-mono text-[9px] font-black uppercase text-white/70 bg-white/10 px-2 py-0.5 border border-white/20 select-none">
-              VERIFIED GPA: 3.82 / 4.0
+              VERIFIED GPA: 3.81 / 4.0
             </span>
           </div>
           <div className="relative z-10">

@@ -28,7 +28,7 @@ export default function Footer() {
               NMT<span className="text-primary font-mono">.</span>
             </h2>
             <p className="font-mono text-xs uppercase tracking-widest text-neutral-400 mt-2">
-              {"[ "}{personal.title}{" // PTIT HONORS ]"}
+              {"[ "}{personal.title}{" // TALENTED IT - PTIT ]"}
             </p>
           </div>
 

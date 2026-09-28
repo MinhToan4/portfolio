@@ -63,7 +63,7 @@ export default function CyberCanvas() {
       }
 
       draw(context: CanvasRenderingContext2D, color: string) {
-        context.font = `black ${this.fontSize}px monospace`;
+        context.font = `600 ${this.fontSize}px monospace`;
         context.fillStyle = color;
         context.fillText(this.char, this.x, this.y);
       }
@@ -107,11 +107,8 @@ export default function CyberCanvas() {
     window.addEventListener('resize', handleResize);
 
     const isDark = resolvedTheme === 'dark';
-    const particleColor = isDark ? 'rgba(250, 249, 246, 0.09)' : 'rgba(28, 28, 28, 0.07)';
-    const lineColor = isDark ? 'rgba(250, 249, 246, 0.03)' : 'rgba(28, 28, 28, 0.03)';
-    
-    // Strengthened red mouse line colors for better visibility
-    const highlightLineColor = isDark ? 'rgba(255, 59, 48, 0.45)' : 'rgba(255, 59, 48, 0.38)';
+    const baseParticleColor = isDark ? 'rgba(250, 249, 246, 0.10)' : 'rgba(30, 30, 30, 0.16)';
+    const lineColor = isDark ? 'rgba(250, 249, 246, 0.04)' : 'rgba(30, 30, 30, 0.06)';
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
@@ -124,6 +121,30 @@ export default function CyberCanvas() {
       // Draw connection lines between nearby particles
       for (let i = 0; i < particles.length; i++) {
         particles[i].update(activeMouseX, activeMouseY);
+
+        let particleColor = baseParticleColor;
+        let isNearMouse = false;
+        let mdist = 999;
+
+        if (activeMouseX !== -1000 && activeMouseY !== -1000) {
+          const mdx = particles[i].x - activeMouseX;
+          const mdy = particles[i].y - activeMouseY;
+          mdist = Math.sqrt(mdx * mdx + mdy * mdy);
+
+          if (mdist < 170) {
+            isNearMouse = true;
+            const proximity = (170 - mdist) / 170;
+            if (isDark) {
+              const alpha = 0.10 + proximity * 0.32;
+              particleColor = `rgba(250, 249, 246, ${alpha.toFixed(2)})`;
+            } else {
+              // Light mode: smoothly increase opacity of tracked characters for clear visibility
+              const alpha = 0.16 + proximity * 0.22;
+              particleColor = `rgba(25, 25, 25, ${alpha.toFixed(2)})`;
+            }
+          }
+        }
+
         particles[i].draw(ctx, particleColor);
 
         for (let j = i + 1; j < particles.length; j++) {
@@ -143,19 +164,14 @@ export default function CyberCanvas() {
         }
 
         // Draw interactive connection line from active particles to cursor coordinates
-        if (activeMouseX !== -1000 && activeMouseY !== -1000) {
-          const mdx = particles[i].x - activeMouseX;
-          const mdy = particles[i].y - activeMouseY;
-          const mdist = Math.sqrt(mdx * mdx + mdy * mdy);
-          
-          if (mdist < 155) {
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(activeMouseX, activeMouseY);
-            ctx.strokeStyle = highlightLineColor;
-            ctx.lineWidth = 1.1; // Slightly thicker lines for visibility
-            ctx.stroke();
-          }
+        if (isNearMouse && mdist < 155) {
+          const lineAlpha = (1 - mdist / 155) * (isDark ? 0.40 : 0.28);
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(activeMouseX, activeMouseY);
+          ctx.strokeStyle = `rgba(255, 59, 48, ${lineAlpha.toFixed(2)})`;
+          ctx.lineWidth = 0.9;
+          ctx.stroke();
         }
       }
 

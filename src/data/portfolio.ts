@@ -1,9 +1,9 @@
 export const portfolioData = {
   personal: {
     name: "Nguyễn Minh Toàn",
-    title: "Backend Developer",
-    subtitle: "PTIT Honors Program Student",
-    description: "I am an Information Technology student at PTIT, combining technical expertise with creative problem-solving to build meaningful applications. My software development journey is driven by curiosity and a strong commitment to continuous learning. I am currently seeking internship opportunities to apply my knowledge to real-world projects and further develop my skills in a professional environment.",
+    title: "Software Developer",
+    subtitle: "Talented Information Technology Student - PTIT",
+    description: "I am a Talented Information Technology student at PTIT, combining technical expertise with creative problem-solving to build meaningful applications. My software development journey is driven by curiosity and a strong commitment to continuous learning. I am currently seeking internship opportunities to apply my knowledge to real-world projects and further develop my skills in a professional environment.",
     email: "toanminh0404@gmail.com",
     phone: "+84 334 470 295",
     location: "Ha Dong, Hanoi, Vietnam",
@@ -88,16 +88,19 @@ export const portfolioData = {
   experience: [
     {
       id: 1,
-      title: "Information Technology Student",
+      title: "Talented Information Technology Student",
       company: "Posts and Telecommunications Institute of Technology (PTIT)",
       period: "2023 - Present",
-      description: "Honors Program student actively engaged in academic study and the exploration of emerging technologies.",
+      description: "Student in the Talented Information Technology Program, actively engaged in academic excellence, algorithmic research, and emerging technologies.",
       achievements: [
         "Entrance Scholarship (2023)",
+        "Yen My District Certificate of Merit - Outstanding University Entrance Examination Performance (Decision No. 18/QD-CTHKH, 2023)",
         "Academic Encouragement Scholarship (Excellent Distinction) - Semester I (2023-2024)",
         "Academic Encouragement Scholarship (Excellent Distinction) - Semester II (2023-2024)",
         "Academic Encouragement Scholarship (Excellent Distinction) - Semester I (2024-2025)",
-        "Academic Encouragement Scholarship (Excellent Distinction) - Semester II (2024-2025)"
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester II (2024-2025)",
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester I (2025-2026)",
+        "Academic Encouragement Scholarship (Excellent Distinction) - Semester II (2025-2026)"
       ]
     },
     {
@@ -107,9 +110,8 @@ export const portfolioData = {
       period: "2023 - Present",
       description: "Maintained outstanding academic performance with a consistently high GPA.",
       achievements: [
-        "Cumulative GPA: 3.82/4.0",
-        "Most recent semester GPA: 3.93/4.0",
-        "Information Technology Honors Program student",
+        "Cumulative GPA: 3.81/4.0",
+        "Talented Information Technology Program student",
         "Completed multiple applied projects in Java, Python, and C++"
       ]
     }
@@ -122,15 +124,15 @@ export const portfolioData = {
       school: "Yen My High School",
       period: "2020 - 2023",
       gpa: "Excellent Student",
-      description: "Ranked among the students with the highest national high school graduation examination scores at Yen My High School in the 2023 academic cycle and received a certificate of merit from the Study Promotion Association for outstanding performance in the 2023 university entrance examination."
+      description: "Graduated with top academic standing at Yen My High School; awarded Certificate of Merit (Decision No. 18/QD-CTHKH) by Chairman of Yen My District Study Promotion Association & Bureau of Education and Training for outstanding achievement in the 2023 National University Entrance Examination."
     },
     {
       id: 2,
-      degree: "Bachelor's Student in Information Technology",
+      degree: "Bachelor of Information Technology (Talented Program)",
       school: "Posts and Telecommunications Institute of Technology (PTIT)",
       period: "2023 - Present",
-      gpa: "3.82/4.0",
-      description: "Undergraduate student in Information Technology."
+      gpa: "3.81/4.0",
+      description: "Undergraduate student in the Talented Information Technology Program at PTIT."
     }
   ],
 
@@ -220,6 +222,20 @@ export const portfolioData = {
       image: "/profile-images/huawei_vietnam_poster.jpg"
     },
     {
+      id: 17,
+      title: "Second Prize (Runner-Up) - PROCON PTIT 2026",
+      type: "achievement",
+      description: "PROCON PTIT Programming Contest 2026 | Faculty of Information Technology 1, PTIT (09/2026)",
+      image: "/profile-images/nhi_procon.jpg"
+    },
+    {
+      id: 18,
+      title: "Certificate of Merit - Outstanding University Entrance Performance 2023",
+      type: "achievement",
+      description: "Awarded by Chairman of Yen My District Study Promotion Association & Head of Bureau of Education and Training for outstanding achievement in the 2023 National University Entrance Examination | Decision No. 18/QD-CTHKH (10/2023)",
+      image: "/profile-images/tieu_bieu_do_dai_hoc.jpg"
+    },
+    {
       id: 9,
       title: "Runner-Up - SUI Campus Hackathon",
       type: "achievement",
@@ -248,7 +264,7 @@ export const portfolioData = {
       id: 12,
       title: "Class President - Class D23CTCN01-B",
       type: "organization",
-      description: "Class President for Information Technology (Honors Program) - Academic Years 2023-2024 & 2024-2025."
+      description: "Class President for the Talented Information Technology Program (Class D23CTCN01-B)."
     },
     {
       id: 13,

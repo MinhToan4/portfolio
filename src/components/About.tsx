@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
 import Image from 'next/image';
-import { ArrowUpRight, Compass, Mail, MapPin } from 'lucide-react';
+import { ArrowUpRight, Compass, Mail, MapPin, GraduationCap } from 'lucide-react';
 
 export default function About() {
   const { personal } = portfolioData;
@@ -77,9 +77,14 @@ export default function About() {
             </div>
             
             <div className="space-y-6 w-full">
-              <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
-                Nguyễn Minh Toàn
-              </h3>
+              <div>
+                <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
+                  Nguyễn Minh Toàn
+                </h3>
+                <p className="font-mono text-xs sm:text-sm font-black uppercase text-primary tracking-wider mt-1">
+                  [ TALENTED IT STUDENT // PTIT ]
+                </p>
+              </div>
               <p className="font-body text-base sm:text-lg text-on-surface-variant leading-relaxed font-medium">
                 Based strictly on the principles of logic, clean architecture, and algorithmic efficiency. I believe complexity should be tackled at the root, delivering backend systems and API architectures that scale effortlessly.
               </p>
@@ -94,6 +99,15 @@ export default function About() {
                   <a href={`mailto:${personal.email}`} className="font-mono text-sm sm:text-base text-primary font-bold hover:underline break-all ml-4">
                     {personal.email}
                   </a>
+                </div>
+                <div className="flex justify-between items-center py-4">
+                  <div className="flex items-center gap-2">
+                    <GraduationCap className="w-4 h-4 text-primary" strokeWidth={2} />
+                    <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider">PROGRAM</span>
+                  </div>
+                  <span className="font-mono text-sm sm:text-base font-bold text-primary">
+                    TALENTED IT PROGRAM (PTIT)
+                  </span>
                 </div>
                 <div className="flex justify-between items-center py-4">
                   <div className="flex items-center gap-2">
