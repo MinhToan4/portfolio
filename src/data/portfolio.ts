@@ -10,9 +10,8 @@ export const portfolioData = {
     avatar: "/avatar1.png",
     socialLinks: {
       github: "https://github.com/MinhToan4",
-      linkedin: "https://www.linkedin.com/in/to%C3%A0n-nguy%E1%BB%85n-minh-b9436b219/",
-      facebook: "https://www.facebook.com/minhtoansbo",
-      X: "https://x.com/SboToan"
+      linkedin: "https://www.linkedin.com/in/minh-toan-nguyen-b9436b219/",
+      facebook: "https://www.facebook.com/minhtoansbo"
     }
   },
 
