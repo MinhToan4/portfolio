@@ -59,25 +59,6 @@ export const portfolioData = {
   projects: [
     {
       id: 1,
-      title: "AWS First Cloud AI Journey (FCAJ) – Buildathon",
-      role: "Cloud Intern",
-      organization: "AWS FCAJ Buildathon Program",
-      period: "10/2026 - Present",
-      status: { label: "ACTIVE BUILDATHON", color: "text-amber-500 bg-amber-500/10 border-amber-500/35" },
-      highlight: "CloudQuest (cloudquest.pvpwork.com)",
-      metric: "Interactive 3D Cloud Platform",
-      description: "Gaining hands-on experience with cloud architecture and AWS services through the AWS FCAJ Buildathon program. Architected and deployed CloudQuest, an interactive 3D platform that teaches cloud computing concepts visually to the community, earning positive feedback from AWS mentors and driving continued development.",
-      bullets: [
-        "Gaining hands-on experience with cloud architecture and AWS services through the AWS FCAJ Buildathon program.",
-        "Built CloudQuest (cloudquest.pvpwork.com), an interactive 3D platform that teaches cloud concepts visually to the community; the mentor gave positive feedback and encouraged further development."
-      ],
-      technologies: ["AWS Services", "Cloud Architecture", "Interactive 3D Web", "Full-Stack Development", "Next.js"],
-      liveUrl: "https://cloudquest.pvpwork.com/",
-      githubUrl: "",
-      hash: "EXP-01 // AWS-FCAJ"
-    },
-    {
-      id: 2,
       title: "TPETIE – Children's Fashion E-Commerce",
       role: "Freelance Full-Stack Developer",
       organization: "TPETIE (tpetie.store)",
@@ -94,10 +75,10 @@ export const portfolioData = {
       technologies: ["Full-Stack", "E-Commerce", "Next.js", "Payment Gateways", "Tailwind CSS", "UI/UX Design"],
       liveUrl: "https://tpetie.store/",
       githubUrl: "",
-      hash: "EXP-02 // TPETIE"
+      hash: "EXP-01 // TPETIE"
     },
     {
-      id: 3,
+      id: 2,
       title: "AIFA Holding – ArtTech & AI Startup",
       role: "Software Developer",
       organization: "AIFA Holding",
@@ -114,10 +95,10 @@ export const portfolioData = {
       technologies: ["Python", "Distributed Workers", "AI Education Platform", "System Reliability", "Partner APIs"],
       liveUrl: "",
       githubUrl: "",
-      hash: "EXP-03 // AIFA"
+      hash: "EXP-02 // AIFA"
     },
     {
-      id: 4,
+      id: 3,
       title: "Vidtory – AI Fashion Image & Video Startup",
       role: "Software Developer Intern",
       organization: "Vidtory",
@@ -134,10 +115,10 @@ export const portfolioData = {
       technologies: ["Generative AI", "Computer Vision", "Async Workers", "Panasonic Solution", "Docker", "Git"],
       liveUrl: "",
       githubUrl: "",
-      hash: "EXP-04 // VIDTORY"
+      hash: "EXP-03 // VIDTORY"
     },
     {
-      id: 5,
+      id: 4,
       title: "Chatbot - PTIT NITS Lab × VDSmart",
       role: "AI & Data Engineer",
       organization: "PTIT NITS Lab (Nurturing IT Student Talent)",
@@ -153,10 +134,10 @@ export const portfolioData = {
       technologies: ["AI Chatbot", "NLP", "Data Cleaning", "Dataset Labeling & QA", "VDSmart Integration"],
       liveUrl: "",
       githubUrl: "",
-      hash: "EXP-05 // NITS-LAB"
+      hash: "EXP-04 // NITS-LAB"
     },
     {
-      id: 6,
+      id: 5,
       title: "CyberLabX — Research & Engineering",
       role: "Full-Stack Developer & Team Lead",
       organization: "Supervised by Dr. Nguyen Ngoc Diep",
@@ -174,7 +155,7 @@ export const portfolioData = {
       liveUrl: "",
       mentorEmail: "mailto:diepnguyenngoc@ptit.edu.vn",
       githubUrl: "",
-      hash: "EXP-06 // CYBERLABX"
+      hash: "EXP-05 // CYBERLABX"
     }
   ],
 
