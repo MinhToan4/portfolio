@@ -3,84 +3,178 @@ export const portfolioData = {
     name: "Nguyễn Minh Toàn",
     title: "Software Developer",
     subtitle: "Talented Information Technology Student - PTIT",
-    description: "I am a Talented Information Technology student at PTIT, combining technical expertise with creative problem-solving to build meaningful applications. My software development journey is driven by curiosity and a strong commitment to continuous learning. I am currently seeking internship opportunities to apply my knowledge to real-world projects and further develop my skills in a professional environment.",
+    description: "Fourth-year Information Technology student in PTIT's Talent Program with hands-on experience in full-stack development, AI applications, and cloud technologies. Seeking a collaborative environment to contribute to meaningful projects, strengthen technical skills, and grow professionally.",
     email: "toanminh0404@gmail.com",
     phone: "+84 334 470 295",
     location: "Ha Dong, Hanoi, Vietnam",
     avatar: "/avatar1.png",
     socialLinks: {
       github: "https://github.com/MinhToan4",
-      linkedin: "https://www.linkedin.com/in/minh-toan-nguyen-b9436b219/",
+      linkedin: "https://www.linkedin.com/in/to%C3%A0n-nguy%E1%BB%85n-minh-b9436b219/",
       facebook: "https://www.facebook.com/minhtoansbo"
     }
   },
 
   skills: {
     frontend: [
-      { name: "React", level: 80, icon: "react" },
       { name: "Next.js", level: 85, icon: "nextjs" },
+      { name: "React", level: 80, icon: "react" },
       { name: "TypeScript", level: 75, icon: "typescript" },
       { name: "JavaScript", level: 80, icon: "javascript" },
       { name: "HTML/CSS", level: 85, icon: "html" },
-      { name: "Tailwind CSS", level: 80, icon: "tailwind" }
+      { name: "Tailwind CSS", level: 80, icon: "tailwind" },
+      { name: "Vite", level: 75, icon: "vite" }
     ],
     backend: [
-      { name: "Node.js", level: 70, icon: "nodejs" },
       { name: "Python", level: 85, icon: "python" },
       { name: "Java", level: 80, icon: "java" },
+      { name: "Spring Boot", level: 75, icon: "spring" },
       { name: "C++", level: 75, icon: "cpp" },
       { name: "C", level: 70, icon: "c" },
-      { name: "Express.js", level: 65, icon: "express" },
-      { name: "MongoDB", level: 60, icon: "mongodb" },
+      { name: "Node.js", level: 70, icon: "nodejs" },
       { name: "PostgreSQL", level: 80, icon: "postgresql" },
+      { name: "openGauss", level: 75, icon: "database" },
       { name: "SQL Server", level: 70, icon: "sqlserver" },
-      { name: "Firebase", level: 60, icon: "firebase" }
+      { name: "JDBC", level: 75, icon: "database" },
+      { name: "JavaFX / PyQt6 / SFML", level: 70, icon: "desktop" }
     ],
     tools: [
+      { name: "Docker", level: 75, icon: "docker" },
       { name: "Git", level: 85, icon: "git" },
-      { name: "Maven", level: 75, icon: "maven" },
-      { name: "Vercel", level: 70, icon: "vercel" },
-      { name: "Docker", level: 60, icon: "docker" },
+      { name: "openEuler", level: 75, icon: "linux" },
+      { name: "Supabase", level: 75, icon: "supabase" },
+      { name: "Render", level: 70, icon: "cloud" },
+      { name: "Linear / Plane.so", level: 75, icon: "tool" },
       { name: "VS Code", level: 90, icon: "vscode" },
-      { name: "Figma", level: 65, icon: "figma" },
       { name: "Postman", level: 75, icon: "postman" }
     ],
     knowledge: [
-      { name: "DSA", level: 75, icon: "algorithm" },
-      { name: "OOP", level: 85, icon: "oop" }
+      { name: "DSA", level: 85, icon: "algorithm" },
+      { name: "OOP", level: 90, icon: "oop" },
+      { name: "Cloud Architecture", level: 75, icon: "cloud" },
+      { name: "System Modeling (UML)", level: 80, icon: "architecture" }
     ]
   },
 
   projects: [
     {
       id: 1,
-      title: "Eye Clinic Management System",
-      description: "A comprehensive eye clinic management system developed in Java. It includes UML activity diagrams for the authentication flow, JWT-based registration and login, data access and user management layers connected to PostgreSQL through JDBC, together with a custom HTTP server and routing system.",
-      image: "/images/project_eye_clinic.png",
-      technologies: ["Java 21", "PostgreSQL", "Supabase", "Maven", "JWT", "Render"],
-      liveUrl: "https://github.com/Sagitoaz/BTL_OOP",
-      githubUrl: "https://github.com/Sagitoaz/BTL_OOP",
-      featured: true
+      title: "AWS First Cloud AI Journey (FCAJ) – Buildathon",
+      role: "Cloud Intern",
+      organization: "AWS FCAJ Buildathon Program",
+      period: "10/2026 - Present",
+      status: { label: "ACTIVE BUILDATHON", color: "text-amber-500 bg-amber-500/10 border-amber-500/35" },
+      highlight: "CloudQuest (cloudquest.pvpwork.com)",
+      metric: "Interactive 3D Cloud Platform",
+      description: "Gaining hands-on experience with cloud architecture and AWS services through the AWS FCAJ Buildathon program. Architected and deployed CloudQuest, an interactive 3D platform that teaches cloud computing concepts visually to the community, earning positive feedback from AWS mentors and driving continued development.",
+      bullets: [
+        "Gaining hands-on experience with cloud architecture and AWS services through the AWS FCAJ Buildathon program.",
+        "Built CloudQuest (cloudquest.pvpwork.com), an interactive 3D platform that teaches cloud concepts visually to the community; the mentor gave positive feedback and encouraged further development."
+      ],
+      technologies: ["AWS Services", "Cloud Architecture", "Interactive 3D Web", "Full-Stack Development", "Next.js"],
+      liveUrl: "https://cloudquest.pvpwork.com/",
+      githubUrl: "",
+      hash: "EXP-01 // AWS-FCAJ"
     },
     {
       id: 2,
-      title: "GestureAI Game Hub",
-      description: "An interactive gesture-controlled game built with MediaPipe and OpenCV. It integrates hand tracking for gesture input, game state management, collision detection, and smooth real-time performance at 60 FPS.",
-      image: "/images/project_gesture_ai.png",
-      technologies: ["Python", "MediaPipe", "OpenCV", "Pygame", "Hand Tracking"],
-      liveUrl: "https://github.com/MinhToan4/BTL_PYTHON",
-      githubUrl: "https://github.com/MinhToan4/BTL_PYTHON",
-      featured: true
+      title: "TPETIE – Children's Fashion E-Commerce",
+      role: "Freelance Full-Stack Developer",
+      organization: "TPETIE (tpetie.store)",
+      period: "09/2026 - Present",
+      status: { label: "PRODUCTION LIVE", color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/35" },
+      highlight: "tpetie.store",
+      metric: "Commercial E-Commerce Platform",
+      description: "Full-lifecycle freelance engineering for a premium children's fashion brand. Directly collaborated with client stakeholders to analyze business workflows, clarify requirements, and translate brand vision into an optimized e-commerce production platform.",
+      bullets: [
+        "Communicate directly with the client to understand business workflows, clarify requirements, and translate the brand's vision into an e-commerce platform.",
+        "Collaborate with the marketing team and external partners to align website features, content, and user experience with business needs.",
+        "Coordinate client feedback and evolving requirements throughout development, keeping stakeholders informed and refining the platform to meet their expectations."
+      ],
+      technologies: ["Full-Stack", "E-Commerce", "Next.js", "Payment Gateways", "Tailwind CSS", "UI/UX Design"],
+      liveUrl: "https://tpetie.store/",
+      githubUrl: "",
+      hash: "EXP-02 // TPETIE"
     },
     {
       id: 3,
-      title: "2D Platformer Game",
-      description: "A 2D platformer developed in C++ with SFML. It features player movement with gravity and jumping, collision detection, enemy AI with patrol and attack behaviors, and a TinyXML-based level save and load system.",
-      image: "/images/project_platformer.png",
-      technologies: ["C++17", "SFML", "TinyXML", "Game Development"],
-      liveUrl: "https://github.com/MinhToan4/Game-1",
-      githubUrl: "https://github.com/MinhToan4/Game-1",
-      featured: false
+      title: "AIFA Holding – ArtTech & AI Startup",
+      role: "Software Developer",
+      organization: "AIFA Holding",
+      period: "07/2026 - Present",
+      status: { label: "CORE ENGINEERING", color: "text-primary bg-primary/10 border-primary/35" },
+      highlight: "AI Learning Platform & Distributed Workers",
+      metric: "High-Throughput Processing",
+      description: "Developing robust backend background workers and interactive AI education platforms. Maintaining system reliability while expanding processing pipelines to support evolving partner requirements and educational initiatives.",
+      bullets: [
+        "Continue working with the Vidtory team to maintain and improve existing background workers, resolve system issues, and develop new workers to support evolving product requirements.",
+        "Develop an AI learning platform for students, using images and videos to make AI concepts more visual, accessible, and engaging.",
+        "Collaborate with the team on projects involving partner organizations, contributing to development and providing technical support to address partners' needs and resolve technical issues."
+      ],
+      technologies: ["Python", "Distributed Workers", "AI Education Platform", "System Reliability", "Partner APIs"],
+      liveUrl: "",
+      githubUrl: "",
+      hash: "EXP-03 // AIFA"
+    },
+    {
+      id: 4,
+      title: "Vidtory – AI Fashion Image & Video Startup",
+      role: "Software Developer Intern",
+      organization: "Vidtory",
+      period: "05/2026 - 07/2026",
+      status: { label: "ENTERPRISE COLLABORATION", color: "text-indigo-400 bg-indigo-500/10 border-indigo-500/35" },
+      highlight: "Panasonic Collaborative Project",
+      metric: "GenAI Background Pipelines",
+      description: "Contributed to core feature engineering for an AI-powered fashion image and video generation platform. Developed background workers and investigated and resolved complex distributed system bottlenecks.",
+      bullets: [
+        "Contributed to feature development for an AI-powered fashion image and video generation platform.",
+        "Developed background workers and investigated and resolved system issues.",
+        "Contributed to a high-impact collaborative project with Panasonic."
+      ],
+      technologies: ["Generative AI", "Computer Vision", "Async Workers", "Panasonic Solution", "Docker", "Git"],
+      liveUrl: "",
+      githubUrl: "",
+      hash: "EXP-04 // VIDTORY"
+    },
+    {
+      id: 5,
+      title: "Chatbot - PTIT NITS Lab × VDSmart",
+      role: "AI & Data Engineer",
+      organization: "PTIT NITS Lab (Nurturing IT Student Talent)",
+      period: "05/2026 - 09/2026",
+      status: { label: "ACCURACY > 90%", color: "text-emerald-500 bg-emerald-500/10 border-emerald-500/35" },
+      highlight: "VDSmart AI Chatbot Deployment",
+      metric: ">90% Accuracy Exceeded Criteria",
+      description: "Delivered an advanced AI conversational engine in partnership with VDSmart that achieved over 90% accuracy, exceeding all acceptance criteria through systematic dataset preparation, cleaning, and QA.",
+      bullets: [
+        "Delivered an AI chatbot with VDSmart that reached over 90% accuracy and exceeded all acceptance criteria, earning strong stakeholder feedback.",
+        "Performed data cleaning, quality control, and labeling to build high-fidelity datasets."
+      ],
+      technologies: ["AI Chatbot", "NLP", "Data Cleaning", "Dataset Labeling & QA", "VDSmart Integration"],
+      liveUrl: "",
+      githubUrl: "",
+      hash: "EXP-05 // NITS-LAB"
+    },
+    {
+      id: 6,
+      title: "CyberLabX — Research & Engineering",
+      role: "Full-Stack Developer & Team Lead",
+      organization: "Supervised by Dr. Nguyen Ngoc Diep",
+      period: "03/2026 - Present",
+      status: { label: "TEAM LEADERSHIP", color: "text-amber-500 bg-amber-500/10 border-amber-500/35" },
+      highlight: "6-Member Team Architecture",
+      metric: "System Architecture & Schema Optimization",
+      description: "Led a 6-member engineering team in designing and developing application architecture across database, frontend, and backend layers under the supervision of Dr. Nguyen Ngoc Diep.",
+      bullets: [
+        "Led a six-member team in designing and developing the application across database, frontend, and backend layers.",
+        "Created sequence diagrams, class diagrams, and entity-relationship models to define system architecture and workflows.",
+        "Designed and optimized database schemas for efficient data management and high performance."
+      ],
+      technologies: ["Spring Boot", "PostgreSQL", "UML System Modeling", "Database Optimization", "Team Leadership", "Supabase"],
+      liveUrl: "",
+      mentorEmail: "mailto:diepnguyenngoc@ptit.edu.vn",
+      githubUrl: "",
+      hash: "EXP-06 // CYBERLABX"
     }
   ],
 
@@ -137,10 +231,10 @@ export const portfolioData = {
 
   certifications: [
     {
-      name: "Generative AI for Educators with Gemini",
-      issuer: "Google",
-      date: "2026",
-      url: "https://edu.exceedlms.com/student/award/9KbfQpUFfun2e2S5WsEL439n"
+      name: "PTIT x SAMSUNG: Advanced Algorithms (2025)",
+      issuer: "PTIT & Samsung",
+      date: "2025",
+      url: "https://drive.google.com/file/d/1bVBE7AmAnChZV7xOQLGxpuXtbi6uajMr/view?usp=sharing"
     },
     {
       name: "Fundamentals of Deep Learning",
@@ -149,22 +243,10 @@ export const portfolioData = {
       url: "https://learn.nvidia.com/certificates?id=t0iPFHLYR86VAcVIGgtdiw"
     },
     {
-      name: "Google Analytics Certificate",
-      issuer: "Google",
-      date: "2025",
-      url: "https://skillshop.credential.net/dc00957f-08cc-4790-8fcf-c4d0fcd6f0ed#acc.X2xtCL8i"
-    },
-    {
-      name: "Google for Education Certificate",
+      name: "Generative AI for Educators with Gemini",
       issuer: "Google",
       date: "2025",
       url: "https://edu.google.accredible.com/e3bd6189-51bc-4719-b918-fb8f22547d58#acc.x1CVKuON"
-    },
-    {
-      name: "Advanced Algorithms: PTIT.SAMSUNG 2025",
-      issuer: "PTIT & Samsung",
-      date: "2025",
-      url: ""
     },
     {
       name: "AWS Cloud Quest: Generative AI Practitioner",
@@ -177,6 +259,24 @@ export const portfolioData = {
       issuer: "AWS",
       date: "2025",
       url: "https://www.credly.com/badges/335ab364-4fa5-436c-8b07-3b47010bf6cc/linked_in_profile"
+    },
+    {
+      name: "English Proficiency: CEFR Level B2",
+      issuer: "British Council",
+      date: "2025",
+      url: "https://credentials.britishcouncil.org/4b9b63d6-6fa6-4bd6-a657-3c1c1102e7cc?key=0bf4840609de5904de0aeb7f85bf67ca034918e21fb1648d0ea67f7e478e6517#acc.i4j0apTd"
+    },
+    {
+      name: "Google Analytics Certificate",
+      issuer: "Google",
+      date: "2025",
+      url: "https://skillshop.credential.net/dc00957f-08cc-4790-8fcf-c4d0fcd6f0ed#acc.X2xtCL8i"
+    },
+    {
+      name: "Google for Education Certificate",
+      issuer: "Google",
+      date: "2025",
+      url: "https://edu.google.accredible.com/e3bd6189-51bc-4719-b918-fb8f22547d58#acc.x1CVKuON"
     }
   ],
 

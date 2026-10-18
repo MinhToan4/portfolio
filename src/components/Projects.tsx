@@ -2,15 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { portfolioData } from '@/data/portfolio';
-import Image from 'next/image';
-import { Github, ExternalLink } from 'lucide-react';
+import { ExternalLink, Calendar, Mail, Terminal, ArrowUpRight, ShieldCheck, Cpu } from 'lucide-react';
 import TiltContainer from './TiltContainer';
-
-const projectImages = [
-  "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=800&q=80", // Stark Brutalist Concrete (Eye Clinic)
-  "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80", // Abstract B&W Linear (GestureAI)
-  "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80", // Geometric Building Shadows (Platformer)
-];
 
 export default function Projects() {
   const { projects } = portfolioData;
@@ -27,75 +20,161 @@ export default function Projects() {
         <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex flex-col justify-between">
           <div className="space-y-4">
             <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-black bg-primary/10 px-3.5 py-2 border border-primary/25 w-fit inline-block">
-              03 // REPOSITORIES
+              03 // PROFESSIONAL EXPERIENCE
             </span>
             <h2 className="font-heading text-[clamp(2.75rem,8vw,5.75rem)] leading-[0.85] font-black tracking-tighter text-on-surface uppercase">
-              SELECTED <br />
-              <span className="text-primary">CHRONOLOGY</span>
+              PROFESSIONAL <br />
+              <span className="text-primary">EXPERIENCE</span>
             </h2>
           </div>
         </div>
         <div className="lg:col-span-4 p-8 sm:p-12 lg:p-16 bg-surface-container flex flex-col justify-end">
           <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-muted-foreground border-l-4 border-primary pl-4">
-            A curated selection of technical developments and structural systems built. Focused on performance, backend architecture, and algorithmic design.
+            Production engineering, cloud architecture, full-stack web platforms, team leadership, and scalable distributed systems.
           </p>
         </div>
       </div>
 
-      {/* Projects Grid List */}
-      <div className="p-8 sm:p-16 lg:p-20 space-y-16 sm:space-y-20">
-        {projects.map((project, index) => {
-          const imageUrl = project.image || projectImages[index % projectImages.length];
-
-          // System Status mapper
-          const getStatus = (id: number) => {
-            switch (id) {
-              case 1: return { label: 'PRODUCTION STABLE', color: 'text-emerald-500 bg-emerald-500/10 border-emerald-500/35' };
-              case 2: return { label: 'SYSTEM ACTIVE', color: 'text-primary bg-primary/10 border-primary/35' };
-              case 3: return { label: 'ARCHIVED DEVLOG', color: 'text-muted-foreground bg-surface-container border-outline/35' };
-              default: return { label: 'OPERATIONAL', color: 'text-muted-foreground bg-surface-container border-outline/35' };
-            }
-          };
-          
-          const status = getStatus(project.id);
-
+      {/* Experience / Projects Grid List */}
+      <div className="p-8 sm:p-16 lg:p-20 space-y-12 sm:space-y-16">
+        {projects.map((item, index) => {
           return (
             <motion.article 
-              key={project.id}
-              initial={{ opacity: 0, y: 30 }}
+              key={item.id}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={cubicTransition}
+              transition={{ ...cubicTransition, delay: index * 0.05 }}
             >
-              <TiltContainer>
-                <div className="brutalist-border bg-background brutalist-shadow-large p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_var(--border-color)] duration-200 cursor-default group">
-                  {/* Project Image */}
-                  <div className="lg:col-span-5 aspect-video lg:aspect-auto lg:h-full relative brutalist-border overflow-hidden bg-neutral-900">
-                    <Image
-                      src={imageUrl}
-                      alt={project.title}
-                      fill
-                      className="object-cover transition-all duration-500 group-hover:scale-105"
-                      sizes="(max-w-1024px) 100vw, 400px"
-                    />
-                    {/* Index Badge */}
-                    <div className="absolute top-3 left-3 bg-primary text-white font-mono text-xs font-black px-3 py-1.5 border border-outline">
-                      0{index + 1}
-                    </div>
-                    {/* HASH stamp */}
-                    <div className="absolute bottom-3 left-3 bg-black/60 backdrop-blur-xs font-mono text-[9px] font-bold text-white/90 px-2.5 py-1 border border-white/20 uppercase tracking-widest select-none">
-                      [ HASH: PRJ-0{project.id} ]
-                    </div>
+              <TiltContainer maxTilt={3}>
+                <div className="brutalist-border bg-background brutalist-shadow-large p-6 sm:p-10 lg:p-12 hover:-translate-x-1 hover:-translate-y-1 hover:shadow-[10px_10px_0px_0px_var(--border-color)] duration-200 cursor-default group relative overflow-hidden">
+                  
+                  {/* Top Hash Stamp */}
+                  <div className="absolute top-0 right-0 font-mono text-[9px] font-black uppercase text-muted-foreground/70 bg-surface-container border-l-2 border-b-2 border-outline px-3 py-1 select-none group-hover:text-primary group-hover:border-primary transition-colors">
+                    {item.hash}
                   </div>
 
-                  {/* Project Details */}
-                  <div className="lg:col-span-7 flex flex-col justify-between gap-6">
-                    <div className="space-y-4">
-                      {/* Top bar details */}
-                      <div className="flex flex-wrap items-center justify-between gap-4">
-                        {/* Tech tags */}
+                  <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
+                    {/* Left Column: Organization, Role, Status, Period & Actions */}
+                    <div className="lg:col-span-5 flex flex-col justify-between gap-6 border-b-2 lg:border-b-0 lg:border-r-2 border-outline/70 pb-6 lg:pb-0 lg:pr-8">
+                      <div className="space-y-5">
+                        
+                        {/* Meta Top: Index + Status */}
+                        <div className="flex flex-wrap items-center gap-2.5">
+                          <span className="font-mono text-xs font-black bg-primary text-white px-2.5 py-1 border border-outline select-none">
+                            EXP // 0{index + 1}
+                          </span>
+                          <span className={`font-mono text-[10px] font-black uppercase px-2.5 py-1 border flex items-center gap-1.5 ${item.status.color}`}>
+                            <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse" />
+                            {item.status.label}
+                          </span>
+                        </div>
+
+                        {/* Organization & Role */}
+                        <div>
+                          <h3 className="font-heading text-2xl sm:text-3xl font-black uppercase tracking-tight text-on-surface group-hover:text-primary transition-colors leading-tight">
+                            {item.title}
+                          </h3>
+                          <div className="flex items-center gap-2 mt-2">
+                            <span className="font-mono text-xs sm:text-sm font-black uppercase tracking-wider text-primary bg-primary/10 px-2 py-0.5 border border-primary/25">
+                              {item.role}
+                            </span>
+                          </div>
+                        </div>
+
+                        {/* Period & Organization Info */}
+                        <div className="space-y-2">
+                          <div className="flex items-center gap-2 font-mono text-xs sm:text-sm font-bold uppercase text-muted-foreground bg-surface-container px-3 py-1.5 border border-outline w-fit">
+                            <Calendar className="w-3.5 h-3.5 text-primary" />
+                            <span>{item.period}</span>
+                          </div>
+                          <p className="font-mono text-xs text-muted-foreground font-semibold">
+                            Organization: {item.organization}
+                          </p>
+                        </div>
+
+                        {/* System Focus / Metric Banner */}
+                        {item.highlight && (
+                          <div className="bg-surface-container border-l-4 border-primary p-3 space-y-1">
+                            <div className="flex items-center gap-1.5 text-primary font-mono text-[9px] font-black uppercase tracking-widest">
+                              <ShieldCheck className="w-3 h-3" />
+                              <span>CORE HIGHLIGHT</span>
+                            </div>
+                            <p className="font-heading text-sm font-black uppercase tracking-tight text-on-surface">
+                              {item.highlight}
+                            </p>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Action Links */}
+                      <div className="flex flex-wrap gap-3 pt-4 border-t border-outline/40 border-dashed">
+                        {item.liveUrl && (
+                          <a 
+                            href={item.liveUrl}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="brutalist-border px-4 py-2.5 font-mono text-xs font-black uppercase tracking-wider bg-primary text-white hover:bg-background hover:text-primary transition-all duration-150 flex items-center gap-2 brutalist-shadow cursor-pointer"
+                          >
+                            <ExternalLink className="w-3.5 h-3.5" />
+                            <span>LIVE PLATFORM</span>
+                            <ArrowUpRight className="w-3.5 h-3.5 opacity-80" />
+                          </a>
+                        )}
+
+                        {'mentorEmail' in item && item.mentorEmail && (
+                          <a 
+                            href={item.mentorEmail as string}
+                            className="brutalist-border px-4 py-2.5 font-mono text-xs font-black uppercase tracking-wider bg-background hover:bg-primary hover:text-white transition-all duration-150 flex items-center gap-2 brutalist-shadow cursor-pointer"
+                          >
+                            <Mail className="w-3.5 h-3.5" />
+                            <span>CONTACT SUPERVISOR</span>
+                          </a>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Right Column: Context, Verified Field Contributions, Tech Stack */}
+                    <div className="lg:col-span-7 flex flex-col justify-between gap-6">
+                      <div className="space-y-6">
+                        
+                        {/* Summary description */}
+                        <div>
+                          <div className="flex items-center gap-2 font-mono text-[10px] font-black uppercase tracking-widest text-muted-foreground mb-2">
+                            <Terminal className="w-3.5 h-3.5 text-primary" />
+                            <span>SCOPE & OBJECTIVES</span>
+                          </div>
+                          <p className="font-body text-base sm:text-lg leading-relaxed text-on-surface-variant font-medium text-justify">
+                            {item.description}
+                          </p>
+                        </div>
+
+                        {/* Bullets directly from CV */}
+                        {item.bullets && item.bullets.length > 0 && (
+                          <div className="space-y-3 border-t-2 border-outline/50 border-dashed pt-4">
+                            <div className="flex items-center gap-2 font-mono text-[10px] font-black uppercase tracking-widest text-primary">
+                              <Cpu className="w-3 h-3" />
+                              <span>KEY CONTRIBUTIONS & IMPACT</span>
+                            </div>
+                            <ul className="space-y-2.5">
+                              {item.bullets.map((bullet: string, bIdx: number) => (
+                                <li key={bIdx} className="font-body text-sm sm:text-base text-on-surface flex items-start gap-3 font-semibold leading-relaxed">
+                                  <span className="text-primary font-mono text-xs font-black flex-shrink-0 select-none mt-1">&gt;_</span>
+                                  <span>{bullet}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        )}
+                      </div>
+
+                      {/* Tech Stack Pills */}
+                      <div className="pt-4 border-t-2 border-outline/50">
+                        <span className="font-mono text-[10px] font-black uppercase tracking-widest text-muted-foreground block mb-2">
+                          TECHNOLOGY STACK
+                        </span>
                         <div className="flex flex-wrap gap-2">
-                          {project.technologies.map((tech) => (
+                          {item.technologies.map((tech: string) => (
                             <span 
                               key={tech}
                               className="font-mono text-[10px] sm:text-xs font-black uppercase tracking-wider bg-surface-container px-2.5 py-1 brutalist-border-thin hover:border-primary hover:text-primary transition-colors duration-150 select-none"
@@ -104,48 +183,8 @@ export default function Projects() {
                             </span>
                           ))}
                         </div>
-                        
-                        {/* System status badge */}
-                        <span className={`font-mono text-[9px] font-black uppercase px-2.5 py-1 border flex items-center gap-1.5 ${status.color}`}>
-                          <span className="w-1.5 h-1.5 bg-current rounded-full animate-pulse" />
-                          {status.label}
-                        </span>
                       </div>
 
-                      <h3 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-black uppercase tracking-tight leading-tight group-hover:text-primary transition-colors">
-                        {project.title}
-                      </h3>
-
-                      <p className="font-body text-base sm:text-lg leading-relaxed text-on-surface-variant max-w-prose font-medium text-justify">
-                        {project.description}
-                      </p>
-                    </div>
-
-                    {/* Project Links */}
-                    <div className="flex flex-col sm:flex-row gap-4 pt-4 border-t border-outline border-dashed">
-                      {project.githubUrl && (
-                        <a 
-                          href={project.githubUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="brutalist-border px-5 py-3 font-mono text-sm font-black uppercase tracking-wider bg-background hover:bg-primary hover:text-white transition-all duration-150 flex items-center justify-center gap-2.5 brutalist-shadow cursor-pointer"
-                        >
-                          <Github className="w-4 h-4" />
-                          <span>SOURCE CODE</span>
-                        </a>
-                      )}
-                      
-                      {project.liveUrl && (
-                        <a 
-                          href={project.liveUrl}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="brutalist-border px-5 py-3 font-mono text-sm font-black uppercase tracking-wider bg-primary text-white hover:bg-background hover:text-primary transition-all duration-150 flex items-center justify-center gap-2.5 brutalist-shadow cursor-pointer"
-                        >
-                          <ExternalLink className="w-4 h-4" />
-                          <span>LIVE SYSTEM</span>
-                        </a>
-                      )}
                     </div>
                   </div>
                 </div>

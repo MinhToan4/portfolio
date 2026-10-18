@@ -10,8 +10,8 @@ export default function Footer() {
 
   const footerLinks = [
     { name: 'About', href: 'about' },
-    { name: 'Projects', href: 'projects' },
-    { name: 'Experience', href: 'experience' },
+    { name: 'Experience', href: 'projects' },
+    { name: 'Credentials', href: 'experience' },
     { name: 'Academic', href: 'academic-results' },
     { name: 'Activities', href: 'activities' },
     { name: 'Contact', href: 'contact' }

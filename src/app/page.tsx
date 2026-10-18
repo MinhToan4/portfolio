@@ -10,7 +10,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <div className="overflow-x-hidden w-full relative" style={{ minHeight: '100vh', background: 'var(--bg)' }}>
+    <div className="overflow-x-hidden w-full relative" style={{ minHeight: '100vh', background: 'transparent' }}>
       <Header />
       <main>
         <Hero />

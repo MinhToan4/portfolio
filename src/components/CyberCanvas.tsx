@@ -3,7 +3,8 @@
 import { useEffect, useRef } from 'react';
 import { useTheme } from 'next-themes';
 
-const chars = ['0', '1', '<', '>', '{', '}', '+', '-', '//', '[', ']', 'x', 'y', ';', '=>', 'func', 'var'];
+// Refined, minimal cyber tokens (clean, non-cluttering glyphs)
+const chars = ['0', '1', '+', '-', '<', '>', '{', '}', '//', '[', ']', 'func', '::', '·'];
 
 export default function CyberCanvas() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -30,10 +31,11 @@ export default function CyberCanvas() {
       constructor() {
         this.x = Math.random() * width;
         this.y = Math.random() * height;
-        this.vx = (Math.random() - 0.5) * 0.45;
-        this.vy = (Math.random() - 0.5) * 0.45;
+        // Smooth, subtle ambient drift
+        this.vx = (Math.random() - 0.5) * 0.22;
+        this.vy = (Math.random() - 0.5) * 0.22;
         this.char = chars[Math.floor(Math.random() * chars.length)];
-        this.fontSize = Math.floor(Math.random() * 4) + 9; // 9px to 12px
+        this.fontSize = Math.floor(Math.random() * 3) + 9; // 9px to 11px
       }
 
       update(mouseX: number, mouseY: number) {
@@ -41,38 +43,38 @@ export default function CyberCanvas() {
         this.x += this.vx;
         this.y += this.vy;
 
-        // Mouse gravity pull
+        // Subtle mouse attraction
         if (mouseX !== -1000 && mouseY !== -1000) {
           const dx = mouseX - this.x;
           const dy = mouseY - this.y;
           const dist = Math.sqrt(dx * dx + dy * dy);
           
-          if (dist < 180) {
-            const force = (180 - dist) / 180;
-            // Move slightly toward mouse coordinates
-            this.x += dx * force * 0.018;
-            this.y += dy * force * 0.018;
+          if (dist < 150) {
+            const force = (150 - dist) / 150;
+            this.x += dx * force * 0.008;
+            this.y += dy * force * 0.008;
           }
         }
 
-        // Boundary checks (wraparound screen)
-        if (this.x < -15) this.x = width + 15;
-        if (this.x > width + 15) this.x = -15;
-        if (this.y < -15) this.y = height + 15;
-        if (this.y > height + 15) this.y = -15;
+        // Screen wrap-around boundaries
+        if (this.x < -20) this.x = width + 20;
+        if (this.x > width + 20) this.x = -20;
+        if (this.y < -20) this.y = height + 20;
+        if (this.y > height + 20) this.y = -20;
       }
 
       draw(context: CanvasRenderingContext2D, color: string) {
-        context.font = `600 ${this.fontSize}px monospace`;
+        // Normal 400 weight (no bold smudges) for ultra-clean rendering
+        context.font = `400 ${this.fontSize}px var(--font-space-mono), monospace`;
         context.fillStyle = color;
         context.fillText(this.char, this.x, this.y);
       }
     }
 
-    // Determine particle count based on screen area
+    // Lower density to eliminate noise and clutter
     const particles: Particle[] = [];
-    const density = 15000;
-    const particleCount = Math.min(100, Math.max(45, Math.floor((width * height) / density)));
+    const density = 24000;
+    const particleCount = Math.min(48, Math.max(22, Math.floor((width * height) / density)));
     
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
@@ -107,8 +109,10 @@ export default function CyberCanvas() {
     window.addEventListener('resize', handleResize);
 
     const isDark = resolvedTheme === 'dark';
-    const baseParticleColor = isDark ? 'rgba(250, 249, 246, 0.10)' : 'rgba(30, 30, 30, 0.16)';
-    const lineColor = isDark ? 'rgba(250, 249, 246, 0.04)' : 'rgba(30, 30, 30, 0.06)';
+    
+    // Very faint, airy, premium opacity (no dirty smudges)
+    const baseParticleColor = isDark ? 'rgba(250, 249, 246, 0.038)' : 'rgba(28, 28, 28, 0.04)';
+    const lineColor = isDark ? 'rgba(250, 249, 246, 0.015)' : 'rgba(28, 28, 28, 0.015)';
 
     const animate = () => {
       ctx.clearRect(0, 0, width, height);
@@ -131,16 +135,16 @@ export default function CyberCanvas() {
           const mdy = particles[i].y - activeMouseY;
           mdist = Math.sqrt(mdx * mdx + mdy * mdy);
 
-          if (mdist < 170) {
+          if (mdist < 140) {
             isNearMouse = true;
-            const proximity = (170 - mdist) / 170;
+            const proximity = (140 - mdist) / 140;
             if (isDark) {
-              const alpha = 0.10 + proximity * 0.32;
-              particleColor = `rgba(250, 249, 246, ${alpha.toFixed(2)})`;
+              const alpha = 0.038 + proximity * 0.065;
+              particleColor = `rgba(250, 249, 246, ${alpha.toFixed(3)})`;
             } else {
-              // Light mode: smoothly increase opacity of tracked characters for clear visibility
-              const alpha = 0.16 + proximity * 0.22;
-              particleColor = `rgba(25, 25, 25, ${alpha.toFixed(2)})`;
+              // Gentle, faint highlight without looking dark/dirty
+              const alpha = 0.04 + proximity * 0.045;
+              particleColor = `rgba(28, 28, 28, ${alpha.toFixed(3)})`;
             }
           }
         }
@@ -152,25 +156,25 @@ export default function CyberCanvas() {
           const dy = particles[i].y - particles[j].y;
           const dist = Math.sqrt(dx * dx + dy * dy);
 
-          // Connect particles within 110px
-          if (dist < 110) {
+          // Connect particles within 90px with delicate hairline stroke
+          if (dist < 90) {
             ctx.beginPath();
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
             ctx.strokeStyle = lineColor;
-            ctx.lineWidth = 0.55;
+            ctx.lineWidth = 0.35;
             ctx.stroke();
           }
         }
 
-        // Draw interactive connection line from active particles to cursor coordinates
-        if (isNearMouse && mdist < 155) {
-          const lineAlpha = (1 - mdist / 155) * (isDark ? 0.40 : 0.28);
+        // Delicate, soft laser trace to cursor coordinates
+        if (isNearMouse && mdist < 135) {
+          const lineAlpha = (1 - mdist / 135) * (isDark ? 0.16 : 0.10);
           ctx.beginPath();
           ctx.moveTo(particles[i].x, particles[i].y);
           ctx.lineTo(activeMouseX, activeMouseY);
-          ctx.strokeStyle = `rgba(255, 59, 48, ${lineAlpha.toFixed(2)})`;
-          ctx.lineWidth = 0.9;
+          ctx.strokeStyle = `rgba(255, 59, 48, ${lineAlpha.toFixed(3)})`;
+          ctx.lineWidth = 0.5;
           ctx.stroke();
         }
       }
@@ -192,7 +196,7 @@ export default function CyberCanvas() {
   return (
     <canvas 
       ref={canvasRef} 
-      className="fixed inset-0 w-screen h-screen pointer-events-none z-10 bg-transparent" 
+      className="fixed inset-0 w-screen h-screen pointer-events-none z-0 bg-transparent" 
     />
   );
 }

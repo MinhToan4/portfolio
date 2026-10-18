@@ -20,17 +20,17 @@ export default function Experience() {
         <div className="lg:col-span-8 p-8 sm:p-16 lg:p-20 border-b-2 lg:border-b-0 lg:border-r-2 border-outline flex flex-col justify-between">
           <div className="space-y-4">
             <span className="font-mono text-xs sm:text-sm uppercase tracking-widest text-primary font-black bg-primary/10 px-3.5 py-2 border border-primary/25 w-fit inline-block">
-              04 // CHRONOLOGY
+              04 // CREDENTIALS & ACADEMIA
             </span>
             <h2 className="font-heading text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[0.85] font-black tracking-tighter text-on-surface uppercase">
-              ARCHITECTURAL <br />
-              <span className="text-primary">EVOLUTION</span>
+              ACADEMIC & <br />
+              <span className="text-primary">CREDENTIALS</span>
             </h2>
           </div>
         </div>
         <div className="lg:col-span-4 p-8 sm:p-12 lg:p-16 bg-surface-container flex flex-col justify-end">
           <p className="font-mono text-xs sm:text-sm font-bold uppercase tracking-widest text-muted-foreground border-l-4 border-primary pl-4">
-            A chronological mapping of academic rigor, cumulative achievements, and validated certifications.
+            A chronological mapping of cumulative distinction scholarships, institutional degree programs, and verified global certifications.
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@ export default function Experience() {
             <div className="flex items-center gap-3">
               <GraduationCap className="w-6 h-6 text-primary" strokeWidth={2} />
               <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
-                ACADEMIC EXCELLENCE
+                SCHOLARSHIPS & HONORS
               </h3>
             </div>
 
@@ -62,7 +62,7 @@ export default function Experience() {
                   <TiltContainer>
                     <div className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow cursor-default relative overflow-hidden group">
                       <div className="absolute top-0 right-0 font-mono text-[8px] font-black text-muted-foreground bg-outline/10 border-l border-b border-outline px-1.5 py-0.5 select-none opacity-60 group-hover:opacity-100 group-hover:text-primary transition-colors">
-                        [NODE // 0{index + 1}]
+                        [HONOR // 0{index + 1}]
                       </div>
 
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
@@ -104,7 +104,7 @@ export default function Experience() {
             <div className="flex items-center gap-3">
               <Briefcase className="w-6 h-6 text-primary" strokeWidth={2} />
               <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
-                WORK ARCHITECTURE
+                ACADEMIC FORMATION & DEGREES
               </h3>
             </div>
 
@@ -120,7 +120,7 @@ export default function Experience() {
                   <TiltContainer>
                     <div className="brutalist-border p-6 sm:p-8 bg-surface-container hover:bg-background transition-colors brutalist-shadow cursor-default relative overflow-hidden group">
                       <div className="absolute top-0 right-0 font-mono text-[8px] font-black text-muted-foreground bg-outline/10 border-l border-b border-outline px-1.5 py-0.5 select-none opacity-60 group-hover:opacity-100 group-hover:text-primary transition-colors">
-                        [SYS_EXP // 0{index + 1}]
+                        [DEGREE // 0{index + 1}]
                       </div>
 
                       <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2 mb-4">
@@ -154,7 +154,7 @@ export default function Experience() {
           <div className="flex items-center gap-3">
             <Award className="w-6 h-6 text-primary" strokeWidth={2} />
             <h3 className="font-heading text-3xl sm:text-4xl font-black uppercase tracking-tight">
-              ENDORSEMENTS
+              CERTIFICATIONS & ENDORSEMENTS
             </h3>
           </div>
 

@@ -105,7 +105,7 @@ export default function Hero() {
 
               <TiltContainer className="bg-background">
                 <div className="brutalist-border p-4 text-center brutalist-shadow h-full flex flex-col justify-center cursor-default hover:bg-primary/[0.02] hover:border-primary transition-colors group">
-                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">4+</p>
+                  <p className="font-heading text-2xl sm:text-3xl font-black text-primary group-hover:scale-105 transition-transform">6+</p>
                   <p className="font-mono text-[10px] sm:text-xs font-bold uppercase tracking-wider text-muted-foreground mt-1">SYSTEMS</p>
                 </div>
               </TiltContainer>
